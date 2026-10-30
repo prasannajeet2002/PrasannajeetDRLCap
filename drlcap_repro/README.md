@@ -22,8 +22,12 @@ cd /home/drl/project/drlcap/drlcap_repro
 | `frequency_sweep.py` | Motivation experiment (Sec. III, Fig. 1) and action-range selection (Table IV) |
 | `reward.py` | Energy-efficiency evaluator: heuristic reward, Algorithm 1 + Eq. 1 |
 | `agent.py` | Power-configuration optimizer: DDQN + prioritized replay (Alg. 2, Fig. 7-8, Table V) |
-| `drlcap.py` | 300 ms runtime control loop; `python drlcap.py train` = offline training |
-| `evaluate.py` | Comparison with the NVIDIA default policy: energy, runtime, EDP, geomean (Sec. V-D) |
+| `drlcap.py` | 300 ms runtime control loop, discretised state, frequency / power / hybrid variants (Table III); `python drlcap.py train` = offline training |
+| `rl_baseline.py` | The paper's "RL" baseline: tabular double Q-learning, same actions and reward |
+| `evaluate.py` | Comparison with the NVIDIA default: static caps, COORD-like heuristic, trained models, monitor-only overhead; energy, runtime, EDP, geomean (Sec. V-D, VI-A..C) |
+| `cnn_workload.py` | VGG-16 / GoogLeNet (InceptionV3) / ResNet50 training test workloads |
+| `report.py` | Figures and Markdown table from an evaluation's `summary.csv` |
+| `run_full_reproduction.sh` | The whole queue: 5 trainings, main comparison, ablations |
 
 Results go to `results/` with timestamped names; nothing is overwritten.
 
@@ -37,8 +41,30 @@ python frequency_sweep.py --workloads hotspot gaussian nw bfs particlefilter
 python drlcap.py train
 
 # 3. test on unseen workloads vs. NVIDIA default, online learning on
-python evaluate.py --model results/train_drlcap_<stamp>/model_final.keras --repeats 3
+python evaluate.py --models drlcap=results/train_<tag>_<stamp>/model_final.keras \
+    --repeats 10 --static-caps 2100 2400 --coord
+
+# everything (trainings + comparison + ablations, ~14 h on GPU 1)
+./run_full_reproduction.sh
 ```
+
+## Where the unpublished constants come from
+
+The paper does not publish r1..r4, g1..g4, n, c, the hidden-layer width,
+the optimizer or the PER details. The project root contains a TF2 port of
+the authors' own V100S scripts (`Freq_DDQN_prioritized_save_tf2.py`,
+`*_restore_tf2.py`, `Power_DDQN_prioritized_restore_tf2.py`; paths
+`/home/wym/...`, `nvidia-smi -lgc 135,<cap>`). From them we take: Eq. 1
+bins of 45 MHz with g = +5/-1/-2/-3 (power not up) and -1/-2/-3/-4 (power
+up), power floored to whole watts; 20 hidden ReLU units, N(0, 0.3)
+weights, 0.1 bias, RMSprop; PER alpha 0.6, priority epsilon 0.01,
+priorities clipped at 1, beta 0.4 + 0.001 per batch, new transitions at
+the current maximum priority; learning only after the buffer is full;
+a bucketed state; deployment = restore + online learning at fixed
+epsilon. Those scripts use lr 1e-4, epsilon 0.3 -> 0.2, buffer 500,
+target every 10, 2000 steps (apparently an earlier version); where they
+conflict with the paper we follow Table V. Algorithm 1 cases A-D are not
+in the scripts, so r1..r4, p1..p3 and c remain our choices.
 
 ## Static frequency-cap sweep (Fig. 1 analogue)
 
@@ -64,7 +90,12 @@ Observed measurement detail: NVML clock/power readings reflect a new cap
 about one 300 ms sample late, so the reward of action a_t is partly
 computed on the effect of a_(t-1). The paper does not discuss this.
 
-## Results (first full run, 2026-10-30)
+## Results v1 (our own constants, superseded)
+
+These runs used OUR guesses for the unpublished constants (64 hidden
+units, Adam, g in [-1, 1], 30 MHz bins, continuous state; code at commit
+d551cdc). They are kept because they are a useful ablation of the
+constants.
 
 Training: `results/train_drlcap_20261030_120328` - 5014 control steps
 (300 ms) over 55 jobs of the 8 training workloads, 4982 DDQN updates,
@@ -91,10 +122,19 @@ baseline runs. Paper (NVIDIA average): 22 % / 3 % / 20 %.
 \* streamcluster's baseline runtime varies by 7 % (31.9-37.3 s), so its
 apparent speed-up is within noise and should not be claimed.
 
-Not yet shown (needed before thesis claims): 10 repeats as in the paper;
-comparison with static caps (e.g. a fixed 2100 or 2400 MHz cap) to check
-the RL policy beats the best static setting; a frozen-network ablation
-(`--no-online`); a second training seed.
+10 repeats with static caps (`results/eval_test10_20261030_151611`,
+same model, same 7 programs), geomean vs. NVIDIA default:
+
+| Policy | Energy saving | Perf. loss | EDP improvement |
+|---|---|---|---|
+| static 2100 MHz | 26.3 % | 10.2 % | 18.8 % |
+| static 2400 MHz | 19.8 % | 4.3 % | 16.3 % |
+| DRLCap v1 | 15.1 % | 3.8 % | 11.9 % |
+
+With 10 repeats the v1 slowdown is 3.8 % (3 repeats suggested 1.3 %),
+and a single fixed 2400 MHz cap beats v1 on energy and EDP at a similar
+slowdown. v1 therefore does NOT show an advantage of the learned policy
+over the best static setting.
 
 ## What matches the paper
 
@@ -122,18 +162,37 @@ the RL policy beats the best static setting; a frozen-network ablation
    into a training and a test set, instead of training on
    Rodinia/Parboil/SHOC/PolyBench/SDK and testing on LULESH, CloverLeaf,
    etc. Inputs are enlarged and programs repeated so a job lasts ~20-50 s.
-3. **No CNN test workloads**: TensorFlow 2.21 in `prasannajeet_env` cannot
-   create a cuDNN handle (system cuDNN 8.9 vs. required 9.x for CUDA 12;
-   the pip cuDNN targets CUDA 13), and the installed PyTorch needs a newer
-   driver. VGG-16 / GoogleNet tests are therefore missing.
-4. **Unpublished constants**: r1..r4, p1..p3, g1..g4, n, c, the hidden
-   layer width, PER alpha/beta are not given in the paper; our values are
-   in `reward.py` / `agent.py` and saved in each run's `config.json`.
-5. **Reward clipping** to +-5 (case C divides by utilisation).
+3. **CNN workloads**: GoogLeNet is replaced by Keras InceptionV3 (same
+   family; Keras has no Inception v1); data are synthetic. TensorFlow uses
+   the CUDA 12.9 / cuDNN 9.26 libraries of the base miniconda install via
+   LD_LIBRARY_PATH, because the pip CUDA libraries in `prasannajeet_env`
+   are CUDA 13 builds that driver 575 cannot run. QE, LULESH, CloverLeaf,
+   TeaLeaf, miniBUDE, CoMD, GROMACS and miniFE are not available.
+4. **Unpublished constants**: taken from the authors' scripts where
+   possible (section above); r1..r4, p1..p3, c, the state bucket ranges
+   for the 4070 Ti and the action ranges are ours. All values are saved
+   in each run's `config.json`. The state bucket indices are scaled to
+   [0, 1) (the scripts feed raw indices).
+5. **Reward clipping** to +-10 (case C divides by utilisation).
 6. **Case A** is implemented by forcing the next action to the maximum cap
    when the latest sample is fully compute-bound (u_core = 100,
    u_mem = 0); the reward for that step then bins the power change.
 7. **Energy** is the NVML board energy counter (joules), not
    power x time; the paper does not state its energy source.
-8. **Repeats**: the paper runs each test 10 times; `--repeats` defaults to 3
-   to fit the available time.
+8. **Repeats**: the main comparison uses 10 repeats as in the paper; the
+   ablations use 5.
+9. **Power capping on the 4070 Ti** accepts 100-285 W, but the Rodinia
+   programs draw only ~30-100 W, so power caps rarely bind on them; they
+   do bind on the CNN workloads.
+10. **COORD** is a COORD-like re-implementation: one profiling run at
+    default clocks, compute- vs. memory/host-bound by mean core
+    utilisation (threshold 50 %), fixed caps 2400 / 1800 MHz chosen from
+    the training-set sweep. The 4070 Ti has no memory-power cap, so the
+    core/memory coordination of the original is not reproduced.
+11. **Overhead**: CPU package energy (paper Fig. 12) needs root access to
+    RAPL and is not measured; we report the controller's CPU time,
+    per-step latency and memory instead, and the GPU energy/time effect
+    of running the loop without applying caps (Fig. 11 analogue).
+12. **Online learning** in deployment starts after one batch (32 samples),
+    since a test job is shorter than the 512 steps needed to fill the
+    buffer; offline training waits for a full buffer as the authors do.
