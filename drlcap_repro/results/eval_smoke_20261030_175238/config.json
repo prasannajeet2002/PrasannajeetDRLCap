@@ -1,0 +1,51 @@
+{
+  "policies": [
+    "baseline",
+    "static_2400",
+    "coord",
+    "drlcap",
+    "drlcap_power",
+    "drlcap_hybrid",
+    "rl",
+    "monitor_only"
+  ],
+  "models": {
+    "drlcap": [
+      "results/train_smoke_freq_ddqn_20261030_175002/model_final.keras",
+      "freq",
+      "ddqn"
+    ],
+    "drlcap_power": [
+      "results/train_smoke_power_ddqn_20261030_175039/model_final.keras",
+      "power",
+      "ddqn"
+    ],
+    "drlcap_hybrid": [
+      "results/train_smoke_hybrid_ddqn_20261030_175112/model_final.keras",
+      "hybrid",
+      "ddqn"
+    ],
+    "rl": [
+      "results/train_smoke_freq_tabular_20261030_175146/model_final.json",
+      "freq",
+      "tabular"
+    ],
+    "monitor_only": [
+      "results/train_smoke_freq_ddqn_20261030_175002/model_final.keras",
+      "freq",
+      "ddqn"
+    ]
+  },
+  "workloads": [
+    "myocyte",
+    "vgg16"
+  ],
+  "repeats": 1,
+  "epsilon": 0.1,
+  "online": true,
+  "coord_util_threshold": 50.0,
+  "coord_caps": {
+    "compute": 2400,
+    "memory": 1800
+  }
+}

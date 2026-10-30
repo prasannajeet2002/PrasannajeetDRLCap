@@ -11,8 +11,14 @@ Control loop, every SAMPLE_INTERVAL (300 ms, paper Sec. VI-C):
 The agent is a CPU process (CUDA hidden from TensorFlow); the workload is
 an unmodified program on the RTX 4070 Ti.
 
+Variants (paper Table III): "freq" = frequency capping (DRLCap proper),
+"power" = power capping, "hybrid" = frequency x power capping. Agents:
+"ddqn" = DRLCap, "tabular" = the paper's "RL" baseline (double Q-learning
+with two tables, same actions and reward; rl_baseline.py).
+
 Offline training:
-    python drlcap.py train [--iterations 5000] [--tag NAME]
+    python drlcap.py train [--variant freq] [--agent ddqn]
+                           [--iterations 5000] [--tag NAME] [--seed 0]
 """
 
 import os
@@ -24,6 +30,7 @@ os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
 import argparse
 import csv
 import json
+import resource
 import threading
 import time
 
@@ -32,6 +39,7 @@ import numpy as np
 import agent as A
 import gpu_control as G
 import reward as R
+import rl_baseline as T
 import workloads as W
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -48,37 +56,98 @@ SAMPLE_INTERVAL = 0.3
 CAP_MIN = 1800
 CAP_MAX = 2745
 CAP_STEP = 15
-ACTIONS = list(range(CAP_MIN, CAP_MAX + 1, CAP_STEP))
+FREQ_CAPS = list(range(CAP_MIN, CAP_MAX + 1, CAP_STEP))
+
+# Power-capping variant: the whole range the driver accepts, 100-285 W in
+# 5 W steps (38 actions). Measured Rodinia jobs draw only ~30-100 W at
+# default clocks (README), so on most of them no power cap binds; the
+# V100S scripts use 160-250 W of a 100-250 W range.
+POWER_CAPS = list(range(G.MIN_POWER_LIMIT_W, int(G.POWER_LIMIT_W), 5)) \
+    + [int(G.POWER_LIMIT_W)]
+
+# Hybrid variant: 8 frequency caps x 8 power caps = 64 actions, the same
+# number as the frequency variant (the paper notes the hybrid action space
+# is large; it does not give its size).
+HYBRID_FREQ = [1800, 1935, 2070, 2205, 2340, 2475, 2610, 2745]
+HYBRID_POWER = [100, 126, 153, 179, 206, 232, 259, 285]
+
+# Each action is (frequency cap MHz or None, power cap W or None); the
+# last action is always "everything at maximum" (Algorithm 1 case A).
+VARIANTS = {
+    "freq": [(f, None) for f in FREQ_CAPS],
+    "power": [(None, p) for p in POWER_CAPS],
+    "hybrid": [(f, p) for p in HYBRID_POWER for f in HYBRID_FREQ],
+}
+ACTIONS = VARIANTS["freq"]
+
+
+def primary(action):
+    """The cap value used by Algorithm 1 case B (c / action)."""
+    f, p = action
+    return f if f is not None else p
+
+
+# State discretisation (paper Sec. IV-D "preprocessed and discretized";
+# bucket layout from the authors' V100S code, ranges adapted to the
+# 4070 Ti): (lo, hi, buckets) per metric; the SM clock becomes its index
+# on the 15 MHz hardware ladder 210..3105 MHz. Bucket indices are divided
+# by the bucket count so the network sees values in [0, 1) (the authors
+# feed raw indices; scaling is our choice for numerical stability).
+BUCKETS = {
+    "util": (0.0, 100.0, 20),
+    "mem_util": (0.0, 100.0, 20),
+    "power": (10.0, G.POWER_LIMIT_W, 20),
+    "temp": (30.0, 90.0, 30),
+}
+CLOCK_LEVELS = (G.MAX_CLOCK_MHZ - G.MIN_CLOCK_MHZ) // 15 + 1
 
 STATE_SIZE = 5
 
 LOG_FIELDS = ["job", "workload", "t", "util", "mem_util", "power", "clock",
-              "temp", "case", "reward", "action", "cap_mhz", "explore",
+              "temp", "case", "reward", "action", "cap_mhz", "power_cap_w",
+              "explore",
               "forced_max", "epsilon", "updates", "loss"]
 
 
 def to_state(sample):
-    """Normalised 5-feature state (paper Sec. IV-B)."""
-    return np.array([
-        sample["util"] / 100.0,
-        sample["mem_util"] / 100.0,
-        sample["power"] / G.POWER_LIMIT_W,
-        sample["clock"] / G.MAX_CLOCK_MHZ,
-        sample["temp"] / 100.0,
-    ], dtype=np.float32)
+    """Discretised 5-feature state (paper Sec. IV-B, IV-D), in [0, 1)."""
+    feats = []
+    for key in ("util", "mem_util", "power", "temp"):
+        lo, hi, n = BUCKETS[key]
+        b = int(np.clip((sample[key] - lo) / ((hi - lo) / n), 0, n - 1))
+        feats.append(b / n)
+    level = int(np.clip(round((sample["clock"] - G.MIN_CLOCK_MHZ) / 15),
+                        0, CLOCK_LEVELS - 1))
+    feats.append(level / CLOCK_LEVELS)
+    # order as in the paper: util, mem util, power, frequency, temperature
+    u, m, p, t, f = feats
+    return np.array([u, m, p, f, t], dtype=np.float32)
 
 
-def run_job(agent, workload, *, learn, beta_fn=lambda: 1.0,
-            epsilon_fn=None, greedy=False, log=None, job_id=0):
+def make_agent(kind, num_actions, seed):
+    if kind == "ddqn":
+        return A.DDQNAgent(STATE_SIZE, num_actions, seed=seed)
+    if kind == "tabular":
+        return T.DoubleQTable(num_actions, seed=seed)
+    raise ValueError(kind)
+
+
+def run_job(agent, workload, *, learn, actions=None,
+            epsilon_fn=None, greedy=False, log=None, job_id=0,
+            apply_caps=True):
     """Run one workload job under DRLCap control.
 
     learn       update the network online (offline training and the
                 paper's online deployment both do this)
     epsilon_fn  called each step to set epsilon (offline schedule);
                 None keeps agent.epsilon fixed (online deployment)
+    apply_caps  False runs the whole loop (sampling, reward, learning,
+                action choice) but never touches the GPU knobs: the
+                monitoring-overhead experiment (paper Fig. 11)
     Returns a dict with runtime, energy, EDP and control statistics.
     """
-    c_idle = float(ACTIONS[0])
+    actions = actions or ACTIONS
+    c_idle = float(min(primary(a) for a in actions))
     result = {}
 
     def target():
@@ -88,10 +157,11 @@ def run_job(agent, workload, *, learn, beta_fn=lambda: 1.0,
             result["error"] = exc
 
     G.reset_cap()
-    applied = None
+    applied = (None, None)
     prev, prev_state, prev_action = None, None, None
-    caps_used, steps = [], 0
+    caps_used, steps, compute_ms = [], 0, []
 
+    cpu0 = time.process_time()
     e0 = G.energy_j()
     runner = threading.Thread(target=target, daemon=True)
     runner.start()
@@ -104,10 +174,11 @@ def run_job(agent, workload, *, learn, beta_fn=lambda: 1.0,
             r, case = (None, R.case_of(cur))
 
             if prev is not None:
-                r, case = R.reward(prev, cur, ACTIONS[prev_action], c_idle)
+                r, case = R.reward(prev, cur, primary(actions[prev_action]),
+                                   c_idle)
                 agent.remember(prev_state, prev_action, r, state, done)
                 if learn:
-                    agent.learn(beta_fn())
+                    agent.learn()
             if done:
                 break
 
@@ -116,10 +187,10 @@ def run_job(agent, workload, *, learn, beta_fn=lambda: 1.0,
             action, explored = agent.act(state, greedy=greedy)
             forced = case == "A"
             if forced:  # Algorithm 1 line 7: compute-bound -> max cap
-                action = len(ACTIONS) - 1
-            cap = ACTIONS[action]
-            if cap != applied:
-                G.set_cap(cap)
+                action = len(actions) - 1
+            cap = actions[action]
+            if apply_caps and cap != applied:
+                G.apply(cap, applied)
                 applied = cap
 
             if log is not None:
@@ -130,7 +201,8 @@ def run_job(agent, workload, *, learn, beta_fn=lambda: 1.0,
                         ("util", "mem_util", "power", "clock", "temp")},
                     "case": case,
                     "reward": "" if r is None else round(r, 4),
-                    "action": action, "cap_mhz": cap,
+                    "action": action, "cap_mhz": cap[0] or "",
+                    "power_cap_w": cap[1] or "",
                     "explore": int(explored), "forced_max": int(forced),
                     "epsilon": round(agent.epsilon, 4),
                     "updates": agent.updates,
@@ -140,6 +212,7 @@ def run_job(agent, workload, *, learn, beta_fn=lambda: 1.0,
             prev, prev_state, prev_action = cur, state, action
             caps_used.append(cap)
             steps += 1
+            compute_ms.append(1000 * (time.perf_counter() - tick))
             time.sleep(max(0.0, SAMPLE_INTERVAL - (time.perf_counter() - tick)))
     finally:
         G.reset_cap()
@@ -148,17 +221,34 @@ def run_job(agent, workload, *, learn, beta_fn=lambda: 1.0,
         raise result["error"]
 
     energy = G.energy_j() - e0
+    cpu_s = time.process_time() - cpu0
     return {
         "workload": workload,
         "time_s": result["time_s"],
         "energy_j": energy,
         "edp": energy * result["time_s"],
         "steps": steps,
-        "mean_cap_mhz": float(np.mean(caps_used)) if caps_used else None,
+        "mean_cap_mhz": _mean([c[0] for c in caps_used]),
+        "mean_power_cap_w": _mean([c[1] for c in caps_used]),
+        # controller overhead (paper Sec. VI-C): CPU seconds used by this
+        # process during the job, per-step compute time (sample + reward +
+        # learn + act + apply), and peak resident memory
+        "agent_cpu_s": round(cpu_s, 3),
+        "step_ms_median": round(float(np.median(compute_ms)), 2)
+        if compute_ms else "",
+        "step_ms_p95": round(float(np.percentile(compute_ms, 95)), 2)
+        if compute_ms else "",
+        "max_rss_mb": round(resource.getrusage(
+            resource.RUSAGE_SELF).ru_maxrss / 1024, 1),
     }
 
 
-def train(iterations, tag, seed):
+def _mean(values):
+    values = [v for v in values if v is not None]
+    return float(np.mean(values)) if values else ""
+
+
+def train(iterations, tag, seed, variant="freq", kind="ddqn"):
     os.makedirs(RESULTS, exist_ok=True)
     stamp = time.strftime("%Y%m%d_%H%M%S")
     run_dir = os.path.join(RESULTS, f"train_{tag}_{stamp}")
@@ -168,19 +258,24 @@ def train(iterations, tag, seed):
     if G.gpu_busy_by_others():
         raise SystemExit(f"GPU {G.GPU_ID} busy: {G.gpu_busy_by_others()}")
 
-    agent = A.DDQNAgent(STATE_SIZE, len(ACTIONS), seed=seed)
+    actions = VARIANTS[variant]
+    agent = make_agent(kind, len(actions), seed)
     rng = np.random.default_rng(seed)
     with open(os.path.join(run_dir, "config.json"), "w") as f:
         json.dump({
-            "actions_mhz": ACTIONS, "sample_interval_s": SAMPLE_INTERVAL,
+            "variant": variant, "agent": kind, "actions": actions,
+            "buckets": BUCKETS, "sample_interval_s": SAMPLE_INTERVAL,
             "iterations": iterations, "seed": seed, "train_set": W.TRAIN,
             "hyper": {k: getattr(A, k) for k in (
                 "BATCH_SIZE", "LEARNING_RATE", "BUFFER_SIZE", "GAMMA",
                 "EPSILON_START", "EPSILON_END", "TARGET_UPDATE",
-                "HIDDEN_UNITS", "PER_ALPHA", "PER_BETA_START")},
+                "HIDDEN_UNITS", "PER_ALPHA", "PER_BETA_START",
+                "PER_BETA_INCREMENT", "PER_EPS", "PER_ABS_ERR_UPPER",
+                "LEARN_START_OFFLINE", "LEARN_START_ONLINE")},
+            "tabular": {k: getattr(T, k) for k in ("ALPHA", "GAMMA")},
             "reward": {k: getattr(R, k) for k in (
                 "STEP_MHZ", "N", "G_POWER_DOWN", "G_POWER_UP",
-                "P_THRESH_W", "R_CASE_A", "REWARD_CLIP")},
+                "P_THRESH_W", "R_CASE_A", "R_IDLE_MAX", "REWARD_CLIP")},
         }, f, indent=2)
 
     step_log = open(os.path.join(run_dir, "steps.csv"), "w", newline="")
@@ -195,10 +290,6 @@ def train(iterations, tag, seed):
         agent.set_epsilon_by_progress(progress["step"], iterations)
         progress["step"] += 1
 
-    def beta():
-        frac = min(1.0, progress["step"] / iterations)
-        return A.PER_BETA_START + frac * (1.0 - A.PER_BETA_START)
-
     job_id = 0
     try:
         while progress["step"] < iterations:
@@ -206,9 +297,9 @@ def train(iterations, tag, seed):
                 if progress["step"] >= iterations:
                     break
                 t0 = time.time()
-                res = run_job(agent, str(workload), learn=True, beta_fn=beta,
-                              epsilon_fn=eps_schedule, log=steps,
-                              job_id=job_id)
+                res = run_job(agent, str(workload), learn=True,
+                              actions=actions, epsilon_fn=eps_schedule,
+                              log=steps, job_id=job_id)
                 res.update(job=job_id, step=progress["step"],
                            epsilon=agent.epsilon, updates=agent.updates)
                 jobs.append(res)
@@ -217,10 +308,10 @@ def train(iterations, tag, seed):
                     wr.writeheader()
                     wr.writerows(jobs)
                 step_log.flush()
-                agent.save(os.path.join(run_dir, "model_latest.keras"))
+                agent.save(os.path.join(run_dir, "model_latest" + agent.EXT))
                 print(f"job {job_id:3d} {workload:15s} "
                       f"t={res['time_s']:6.1f}s E={res['energy_j']:7.0f}J "
-                      f"cap={res['mean_cap_mhz']:.0f} "
+                      f"cap={res['mean_cap_mhz']}/{res['mean_power_cap_w']} "
                       f"step={progress['step']}/{iterations} "
                       f"eps={agent.epsilon:.3f} updates={agent.updates} "
                       f"({time.time() - t0:.0f}s)", flush=True)
@@ -228,7 +319,7 @@ def train(iterations, tag, seed):
     finally:
         G.reset_cap()
         step_log.close()
-    agent.save(os.path.join(run_dir, "model_final.keras"))
+    agent.save(os.path.join(run_dir, "model_final" + agent.EXT))
     print("saved", run_dir)
     return run_dir
 
@@ -240,9 +331,11 @@ def main():
     t.add_argument("--iterations", type=int, default=A.TRAINING_ITERATIONS)
     t.add_argument("--tag", default="drlcap")
     t.add_argument("--seed", type=int, default=0)
+    t.add_argument("--variant", choices=sorted(VARIANTS), default="freq")
+    t.add_argument("--agent", choices=["ddqn", "tabular"], default="ddqn")
     args = ap.parse_args()
     if args.cmd == "train":
-        train(args.iterations, args.tag, args.seed)
+        train(args.iterations, args.tag, args.seed, args.variant, args.agent)
 
 
 if __name__ == "__main__":

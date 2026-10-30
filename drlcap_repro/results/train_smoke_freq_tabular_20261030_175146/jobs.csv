@@ -1,0 +1,2 @@
+workload,time_s,energy_j,edp,steps,mean_cap_mhz,mean_power_cap_w,agent_cpu_s,step_ms_median,step_ms_p95,max_rss_mb,job,step,epsilon,updates
+gaussian,33.80759077006951,2121.5830000042915,71725.60984888146,113,2259.5575221238937,,0.371,38.14,48.17,598.4,0,113,0.1,113

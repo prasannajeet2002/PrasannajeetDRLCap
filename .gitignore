@@ -10,4 +10,3 @@ __pycache__/
 cuda_test
 gpu_compute_test
 *.bak
-cuda12_libs/

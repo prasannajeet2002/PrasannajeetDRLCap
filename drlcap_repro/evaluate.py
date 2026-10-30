@@ -1,19 +1,27 @@
 """Evaluate DRLCap against the NVIDIA default policy (paper Sec. V-D, VI-A).
 
-For every workload and repeat, runs (in alternating order to spread drift
+For every workload and repeat, runs (in rotating order to spread drift
 and temperature effects):
-  baseline  no cap, NVIDIA default clock management
-  drlcap    trained model, fresh copy per job, epsilon fixed at the final
-            training value (0.1) and online learning ON, as the paper
-            deploys it (Sec. IV-D)
+  baseline     no cap, NVIDIA default clock management
+  static_<f>   one fixed frequency cap for the whole job
+  coord        COORD-like static category-based heuristic (paper Table III):
+               each program is profiled once ahead of time at default
+               clocks, classified compute- or memory/host-bound by its mean
+               core utilisation, and run with that category's fixed cap
+  <name>       a trained model (--models name=path; DRLCap freq / power /
+               hybrid or the tabular RL baseline, taken from the run's
+               config.json), fresh copy per job, epsilon fixed at the final
+               training value (0.1) and online learning ON, as the paper
+               deploys it (Sec. IV-D); --no-online freezes it
 Energy comes from the NVML energy counter, runtime from wall clock.
 
 Reports per-workload mean energy saving, performance loss and EDP
 improvement vs. baseline, plus the geometric mean over workloads of the
 energy / time / EDP ratios.
 
-    python evaluate.py --model results/train_.../model_final.keras \
-        --repeats 3 [--workloads lud lavaMD ...]
+    python evaluate.py --models drlcap=results/train_.../model_final.keras \
+        --repeats 10 [--static-caps 2100 2400] [--coord] \
+        [--workloads lud lavaMD ...]
 """
 
 import os
@@ -23,6 +31,8 @@ os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
 
 import argparse
 import csv
+import json
+import threading
 import time
 
 import numpy as np
@@ -46,7 +56,51 @@ def baseline_job(workload, cap=None):
         G.reset_cap()
     return {"workload": workload, "time_s": t, "energy_j": energy,
             "edp": energy * t, "steps": "",
-            "mean_cap_mhz": "" if cap is None else cap}
+            "mean_cap_mhz": "" if cap is None else cap,
+            "mean_power_cap_w": "", "agent_cpu_s": "", "step_ms_median": "",
+            "step_ms_p95": "", "max_rss_mb": ""}
+
+
+# COORD-like heuristic. Threshold and caps come from the TRAINING-set
+# frequency sweep (README): compute-bound programs (mean util 79-97 %)
+# have their best EDP at a 2400 MHz cap, memory/host-bound ones (mean util
+# 0-6 %) save most at the lowest cap we allow (1800 MHz). The real COORD
+# also coordinates memory power, which the 4070 Ti cannot cap.
+COORD_UTIL_THRESHOLD = 50.0
+COORD_CAPS = {"compute": 2400, "memory": 1800}
+
+
+def profile(workload):
+    """One default-clock run sampled every 300 ms; mean util / mem util."""
+    G.reset_cap()
+    samples, done = [], threading.Event()
+
+    def sampler():
+        while not done.is_set():
+            samples.append(G.read())
+            time.sleep(D.SAMPLE_INTERVAL)
+
+    th = threading.Thread(target=sampler, daemon=True)
+    th.start()
+    try:
+        t = W.run_blocking(workload)
+    finally:
+        done.set()
+        th.join()
+    util = float(np.mean([x["util"] for x in samples]))
+    mem = float(np.mean([x["mem_util"] for x in samples]))
+    category = "compute" if util >= COORD_UTIL_THRESHOLD else "memory"
+    return {"workload": workload, "time_s": t, "mean_util": util,
+            "mean_mem_util": mem, "category": category,
+            "cap_mhz": COORD_CAPS[category]}
+
+
+def load_model_spec(path):
+    """(variant, agent kind) of a trained model from its run's config."""
+    cfg_path = os.path.join(os.path.dirname(path), "config.json")
+    with open(cfg_path) as f:
+        cfg = json.load(f)
+    return cfg.get("variant", "freq"), cfg.get("agent", "ddqn")
 
 
 def geomean(x):
@@ -110,7 +164,14 @@ def summarize_policy(rows, names, policy):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model")
+    ap.add_argument("--model", help="shorthand for --models drlcap=PATH")
+    ap.add_argument("--models", nargs="*", default=[],
+                    metavar="NAME=PATH", help="trained models to evaluate")
+    ap.add_argument("--coord", action="store_true",
+                    help="also run the COORD-like static heuristic")
+    ap.add_argument("--monitor-only", metavar="NAME",
+                    help="also run model NAME's full loop without applying "
+                    "caps (sampling / controller overhead, Fig. 11)")
     ap.add_argument("--workloads", nargs="+", default=W.TEST)
     ap.add_argument("--repeats", type=int, default=3)
     ap.add_argument("--epsilon", type=float, default=A.EPSILON_END)
@@ -118,12 +179,14 @@ def main():
                     help="freeze the network (ablation)")
     ap.add_argument("--static-caps", type=int, nargs="*", default=[],
                     help="also run fixed frequency caps (MHz) as baselines")
-    ap.add_argument("--no-drlcap", action="store_true",
-                    help="only baseline / static caps")
     ap.add_argument("--tag", default="test")
     args = ap.parse_args()
-    if args.model is None and not args.no_drlcap:
-        ap.error("--model is required unless --no-drlcap")
+    models = dict(m.split("=", 1) for m in args.models)
+    if args.model:
+        models["drlcap"] = args.model
+    suffix = "_frozen" if args.no_online else ""
+    specs = {name + suffix: (path, *load_model_spec(path))
+             for name, path in models.items()}
 
     print("GPU:", G.init())
     if G.gpu_busy_by_others():
@@ -138,11 +201,29 @@ def main():
     steps.writeheader()
 
     policies = ["baseline"] + [f"static_{c}" for c in args.static_caps]
-    if not args.no_drlcap:
-        policies.append("drlcap_frozen" if args.no_online else "drlcap")
+    policies += (["coord"] if args.coord else []) + list(specs)
+    if args.monitor_only:
+        specs["monitor_only"] = specs[args.monitor_only + suffix]
+        policies.append("monitor_only")
+    with open(os.path.join(run_dir, "config.json"), "w") as f:
+        json.dump({"policies": policies, "models": specs,
+                   "workloads": args.workloads, "repeats": args.repeats,
+                   "epsilon": args.epsilon, "online": not args.no_online,
+                   "coord_util_threshold": COORD_UTIL_THRESHOLD,
+                   "coord_caps": COORD_CAPS}, f, indent=2)
 
-    rows, job = [], 0
+    rows, job, coord = [], 0, {}
     try:
+        if args.coord:  # COORD knows each program's category ahead of time
+            for name in args.workloads:
+                coord[name] = profile(name)
+                print("coord profile", coord[name], flush=True)
+                time.sleep(2.0)
+            with open(os.path.join(run_dir, "coord_profile.csv"), "w",
+                      newline="") as f:
+                wr = csv.DictWriter(f, fieldnames=list(coord[name]))
+                wr.writeheader()
+                wr.writerows(coord.values())
         for rep in range(args.repeats):
             for wi, name in enumerate(args.workloads):
                 # rotate the order so no policy always runs first
@@ -153,18 +234,23 @@ def main():
                         res = baseline_job(name)
                     elif policy.startswith("static_"):
                         res = baseline_job(name, int(policy[7:]))
+                    elif policy == "coord":
+                        res = baseline_job(name, coord[name]["cap_mhz"])
                     else:
-                        agent = A.DDQNAgent(D.STATE_SIZE, len(D.ACTIONS),
-                                            seed=1000 + job)
-                        agent.load(args.model)
+                        path, variant, kind = specs[policy]
+                        actions = D.VARIANTS[variant]
+                        agent = D.make_agent(kind, len(actions), 1000 + job)
+                        agent.load(path)
                         agent.epsilon = args.epsilon
-                        res = D.run_job(agent, name,
+                        agent.learn_start = A.LEARN_START_ONLINE
+                        res = D.run_job(agent, name, actions=actions,
                                         learn=not args.no_online,
-                                        log=steps, job_id=job)
+                                        log=steps, job_id=job,
+                                        apply_caps=policy != "monitor_only")
                     res.update(policy=policy, repeat=rep, job=job)
                     rows.append(res)
                     job += 1
-                    print(f"rep {rep} {name:15s} {policy:8s} "
+                    print(f"rep {rep} {name:15s} {policy:12s} "
                           f"t={res['time_s']:6.1f}s E={res['energy_j']:7.0f}J",
                           flush=True)
                     with open(raw_path, "w", newline="") as f:

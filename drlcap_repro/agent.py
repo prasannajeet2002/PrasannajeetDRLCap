@@ -9,8 +9,14 @@
   w_j = (N P(j))^-beta / max w, priorities updated to |TD error|.
 - Hyper-parameters from Table V (batch 32, lr 0.001, buffer 512,
   gamma 0.95, epsilon 0.3 -> 0.1, target update every 8, 5000 iterations).
-  alpha, beta and the hidden width are not given in the paper; we use the
-  standard PER values (alpha 0.6, beta 0.4 -> 1) and 64 hidden units.
+  Values the paper does not give are taken from the authors' V100S
+  scripts in the project root (Freq_DDQN_prioritized_save_tf2.py): 20
+  hidden ReLU units, weights N(0, 0.3) and bias 0.1, RMSprop, PER
+  alpha 0.6, priority epsilon 0.01, priorities clipped at 1, beta from
+  0.4 rising by 0.001 per sampled batch, learning only once the replay
+  buffer is full. Where the scripts differ from Table V (they use lr
+  1e-4, epsilon 0.3 -> 0.2, buffer 500, target every 10, 2000 steps,
+  apparently an earlier version) we follow the paper's Table V.
 
 This module must be imported AFTER CUDA_VISIBLE_DEVICES="" is set, so the
 agent runs on the CPU like the paper's (and never on the measured GPU).
@@ -27,10 +33,16 @@ EPSILON_START = 0.3
 EPSILON_END = 0.1
 TRAINING_ITERATIONS = 5000
 TARGET_UPDATE = 8
-HIDDEN_UNITS = 64
+HIDDEN_UNITS = 20
 PER_ALPHA = 0.6
 PER_BETA_START = 0.4
-PER_EPS = 1e-3
+PER_BETA_INCREMENT = 0.001
+PER_EPS = 0.01
+PER_ABS_ERR_UPPER = 1.0
+# offline: learn once the buffer is full (authors' code); online
+# deployment starts from an empty buffer and learns from one batch on
+LEARN_START_OFFLINE = BUFFER_SIZE
+LEARN_START_ONLINE = BATCH_SIZE
 
 
 class SumTree:
@@ -84,16 +96,22 @@ class PrioritizedReplay:
     def __init__(self, capacity=BUFFER_SIZE, alpha=PER_ALPHA):
         self.tree = SumTree(capacity)
         self.alpha = alpha
-        self.max_priority = 1.0
+        self.max_priority = PER_ABS_ERR_UPPER
+        self.beta = PER_BETA_START
 
     def __len__(self):
         return self.tree.size
 
     def store(self, transition):
-        # Algorithm 2 line 9: new transitions get the maximal priority.
-        self.tree.add(self.max_priority ** self.alpha, transition)
+        # Algorithm 2 line 9: new transitions get the maximal priority
+        # currently in the tree (authors' code), 1 for an empty tree.
+        leaves = self.tree.leaf_priorities()
+        p = leaves.max() if len(leaves) and leaves.max() > 0 else None
+        self.tree.add(p or self.max_priority ** self.alpha, transition)
 
-    def sample(self, k, beta, rng):
+    def sample(self, k, rng):
+        self.beta = min(1.0, self.beta + PER_BETA_INCREMENT)
+        beta = self.beta
         segment = self.tree.total / k
         leaves, probs, batch = [], [], []
         for i in range(k):
@@ -108,20 +126,24 @@ class PrioritizedReplay:
         return leaves, batch, weights.astype(np.float32)
 
     def update(self, leaves, td_errors):
-        for leaf, err in zip(leaves, np.abs(td_errors) + PER_EPS):
-            self.max_priority = max(self.max_priority, err)
+        errs = np.minimum(np.abs(td_errors) + PER_EPS, PER_ABS_ERR_UPPER)
+        for leaf, err in zip(leaves, errs):
             self.tree.update(leaf, err ** self.alpha)
 
 
 def build_q_network(state_size, num_actions):
+    init = dict(
+        kernel_initializer=tf.keras.initializers.RandomNormal(0.0, 0.3),
+        bias_initializer=tf.keras.initializers.Constant(0.1))
     return tf.keras.Sequential([
         tf.keras.Input(shape=(state_size,)),
-        tf.keras.layers.Dense(HIDDEN_UNITS, activation="relu"),
-        tf.keras.layers.Dense(num_actions),
+        tf.keras.layers.Dense(HIDDEN_UNITS, activation="relu", **init),
+        tf.keras.layers.Dense(num_actions, **init),
     ])
 
 
 class DDQNAgent:
+    EXT = ".keras"
 
     def __init__(self, state_size, num_actions, seed=0):
         self.num_actions = num_actions
@@ -130,7 +152,8 @@ class DDQNAgent:
         self.q = build_q_network(state_size, num_actions)
         self.q_target = build_q_network(state_size, num_actions)
         self.q_target.set_weights(self.q.get_weights())
-        self.optimizer = tf.keras.optimizers.Adam(LEARNING_RATE)
+        self.optimizer = tf.keras.optimizers.RMSprop(LEARNING_RATE)
+        self.learn_start = LEARN_START_OFFLINE
         self.replay = PrioritizedReplay()
         self.epsilon = EPSILON_START
         self.updates = 0
@@ -172,11 +195,11 @@ class DDQNAgent:
             zip(grads, self.q.trainable_variables))
         return td, loss
 
-    def learn(self, beta):
+    def learn(self):
         """One minibatch update; returns False if the buffer is too small."""
-        if len(self.replay) < BATCH_SIZE:
+        if len(self.replay) < max(BATCH_SIZE, self.learn_start):
             return False
-        leaves, batch, w = self.replay.sample(BATCH_SIZE, beta, self.rng)
+        leaves, batch, w = self.replay.sample(BATCH_SIZE, self.rng)
         s, a, r, s2, d = (np.asarray(x) for x in zip(*batch))
         td, loss = self._train_step(
             tf.constant(s, tf.float32), tf.constant(a, tf.int64),

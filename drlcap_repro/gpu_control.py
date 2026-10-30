@@ -6,8 +6,10 @@ without the cost of spawning a process every 300 ms. Frequency capping uses
 the hardware still lowers clocks on its own below it, which is what the
 paper means by a frequency *cap* (as opposed to a fixed clock).
 
-Safety: the clock limit is always reset (`-rgc`) on normal exit, on an
-exception, on Ctrl-C and on SIGTERM.
+The power-capping variant uses `nvidia-smi -pl <W>` (100-285 W).
+
+Safety: the clock limit (`-rgc`) and the power limit (back to 285 W) are
+always reset on normal exit, on an exception, on Ctrl-C and on SIGTERM.
 """
 
 import atexit
@@ -25,11 +27,16 @@ NVIDIA_SMI = "/usr/bin/nvidia-smi"
 MIN_CLOCK_MHZ = 210
 # Highest supported graphics clock (NVML supported-clocks list).
 MAX_CLOCK_MHZ = 3105
-# Board power limit (W); used to normalise the power feature.
+# Board power limit (W); used to normalise the power feature. It is also
+# the default (and maximum) power cap; the driver accepts 100-285 W.
 POWER_LIMIT_W = 285.0
+MIN_POWER_LIMIT_W = 100
 
 _handle = None
 _cap_applied = False
+# Assume a power cap may be left over from an aborted run, so the first
+# reset always restores the default limit.
+_power_applied = True
 
 
 def init():
@@ -95,13 +102,49 @@ def set_cap(cap_mhz):
     _cap_applied = True
 
 
-def reset_cap():
-    """Return clock management to the NVIDIA default (the paper baseline)."""
+def set_power_cap(watts):
+    """Cap board power (paper's power-capping variant, `nvidia-smi -pl`)."""
+    global _power_applied
+    _smi(["-pl", str(int(watts))])
+    _power_applied = True
+
+
+def apply(action, previous=(None, None)):
+    """Apply one DRLCap action (freq cap MHz, power cap W); None means that
+    knob's default. Only knobs that differ from `previous` are touched,
+    since each nvidia-smi call costs tens of ms of the 300 ms period."""
+    freq_cap, power_cap = action
+    if freq_cap != previous[0]:
+        if freq_cap is None:
+            reset_clocks()
+        else:
+            set_cap(freq_cap)
+    if power_cap != previous[1]:
+        if power_cap is None:
+            reset_power()
+        else:
+            set_power_cap(power_cap)
+
+
+def reset_clocks():
     global _cap_applied
-    if _handle is None:
-        return
-    _smi(["-rgc"])
-    _cap_applied = False
+    if _handle is not None:
+        _smi(["-rgc"])
+        _cap_applied = False
+
+
+def reset_power():
+    global _power_applied
+    if _handle is not None and _power_applied:
+        _smi(["-pl", str(int(POWER_LIMIT_W))])
+        _power_applied = False
+
+
+def reset_cap():
+    """Return clock and power management to the NVIDIA default (the
+    paper baseline)."""
+    reset_clocks()
+    reset_power()
 
 
 def gpu_busy_by_others():

@@ -17,31 +17,42 @@ speed). When power rose (dp > 0) the scores are negative ("low score"),
 and again a smaller df scores higher.
 
 The paper does not publish the numeric values of r1..r4, g1..g4, p1..p3,
-n or c. The values below are OUR choices and are reported as such.
+n or c. g1..g4 (both branches) and the 45 MHz bin width come from the
+authors' own V100S scripts kept in the project root
+(Freq_DDQN_prioritized_save_tf2.py, a TF2 port of their code): there the
+reward is +5/-1/-2/-3 when power did not rise and -1/-2/-3/-4 when it rose,
+for frequency changes binned at 45/90/135 MHz, with power floored to whole
+watts before differencing. Those scripts contain only Eq. 1, not the
+Algorithm 1 cases, so r1..r4, p1..p3 and c remain OUR choices, scaled so
+the best case-A and case-B rewards equal g1.
 Utilisations are used as fractions in [0, 1] (NVML reports integer %).
 """
 
-# Eq. 1 frequency bin width: n * step. The 4070 Ti clock step is 15 MHz;
-# the paper uses a multiple of the hardware step (15 on the V100S).
+import math
+
+# Eq. 1 frequency bin width: n * step. The authors' V100S code bins at
+# 45 MHz (6 x 7.5 MHz steps); we keep 45 MHz = 3 x the 15 MHz 4070 Ti step.
 STEP_MHZ = 15
-N = 2
+N = 3
 
-# Scores when power did not increase (g1 > g2 > g3 > g4).
-G_POWER_DOWN = (1.0, 0.75, 0.5, 0.25)
+# Scores when power did not increase (g1 > g2 > g3 > g4), authors' code.
+G_POWER_DOWN = (5.0, -1.0, -2.0, -3.0)
 # Scores when power increased ("low score"; smaller df still better).
-G_POWER_UP = (-0.25, -0.5, -0.75, -1.0)
+G_POWER_UP = (-1.0, -2.0, -3.0, -4.0)
 
-# Case A power-change thresholds in watts (p1 < p2 < p3) and rewards.
+# Case A power-change thresholds in watts (p1 < p2 < p3) and rewards
+# (our choice, r1 = g1).
 P_THRESH_W = (5.0, 15.0, 30.0)
-R_CASE_A = (1.0, 0.5, 0.0, -0.5)
+R_CASE_A = (5.0, 2.5, 0.0, -2.5)
+
+# Case B: r = c / cap with c = R_IDLE_MAX * lowest cap, so the idle reward
+# lies in (0, g1] and is largest for the lowest cap (our choice).
+R_IDLE_MAX = 5.0
 
 # Case C divides by u_core, so a 1% utilisation sample would multiply g by
 # 100 and swamp the Q-network's MSE loss. DEVIATION from the paper (which
 # does not mention it): rewards are clipped to +-REWARD_CLIP.
-REWARD_CLIP = 5.0
-
-# Case B uses c / cap; the controller passes c = lowest action cap so the
-# idle reward lies in (0, 1].
+REWARD_CLIP = 10.0
 
 
 def _bin(x, edges):
@@ -81,13 +92,15 @@ def case_of(sample):
 
 def reward(prev, cur, cap_mhz, c_idle):
     """Reward for the action that moved the GPU from `prev` to `cur`."""
-    dp = cur["power"] - prev["power"]
+    # whole watts, as in the authors' code, so sensor noise below 1 W
+    # does not flip the sign of dp
+    dp = math.floor(cur["power"]) - math.floor(prev["power"])
     df = cur["clock"] - prev["clock"]
     case = case_of(cur)
     if case == "A":
         return R_CASE_A[_bin(dp, P_THRESH_W)], case
     if case == "B":
-        return c_idle / cap_mhz, case
+        return R_IDLE_MAX * c_idle / cap_mhz, case
     g = score_g(dp, df)
     if case == "C":
         r = g / (cur["util"] / 100.0)
