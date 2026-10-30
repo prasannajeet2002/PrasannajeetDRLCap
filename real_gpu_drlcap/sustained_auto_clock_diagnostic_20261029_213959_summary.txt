@@ -1,0 +1,19 @@
+Label: auto_clock_diagnostic
+TensorFlow version: 2.21.0
+Target physical GPU: 1
+Matrix size: 4096x4096
+Requested duration: 10.000 s
+Measured workload runtime: 10.025 s
+Workload start: 2026-10-29T21:40:00.803
+Workload end: 2026-10-29T21:40:10.828
+Completed matrix multiplications: 164
+Mean iteration time: 0.06112 s
+Total telemetry samples: 49
+Samples inside workload interval: 45
+Mean sampled power: 47.23 W
+Mean sampled GPU utilization: 13.8%
+Mean sampled memory utilization: 2.6%
+Mean sampled graphics clock: 210 MHz
+Mean sampled temperature: 33.1 C
+Approx. energy from in-window samples: 464.37 J
+CSV: sustained_auto_clock_diagnostic_20261029_213959.csv

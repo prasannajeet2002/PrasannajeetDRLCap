@@ -1,0 +1,50 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793192645.245822 1318220 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+I0000 00:00:1793192647.362884 1318220 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 22128 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4090, pci bus id: 0000:41:00.0, compute capability: 8.9
+I0000 00:00:1793192647.364565 1318220 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 10114 MB memory:  -> device: 1, name: NVIDIA GeForce RTX 4070 Ti, pci bus id: 0000:c1:00.0, compute capability: 8.9
+Seed 20261028 | ddqn       | reward=  42.480 | power=  93.47 W | max_temp= 72.79 C | steps=100
+Seed 20261028 | fixed_200W | reward=  42.480 | power=  93.47 W | max_temp= 72.79 C | steps=100
+Seed 20261029 | ddqn       | reward=  62.069 | power=  94.14 W | max_temp= 72.56 C | steps=100
+Seed 20261029 | fixed_200W | reward=  62.069 | power=  94.14 W | max_temp= 72.56 C | steps=100
+Seed 20261030 | ddqn       | reward=  44.718 | power= 140.07 W | max_temp= 87.01 C | steps=100
+Seed 20261030 | fixed_200W | reward=  44.718 | power= 140.07 W | max_temp= 87.01 C | steps=100
+Seed 20261031 | ddqn       | reward=  52.205 | power= 126.31 W | max_temp= 81.64 C | steps=100
+Seed 20261031 | fixed_200W | reward=  52.205 | power= 126.31 W | max_temp= 81.64 C | steps=100
+Seed 20261032 | ddqn       | reward=  57.300 | power= 120.15 W | max_temp= 80.84 C | steps=100
+Seed 20261032 | fixed_200W | reward=  57.300 | power= 120.15 W | max_temp= 80.84 C | steps=100
+Seed 20261033 | ddqn       | reward=  58.629 | power= 117.40 W | max_temp= 81.22 C | steps=100
+Seed 20261033 | fixed_200W | reward=  58.629 | power= 117.40 W | max_temp= 81.22 C | steps=100
+Seed 20261034 | ddqn       | reward=  53.737 | power=  99.38 W | max_temp= 72.34 C | steps=100
+Seed 20261034 | fixed_200W | reward=  53.737 | power=  99.38 W | max_temp= 72.34 C | steps=100
+Seed 20261035 | ddqn       | reward=  51.598 | power= 116.31 W | max_temp= 78.20 C | steps=100
+Seed 20261035 | fixed_200W | reward=  51.598 | power= 116.31 W | max_temp= 78.20 C | steps=100
+Seed 20261036 | ddqn       | reward=  45.734 | power= 138.03 W | max_temp= 87.10 C | steps=100
+Seed 20261036 | fixed_200W | reward=  45.734 | power= 138.03 W | max_temp= 87.10 C | steps=100
+Seed 20261037 | ddqn       | reward=  39.894 | power= 149.09 W | max_temp= 89.91 C | steps=100
+Seed 20261037 | fixed_200W | reward=  39.894 | power= 149.09 W | max_temp= 89.91 C | steps=100
+Seed 20261038 | ddqn       | reward=  40.924 | power= 122.48 W | max_temp= 80.57 C | steps=100
+Seed 20261038 | fixed_200W | reward=  40.924 | power= 122.48 W | max_temp= 80.57 C | steps=100
+Seed 20261039 | ddqn       | reward=  49.521 | power= 125.18 W | max_temp= 82.84 C | steps=100
+Seed 20261039 | fixed_200W | reward=  49.521 | power= 125.18 W | max_temp= 82.84 C | steps=100
+Seed 20261040 | ddqn       | reward=  65.021 | power=  78.43 W | max_temp= 67.20 C | steps=100
+Seed 20261040 | fixed_200W | reward=  65.021 | power=  78.43 W | max_temp= 67.20 C | steps=100
+Seed 20261041 | ddqn       | reward=  52.277 | power=  79.68 W | max_temp= 68.91 C | steps=100
+Seed 20261041 | fixed_200W | reward=  52.277 | power=  79.68 W | max_temp= 68.91 C | steps=100
+Seed 20261042 | ddqn       | reward=  26.199 | power= 141.47 W | max_temp= 88.12 C | steps=100
+Seed 20261042 | fixed_200W | reward=  26.199 | power= 141.47 W | max_temp= 88.12 C | steps=100
+Seed 20261043 | ddqn       | reward=  64.843 | power= 118.85 W | max_temp= 79.40 C | steps=100
+Seed 20261043 | fixed_200W | reward=  64.843 | power= 118.85 W | max_temp= 79.40 C | steps=100
+Seed 20261044 | ddqn       | reward=  69.113 | power= 107.14 W | max_temp= 74.00 C | steps=100
+Seed 20261044 | fixed_200W | reward=  69.113 | power= 107.14 W | max_temp= 74.00 C | steps=100
+Seed 20261045 | ddqn       | reward=  71.076 | power= 123.71 W | max_temp= 81.09 C | steps=100
+Seed 20261045 | fixed_200W | reward=  71.076 | power= 123.71 W | max_temp= 81.09 C | steps=100
+Seed 20261046 | ddqn       | reward=  56.323 | power=  67.57 W | max_temp= 60.19 C | steps=100
+Seed 20261046 | fixed_200W | reward=  56.323 | power=  67.57 W | max_temp= 60.19 C | steps=100
+Seed 20261047 | ddqn       | reward=  63.186 | power=  68.29 W | max_temp= 59.80 C | steps=100
+Seed 20261047 | fixed_200W | reward=  63.186 | power=  68.29 W | max_temp= 59.80 C | steps=100
+
+Evaluation completed.
+Episode results: /home/drl/project/drlcap/validation_20ep/policy_evaluation/episode_results.csv
+Aggregate summary: /home/drl/project/drlcap/validation_20ep/policy_evaluation/summary.csv
+Energy is reported as W·steps, not joules.

@@ -1,0 +1,19 @@
+Label: auto30
+TensorFlow version: 2.21.0
+Target physical GPU: 1
+Matrix size: 4096x4096
+Requested duration: 30.000 s
+Measured workload runtime: 30.055 s
+Workload start: 2026-10-27T23:56:35.731
+Workload end: 2026-10-27T23:57:05.786
+Completed matrix multiplications: 476
+Mean iteration time: 0.06314 s
+Total telemetry samples: 138
+Samples inside workload interval: 134
+Mean sampled power: 46.95 W
+Mean sampled GPU utilization: 13.4%
+Mean sampled memory utilization: 2.5%
+Mean sampled graphics clock: 210 MHz
+Mean sampled temperature: 36.5 C
+Approx. energy from in-window samples: 1393.47 J
+CSV: sustained_auto30_20261027_235634.csv

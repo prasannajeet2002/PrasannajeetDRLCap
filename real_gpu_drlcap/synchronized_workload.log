@@ -1,0 +1,10 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793262386.237094 1341516 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+TensorFlow: 2.21.0
+Visible GPUs: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+I0000 00:00:1793262388.057751 1341516 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9994 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4070 Ti, pci bus id: 0000:c1:00.0, compute capability: 8.9
+Starting workload for approximately 30 seconds...
+Iterations: 545
+Elapsed time: 30.05 seconds
+Diagnostic completed.

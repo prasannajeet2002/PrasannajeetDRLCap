@@ -1,0 +1,19 @@
+Label: gpu1_clock_check
+TensorFlow version: 2.21.0
+Target physical GPU: 1
+Matrix size: 4096x4096
+Requested duration: 15.000 s
+Measured workload runtime: 15.051 s
+Workload start: 2026-10-28T00:11:47.798
+Workload end: 2026-10-28T00:12:02.849
+Completed matrix multiplications: 256
+Mean iteration time: 0.05879 s
+Total telemetry samples: 71
+Samples inside workload interval: 67
+Mean sampled power: 47.13 W
+Mean sampled GPU utilization: 13.9%
+Mean sampled memory utilization: 2.4%
+Mean sampled graphics clock: 2625 MHz
+Mean sampled temperature: 35.8 C
+Approx. energy from in-window samples: 692.23 J
+CSV: sustained_gpu1_clock_check_20261028_001146.csv

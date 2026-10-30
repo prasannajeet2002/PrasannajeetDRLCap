@@ -1,0 +1,19 @@
+Label: fixed1800_30_verify
+TensorFlow version: 2.21.0
+Target physical GPU: 1
+Matrix size: 4096x4096
+Requested duration: 30.000 s
+Measured workload runtime: 30.009 s
+Workload start: 2026-10-28T00:04:22.071
+Workload end: 2026-10-28T00:04:52.080
+Completed matrix multiplications: 451
+Mean iteration time: 0.06654 s
+Total telemetry samples: 138
+Samples inside workload interval: 134
+Mean sampled power: 35.11 W
+Mean sampled GPU utilization: 15.4%
+Mean sampled memory utilization: 2.5%
+Mean sampled graphics clock: 1800 MHz
+Mean sampled temperature: 37.5 C
+Approx. energy from in-window samples: 1044.56 J
+CSV: sustained_fixed1800_30_verify_20261028_000420.csv

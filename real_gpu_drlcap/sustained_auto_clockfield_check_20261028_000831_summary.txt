@@ -1,0 +1,19 @@
+Label: auto_clockfield_check
+TensorFlow version: 2.21.0
+Target physical GPU: 1
+Matrix size: 4096x4096
+Requested duration: 30.000 s
+Measured workload runtime: 30.013 s
+Workload start: 2026-10-28T00:08:32.635
+Workload end: 2026-10-28T00:09:02.648
+Completed matrix multiplications: 515
+Mean iteration time: 0.05827 s
+Total telemetry samples: 138
+Samples inside workload interval: 134
+Mean sampled power: 47.59 W
+Mean sampled GPU utilization: 15.1%
+Mean sampled memory utilization: 2.7%
+Mean sampled graphics clock: 210 MHz
+Mean sampled temperature: 36.6 C
+Approx. energy from in-window samples: 1412.55 J
+CSV: sustained_auto_clockfield_check_20261028_000831.csv

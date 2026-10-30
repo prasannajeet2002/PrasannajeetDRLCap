@@ -1,0 +1,100 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793191037.694432 1316246 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+TensorFlow GPU memory growth enabled.
+[1597, 1590, 1582, 1575, 1567, 1560, 1552, 1545, 1537, 1530, 1522, 1515, 1507, 1500, 1492, 1485, 1477, 1470, 1462, 1455, 1447, 1440, 1432, 1425, 1417, 1410, 1402, 1395, 1387, 1380, 1372, 1365, 1357, 1350, 1342, 1335, 1327, 1320, 1312, 1305, 1297, 1290, 1282, 1275, 1267, 1260, 1252, 1245, 1237, 1230, 1222, 1215, 1207, 1200, 1192, 1185, 1177, 1170, 1162, 1155, 1147, 1140, 1132, 1125, 1117, 1110, 1102, 1095, 1087, 1080, 1072, 1065, 1057, 1050, 1042, 1035, 1027, 1020, 1012, 1005, 997, 990, 982, 975, 967, 960, 952, 945, 937, 930, 922, 915, 907, 900, 892, 885, 877, 870, 862, 855, 847, 840, 832, 825, 817, 810, 802, 795, 787, 780, 772, 765, 757, 750, 742, 735, 727, 720, 712, 705, 697, 690, 682, 675, 667, 660, 652, 645, 637, 630, 622, 615, 607, 600, 592, 585, 577, 570, 562, 555, 547, 540, 532, 525, 517, 510, 502, 495, 487, 480, 472, 465, 457, 450, 442, 435, 427, 420, 412, 405, 397, 390, 382, 375, 367, 360, 352, 345, 337, 330, 322, 315, 307, 300, 292, 285, 277, 270, 262, 255, 247, 240, 232, 225, 217, 210, 202, 195, 187, 180, 172, 165, 157, 150, 142, 135]
+2.21.0
+I0000 00:00:1793191039.648949 1316246 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 10114 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4070 Ti, pci bus id: 0000:c1:00.0, compute capability: 8.9
+epsilon: 0.3
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.3
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.3
+random!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.3
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.3
+random!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.3
+random!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.3
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.3
+max!!!!!!!!!!!!!!!!!!!!!
+Episode 1/5 | Reward: 4.588 | Power: 79.43 W | Temp: 46.19 C | GPU Util: 32.97% | Epsilon: 0.300
+epsilon: 0.25
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.25
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.25
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.25
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.25
+random!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.25
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.25
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.25
+max!!!!!!!!!!!!!!!!!!!!!
+Episode 2/5 | Reward: 7.950 | Power: 49.25 W | Temp: 45.75 C | GPU Util: 9.97% | Epsilon: 0.250
+epsilon: 0.2
+random!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.2
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.2
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.2
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.2
+random!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.2
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.2
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.2
+random!!!!!!!!!!!!!!!!!!!!!
+Episode 3/5 | Reward: -1.405 | Power: 106.17 W | Temp: 46.65 C | GPU Util: 47.22% | Epsilon: 0.200
+epsilon: 0.15
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.15
+random!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.15
+random!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.15
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.15
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.15
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.15
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.15
+random!!!!!!!!!!!!!!!!!!!!!
+
+target_params_replaced
+
+Episode 4/5 | Reward: 9.447 | Power: 87.90 W | Temp: 46.70 C | GPU Util: 36.43% | Epsilon: 0.150
+epsilon: 0.1
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.1
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.1
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.1
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.1
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.1
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.1
+max!!!!!!!!!!!!!!!!!!!!!
+epsilon: 0.1
+max!!!!!!!!!!!!!!!!!!!!!
+Episode 5/5 | Reward: 4.365 | Power: 70.47 W | Temp: 46.05 C | GPU Util: 26.07% | Epsilon: 0.100
+Saved model: drlcap_model_fixed.keras
+Saved 9 learning-loss values.
+Saved 5 episode rewards.
+Plot saved as reward_plot.png
+end

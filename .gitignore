@@ -1,0 +1,11 @@
+# Third-party benchmark suite and datasets (large; fetch separately)
+benchmarks/
+rodinia-3.1-data.tar.gz
+
+# Python
+__pycache__/
+*.pyc
+
+# Compiled CUDA binaries (rebuild from .cu sources)
+cuda_test
+gpu_compute_test

@@ -1,0 +1,19 @@
+Label: auto_diag
+TensorFlow version: 2.21.0
+Target physical GPU: 1
+Matrix size: 4096x4096
+Requested duration: 30.000 s
+Measured workload runtime: 30.004 s
+Workload start: 2026-10-27T23:59:27.086
+Workload end: 2026-10-27T23:59:57.090
+Completed matrix multiplications: 482
+Mean iteration time: 0.06225 s
+Total telemetry samples: 138
+Samples inside workload interval: 134
+Mean sampled power: 47.14 W
+Mean sampled GPU utilization: 13.9%
+Mean sampled memory utilization: 2.5%
+Mean sampled graphics clock: 210 MHz
+Mean sampled temperature: 36.5 C
+Approx. energy from in-window samples: 1398.39 J
+CSV: sustained_auto_diag_20261027_235925.csv
