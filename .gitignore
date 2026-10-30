@@ -9,3 +9,5 @@ __pycache__/
 # Compiled CUDA binaries (rebuild from .cu sources)
 cuda_test
 gpu_compute_test
+*.bak
+cuda12_libs/
