@@ -40,6 +40,62 @@ python drlcap.py train
 python evaluate.py --model results/train_drlcap_<stamp>/model_final.keras --repeats 3
 ```
 
+## Static frequency-cap sweep (Fig. 1 analogue)
+
+`results/frequency_sweep_20261030_113800.csv`, one run per point, change
+relative to the NVIDIA default (time / energy / EDP, %):
+
+| Cap (MHz) | hotspot | gaussian | particlefilter | nw | bfs |
+|---|---|---|---|---|---|
+| 1200 | +118 / +1 / +120 | +78 / -16 / +50 | +124 / +4 / +133 | +1 / -38 / -37 | +4 / -27 / -24 |
+| 1800 | +48 / -22 / +15 | +32 / -28 / -4 | +50 / -21 / +19 | 0 / -37 / -37 | +4 / -23 / -21 |
+| 2100 | +28 / -27 / -6 | +19 / -30 / -17 | +29 / -26 / -4 | 0 / -35 / -35 | +1 / -22 / -21 |
+| 2400 | +13 / -21 / -11 | +9 / -25 / -18 | +14 / -21 / -10 | +1 / -27 / -26 | +2 / -12 / -10 |
+| 2700 | +1 / -1 / 0 | 0 / -5 / -5 | +1 / -2 / -1 | +1 / -10 / -8 | +1 / +1 / +2 |
+
+Default clocks under load: 2625-2745 MHz. Compute-bound programs have an
+energy minimum near 2100 MHz at a large slowdown; memory/host-bound ones
+save 22-37 % energy at no slowdown. As on the V100S (paper Fig. 1), the
+best static cap differs per program, which is the motivation for a
+dynamic policy. The action range 1800-2745 MHz (step 15, 64 actions)
+follows from this sweep.
+
+Observed measurement detail: NVML clock/power readings reflect a new cap
+about one 300 ms sample late, so the reward of action a_t is partly
+computed on the effect of a_(t-1). The paper does not discuss this.
+
+## Results (first full run, 2026-10-30)
+
+Training: `results/train_drlcap_20261030_120328` - 5014 control steps
+(300 ms) over 55 jobs of the 8 training workloads, 4982 DDQN updates,
+epsilon 0.3 -> 0.1. Algorithm 1 cases seen: B 1694, A 1363, D 1037, C 920.
+
+Test on the 7 unseen workloads: `results/eval_test_20261030_122906`,
+3 repeats per policy, alternating order, online learning on,
+epsilon 0.1. Energy from the NVML counter.
+
+| Workload | Energy saving | Perf. loss | EDP improvement | Baseline energy CV |
+|---|---|---|---|---|
+| b+tree | 8.8 % | 0.6 % | 8.3 % | 1.2 % |
+| dwt2d | 8.3 % | 2.5 % | 5.9 % | 1.3 % |
+| heartwall | 19.2 % | 1.5 % | 18.0 % | 0.2 % |
+| lavaMD | 5.4 % | 0.7 % | 4.8 % | 0.3 % |
+| lud | 20.2 % | 9.3 % | 12.8 % | 0.1 % |
+| myocyte | 15.5 % | 3.7 % | 12.4 % | 1.0 % |
+| streamcluster | 25.0 % | -8.3 % * | 31.2 % | 3.9 % |
+| **Geomean** | **14.9 %** | **1.3 %** | **13.8 %** | |
+
+For every workload, all three DRLCap runs used less energy than all three
+baseline runs. Paper (NVIDIA average): 22 % / 3 % / 20 %.
+
+\* streamcluster's baseline runtime varies by 7 % (31.9-37.3 s), so its
+apparent speed-up is within noise and should not be claimed.
+
+Not yet shown (needed before thesis claims): 10 repeats as in the paper;
+comparison with static caps (e.g. a fixed 2100 or 2400 MHz cap) to check
+the RL policy beats the best static setting; a frozen-network ablation
+(`--no-online`); a second training seed.
+
 ## What matches the paper
 
 - State: GPU core utilisation, memory utilisation, power, SM frequency,
