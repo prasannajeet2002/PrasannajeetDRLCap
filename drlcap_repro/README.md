@@ -27,6 +27,9 @@ cd /home/drl/project/drlcap/drlcap_repro
 | `evaluate.py` | Comparison with the NVIDIA default: static caps, COORD-like heuristic, trained models, monitor-only overhead; energy, runtime, EDP, geomean (Sec. V-D, VI-A..C) |
 | `cnn_workload.py` | VGG-16 / GoogLeNet (InceptionV3) / ResNet50 training test workloads |
 | `report.py` | Figures and Markdown table from an evaluation's `summary.csv` |
+| `analyze_eval.py` | Rodinia-only / CNN-only geomeans and bootstrap 95 % intervals from `runs.csv` |
+| `probe_policy.py` | Greedy action of a trained Q-network over 2000 random states (is the policy state-dependent?) |
+| `diag_monitor_effect.py` | Diagnostic for the monitor-only energy difference (baseline vs. NVML polling vs. monitor-only) |
 | `run_full_reproduction.sh` | The whole queue: 5 trainings, main comparison, ablations |
 
 Results go to `results/` with timestamped names; nothing is overwritten.
@@ -135,6 +138,140 @@ With 10 repeats the v1 slowdown is 3.8 % (3 repeats suggested 1.3 %),
 and a single fixed 2400 MHz cap beats v1 on energy and EDP at a similar
 slowdown. v1 therefore does NOT show an advantage of the learned policy
 over the best static setting.
+
+## Results v2: full reproduction (authors' constants), 2026-10-31
+
+Queue `run_full_reproduction.sh`, log `results/queue_20261030_180321.log`,
+2026-10-30 18:03 - 2026-10-31 09:36, no failed job. Ten unseen test
+programs (7 Rodinia + VGG-16, GoogLeNet/InceptionV3, ResNet50), every
+policy run interleaved with rotating order. All numbers are relative to
+the NVIDIA default measured in the same evaluation; energy = NVML board
+energy counter. Test results only; training statistics are in each
+`results/train_*/jobs.csv`.
+
+### Training (5000 iterations each)
+
+`train_freq_s0_20261030_180323`, `train_freq_s1_20261030_182848`,
+`train_power_s0_20261030_185400`, `train_hybrid_s0_20261030_191924`,
+`train_rl_s0_20261030_194438` (tabular). freq_s0: loss median per
+quarter 34 -> 172 -> 101 -> 52, mean reward flat at ~3.5, Algorithm 1
+cases B 1688 / A 1358 / D 1039 / C 965. A flat mean reward means the
+training curve gives no evidence of learning by itself.
+
+### Main comparison, 10 repeats (`results/eval_main_20261030_200956`)
+
+Geomean over the 10 test programs (`table_geomean.md`, `analysis.md`,
+`fig_policies.png`, `fig_per_workload_<policy>.png`):
+
+| Policy | Energy saving | Perf. loss | EDP improvement | EDP 95 % CI |
+|---|---|---|---|---|
+| static 2100 MHz | 28.4 % | 7.9 % | 22.7 % | 21.9 – 23.6 |
+| static 2400 MHz | 21.0 % | 3.5 % | 18.3 % | 17.5 – 19.1 |
+| COORD-like | 27.5 % | 6.5 % | 22.8 % | 21.9 – 23.6 |
+| **DRLCap (frequency)** | **21.9 %** | **4.3 %** | **18.5 %** | 17.6 – 19.5 |
+| DRLCap power | 7.9 % | 2.8 % | 5.3 % | 4.3 – 6.4 |
+| DRLCap hybrid | 14.3 % | 3.2 % | 11.6 % | 10.6 – 12.6 |
+| RL (tabular double Q) | 21.7 % | 4.6 % | 18.1 % | 17.2 – 18.9 |
+
+The CI is a bootstrap over repeats (`analyze_eval.py`). Paper, DRLCap vs.
+NVIDIA default: 22 % / 3 % / 20 % on average, 27 % / 2.4 % / 23 % on the
+V100S; paper Table III also has COORD 25 / 5 / 21 and RL 5 / 1 / 4.
+
+DRLCap per program (energy / perf. loss / EDP, %): b+tree 22.3 / 1.7 /
+21.0, dwt2d 18.3 / 5.6 / 13.8, heartwall 26.7 / 2.0 / 25.2, lavaMD 6.6 /
+1.7 / 5.0, lud 21.2 / 10.7 / 12.9, myocyte 27.2 / 14.9 / 16.3,
+streamcluster 25.4 / -1.9 / 26.9 (baseline time CV 6.6 %, within noise),
+vgg16 22.2 / 3.6 / 19.5, googlenet 22.7 / 3.2 / 20.2, resnet50 24.0 /
+2.0 / 22.5. Rodinia-only geomean 21.4 / 4.8 / 17.6, CNN-only 23.0 / 3.0 /
+20.7.
+
+Facts:
+- DRLCap's headline numbers are close to the paper's (21.9 / 4.3 / 18.5
+  vs. 22 / 3 / 20).
+- But DRLCap is statistically tied with one fixed 2400 MHz cap and is
+  ~4 points EDP worse than a fixed 2100 MHz cap and the COORD-like
+  heuristic. The paper's claim that DRLCap beats COORD and RL is NOT
+  reproduced here; tabular RL is as good as DRLCap (paper: RL 4 % EDP).
+- The power variant barely acts on Rodinia (2-3 % saving; those
+  programs draw less than the 100 W minimum power limit, deviation 9);
+  on the CNNs it saves ~16 %. The hybrid variant lies in between.
+- The COORD-like profiling classified all three CNNs and heartwall as
+  memory/host-bound (mean util 31-47 %), so they ran at 1800 MHz.
+
+### Why: the trained policies are (almost) constant
+
+`probe_policy.py` (`results/probe_policy_20261031.txt`) feeds 2000 random
+states to each saved network:
+
+| Model | Greedy action over 2000 random states |
+|---|---|
+| freq_s0 | 2160 MHz in 99.8 % |
+| freq_s1 | 2100 MHz in 99.3 % |
+| power_s0 | 140 W 56.5 %, 135 W 42.7 % |
+| hybrid_s0 | 2610 MHz / 153 W in 96.8 % |
+| v1 model (our old constants) | 2700 MHz 68.5 %, 2355 MHz 23.4 % |
+
+The Q-values do depend on the state (they rise and fall with it), but the
+ORDER of the actions hardly does: the median gap between the best and the
+second-best action is 0.2-2 while Q spans 40-75. In the test runs the
+same holds: in the frozen ablation every non-random, non-forced step chose
+2160 MHz. The only per-program behaviour comes from Algorithm 1 case A
+(forced maximum cap when util = 100 %, mem = 0 %), which is why lavaMD
+runs at ~2620 MHz and saves only 6.6 % energy (static 2400: 25 %).
+So, on this GPU and these programs, the offline-trained DRLCap behaves
+like a fixed ~2160 MHz cap plus the case-A rule; online learning then
+moves the greedy action around (48.7 % at 2160 MHz, the rest spread over
+33 other caps) without making it better.
+
+Hypotheses, NOT tested: (a) with gamma 0.95 the bootstrapped state value
+(~70) dwarfs the one-step reward differences between neighbouring caps;
+(b) NVML shows a new cap about one sample late (see the sweep section),
+so the reward of a_t is partly earned by a_(t-1), which blurs which
+action caused it; (c) the Algorithm 1 constants r1..r4, p1..p3, c that
+the paper does not publish (ours) favour a middle cap; (d) the Rodinia
+training set is small (8 programs) and many states are idle or
+host-bound, where every cap gets nearly the same reward.
+
+### Ablations, 5 repeats each
+
+Seed (`results/eval_ablation_seed_overhead_20261031_060047`):
+
+| Policy | Energy saving | Perf. loss | EDP improvement | EDP 95 % CI |
+|---|---|---|---|---|
+| DRLCap seed 0 | 21.4 % | 5.5 % | 17.1 % | 16.0 – 18.1 |
+| DRLCap seed 1 | 20.6 % | 5.7 % | 16.1 % | 14.8 – 17.4 |
+| monitor only (seed 0, caps never applied) | 2.7 % | 0.8 % | 1.9 % | 0.8 – 3.1 |
+
+The two seeds agree within noise (they collapsed to 2160 and 2100 MHz).
+DRLCap seed 0 is 18.5 % EDP in the 10-repeat run and 17.1 % here: the
+difference between two evaluations of the same model is ~1.5 points, so
+smaller differences should not be read as real.
+
+Frozen network (`results/eval_ablation_frozen_20261031_082435`, no online
+learning, same epsilon 0.1): 27.6 % / 5.4 % / 23.7 % (EDP CI 22.7 – 24.7),
+better than the same model with online learning (18.5 % in the main run).
+Since the frozen greedy action is always 2160 MHz, this mainly shows that
+a fixed ~2160 MHz cap is a good setting on these programs, and that online
+learning at test time moved the policy AWAY from it.
+
+### Overhead (paper Sec. VI-C, Fig. 11/12)
+
+Controller per job (main run): 1.0-4.2 s CPU time, median step 8-15 ms of
+the 300 ms period (tabular RL 25-47 ms, because more frequent cap changes
+each call `nvidia-smi`). The evaluation process's peak resident memory
+grows from 640 MB to 1569 MB over the 400 agent jobs of the main run
+(~2.3 MB per job; one fresh agent is built per job, so this looks like
+TensorFlow/Keras memory not released; NOT investigated, and a deployed
+single-agent controller would not rebuild its model per job). CPU energy is not measured (deviation 11).
+
+Monitor-only runs (sampling + agent + learning, caps never applied; the
+logged clocks stay at 2500-2700 MHz) used 2.7 % LESS GPU energy than the
+plain baseline, at +0.8 % time, consistently on 9 of 10 programs. A
+monitoring overhead should go the other way. This also means the agent
+policies may get a ~2-3 % head start over the static/COORD policies,
+which run without the loop. Diagnostic: see below.
+
+<!-- DIAG -->
 
 ## What matches the paper
 

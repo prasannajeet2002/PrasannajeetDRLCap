@@ -1,0 +1,45 @@
+{
+  "policies": [
+    "baseline",
+    "drlcap",
+    "drlcap_seed1",
+    "monitor_only"
+  ],
+  "models": {
+    "drlcap": [
+      "results/train_freq_s0_20261030_180323/model_final.keras",
+      "freq",
+      "ddqn"
+    ],
+    "drlcap_seed1": [
+      "results/train_freq_s1_20261030_182848/model_final.keras",
+      "freq",
+      "ddqn"
+    ],
+    "monitor_only": [
+      "results/train_freq_s0_20261030_180323/model_final.keras",
+      "freq",
+      "ddqn"
+    ]
+  },
+  "workloads": [
+    "b+tree",
+    "dwt2d",
+    "heartwall",
+    "lavaMD",
+    "lud",
+    "myocyte",
+    "streamcluster",
+    "vgg16",
+    "googlenet",
+    "resnet50"
+  ],
+  "repeats": 5,
+  "epsilon": 0.1,
+  "online": true,
+  "coord_util_threshold": 50.0,
+  "coord_caps": {
+    "compute": 2400,
+    "memory": 1800
+  }
+}
