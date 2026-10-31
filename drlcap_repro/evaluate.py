@@ -44,15 +44,32 @@ import workloads as W
 
 
 def baseline_job(workload, cap=None):
-    """NVIDIA default (cap=None) or one fixed frequency cap for the job."""
+    """NVIDIA default (cap=None) or one fixed frequency cap for the job.
+
+    NVML is polled every 300 ms during the job, exactly as the DRLCap loop
+    does: polling alone lowers the measured board energy by 2.5-4 %
+    (diag_monitor_effect.py, README), so without it the agent policies
+    would get a head start over these policies."""
     G.reset_cap()
     if cap is not None:
         G.set_cap(cap)
+    stop = threading.Event()
+
+    def poll():
+        while not stop.is_set():
+            G.read()
+            stop.wait(D.SAMPLE_INTERVAL)
+
+    poller = threading.Thread(target=poll, daemon=True)
     try:
         e0 = G.energy_j()
+        poller.start()
         t = W.run_blocking(workload)
+        stop.set()
+        poller.join()
         energy = G.energy_j() - e0
     finally:
+        stop.set()
         G.reset_cap()
     return {"workload": workload, "time_s": t, "energy_j": energy,
             "edp": energy * t, "steps": "",
@@ -210,7 +227,9 @@ def main():
                    "workloads": args.workloads, "repeats": args.repeats,
                    "epsilon": args.epsilon, "online": not args.no_online,
                    "coord_util_threshold": COORD_UTIL_THRESHOLD,
-                   "coord_caps": COORD_CAPS}, f, indent=2)
+                   "coord_caps": COORD_CAPS,
+                   "baseline_nvml_polling_s": D.SAMPLE_INTERVAL,
+                   "reward_delay_samples": D.REWARD_DELAY}, f, indent=2)
 
     rows, job, coord = [], 0, {}
     try:

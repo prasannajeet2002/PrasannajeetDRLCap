@@ -47,6 +47,14 @@ RESULTS = os.path.join(HERE, "results")
 
 SAMPLE_INTERVAL = 0.3
 
+# Reward attribution delay in samples. NVML reports the effect of a new cap
+# mostly one 300 ms sample late: in the v2 logs a cap change applied after
+# sample t moves the clock by 0.29x in sample t -> t+1 but by 0.53x in
+# t+1 -> t+2 (README). With delay 1 the reward of action a_t is computed on
+# samples t+1 -> t+2 instead of t -> t+1 (which mostly showed a_(t-1)).
+# The transition stored is still (s_t, a_t, r, s_(t+1)). 0 = old behaviour.
+REWARD_DELAY = 1
+
 # Action candidates: frequency caps in MHz (paper Table IV analogue),
 # chosen from the frequency_sweep.py results on this 4070 Ti (README):
 # under the default policy the SM clock peaks at ~2745 MHz; below 1800 MHz
@@ -158,8 +166,11 @@ def run_job(agent, workload, *, learn, actions=None,
 
     G.reset_cap()
     applied = (None, None)
-    prev, prev_state, prev_action = None, None, None
-    caps_used, steps, compute_ms = [], 0, []
+    prev = None
+    # (state, action) of the last REWARD_DELAY + 1 decisions, oldest first,
+    # and the states that followed them; the oldest gets the reward of the
+    # newest sample pair
+    pending, caps_used, steps, compute_ms = [], [], 0, []
 
     cpu0 = time.process_time()
     e0 = G.energy_j()
@@ -173,10 +184,13 @@ def run_job(agent, workload, *, learn, actions=None,
             state = to_state(cur)
             r, case = (None, R.case_of(cur))
 
-            if prev is not None:
-                r, case = R.reward(prev, cur, primary(actions[prev_action]),
+            if pending:
+                pending[-1][2] = state  # next state of the newest decision
+            if prev is not None and len(pending) > REWARD_DELAY:
+                s_old, a_old, s_next = pending.pop(0)
+                r, case = R.reward(prev, cur, primary(actions[a_old]),
                                    c_idle)
-                agent.remember(prev_state, prev_action, r, state, done)
+                agent.remember(s_old, a_old, r, s_next, done)
                 if learn:
                     agent.learn()
             if done:
@@ -209,7 +223,8 @@ def run_job(agent, workload, *, learn, actions=None,
                     "loss": round(agent.last_loss, 6),
                 })
 
-            prev, prev_state, prev_action = cur, state, action
+            prev = cur
+            pending.append([state, action, None])
             caps_used.append(cap)
             steps += 1
             compute_ms.append(1000 * (time.perf_counter() - tick))
@@ -265,6 +280,7 @@ def train(iterations, tag, seed, variant="freq", kind="ddqn"):
         json.dump({
             "variant": variant, "agent": kind, "actions": actions,
             "buckets": BUCKETS, "sample_interval_s": SAMPLE_INTERVAL,
+            "reward_delay_samples": REWARD_DELAY,
             "iterations": iterations, "seed": seed, "train_set": W.TRAIN,
             "hyper": {k: getattr(A, k) for k in (
                 "BATCH_SIZE", "LEARNING_RATE", "BUFFER_SIZE", "GAMMA",
