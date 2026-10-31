@@ -271,7 +271,31 @@ monitoring overhead should go the other way. This also means the agent
 policies may get a ~2-3 % head start over the static/COORD policies,
 which run without the loop. Diagnostic: see below.
 
-<!-- DIAG -->
+`diag_monitor_effect.py` (`results/diag_monitor_effect_20261031_094448.csv`,
+3 repeats, interleaved, rotating order) compares the plain baseline with
+(poll) the same job plus a thread that only calls `gpu_control.read()`
+every 300 ms, and (monitor) the full monitor-only agent:
+
+| Program | poll / base energy | monitor / base energy | poll / base time | monitor / base time |
+|---|---|---|---|---|
+| b+tree | 0.975 | 0.984 | 1.000 | 1.004 |
+| lud | 0.961 | 0.970 | 0.999 | 0.998 |
+| myocyte | 0.962 | 0.985 | 0.999 | 1.006 |
+| heartwall | 0.961 | 0.966 | 1.001 | 1.003 |
+| vgg16 | 0.961 | 0.966 | 1.003 | 1.010 |
+
+Fact: NVML polling alone gives the 2.5-4 % lower measured energy at the
+same runtime; the agent's CPU work adds nothing to it (monitor is if
+anything slightly closer to the baseline). Whether the GPU really draws
+less power while it is being polled, or the NVML energy counter behaves
+differently when polled, cannot be told apart without an external power
+meter. Consequence for the comparison above: every agent policy
+(DRLCap, variants, RL) ran with 300 ms polling and the baseline, static
+caps and COORD did not, so the agent policies' savings include ~3 points
+that are not due to capping. A fair re-run would poll NVML at 300 ms in
+every policy, baseline included; with that correction DRLCap would be
+expected to fall slightly BEHIND the static 2400 MHz cap rather than tie
+it (expectation, not measured).
 
 ## What matches the paper
 

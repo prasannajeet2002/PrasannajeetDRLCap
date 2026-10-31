@@ -1,0 +1,54 @@
+rep 0 b+tree       baseline  t=  25.8s E=    998J
+rep 0 b+tree       poll      t=  25.8s E=    963J
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793420144.234324 2501932 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+rep 0 b+tree       monitor   t=  25.8s E=    978J
+rep 0 lud          poll      t=  35.3s E=   5646J
+rep 0 lud          monitor   t=  35.3s E=   5756J
+rep 0 lud          baseline  t=  35.3s E=   5966J
+rep 0 myocyte      monitor   t=  24.5s E=   1394J
+rep 0 myocyte      baseline  t=  24.1s E=   1393J
+rep 0 myocyte      poll      t=  24.3s E=   1330J
+rep 0 heartwall    baseline  t=  27.4s E=   1966J
+rep 0 heartwall    poll      t=  27.4s E=   1894J
+rep 0 heartwall    monitor   t=  27.5s E=   1926J
+rep 0 vgg16        poll      t=  35.4s E=   4342J
+rep 0 vgg16        monitor   t=  36.0s E=   4393J
+rep 0 vgg16        baseline  t=  35.3s E=   4487J
+rep 1 b+tree       poll      t=  26.0s E=   1057J
+rep 1 b+tree       monitor   t=  26.1s E=   1037J
+rep 1 b+tree       baseline  t=  25.8s E=   1066J
+rep 1 lud          monitor   t=  35.3s E=   5764J
+rep 1 lud          baseline  t=  35.4s E=   5984J
+rep 1 lud          poll      t=  35.3s E=   5791J
+rep 1 myocyte      baseline  t=  24.3s E=   1417J
+rep 1 myocyte      poll      t=  24.3s E=   1348J
+rep 1 myocyte      monitor   t=  24.4s E=   1378J
+rep 1 heartwall    poll      t=  27.4s E=   1890J
+rep 1 heartwall    monitor   t=  27.5s E=   1922J
+rep 1 heartwall    baseline  t=  27.5s E=   1992J
+rep 1 vgg16        monitor   t=  35.5s E=   4341J
+rep 1 vgg16        baseline  t=  35.4s E=   4507J
+rep 1 vgg16        poll      t=  35.8s E=   4353J
+rep 2 b+tree       monitor   t=  26.0s E=   1061J
+rep 2 b+tree       baseline  t=  25.9s E=   1061J
+rep 2 b+tree       poll      t=  25.8s E=   1026J
+rep 2 lud          baseline  t=  35.4s E=   5960J
+rep 2 lud          poll      t=  35.3s E=   5771J
+rep 2 lud          monitor   t=  35.3s E=   5845J
+rep 2 myocyte      poll      t=  24.4s E=   1369J
+rep 2 myocyte      monitor   t=  24.6s E=   1373J
+rep 2 myocyte      baseline  t=  24.6s E=   1398J
+rep 2 heartwall    monitor   t=  27.6s E=   1894J
+rep 2 heartwall    baseline  t=  27.4s E=   1987J
+rep 2 heartwall    poll      t=  27.5s E=   1926J
+rep 2 vgg16        baseline  t=  35.4s E=   4524J
+rep 2 vgg16        poll      t=  35.3s E=   4291J
+rep 2 vgg16        monitor   t=  35.7s E=   4323J
+workload      poll/base E   monitor/base E   poll/base t   monitor/base t
+b+tree        0.975         0.984            1.000         1.004
+lud           0.961         0.970            0.999         0.998
+myocyte       0.962         0.985            0.999         1.006
+heartwall     0.961         0.966            1.001         1.003
+vgg16         0.961         0.966            1.003         1.010
+saved results/diag_monitor_effect_20261031_094448.csv
