@@ -1,0 +1,1611 @@
+== training Sat Oct 31 11:43:55 AM IST 2026
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793427238.060625 2527572 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 gaussian        t=  34.5s E=   1899J cap=2157.913043478261/ step=115/5000 eps=0.295 updates=0 (35s)
+job   1 huffman         t=  22.5s E=    777J cap=2147.565789473684/ step=191/5000 eps=0.292 updates=0 (23s)
+job   2 hotspot         t=  28.0s E=   2496J cap=2700.6382978723404/ step=285/5000 eps=0.289 updates=0 (28s)
+job   3 particlefilter  t=  33.1s E=   2836J cap=2732.027027027027/ step=396/5000 eps=0.284 updates=0 (33s)
+job   4 nw              t=  26.7s E=    758J cap=2133.2022471910113/ step=485/5000 eps=0.281 updates=0 (27s)
+job   5 backprop        t=  25.4s E=    838J cap=2139.3529411764707/ step=570/5000 eps=0.277 updates=53 (26s)
+job   6 bfs             t=  24.7s E=    787J cap=2130.1807228915663/ step=653/5000 eps=0.274 updates=135 (25s)
+job   7 pathfinder      t=  24.2s E=    255J cap=2109.814814814815/ step=734/5000 eps=0.271 updates=215 (24s)
+job   8 particlefilter  t=  33.5s E=   2827J cap=2701.875/ step=846/5000 eps=0.266 updates=326 (34s)
+job   9 gaussian        t=  32.2s E=   2281J cap=2369.722222222222/ step=954/5000 eps=0.262 updates=433 (33s)
+job  10 pathfinder      t=  24.2s E=    294J cap=2152.222222222222/ step=1035/5000 eps=0.259 updates=513 (24s)
+job  11 huffman         t=  22.5s E=    747J cap=2104.0/ step=1110/5000 eps=0.256 updates=587 (23s)
+job  12 nw              t=  26.8s E=    752J cap=2138.8333333333335/ step=1200/5000 eps=0.252 updates=676 (27s)
+job  13 bfs             t=  24.7s E=    778J cap=2137.9518072289156/ step=1283/5000 eps=0.249 updates=758 (25s)
+job  14 backprop        t=  25.1s E=    815J cap=2118.75/ step=1367/5000 eps=0.245 updates=841 (25s)
+job  15 hotspot         t=  28.2s E=   2473J cap=2686.595744680851/ step=1461/5000 eps=0.242 updates=934 (28s)
+job  16 hotspot         t=  28.3s E=   2502J cap=2685.4736842105262/ step=1556/5000 eps=0.238 updates=1028 (29s)
+job  17 gaussian        t=  35.0s E=   1960J cap=2113.7179487179487/ step=1673/5000 eps=0.233 updates=1144 (35s)
+job  18 bfs             t=  24.9s E=    767J cap=2116.4457831325303/ step=1756/5000 eps=0.230 updates=1226 (25s)
+job  19 pathfinder      t=  24.3s E=    227J cap=2122.777777777778/ step=1837/5000 eps=0.227 updates=1306 (24s)
+job  20 particlefilter  t=  33.3s E=   2868J cap=2721.891891891892/ step=1948/5000 eps=0.222 updates=1416 (33s)
+job  21 backprop        t=  25.3s E=    848J cap=2150.823529411765/ step=2033/5000 eps=0.219 updates=1500 (26s)
+job  22 nw              t=  26.8s E=    757J cap=2135.0/ step=2123/5000 eps=0.215 updates=1589 (27s)
+job  23 huffman         t=  22.8s E=    766J cap=2107.8947368421054/ step=2199/5000 eps=0.212 updates=1664 (23s)
+job  24 nw              t=  26.4s E=    734J cap=2118.5795454545455/ step=2287/5000 eps=0.209 updates=1751 (27s)
+job  25 huffman         t=  22.4s E=    775J cap=2154.6/ step=2362/5000 eps=0.206 updates=1825 (23s)
+job  26 hotspot         t=  28.4s E=   2491J cap=2663.2105263157896/ step=2457/5000 eps=0.202 updates=1919 (29s)
+job  27 backprop        t=  25.3s E=    836J cap=2139.529411764706/ step=2542/5000 eps=0.198 updates=2003 (26s)
+job  28 pathfinder      t=  24.2s E=    235J cap=2118.1481481481483/ step=2623/5000 eps=0.195 updates=2083 (24s)
+job  29 gaussian        t=  31.6s E=   2302J cap=2429.433962264151/ step=2729/5000 eps=0.191 updates=2188 (32s)
+job  30 bfs             t=  24.8s E=    767J cap=2110.6626506024095/ step=2812/5000 eps=0.188 updates=2270 (25s)
+job  31 particlefilter  t=  33.6s E=   2851J cap=2702.5446428571427/ step=2924/5000 eps=0.183 updates=2381 (34s)
+job  32 gaussian        t=  32.8s E=   2231J cap=2327.590909090909/ step=3034/5000 eps=0.179 updates=2490 (33s)
+job  33 bfs             t=  25.1s E=    789J cap=2136.6071428571427/ step=3118/5000 eps=0.175 updates=2573 (25s)
+job  34 hotspot         t=  28.1s E=   2490J cap=2695.851063829787/ step=3212/5000 eps=0.172 updates=2666 (28s)
+job  35 particlefilter  t=  33.2s E=   2931J cap=2727.162162162162/ step=3323/5000 eps=0.167 updates=2776 (33s)
+job  36 backprop        t=  24.6s E=   1033J cap=2653.7195121951218/ step=3405/5000 eps=0.164 updates=2857 (25s)
+job  37 nw              t=  26.5s E=    843J cap=2335.112359550562/ step=3494/5000 eps=0.160 updates=2945 (27s)
+job  38 huffman         t=  22.0s E=    821J cap=2292.162162162162/ step=3568/5000 eps=0.157 updates=3018 (22s)
+job  39 pathfinder      t=  24.3s E=    253J cap=2109.814814814815/ step=3649/5000 eps=0.154 updates=3098 (24s)
+job  40 huffman         t=  22.4s E=    744J cap=2098.4/ step=3724/5000 eps=0.151 updates=3172 (23s)
+job  41 pathfinder      t=  24.3s E=    237J cap=2118.8888888888887/ step=3805/5000 eps=0.148 updates=3252 (24s)
+job  42 particlefilter  t=  33.3s E=   2853J cap=2721.2162162162163/ step=3916/5000 eps=0.143 updates=3362 (33s)
+job  43 nw              t=  26.6s E=    789J cap=2132.0224719101125/ step=4005/5000 eps=0.140 updates=3450 (27s)
+job  44 backprop        t=  25.4s E=    817J cap=2100.3529411764707/ step=4090/5000 eps=0.136 updates=3534 (26s)
+job  45 bfs             t=  25.1s E=    767J cap=2096.25/ step=4174/5000 eps=0.133 updates=3617 (25s)
+job  46 gaussian        t=  31.7s E=   2351J cap=2469.4811320754716/ step=4280/5000 eps=0.129 updates=3722 (32s)
+job  47 hotspot         t=  28.2s E=   2507J cap=2682.4736842105262/ step=4375/5000 eps=0.125 updates=3816 (29s)
+job  48 bfs             t=  24.9s E=    797J cap=2089.156626506024/ step=4458/5000 eps=0.122 updates=3898 (25s)
+job  49 backprop        t=  25.2s E=    856J cap=2176.964285714286/ step=4542/5000 eps=0.118 updates=3981 (25s)
+job  50 huffman         t=  22.4s E=    760J cap=2144.4/ step=4617/5000 eps=0.115 updates=4055 (23s)
+job  51 gaussian        t=  33.7s E=   2017J cap=2244.1592920353983/ step=4730/5000 eps=0.111 updates=4167 (34s)
+job  52 hotspot         t=  28.2s E=   2512J cap=2685.7978723404253/ step=4824/5000 eps=0.107 updates=4260 (28s)
+job  53 nw              t=  26.2s E=    758J cap=2103.75/ step=4912/5000 eps=0.104 updates=4347 (27s)
+job  54 particlefilter  t=  33.2s E=   2888J cap=2733.108108108108/ step=5023/5000 eps=0.100 updates=4457 (33s)
+saved /home/drl/project/drlcap/drlcap_repro/results/train_freq_s0_v3_20261031_114357
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793428754.803572 2538922 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 nw              t=  26.6s E=    807J cap=2395.7865168539324/ step=89/5000 eps=0.296 updates=0 (27s)
+job   1 backprop        t=  24.9s E=    928J cap=2443.012048192771/ step=172/5000 eps=0.293 updates=0 (25s)
+job   2 bfs             t=  24.6s E=    873J cap=2409.878048780488/ step=254/5000 eps=0.290 updates=0 (25s)
+job   3 huffman         t=  21.7s E=    858J cap=2417.876712328767/ step=327/5000 eps=0.287 updates=0 (22s)
+job   4 gaussian        t=  36.0s E=   2000J cap=2036.875/ step=447/5000 eps=0.282 updates=0 (36s)
+job   5 particlefilter  t=  33.5s E=   2884J cap=2706.8303571428573/ step=559/5000 eps=0.278 updates=42 (34s)
+job   6 hotspot         t=  27.9s E=   2528J cap=2724.3548387096776/ step=652/5000 eps=0.274 updates=134 (28s)
+job   7 pathfinder      t=  24.3s E=    269J cap=2036.2962962962963/ step=733/5000 eps=0.271 updates=214 (24s)
+job   8 bfs             t=  24.6s E=    881J cap=2445.548780487805/ step=815/5000 eps=0.267 updates=295 (25s)
+job   9 particlefilter  t=  33.1s E=   2889J cap=2742.162162162162/ step=926/5000 eps=0.263 updates=405 (33s)
+job  10 pathfinder      t=  24.3s E=    260J cap=1991.851851851852/ step=1007/5000 eps=0.260 updates=485 (24s)
+job  11 gaussian        t=  36.5s E=   1986J cap=1986.1475409836066/ step=1129/5000 eps=0.255 updates=606 (37s)
+job  12 hotspot         t=  28.5s E=   2500J cap=2655.0/ step=1224/5000 eps=0.251 updates=700 (29s)
+job  13 huffman         t=  22.9s E=    818J cap=2052.8571428571427/ step=1301/5000 eps=0.248 updates=776 (23s)
+job  14 nw              t=  26.4s E=    724J cap=1976.123595505618/ step=1390/5000 eps=0.244 updates=864 (27s)
+job  15 backprop        t=  25.7s E=    823J cap=1970.7558139534883/ step=1476/5000 eps=0.241 updates=949 (26s)
+job  16 bfs             t=  24.9s E=    764J cap=1969.4642857142858/ step=1560/5000 eps=0.238 updates=1032 (25s)
+job  17 hotspot         t=  28.2s E=   2489J cap=2688.5106382978724/ step=1654/5000 eps=0.234 updates=1125 (28s)
+job  18 backprop        t=  25.5s E=    812J cap=1957.0588235294117/ step=1739/5000 eps=0.230 updates=1209 (26s)
+job  19 nw              t=  26.4s E=    735J cap=1977.4431818181818/ step=1827/5000 eps=0.227 updates=1296 (27s)
+job  20 huffman         t=  23.3s E=    780J cap=1957.5/ step=1905/5000 eps=0.224 updates=1373 (24s)
+job  21 particlefilter  t=  33.3s E=   2882J cap=2718.0803571428573/ step=2017/5000 eps=0.219 updates=1484 (34s)
+job  22 pathfinder      t=  24.3s E=    262J cap=2001.4814814814815/ step=2098/5000 eps=0.216 updates=1564 (24s)
+job  23 gaussian        t=  35.4s E=   2075J cap=2073.9406779661017/ step=2216/5000 eps=0.211 updates=1681 (36s)
+job  24 hotspot         t=  28.5s E=   2516J cap=2664.4736842105262/ step=2311/5000 eps=0.208 updates=1775 (29s)
+job  25 bfs             t=  25.0s E=    787J cap=1946.4285714285713/ step=2395/5000 eps=0.204 updates=1858 (25s)
+job  26 particlefilter  t=  33.7s E=   2832J cap=2684.8672566371683/ step=2508/5000 eps=0.200 updates=1970 (34s)
+job  27 pathfinder      t=  24.3s E=    275J cap=1983.7037037037037/ step=2589/5000 eps=0.196 updates=2050 (24s)
+job  28 huffman         t=  23.0s E=    771J cap=1966.7532467532467/ step=2666/5000 eps=0.193 updates=2126 (23s)
+job  29 nw              t=  26.6s E=    737J cap=1964.1573033707866/ step=2755/5000 eps=0.190 updates=2214 (27s)
+job  30 backprop        t=  25.9s E=    826J cap=1956.551724137931/ step=2842/5000 eps=0.186 updates=2300 (26s)
+job  31 gaussian        t=  37.0s E=   1955J cap=1944.3145161290322/ step=2966/5000 eps=0.181 updates=2423 (37s)
+job  32 hotspot         t=  28.3s E=   2505J cap=2669.5263157894738/ step=3061/5000 eps=0.178 updates=2517 (29s)
+job  33 pathfinder      t=  24.3s E=    270J cap=1942.5925925925926/ step=3142/5000 eps=0.174 updates=2597 (24s)
+job  34 gaussian        t=  30.6s E=   2456J cap=2562.0873786407765/ step=3245/5000 eps=0.170 updates=2699 (31s)
+job  35 backprop        t=  25.2s E=    942J cap=2346.176470588235/ step=3330/5000 eps=0.167 updates=2783 (26s)
+job  36 huffman         t=  22.2s E=    846J cap=2275.4/ step=3405/5000 eps=0.164 updates=2857 (23s)
+job  37 particlefilter  t=  33.3s E=   2883J cap=2726.2162162162163/ step=3516/5000 eps=0.159 updates=2967 (33s)
+job  38 nw              t=  27.0s E=    805J cap=2107.5/ step=3606/5000 eps=0.156 updates=3056 (27s)
+job  39 bfs             t=  24.7s E=    877J cap=2367.289156626506/ step=3689/5000 eps=0.152 updates=3138 (25s)
+job  40 pathfinder      t=  24.3s E=    259J cap=2006.2962962962963/ step=3770/5000 eps=0.149 updates=3218 (24s)
+job  41 hotspot         t=  28.3s E=   2495J cap=2673.0/ step=3865/5000 eps=0.145 updates=3312 (29s)
+job  42 gaussian        t=  34.2s E=   2062J cap=2182.1052631578946/ step=3979/5000 eps=0.141 updates=3425 (34s)
+job  43 huffman         t=  22.6s E=    768J cap=1989.671052631579/ step=4055/5000 eps=0.138 updates=3500 (23s)
+job  44 backprop        t=  25.9s E=    832J cap=1936.7241379310344/ step=4142/5000 eps=0.134 updates=3586 (26s)
+job  45 particlefilter  t=  33.3s E=   2906J cap=2721.2162162162163/ step=4253/5000 eps=0.130 updates=3696 (33s)
+job  46 nw              t=  26.8s E=    821J cap=2115.8333333333335/ step=4343/5000 eps=0.126 updates=3785 (27s)
+job  47 bfs             t=  24.7s E=    878J cap=2401.0843373493976/ step=4426/5000 eps=0.123 updates=3867 (25s)
+job  48 backprop        t=  25.5s E=    858J cap=2144.470588235294/ step=4511/5000 eps=0.120 updates=3951 (26s)
+job  49 hotspot         t=  28.1s E=   2494J cap=2701.436170212766/ step=4605/5000 eps=0.116 updates=4044 (28s)
+job  50 pathfinder      t=  24.3s E=    254J cap=2510.0/ step=4686/5000 eps=0.113 updates=4124 (24s)
+job  51 particlefilter  t=  33.4s E=   2871J cap=2713.125/ step=4798/5000 eps=0.108 updates=4235 (34s)
+job  52 nw              t=  26.5s E=    915J cap=2515.7865168539324/ step=4887/5000 eps=0.105 updates=4323 (27s)
+job  53 bfs             t=  24.9s E=    775J cap=2006.7857142857142/ step=4971/5000 eps=0.101 updates=4406 (25s)
+job  54 huffman         t=  22.8s E=    754J cap=1965.9868421052631/ step=5047/5000 eps=0.100 updates=4481 (23s)
+saved /home/drl/project/drlcap/drlcap_repro/results/train_freq_s1_v3_20261031_120914
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793430278.885151 2550311 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 gaussian        t=  29.6s E=   2679J cap=/202.87878787878788 step=99/5000 eps=0.296 updates=0 (30s)
+job   1 huffman         t=  21.3s E=    971J cap=/229.1549295774648 step=170/5000 eps=0.293 updates=0 (21s)
+job   2 hotspot         t=  27.8s E=   2591J cap=/277.8494623655914 step=263/5000 eps=0.290 updates=0 (28s)
+job   3 particlefilter  t=  33.0s E=   2933J cap=/283.55855855855856 step=374/5000 eps=0.285 updates=0 (33s)
+job   4 nw              t=  26.9s E=   1103J cap=/229.61111111111111 step=464/5000 eps=0.281 updates=0 (27s)
+job   5 backprop        t=  24.5s E=   1054J cap=/227.3780487804878 step=546/5000 eps=0.278 updates=29 (25s)
+job   6 bfs             t=  24.5s E=    994J cap=/232.4390243902439 step=628/5000 eps=0.275 updates=110 (25s)
+job   7 pathfinder      t=  24.3s E=    271J cap=/256.91358024691357 step=709/5000 eps=0.272 updates=190 (24s)
+job   8 particlefilter  t=  33.0s E=   2886J cap=/282.1363636363636 step=819/5000 eps=0.267 updates=299 (33s)
+job   9 gaussian        t=  29.6s E=   2713J cap=/263.3838383838384 step=918/5000 eps=0.263 updates=397 (30s)
+job  10 pathfinder      t=  24.3s E=    297J cap=/263.82716049382714 step=999/5000 eps=0.260 updates=477 (24s)
+job  11 huffman         t=  21.1s E=    966J cap=/267.46478873239437 step=1070/5000 eps=0.257 updates=547 (21s)
+job  12 nw              t=  26.8s E=   1039J cap=/254.22222222222223 step=1160/5000 eps=0.254 updates=636 (27s)
+job  13 bfs             t=  24.6s E=   1006J cap=/262.9268292682927 step=1242/5000 eps=0.250 updates=717 (25s)
+job  14 backprop        t=  24.5s E=   1038J cap=/261.4024390243902 step=1324/5000 eps=0.247 updates=798 (25s)
+job  15 hotspot         t=  27.7s E=   2558J cap=/284.13978494623655 step=1417/5000 eps=0.243 updates=890 (28s)
+job  16 hotspot         t=  27.8s E=   2577J cap=/282.68817204301075 step=1510/5000 eps=0.240 updates=982 (28s)
+job  17 gaussian        t=  29.5s E=   2730J cap=/271.4141414141414 step=1609/5000 eps=0.236 updates=1080 (30s)
+job  18 bfs             t=  24.6s E=   1020J cap=/273.4756097560976 step=1691/5000 eps=0.232 updates=1161 (25s)
+job  19 pathfinder      t=  24.3s E=    275J cap=/272.5925925925926 step=1772/5000 eps=0.229 updates=1241 (24s)
+job  20 particlefilter  t=  33.1s E=   2893J cap=/284.23423423423424 step=1883/5000 eps=0.225 updates=1351 (33s)
+job  21 backprop        t=  24.8s E=   1069J cap=/268.3734939759036 step=1966/5000 eps=0.221 updates=1433 (25s)
+job  22 nw              t=  26.2s E=   1028J cap=/271.47727272727275 step=2054/5000 eps=0.218 updates=1520 (27s)
+job  23 huffman         t=  21.2s E=    950J cap=/271.9718309859155 step=2125/5000 eps=0.215 updates=1590 (21s)
+job  24 nw              t=  26.7s E=   1014J cap=/269.7752808988764 step=2214/5000 eps=0.211 updates=1678 (27s)
+job  25 huffman         t=  21.4s E=    958J cap=/274.02777777777777 step=2286/5000 eps=0.209 updates=1749 (22s)
+job  26 hotspot         t=  27.8s E=   2568J cap=/281.8279569892473 step=2379/5000 eps=0.205 updates=1841 (28s)
+job  27 backprop        t=  24.8s E=   1098J cap=/260.8433734939759 step=2462/5000 eps=0.202 updates=1923 (25s)
+job  28 pathfinder      t=  24.3s E=    256J cap=/264.6296296296296 step=2543/5000 eps=0.198 updates=2003 (24s)
+job  29 gaussian        t=  29.6s E=   2677J cap=/274.54545454545456 step=2642/5000 eps=0.194 updates=2101 (30s)
+job  30 bfs             t=  24.6s E=   1023J cap=/210.1829268292683 step=2724/5000 eps=0.191 updates=2182 (25s)
+job  31 particlefilter  t=  33.1s E=   2918J cap=/281.1711711711712 step=2835/5000 eps=0.187 updates=2292 (33s)
+job  32 gaussian        t=  29.5s E=   2688J cap=/203.33333333333334 step=2934/5000 eps=0.183 updates=2390 (30s)
+job  33 bfs             t=  24.5s E=   1029J cap=/211.82926829268294 step=3016/5000 eps=0.179 updates=2471 (25s)
+job  34 hotspot         t=  27.7s E=   2554J cap=/276.2903225806452 step=3109/5000 eps=0.176 updates=2563 (28s)
+job  35 particlefilter  t=  33.0s E=   2928J cap=/283.95454545454544 step=3219/5000 eps=0.171 updates=2672 (33s)
+job  36 backprop        t=  24.4s E=   1060J cap=/276.280487804878 step=3301/5000 eps=0.168 updates=2753 (25s)
+job  37 nw              t=  26.6s E=   1046J cap=/261.91011235955057 step=3390/5000 eps=0.164 updates=2841 (27s)
+job  38 huffman         t=  21.0s E=    930J cap=/244.0 step=3460/5000 eps=0.162 updates=2910 (21s)
+job  39 pathfinder      t=  24.2s E=    274J cap=/205.30864197530863 step=3541/5000 eps=0.158 updates=2990 (24s)
+job  40 huffman         t=  21.2s E=    935J cap=/237.95774647887325 step=3612/5000 eps=0.156 updates=3060 (21s)
+job  41 pathfinder      t=  24.2s E=    272J cap=/235.55555555555554 step=3693/5000 eps=0.152 updates=3140 (24s)
+job  42 particlefilter  t=  33.0s E=   2899J cap=/278.95454545454544 step=3803/5000 eps=0.148 updates=3249 (33s)
+job  43 nw              t=  26.2s E=   1061J cap=/206.64772727272728 step=3891/5000 eps=0.144 updates=3336 (27s)
+job  44 backprop        t=  24.4s E=   1031J cap=/194.6951219512195 step=3973/5000 eps=0.141 updates=3417 (25s)
+job  45 bfs             t=  24.7s E=   1010J cap=/159.63855421686748 step=4056/5000 eps=0.138 updates=3499 (25s)
+job  46 gaussian        t=  29.6s E=   2660J cap=/236.31313131313132 step=4155/5000 eps=0.134 updates=3597 (30s)
+job  47 hotspot         t=  27.8s E=   2588J cap=/278.8709677419355 step=4248/5000 eps=0.130 updates=3689 (28s)
+job  48 bfs             t=  24.9s E=   1070J cap=/200.72289156626505 step=4331/5000 eps=0.127 updates=3771 (25s)
+job  49 backprop        t=  24.8s E=   1053J cap=/123.79518072289157 step=4414/5000 eps=0.123 updates=3853 (25s)
+job  50 huffman         t=  21.4s E=    955J cap=/133.26388888888889 step=4486/5000 eps=0.121 updates=3924 (22s)
+job  51 gaussian        t=  29.7s E=   2642J cap=/126.56565656565657 step=4585/5000 eps=0.117 updates=4022 (30s)
+job  52 hotspot         t=  27.8s E=   2576J cap=/275.0537634408602 step=4678/5000 eps=0.113 updates=4114 (28s)
+job  53 nw              t=  26.2s E=   1050J cap=/179.77272727272728 step=4766/5000 eps=0.109 updates=4201 (27s)
+job  54 particlefilter  t=  33.0s E=   2920J cap=/271.90909090909093 step=4876/5000 eps=0.105 updates=4310 (33s)
+job  55 pathfinder      t=  24.3s E=    277J cap=/162.53086419753086 step=4957/5000 eps=0.102 updates=4390 (24s)
+job  56 nw              t=  26.9s E=   1083J cap=/168.0 step=5047/5000 eps=0.100 updates=4479 (27s)
+saved /home/drl/project/drlcap/drlcap_repro/results/train_power_s0_v3_20261031_123438
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793431805.127487 2562490 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 gaussian        t=  33.8s E=   1983J cap=2222.920353982301/168.89380530973452 step=113/5000 eps=0.296 updates=0 (34s)
+job   1 huffman         t=  22.7s E=    791J cap=2199.6710526315787/166.8815789473684 step=189/5000 eps=0.292 updates=0 (23s)
+job   2 hotspot         t=  28.3s E=   2491J cap=2682.4736842105262/270.82105263157894 step=284/5000 eps=0.289 updates=0 (29s)
+job   3 particlefilter  t=  33.2s E=   2915J cap=2735.2702702702704/282.3873873873874 step=395/5000 eps=0.284 updates=0 (33s)
+job   4 nw              t=  26.3s E=    798J cap=2226.4772727272725/163.1590909090909 step=483/5000 eps=0.281 updates=0 (27s)
+job   5 backprop        t=  25.6s E=    859J cap=2223.8372093023254/164.32558139534885 step=569/5000 eps=0.277 updates=52 (26s)
+job   6 bfs             t=  25.2s E=    816J cap=2235.535714285714/163.3452380952381 step=653/5000 eps=0.274 updates=135 (25s)
+job   7 pathfinder      t=  24.4s E=    245J cap=2228.048780487805/157.46341463414635 step=735/5000 eps=0.271 updates=216 (25s)
+job   8 particlefilter  t=  33.2s E=   2878J cap=2731.6216216216217/281.43243243243245 step=846/5000 eps=0.266 updates=326 (33s)
+job   9 gaussian        t=  34.1s E=   2001J cap=2213.2894736842104/165.9298245614035 step=960/5000 eps=0.262 updates=439 (34s)
+job  10 pathfinder      t=  24.3s E=    257J cap=2221.4634146341464/164.23170731707316 step=1042/5000 eps=0.258 updates=520 (25s)
+job  11 huffman         t=  22.3s E=    788J cap=2242.8/156.50666666666666 step=1117/5000 eps=0.255 updates=594 (23s)
+job  12 nw              t=  26.5s E=    793J cap=2198.932584269663/163.06741573033707 step=1206/5000 eps=0.252 updates=682 (27s)
+job  13 bfs             t=  24.9s E=    832J cap=2274.9397590361446/166.0 step=1289/5000 eps=0.248 updates=764 (25s)
+job  14 backprop        t=  25.3s E=    850J cap=2236.764705882353/162.61176470588236 step=1374/5000 eps=0.245 updates=848 (26s)
+job  15 hotspot         t=  28.3s E=   2483J cap=2673.9473684210525/269.7157894736842 step=1469/5000 eps=0.241 updates=942 (29s)
+job  16 hotspot         t=  28.0s E=   2542J cap=2714.840425531915/275.72340425531917 step=1563/5000 eps=0.238 updates=1035 (28s)
+job  17 gaussian        t=  34.2s E=   1966J cap=2197.8947368421054/159.71052631578948 step=1677/5000 eps=0.233 updates=1148 (34s)
+job  18 bfs             t=  24.8s E=    790J cap=2214.759036144578/161.26506024096386 step=1760/5000 eps=0.230 updates=1230 (25s)
+job  19 pathfinder      t=  24.4s E=    231J cap=2228.048780487805/158.76829268292684 step=1842/5000 eps=0.226 updates=1311 (25s)
+job  20 particlefilter  t=  33.2s E=   2863J cap=2730.4054054054054/281.43243243243245 step=1953/5000 eps=0.222 updates=1421 (33s)
+job  21 backprop        t=  25.6s E=    861J cap=2225.406976744186/163.40697674418604 step=2039/5000 eps=0.218 updates=1506 (26s)
+job  22 nw              t=  26.8s E=    812J cap=2277.0/177.05555555555554 step=2129/5000 eps=0.215 updates=1595 (27s)
+job  23 huffman         t=  22.2s E=    823J cap=2356.4189189189187/192.59459459459458 step=2203/5000 eps=0.212 updates=1668 (22s)
+job  24 nw              t=  26.7s E=    918J cap=2403.0/204.0222222222222 step=2293/5000 eps=0.208 updates=1757 (27s)
+job  25 huffman         t=  22.6s E=    808J cap=2251.184210526316/173.8421052631579 step=2369/5000 eps=0.205 updates=1832 (23s)
+job  26 hotspot         t=  28.2s E=   2494J cap=2691.8617021276596/271.79787234042556 step=2463/5000 eps=0.202 updates=1925 (28s)
+job  27 backprop        t=  25.7s E=    869J cap=2234.8255813953488/162.48837209302326 step=2549/5000 eps=0.198 updates=2010 (26s)
+job  28 pathfinder      t=  24.3s E=    249J cap=2561.6666666666665/245.55555555555554 step=2630/5000 eps=0.195 updates=2090 (24s)
+job  29 gaussian        t=  30.7s E=   2530J cap=2608.6893203883496/257.81553398058253 step=2733/5000 eps=0.191 updates=2192 (31s)
+job  30 bfs             t=  24.9s E=    799J cap=2232.6506024096384/159.33734939759037 step=2816/5000 eps=0.187 updates=2274 (25s)
+job  31 particlefilter  t=  33.3s E=   2902J cap=2730.4054054054054/281.43243243243245 step=2927/5000 eps=0.183 updates=2384 (33s)
+job  32 gaussian        t=  33.3s E=   2118J cap=2290.135135135135/183.4144144144144 step=3038/5000 eps=0.179 updates=2494 (33s)
+job  33 bfs             t=  25.2s E=    830J cap=2261.25/164.29761904761904 step=3122/5000 eps=0.175 updates=2577 (25s)
+job  34 hotspot         t=  28.5s E=   2469J cap=2664.0/268.3263157894737 step=3217/5000 eps=0.171 updates=2671 (29s)
+job  35 particlefilter  t=  33.2s E=   2925J cap=2731.6216216216217/282.14414414414415 step=3328/5000 eps=0.167 updates=2781 (33s)
+job  36 backprop        t=  25.7s E=    880J cap=2220.6976744186045/162.80232558139534 step=3414/5000 eps=0.163 updates=2866 (26s)
+job  37 nw              t=  26.8s E=    797J cap=2268.0/168.82222222222222 step=3504/5000 eps=0.160 updates=2955 (27s)
+job  38 huffman         t=  22.6s E=    784J cap=2215.657894736842/163.03947368421052 step=3580/5000 eps=0.157 updates=3030 (23s)
+job  39 pathfinder      t=  24.3s E=    270J cap=2188.5365853658536/161.02439024390245 step=3662/5000 eps=0.154 updates=3111 (25s)
+job  40 huffman         t=  22.3s E=    766J cap=2215.8/153.33333333333334 step=3737/5000 eps=0.151 updates=3185 (23s)
+job  41 pathfinder      t=  24.4s E=    253J cap=2195.121951219512/154.90243902439025 step=3819/5000 eps=0.147 updates=3266 (25s)
+job  42 particlefilter  t=  33.4s E=   2857J cap=2720.8928571428573/279.10714285714283 step=3931/5000 eps=0.143 updates=3377 (34s)
+job  43 nw              t=  26.6s E=    793J cap=2236.85393258427/163.37078651685394 step=4020/5000 eps=0.139 updates=3465 (27s)
+job  44 backprop        t=  25.7s E=    843J cap=2214.4186046511627/160.6627906976744 step=4106/5000 eps=0.136 updates=3550 (26s)
+job  45 bfs             t=  24.8s E=    786J cap=2206.626506024096/155.85542168674698 step=4189/5000 eps=0.132 updates=3632 (25s)
+job  46 gaussian        t=  30.8s E=   2467J cap=2573.3009708737864/244.24271844660194 step=4292/5000 eps=0.128 updates=3734 (31s)
+job  47 hotspot         t=  28.3s E=   2531J cap=2679.6315789473683/274.7263157894737 step=4387/5000 eps=0.125 updates=3828 (29s)
+job  48 bfs             t=  25.1s E=    797J cap=1869.107142857143/249.5 step=4471/5000 eps=0.121 updates=3911 (25s)
+job  49 backprop        t=  26.4s E=    829J cap=1849.090909090909/250.22727272727272 step=4559/5000 eps=0.118 updates=3998 (27s)
+job  50 huffman         t=  23.5s E=    773J cap=1844.4303797468353/249.91139240506328 step=4638/5000 eps=0.115 updates=4076 (24s)
+job  51 gaussian        t=  38.5s E=   1995J cap=1847.093023255814/254.45736434108528 step=4767/5000 eps=0.109 updates=4204 (39s)
+job  52 hotspot         t=  28.4s E=   2493J cap=2665.4210526315787/275.29473684210524 step=4862/5000 eps=0.106 updates=4298 (29s)
+job  53 nw              t=  26.6s E=    835J cap=2194.38202247191/228.1123595505618 step=4951/5000 eps=0.102 updates=4386 (27s)
+job  54 particlefilter  t=  33.2s E=   2883J cap=2737.7027027027025/285.0 step=5062/5000 eps=0.100 updates=4496 (33s)
+saved /home/drl/project/drlcap/drlcap_repro/results/train_hybrid_s0_v3_20261031_130005
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 gaussian        t=  33.0s E=   2196J cap=2344.090909090909/ step=110/5000 eps=0.296 updates=109 (33s)
+job   1 huffman         t=  22.5s E=    825J cap=2239.8/ step=185/5000 eps=0.293 updates=183 (23s)
+job   2 hotspot         t=  28.4s E=   2510J cap=2670.7894736842104/ step=280/5000 eps=0.289 updates=277 (29s)
+job   3 particlefilter  t=  33.3s E=   2902J cap=2724.189189189189/ step=391/5000 eps=0.284 updates=387 (33s)
+job   4 nw              t=  26.9s E=    830J cap=2282.3333333333335/ step=481/5000 eps=0.281 updates=476 (27s)
+job   5 backprop        t=  25.5s E=    911J cap=2284.5882352941176/ step=566/5000 eps=0.277 updates=560 (26s)
+job   6 bfs             t=  24.6s E=    839J cap=2289.512195121951/ step=648/5000 eps=0.274 updates=641 (25s)
+job   7 pathfinder      t=  24.3s E=    238J cap=2342.777777777778/ step=729/5000 eps=0.271 updates=721 (24s)
+job   8 particlefilter  t=  33.3s E=   2865J cap=2724.7297297297296/ step=840/5000 eps=0.266 updates=831 (33s)
+job   9 gaussian        t=  33.6s E=   2077J cap=2252.2566371681414/ step=953/5000 eps=0.262 updates=943 (34s)
+job  10 pathfinder      t=  24.4s E=    301J cap=2100.3658536585367/ step=1035/5000 eps=0.259 updates=1024 (25s)
+job  11 huffman         t=  22.3s E=    828J cap=2242.8/ step=1110/5000 eps=0.256 updates=1098 (23s)
+job  12 nw              t=  26.7s E=    814J cap=2243.4269662921347/ step=1199/5000 eps=0.252 updates=1186 (27s)
+job  13 bfs             t=  25.1s E=    837J cap=2252.6785714285716/ step=1283/5000 eps=0.249 updates=1269 (25s)
+job  14 backprop        t=  25.4s E=    868J cap=2209.235294117647/ step=1368/5000 eps=0.245 updates=1353 (26s)
+job  15 hotspot         t=  28.1s E=   2496J cap=2701.276595744681/ step=1462/5000 eps=0.242 updates=1446 (28s)
+job  16 hotspot         t=  28.1s E=   2559J cap=2702.074468085106/ step=1556/5000 eps=0.238 updates=1539 (28s)
+job  17 gaussian        t=  33.3s E=   2115J cap=2274.864864864865/ step=1667/5000 eps=0.233 updates=1649 (33s)
+job  18 bfs             t=  24.8s E=    833J cap=2208.253012048193/ step=1750/5000 eps=0.230 updates=1731 (25s)
+job  19 pathfinder      t=  24.3s E=    230J cap=2329.4444444444443/ step=1831/5000 eps=0.227 updates=1811 (24s)
+job  20 particlefilter  t=  33.5s E=   2845J cap=2705.8928571428573/ step=1943/5000 eps=0.222 updates=1922 (34s)
+job  21 backprop        t=  25.5s E=    914J cap=2247.8823529411766/ step=2028/5000 eps=0.219 updates=2006 (26s)
+job  22 nw              t=  26.3s E=    800J cap=2220.681818181818/ step=2116/5000 eps=0.215 updates=2093 (27s)
+job  23 huffman         t=  22.7s E=    825J cap=2198.684210526316/ step=2192/5000 eps=0.212 updates=2168 (23s)
+job  24 nw              t=  26.5s E=    793J cap=2212.247191011236/ step=2281/5000 eps=0.209 updates=2256 (27s)
+job  25 huffman         t=  22.5s E=    826J cap=2226.6/ step=2356/5000 eps=0.206 updates=2330 (23s)
+job  26 hotspot         t=  28.1s E=   2492J cap=2701.1170212765956/ step=2450/5000 eps=0.202 updates=2423 (28s)
+job  27 backprop        t=  25.8s E=    891J cap=2223.6627906976746/ step=2536/5000 eps=0.199 updates=2508 (26s)
+job  28 pathfinder      t=  24.3s E=    241J cap=2274.6296296296296/ step=2617/5000 eps=0.195 updates=2588 (24s)
+job  29 gaussian        t=  33.6s E=   2106J cap=2291.1160714285716/ step=2729/5000 eps=0.191 updates=2699 (34s)
+job  30 bfs             t=  24.7s E=    849J cap=2236.0843373493976/ step=2812/5000 eps=0.188 updates=2781 (25s)
+job  31 particlefilter  t=  33.2s E=   2911J cap=2729.864864864865/ step=2923/5000 eps=0.183 updates=2891 (33s)
+job  32 gaussian        t=  33.5s E=   2141J cap=2278.7946428571427/ step=3035/5000 eps=0.179 updates=3002 (34s)
+job  33 bfs             t=  25.0s E=    825J cap=2185.8928571428573/ step=3119/5000 eps=0.175 updates=3085 (25s)
+job  34 hotspot         t=  27.9s E=   2496J cap=2717.2580645161293/ step=3212/5000 eps=0.172 updates=3177 (28s)
+job  35 particlefilter  t=  33.3s E=   2933J cap=2719.285714285714/ step=3324/5000 eps=0.167 updates=3288 (34s)
+job  36 backprop        t=  25.2s E=    899J cap=2222.6785714285716/ step=3408/5000 eps=0.164 updates=3371 (25s)
+job  37 nw              t=  26.4s E=    796J cap=2220.505617977528/ step=3497/5000 eps=0.160 updates=3459 (27s)
+job  38 huffman         t=  22.3s E=    815J cap=2247.0/ step=3572/5000 eps=0.157 updates=3533 (23s)
+job  39 pathfinder      t=  24.3s E=    253J cap=2385.0/ step=3653/5000 eps=0.154 updates=3613 (24s)
+job  40 huffman         t=  22.4s E=    825J cap=2269.0/ step=3728/5000 eps=0.151 updates=3687 (23s)
+job  41 pathfinder      t=  24.2s E=    254J cap=2349.6296296296296/ step=3809/5000 eps=0.148 updates=3767 (24s)
+job  42 particlefilter  t=  33.2s E=   2847J cap=2728.9189189189187/ step=3920/5000 eps=0.143 updates=3877 (33s)
+job  43 nw              t=  26.5s E=    852J cap=2318.5955056179773/ step=4009/5000 eps=0.140 updates=3965 (27s)
+job  44 backprop        t=  25.3s E=    881J cap=2212.9411764705883/ step=4094/5000 eps=0.136 updates=4049 (26s)
+job  45 bfs             t=  24.9s E=    833J cap=2247.8313253012047/ step=4177/5000 eps=0.133 updates=4131 (25s)
+job  46 gaussian        t=  34.1s E=   2082J cap=2240.5263157894738/ step=4291/5000 eps=0.128 updates=4244 (34s)
+job  47 hotspot         t=  28.0s E=   2502J cap=2703.6702127659573/ step=4385/5000 eps=0.125 updates=4337 (28s)
+job  48 bfs             t=  24.9s E=    854J cap=2235.8928571428573/ step=4469/5000 eps=0.121 updates=4420 (25s)
+job  49 backprop        t=  25.4s E=    903J cap=2301.0/ step=4554/5000 eps=0.118 updates=4504 (26s)
+job  50 huffman         t=  22.0s E=    837J cap=2318.9189189189187/ step=4628/5000 eps=0.115 updates=4577 (22s)
+job  51 gaussian        t=  33.3s E=   2046J cap=2265.135135135135/ step=4739/5000 eps=0.110 updates=4687 (33s)
+job  52 hotspot         t=  28.0s E=   2511J cap=2704.468085106383/ step=4833/5000 eps=0.107 updates=4780 (28s)
+job  53 nw              t=  26.3s E=    802J cap=2208.068181818182/ step=4921/5000 eps=0.103 updates=4867 (27s)
+job  54 particlefilter  t=  33.3s E=   2850J cap=2722.837837837838/ step=5032/5000 eps=0.100 updates=4977 (33s)
+saved /home/drl/project/drlcap/drlcap_repro/results/train_rl_s0_v3_20261031_132535
+== main comparison Sat Oct 31 01:50:54 PM IST 2026
+GPU: NVIDIA GeForce RTX 4070 Ti
+coord profile {'workload': 'b+tree', 'time_s': 25.945007039932534, 'mean_util': 0.872093023255814, 'mean_mem_util': 0.03488372093023256, 'category': 'memory', 'cap_mhz': 1800}
+coord profile {'workload': 'dwt2d', 'time_s': 20.545241500018165, 'mean_util': 3.1791044776119404, 'mean_mem_util': 0.43283582089552236, 'category': 'memory', 'cap_mhz': 1800}
+coord profile {'workload': 'heartwall', 'time_s': 27.496754850028083, 'mean_util': 26.604395604395606, 'mean_mem_util': 2.021978021978022, 'category': 'memory', 'cap_mhz': 1800}
+coord profile {'workload': 'lavaMD', 'time_s': 31.43340966012329, 'mean_util': 79.07619047619048, 'mean_mem_util': 0.0, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'lud', 'time_s': 35.372774040093645, 'mean_util': 76.94871794871794, 'mean_mem_util': 63.452991452991455, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'myocyte', 'time_s': 24.28478498989716, 'mean_util': 65.58024691358025, 'mean_mem_util': 0.0, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'streamcluster', 'time_s': 31.160434510093182, 'mean_util': 23.728155339805824, 'mean_mem_util': 9.660194174757281, 'category': 'memory', 'cap_mhz': 1800}
+coord profile {'workload': 'vgg16', 'time_s': 35.24762636004016, 'mean_util': 47.85470085470085, 'mean_mem_util': 28.871794871794872, 'category': 'memory', 'cap_mhz': 1800}
+coord profile {'workload': 'googlenet', 'time_s': 104.2451859000139, 'mean_util': 40.81686046511628, 'mean_mem_util': 27.218023255813954, 'category': 'memory', 'cap_mhz': 1800}
+coord profile {'workload': 'resnet50', 'time_s': 61.93741406011395, 'mean_util': 41.34146341463415, 'mean_mem_util': 38.53658536585366, 'category': 'memory', 'cap_mhz': 1800}
+rep 0 b+tree          baseline     t=  25.7s E=   1060J
+rep 0 b+tree          static_2100  t=  26.3s E=    787J
+rep 0 b+tree          static_2400  t=  26.1s E=    887J
+rep 0 b+tree          coord        t=  26.6s E=    778J
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793435389.647957 2593487 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+rep 0 b+tree          drlcap       t=  25.9s E=    892J
+rep 0 b+tree          drlcap_power t=  25.9s E=   1034J
+rep 0 b+tree          drlcap_hybrid t=  26.0s E=    946J
+rep 0 b+tree          rl           t=  26.1s E=    873J
+rep 0 dwt2d           static_2100  t=  21.9s E=    711J
+rep 0 dwt2d           static_2400  t=  21.3s E=    795J
+rep 0 dwt2d           coord        t=  23.2s E=    731J
+rep 0 dwt2d           drlcap       t=  21.4s E=    816J
+rep 0 dwt2d           drlcap_power t=  20.6s E=    906J
+rep 0 dwt2d           drlcap_hybrid t=  21.4s E=    848J
+rep 0 dwt2d           rl           t=  21.8s E=    845J
+rep 0 dwt2d           baseline     t=  20.6s E=    891J
+rep 0 heartwall       static_2400  t=  27.8s E=   1426J
+rep 0 heartwall       coord        t=  28.7s E=   1262J
+rep 0 heartwall       drlcap       t=  28.2s E=   1373J
+rep 0 heartwall       drlcap_power t=  27.6s E=   1921J
+rep 0 heartwall       drlcap_hybrid t=  28.0s E=   1618J
+rep 0 heartwall       rl           t=  28.3s E=   1460J
+rep 0 heartwall       baseline     t=  27.5s E=   1931J
+rep 0 heartwall       static_2100  t=  28.0s E=   1271J
+rep 0 lavaMD          coord        t=  34.8s E=   1752J
+rep 0 lavaMD          drlcap       t=  31.6s E=   2313J
+rep 0 lavaMD          drlcap_power t=  31.4s E=   2367J
+rep 0 lavaMD          drlcap_hybrid t=  31.6s E=   2307J
+rep 0 lavaMD          rl           t=  31.8s E=   2266J
+rep 0 lavaMD          baseline     t=  31.4s E=   2350J
+rep 0 lavaMD          static_2100  t=  38.9s E=   1664J
+rep 0 lavaMD          static_2400  t=  34.8s E=   1744J
+rep 0 lud             drlcap       t=  39.1s E=   4596J
+rep 0 lud             drlcap_power t=  36.0s E=   5425J
+rep 0 lud             drlcap_hybrid t=  39.2s E=   4928J
+rep 0 lud             rl           t=  40.3s E=   4541J
+rep 0 lud             baseline     t=  35.2s E=   5733J
+rep 0 lud             static_2100  t=  42.5s E=   4048J
+rep 0 lud             static_2400  t=  38.4s E=   4374J
+rep 0 lud             coord        t=  38.5s E=   4399J
+rep 0 myocyte         drlcap_power t=  24.5s E=   1394J
+rep 0 myocyte         drlcap_hybrid t=  25.5s E=   1136J
+rep 0 myocyte         rl           t=  26.6s E=   1045J
+rep 0 myocyte         baseline     t=  24.5s E=   1349J
+rep 0 myocyte         static_2100  t=  28.4s E=    995J
+rep 0 myocyte         static_2400  t=  25.5s E=   1047J
+rep 0 myocyte         coord        t=  25.4s E=   1045J
+rep 0 myocyte         drlcap       t=  25.3s E=   1059J
+rep 0 streamcluster   drlcap_hybrid t=  35.2s E=   1189J
+rep 0 streamcluster   rl           t=  35.9s E=   1093J
+rep 0 streamcluster   baseline     t=  34.9s E=   1405J
+rep 0 streamcluster   static_2100  t=  30.3s E=    921J
+rep 0 streamcluster   static_2400  t=  34.9s E=   1130J
+rep 0 streamcluster   coord        t=  35.1s E=   1004J
+rep 0 streamcluster   drlcap       t=  36.6s E=   1173J
+rep 0 streamcluster   drlcap_power t=  35.0s E=   1446J
+rep 0 vgg16           rl           t=  37.5s E=   3373J
+rep 0 vgg16           baseline     t=  35.2s E=   4289J
+rep 0 vgg16           static_2100  t=  38.0s E=   3084J
+rep 0 vgg16           static_2400  t=  36.7s E=   3415J
+rep 0 vgg16           coord        t=  39.1s E=   2970J
+rep 0 vgg16           drlcap       t=  37.2s E=   3387J
+rep 0 vgg16           drlcap_power t=  36.4s E=   4075J
+rep 0 vgg16           drlcap_hybrid t=  37.6s E=   3553J
+rep 0 googlenet       baseline     t= 104.2s E=  11599J
+rep 0 googlenet       static_2100  t= 109.8s E=   8045J
+rep 0 googlenet       static_2400  t= 105.6s E=   9002J
+rep 0 googlenet       coord        t= 113.0s E=   8019J
+rep 0 googlenet       drlcap       t= 109.5s E=   8803J
+rep 0 googlenet       drlcap_power t= 107.6s E=  10307J
+rep 0 googlenet       drlcap_hybrid t= 108.9s E=   9533J
+rep 0 googlenet       rl           t= 106.9s E=   8841J
+rep 0 resnet50        static_2100  t=  64.3s E=   4583J
+rep 0 resnet50        static_2400  t=  62.7s E=   5133J
+rep 0 resnet50        coord        t=  64.7s E=   4484J
+rep 0 resnet50        drlcap       t=  62.0s E=   6273J
+rep 0 resnet50        drlcap_power t=  63.0s E=   5993J
+rep 0 resnet50        drlcap_hybrid t=  63.6s E=   5244J
+rep 0 resnet50        rl           t=  63.2s E=   5053J
+rep 0 resnet50        baseline     t=  61.7s E=   6787J
+rep 1 b+tree          static_2100  t=  26.2s E=    803J
+rep 1 b+tree          static_2400  t=  25.9s E=    872J
+rep 1 b+tree          coord        t=  26.5s E=    757J
+rep 1 b+tree          drlcap       t=  26.1s E=    909J
+rep 1 b+tree          drlcap_power t=  25.7s E=   1035J
+rep 1 b+tree          drlcap_hybrid t=  26.0s E=    891J
+rep 1 b+tree          rl           t=  26.2s E=    862J
+rep 1 b+tree          baseline     t=  25.8s E=   1012J
+rep 1 dwt2d           static_2400  t=  21.6s E=    801J
+rep 1 dwt2d           coord        t=  23.0s E=    723J
+rep 1 dwt2d           drlcap       t=  21.5s E=    803J
+rep 1 dwt2d           drlcap_power t=  20.6s E=    910J
+rep 1 dwt2d           drlcap_hybrid t=  21.4s E=    818J
+rep 1 dwt2d           rl           t=  22.2s E=    814J
+rep 1 dwt2d           baseline     t=  20.8s E=    895J
+rep 1 dwt2d           static_2100  t=  22.0s E=    711J
+rep 1 heartwall       coord        t=  28.6s E=   1253J
+rep 1 heartwall       drlcap       t=  28.1s E=   1465J
+rep 1 heartwall       drlcap_power t=  27.6s E=   1932J
+rep 1 heartwall       drlcap_hybrid t=  28.0s E=   1603J
+rep 1 heartwall       rl           t=  28.2s E=   1462J
+rep 1 heartwall       baseline     t=  27.5s E=   1910J
+rep 1 heartwall       static_2100  t=  28.2s E=   1269J
+rep 1 heartwall       static_2400  t=  27.9s E=   1438J
+rep 1 lavaMD          drlcap       t=  31.7s E=   2262J
+rep 1 lavaMD          drlcap_power t=  31.5s E=   2371J
+rep 1 lavaMD          drlcap_hybrid t=  31.7s E=   2283J
+rep 1 lavaMD          rl           t=  32.0s E=   2261J
+rep 1 lavaMD          baseline     t=  31.4s E=   2325J
+rep 1 lavaMD          static_2100  t=  39.0s E=   1677J
+rep 1 lavaMD          static_2400  t=  34.8s E=   1749J
+rep 1 lavaMD          coord        t=  34.9s E=   1751J
+rep 1 lud             drlcap_power t=  37.2s E=   5169J
+rep 1 lud             drlcap_hybrid t=  38.4s E=   4887J
+rep 1 lud             rl           t=  39.9s E=   4634J
+rep 1 lud             baseline     t=  35.3s E=   5780J
+rep 1 lud             static_2100  t=  42.2s E=   4010J
+rep 1 lud             static_2400  t=  38.3s E=   4382J
+rep 1 lud             coord        t=  38.5s E=   4403J
+rep 1 lud             drlcap       t=  38.7s E=   4616J
+rep 1 myocyte         drlcap_hybrid t=  25.0s E=   1132J
+rep 1 myocyte         rl           t=  27.5s E=   1078J
+rep 1 myocyte         baseline     t=  24.3s E=   1331J
+rep 1 myocyte         static_2100  t=  28.2s E=    985J
+rep 1 myocyte         static_2400  t=  25.2s E=   1032J
+rep 1 myocyte         coord        t=  25.5s E=   1044J
+rep 1 myocyte         drlcap       t=  25.1s E=   1046J
+rep 1 myocyte         drlcap_power t=  24.6s E=   1377J
+rep 1 streamcluster   rl           t=  34.5s E=   1057J
+rep 1 streamcluster   baseline     t=  34.2s E=   1391J
+rep 1 streamcluster   static_2100  t=  37.1s E=   1032J
+rep 1 streamcluster   static_2400  t=  35.8s E=   1094J
+rep 1 streamcluster   coord        t=  36.9s E=   1006J
+rep 1 streamcluster   drlcap       t=  36.9s E=   1160J
+rep 1 streamcluster   drlcap_power t=  36.6s E=   1426J
+rep 1 streamcluster   drlcap_hybrid t=  30.3s E=   1068J
+rep 1 vgg16           baseline     t=  35.2s E=   4305J
+rep 1 vgg16           static_2100  t=  37.6s E=   3023J
+rep 1 vgg16           static_2400  t=  36.4s E=   3413J
+rep 1 vgg16           coord        t=  39.2s E=   3020J
+rep 1 vgg16           drlcap       t=  36.2s E=   3641J
+rep 1 vgg16           drlcap_power t=  37.2s E=   3782J
+rep 1 vgg16           drlcap_hybrid t=  37.7s E=   3404J
+rep 1 vgg16           rl           t=  36.9s E=   3395J
+rep 1 googlenet       static_2100  t= 109.2s E=   8025J
+rep 1 googlenet       static_2400  t= 105.9s E=   8986J
+rep 1 googlenet       coord        t= 114.5s E=   8057J
+rep 1 googlenet       drlcap       t= 105.8s E=   9461J
+rep 1 googlenet       drlcap_power t= 105.1s E=  10355J
+rep 1 googlenet       drlcap_hybrid t= 107.8s E=  10269J
+rep 1 googlenet       rl           t= 108.6s E=   8957J
+rep 1 googlenet       baseline     t= 102.4s E=  11570J
+rep 1 resnet50        static_2400  t=  62.3s E=   5145J
+rep 1 resnet50        coord        t=  64.8s E=   4458J
+rep 1 resnet50        drlcap       t=  61.9s E=   5955J
+rep 1 resnet50        drlcap_power t=  61.9s E=   6477J
+rep 1 resnet50        drlcap_hybrid t=  64.0s E=   6042J
+rep 1 resnet50        rl           t=  62.8s E=   5216J
+rep 1 resnet50        baseline     t=  61.2s E=   6793J
+rep 1 resnet50        static_2100  t=  63.6s E=   4572J
+rep 2 b+tree          static_2400  t=  26.2s E=    898J
+rep 2 b+tree          coord        t=  26.4s E=    774J
+rep 2 b+tree          drlcap       t=  26.0s E=    855J
+rep 2 b+tree          drlcap_power t=  26.0s E=   1058J
+rep 2 b+tree          drlcap_hybrid t=  26.0s E=    953J
+rep 2 b+tree          rl           t=  26.5s E=    847J
+rep 2 b+tree          baseline     t=  25.8s E=   1036J
+rep 2 b+tree          static_2100  t=  26.4s E=    797J
+rep 2 dwt2d           coord        t=  22.9s E=    726J
+rep 2 dwt2d           drlcap       t=  21.7s E=    819J
+rep 2 dwt2d           drlcap_power t=  20.6s E=    914J
+rep 2 dwt2d           drlcap_hybrid t=  21.8s E=    870J
+rep 2 dwt2d           rl           t=  22.0s E=    811J
+rep 2 dwt2d           baseline     t=  20.6s E=    898J
+rep 2 dwt2d           static_2100  t=  21.9s E=    713J
+rep 2 dwt2d           static_2400  t=  21.6s E=    806J
+rep 2 heartwall       drlcap       t=  28.1s E=   1446J
+rep 2 heartwall       drlcap_power t=  27.8s E=   1910J
+rep 2 heartwall       drlcap_hybrid t=  28.0s E=   1639J
+rep 2 heartwall       rl           t=  28.4s E=   1465J
+rep 2 heartwall       baseline     t=  27.6s E=   1908J
+rep 2 heartwall       static_2100  t=  28.1s E=   1277J
+rep 2 heartwall       static_2400  t=  27.9s E=   1448J
+rep 2 heartwall       coord        t=  28.7s E=   1278J
+rep 2 lavaMD          drlcap_power t=  31.5s E=   2366J
+rep 2 lavaMD          drlcap_hybrid t=  31.8s E=   2291J
+rep 2 lavaMD          rl           t=  32.0s E=   2284J
+rep 2 lavaMD          baseline     t=  31.4s E=   2323J
+rep 2 lavaMD          static_2100  t=  39.0s E=   1666J
+rep 2 lavaMD          static_2400  t=  34.9s E=   1741J
+rep 2 lavaMD          coord        t=  34.9s E=   1749J
+rep 2 lavaMD          drlcap       t=  31.8s E=   2269J
+rep 2 lud             drlcap_hybrid t=  38.2s E=   4986J
+rep 2 lud             rl           t=  40.7s E=   4494J
+rep 2 lud             baseline     t=  35.2s E=   5742J
+rep 2 lud             static_2100  t=  42.3s E=   4047J
+rep 2 lud             static_2400  t=  38.4s E=   4423J
+rep 2 lud             coord        t=  38.4s E=   4392J
+rep 2 lud             drlcap       t=  38.6s E=   4697J
+rep 2 lud             drlcap_power t=  36.4s E=   5355J
+rep 2 myocyte         rl           t=  26.9s E=   1090J
+rep 2 myocyte         baseline     t=  24.6s E=   1357J
+rep 2 myocyte         static_2100  t=  28.1s E=    988J
+rep 2 myocyte         static_2400  t=  25.6s E=   1054J
+rep 2 myocyte         coord        t=  25.3s E=   1041J
+rep 2 myocyte         drlcap       t=  25.5s E=   1061J
+rep 2 myocyte         drlcap_power t=  24.6s E=   1389J
+rep 2 myocyte         drlcap_hybrid t=  25.4s E=   1109J
+rep 2 streamcluster   baseline     t=  36.7s E=   1416J
+rep 2 streamcluster   static_2100  t=  35.8s E=    996J
+rep 2 streamcluster   static_2400  t=  36.6s E=   1134J
+rep 2 streamcluster   coord        t=  31.3s E=    908J
+rep 2 streamcluster   drlcap       t=  36.2s E=   1104J
+rep 2 streamcluster   drlcap_power t=  31.3s E=   1319J
+rep 2 streamcluster   drlcap_hybrid t=  33.4s E=   1129J
+rep 2 streamcluster   rl           t=  35.5s E=   1109J
+rep 2 vgg16           static_2100  t=  37.8s E=   2985J
+rep 2 vgg16           static_2400  t=  36.4s E=   3392J
+rep 2 vgg16           coord        t=  39.4s E=   2990J
+rep 2 vgg16           drlcap       t=  37.1s E=   3231J
+rep 2 vgg16           drlcap_power t=  36.4s E=   4010J
+rep 2 vgg16           drlcap_hybrid t=  36.8s E=   3764J
+rep 2 vgg16           rl           t=  37.4s E=   3367J
+rep 2 vgg16           baseline     t=  35.8s E=   4326J
+rep 2 googlenet       static_2400  t= 106.7s E=   9047J
+rep 2 googlenet       coord        t= 113.8s E=   8018J
+rep 2 googlenet       drlcap       t= 107.5s E=   8964J
+rep 2 googlenet       drlcap_power t= 106.8s E=  10355J
+rep 2 googlenet       drlcap_hybrid t= 110.2s E=   8530J
+rep 2 googlenet       rl           t= 108.7s E=   9139J
+rep 2 googlenet       baseline     t= 103.3s E=  11626J
+rep 2 googlenet       static_2100  t= 110.0s E=   8044J
+rep 2 resnet50        coord        t=  64.9s E=   4518J
+rep 2 resnet50        drlcap       t=  62.8s E=   5506J
+rep 2 resnet50        drlcap_power t=  62.7s E=   6498J
+rep 2 resnet50        drlcap_hybrid t=  63.1s E=   5802J
+rep 2 resnet50        rl           t=  62.7s E=   5148J
+rep 2 resnet50        baseline     t=  61.3s E=   6791J
+rep 2 resnet50        static_2100  t=  63.3s E=   4566J
+rep 2 resnet50        static_2400  t=  62.4s E=   5122J
+rep 3 b+tree          coord        t=  26.7s E=    799J
+rep 3 b+tree          drlcap       t=  26.3s E=    893J
+rep 3 b+tree          drlcap_power t=  25.8s E=   1026J
+rep 3 b+tree          drlcap_hybrid t=  26.2s E=    906J
+rep 3 b+tree          rl           t=  26.4s E=    874J
+rep 3 b+tree          baseline     t=  26.0s E=   1010J
+rep 3 b+tree          static_2100  t=  26.3s E=    786J
+rep 3 b+tree          static_2400  t=  26.1s E=    883J
+rep 3 dwt2d           drlcap       t=  21.4s E=    842J
+rep 3 dwt2d           drlcap_power t=  20.7s E=    907J
+rep 3 dwt2d           drlcap_hybrid t=  21.2s E=    844J
+rep 3 dwt2d           rl           t=  22.0s E=    800J
+rep 3 dwt2d           baseline     t=  20.5s E=    878J
+rep 3 dwt2d           static_2100  t=  21.9s E=    708J
+rep 3 dwt2d           static_2400  t=  21.2s E=    789J
+rep 3 dwt2d           coord        t=  22.8s E=    721J
+rep 3 heartwall       drlcap_power t=  27.6s E=   1911J
+rep 3 heartwall       drlcap_hybrid t=  28.1s E=   1560J
+rep 3 heartwall       rl           t=  28.3s E=   1404J
+rep 3 heartwall       baseline     t=  27.3s E=   1918J
+rep 3 heartwall       static_2100  t=  28.1s E=   1263J
+rep 3 heartwall       static_2400  t=  27.8s E=   1438J
+rep 3 heartwall       coord        t=  28.5s E=   1271J
+rep 3 heartwall       drlcap       t=  28.0s E=   1501J
+rep 3 lavaMD          drlcap_hybrid t=  31.7s E=   2286J
+rep 3 lavaMD          rl           t=  31.8s E=   2318J
+rep 3 lavaMD          baseline     t=  31.4s E=   2338J
+rep 3 lavaMD          static_2100  t=  39.0s E=   1671J
+rep 3 lavaMD          static_2400  t=  34.9s E=   1747J
+rep 3 lavaMD          coord        t=  34.8s E=   1740J
+rep 3 lavaMD          drlcap       t=  31.7s E=   2286J
+rep 3 lavaMD          drlcap_power t=  31.4s E=   2377J
+rep 3 lud             rl           t=  40.0s E=   4568J
+rep 3 lud             baseline     t=  35.3s E=   5765J
+rep 3 lud             static_2100  t=  42.3s E=   4051J
+rep 3 lud             static_2400  t=  38.5s E=   4417J
+rep 3 lud             coord        t=  38.6s E=   4395J
+rep 3 lud             drlcap       t=  40.2s E=   4375J
+rep 3 lud             drlcap_power t=  37.0s E=   5186J
+rep 3 lud             drlcap_hybrid t=  37.6s E=   5052J
+rep 3 myocyte         baseline     t=  24.6s E=   1380J
+rep 3 myocyte         static_2100  t=  28.5s E=   1001J
+rep 3 myocyte         static_2400  t=  25.6s E=   1044J
+rep 3 myocyte         coord        t=  25.5s E=   1048J
+rep 3 myocyte         drlcap       t=  25.2s E=   1039J
+rep 3 myocyte         drlcap_power t=  24.5s E=   1383J
+rep 3 myocyte         drlcap_hybrid t=  25.0s E=   1114J
+rep 3 myocyte         rl           t=  26.6s E=   1083J
+rep 3 streamcluster   static_2100  t=  37.7s E=   1047J
+rep 3 streamcluster   static_2400  t=  30.9s E=   1017J
+rep 3 streamcluster   coord        t=  36.9s E=   1001J
+rep 3 streamcluster   drlcap       t=  36.8s E=   1158J
+rep 3 streamcluster   drlcap_power t=  34.9s E=   1424J
+rep 3 streamcluster   drlcap_hybrid t=  31.7s E=   1091J
+rep 3 streamcluster   rl           t=  36.8s E=   1157J
+rep 3 streamcluster   baseline     t=  34.9s E=   1407J
+rep 3 vgg16           static_2400  t=  36.5s E=   3364J
+rep 3 vgg16           coord        t=  39.2s E=   2984J
+rep 3 vgg16           drlcap       t=  37.1s E=   3327J
+rep 3 vgg16           drlcap_power t=  38.5s E=   3838J
+rep 3 vgg16           drlcap_hybrid t=  36.9s E=   3744J
+rep 3 vgg16           rl           t=  37.2s E=   3429J
+rep 3 vgg16           baseline     t=  35.4s E=   4336J
+rep 3 vgg16           static_2100  t=  37.7s E=   3005J
+rep 3 googlenet       coord        t= 114.2s E=   8024J
+rep 3 googlenet       drlcap       t= 106.3s E=   9399J
+rep 3 googlenet       drlcap_power t= 104.8s E=  10751J
+rep 3 googlenet       drlcap_hybrid t= 108.7s E=   9373J
+rep 3 googlenet       rl           t= 108.3s E=   9094J
+rep 3 googlenet       baseline     t= 104.7s E=  11616J
+rep 3 googlenet       static_2100  t= 109.3s E=   8025J
+rep 3 googlenet       static_2400  t= 107.5s E=   9078J
+rep 3 resnet50        drlcap       t=  64.0s E=   5178J
+rep 3 resnet50        drlcap_power t=  62.9s E=   6171J
+rep 3 resnet50        drlcap_hybrid t=  64.5s E=   5118J
+rep 3 resnet50        rl           t=  63.3s E=   5023J
+rep 3 resnet50        baseline     t=  62.1s E=   6779J
+rep 3 resnet50        static_2100  t=  63.3s E=   4558J
+rep 3 resnet50        static_2400  t=  62.5s E=   5141J
+rep 3 resnet50        coord        t=  65.1s E=   4545J
+rep 4 b+tree          drlcap       t=  26.2s E=    898J
+rep 4 b+tree          drlcap_power t=  25.8s E=   1039J
+rep 4 b+tree          drlcap_hybrid t=  26.0s E=    940J
+rep 4 b+tree          rl           t=  26.1s E=    874J
+rep 4 b+tree          baseline     t=  25.9s E=   1035J
+rep 4 b+tree          static_2100  t=  26.3s E=    794J
+rep 4 b+tree          static_2400  t=  25.9s E=    887J
+rep 4 b+tree          coord        t=  26.5s E=    779J
+rep 4 dwt2d           drlcap_power t=  20.5s E=    901J
+rep 4 dwt2d           drlcap_hybrid t=  21.3s E=    848J
+rep 4 dwt2d           rl           t=  22.0s E=    790J
+rep 4 dwt2d           baseline     t=  20.6s E=    894J
+rep 4 dwt2d           static_2100  t=  21.9s E=    720J
+rep 4 dwt2d           static_2400  t=  21.2s E=    792J
+rep 4 dwt2d           coord        t=  23.0s E=    730J
+rep 4 dwt2d           drlcap       t=  21.3s E=    797J
+rep 4 heartwall       drlcap_hybrid t=  28.1s E=   1520J
+rep 4 heartwall       rl           t=  28.2s E=   1423J
+rep 4 heartwall       baseline     t=  27.6s E=   1909J
+rep 4 heartwall       static_2100  t=  28.2s E=   1278J
+rep 4 heartwall       static_2400  t=  27.9s E=   1426J
+rep 4 heartwall       coord        t=  28.7s E=   1275J
+rep 4 heartwall       drlcap       t=  28.1s E=   1465J
+rep 4 heartwall       drlcap_power t=  27.6s E=   1947J
+rep 4 lavaMD          rl           t=  31.8s E=   2297J
+rep 4 lavaMD          baseline     t=  31.4s E=   2357J
+rep 4 lavaMD          static_2100  t=  39.0s E=   1664J
+rep 4 lavaMD          static_2400  t=  34.8s E=   1747J
+rep 4 lavaMD          coord        t=  34.8s E=   1743J
+rep 4 lavaMD          drlcap       t=  31.7s E=   2271J
+rep 4 lavaMD          drlcap_power t=  31.4s E=   2377J
+rep 4 lavaMD          drlcap_hybrid t=  31.6s E=   2325J
+rep 4 lud             baseline     t=  35.2s E=   5765J
+rep 4 lud             static_2100  t=  42.3s E=   4063J
+rep 4 lud             static_2400  t=  38.3s E=   4404J
+rep 4 lud             coord        t=  38.4s E=   4384J
+rep 4 lud             drlcap       t=  39.3s E=   4451J
+rep 4 lud             drlcap_power t=  37.1s E=   5273J
+rep 4 lud             drlcap_hybrid t=  41.0s E=   4666J
+rep 4 lud             rl           t=  39.6s E=   4668J
+rep 4 myocyte         static_2100  t=  28.0s E=   1002J
+rep 4 myocyte         static_2400  t=  25.2s E=   1023J
+rep 4 myocyte         coord        t=  25.4s E=   1040J
+rep 4 myocyte         drlcap       t=  25.1s E=   1047J
+rep 4 myocyte         drlcap_power t=  24.3s E=   1346J
+rep 4 myocyte         drlcap_hybrid t=  25.3s E=   1135J
+rep 4 myocyte         rl           t=  26.8s E=   1076J
+rep 4 myocyte         baseline     t=  24.5s E=   1351J
+rep 4 streamcluster   static_2400  t=  35.1s E=   1136J
+rep 4 streamcluster   coord        t=  31.6s E=    922J
+rep 4 streamcluster   drlcap       t=  30.6s E=   1064J
+rep 4 streamcluster   drlcap_power t=  36.5s E=   1442J
+rep 4 streamcluster   drlcap_hybrid t=  37.1s E=   1213J
+rep 4 streamcluster   rl           t=  37.9s E=   1172J
+rep 4 streamcluster   baseline     t=  34.4s E=   1322J
+rep 4 streamcluster   static_2100  t=  36.6s E=   1023J
+rep 4 vgg16           coord        t=  39.0s E=   2962J
+rep 4 vgg16           drlcap       t=  36.5s E=   3443J
+rep 4 vgg16           drlcap_power t=  37.8s E=   3894J
+rep 4 vgg16           drlcap_hybrid t=  37.5s E=   3753J
+rep 4 vgg16           rl           t=  37.1s E=   3446J
+rep 4 vgg16           baseline     t=  35.7s E=   4331J
+rep 4 vgg16           static_2100  t=  38.1s E=   3033J
+rep 4 vgg16           static_2400  t=  36.4s E=   3350J
+rep 4 googlenet       drlcap       t= 107.9s E=   9575J
+rep 4 googlenet       drlcap_power t= 109.7s E=  10062J
+rep 4 googlenet       drlcap_hybrid t= 114.9s E=   9669J
+rep 4 googlenet       rl           t= 107.3s E=   8968J
+rep 4 googlenet       baseline     t= 104.9s E=  11618J
+rep 4 googlenet       static_2100  t= 109.0s E=   7998J
+rep 4 googlenet       static_2400  t= 106.1s E=   9003J
+rep 4 googlenet       coord        t= 114.6s E=   8009J
+rep 4 resnet50        drlcap_power t=  64.2s E=   6267J
+rep 4 resnet50        drlcap_hybrid t=  63.2s E=   5444J
+rep 4 resnet50        rl           t=  63.2s E=   5115J
+rep 4 resnet50        baseline     t=  61.3s E=   6808J
+rep 4 resnet50        static_2100  t=  63.9s E=   4636J
+rep 4 resnet50        static_2400  t=  62.2s E=   5129J
+rep 4 resnet50        coord        t=  64.7s E=   4524J
+rep 4 resnet50        drlcap       t=  63.1s E=   5008J
+rep 5 b+tree          drlcap_power t=  25.8s E=   1087J
+rep 5 b+tree          drlcap_hybrid t=  26.1s E=    917J
+rep 5 b+tree          rl           t=  26.1s E=    860J
+rep 5 b+tree          baseline     t=  25.8s E=   1024J
+rep 5 b+tree          static_2100  t=  26.1s E=    777J
+rep 5 b+tree          static_2400  t=  25.8s E=    870J
+rep 5 b+tree          coord        t=  26.5s E=    764J
+rep 5 b+tree          drlcap       t=  25.9s E=    930J
+rep 5 dwt2d           drlcap_hybrid t=  21.1s E=    847J
+rep 5 dwt2d           rl           t=  22.1s E=    807J
+rep 5 dwt2d           baseline     t=  20.7s E=    895J
+rep 5 dwt2d           static_2100  t=  22.0s E=    713J
+rep 5 dwt2d           static_2400  t=  21.3s E=    792J
+rep 5 dwt2d           coord        t=  23.2s E=    728J
+rep 5 dwt2d           drlcap       t=  21.8s E=    779J
+rep 5 dwt2d           drlcap_power t=  20.8s E=    906J
+rep 5 heartwall       rl           t=  28.4s E=   1407J
+rep 5 heartwall       baseline     t=  27.6s E=   1893J
+rep 5 heartwall       static_2100  t=  28.1s E=   1274J
+rep 5 heartwall       static_2400  t=  27.9s E=   1425J
+rep 5 heartwall       coord        t=  28.6s E=   1250J
+rep 5 heartwall       drlcap       t=  28.1s E=   1531J
+rep 5 heartwall       drlcap_power t=  27.7s E=   1924J
+rep 5 heartwall       drlcap_hybrid t=  28.1s E=   1632J
+rep 5 lavaMD          baseline     t=  31.4s E=   2331J
+rep 5 lavaMD          static_2100  t=  38.9s E=   1681J
+rep 5 lavaMD          static_2400  t=  34.8s E=   1737J
+rep 5 lavaMD          coord        t=  34.9s E=   1746J
+rep 5 lavaMD          drlcap       t=  31.6s E=   2282J
+rep 5 lavaMD          drlcap_power t=  31.5s E=   2358J
+rep 5 lavaMD          drlcap_hybrid t=  31.7s E=   2295J
+rep 5 lavaMD          rl           t=  31.9s E=   2303J
+rep 5 lud             static_2100  t=  42.4s E=   4056J
+rep 5 lud             static_2400  t=  38.4s E=   4393J
+rep 5 lud             coord        t=  38.4s E=   4402J
+rep 5 lud             drlcap       t=  38.2s E=   4885J
+rep 5 lud             drlcap_power t=  36.6s E=   5415J
+rep 5 lud             drlcap_hybrid t=  37.3s E=   5096J
+rep 5 lud             rl           t=  40.7s E=   4490J
+rep 5 lud             baseline     t=  35.1s E=   5741J
+rep 5 myocyte         static_2400  t=  25.2s E=   1048J
+rep 5 myocyte         coord        t=  25.4s E=   1035J
+rep 5 myocyte         drlcap       t=  25.3s E=   1041J
+rep 5 myocyte         drlcap_power t=  24.5s E=   1366J
+rep 5 myocyte         drlcap_hybrid t=  25.5s E=   1110J
+rep 5 myocyte         rl           t=  26.9s E=   1085J
+rep 5 myocyte         baseline     t=  24.7s E=   1366J
+rep 5 myocyte         static_2100  t=  28.1s E=    988J
+rep 5 streamcluster   coord        t=  31.5s E=    908J
+rep 5 streamcluster   drlcap       t=  30.5s E=   1044J
+rep 5 streamcluster   drlcap_power t=  31.6s E=   1303J
+rep 5 streamcluster   drlcap_hybrid t=  33.1s E=   1093J
+rep 5 streamcluster   rl           t=  31.4s E=   1045J
+rep 5 streamcluster   baseline     t=  31.3s E=   1279J
+rep 5 streamcluster   static_2100  t=  34.4s E=   1007J
+rep 5 streamcluster   static_2400  t=  34.5s E=   1118J
+rep 5 vgg16           drlcap       t=  36.9s E=   3211J
+rep 5 vgg16           drlcap_power t=  37.3s E=   4040J
+rep 5 vgg16           drlcap_hybrid t=  37.9s E=   3356J
+rep 5 vgg16           rl           t=  37.2s E=   3420J
+rep 5 vgg16           baseline     t=  35.3s E=   4338J
+rep 5 vgg16           static_2100  t=  37.9s E=   3025J
+rep 5 vgg16           static_2400  t=  36.3s E=   3375J
+rep 5 vgg16           coord        t=  39.3s E=   3013J
+rep 5 googlenet       drlcap_power t= 107.6s E=  10815J
+rep 5 googlenet       drlcap_hybrid t= 107.6s E=   9122J
+rep 5 googlenet       rl           t= 107.1s E=   8986J
+rep 5 googlenet       baseline     t= 104.9s E=  11675J
+rep 5 googlenet       static_2100  t= 109.0s E=   8018J
+rep 5 googlenet       static_2400  t= 106.0s E=   9022J
+rep 5 googlenet       coord        t= 113.6s E=   8054J
+rep 5 googlenet       drlcap       t= 107.0s E=   9564J
+rep 5 resnet50        drlcap_hybrid t=  63.8s E=   5289J
+rep 5 resnet50        rl           t=  62.9s E=   5206J
+rep 5 resnet50        baseline     t=  61.9s E=   6784J
+rep 5 resnet50        static_2100  t=  63.5s E=   4593J
+rep 5 resnet50        static_2400  t=  62.2s E=   5135J
+rep 5 resnet50        coord        t=  65.3s E=   4536J
+rep 5 resnet50        drlcap       t=  62.5s E=   5668J
+rep 5 resnet50        drlcap_power t=  62.7s E=   6605J
+rep 6 b+tree          drlcap_hybrid t=  26.0s E=    967J
+rep 6 b+tree          rl           t=  26.2s E=    847J
+rep 6 b+tree          baseline     t=  25.7s E=   1017J
+rep 6 b+tree          static_2100  t=  26.0s E=    773J
+rep 6 b+tree          static_2400  t=  26.1s E=    877J
+rep 6 b+tree          coord        t=  26.7s E=    777J
+rep 6 b+tree          drlcap       t=  26.1s E=    904J
+rep 6 b+tree          drlcap_power t=  25.8s E=   1013J
+rep 6 dwt2d           rl           t=  22.4s E=    791J
+rep 6 dwt2d           baseline     t=  20.5s E=    896J
+rep 6 dwt2d           static_2100  t=  22.0s E=    710J
+rep 6 dwt2d           static_2400  t=  21.3s E=    784J
+rep 6 dwt2d           coord        t=  22.7s E=    712J
+rep 6 dwt2d           drlcap       t=  21.2s E=    814J
+rep 6 dwt2d           drlcap_power t=  21.4s E=    940J
+rep 6 dwt2d           drlcap_hybrid t=  21.8s E=    811J
+rep 6 heartwall       baseline     t=  27.5s E=   1886J
+rep 6 heartwall       static_2100  t=  28.1s E=   1263J
+rep 6 heartwall       static_2400  t=  27.9s E=   1430J
+rep 6 heartwall       coord        t=  28.6s E=   1257J
+rep 6 heartwall       drlcap       t=  28.1s E=   1495J
+rep 6 heartwall       drlcap_power t=  27.4s E=   1966J
+rep 6 heartwall       drlcap_hybrid t=  28.0s E=   1536J
+rep 6 heartwall       rl           t=  28.2s E=   1488J
+rep 6 lavaMD          static_2100  t=  38.9s E=   1665J
+rep 6 lavaMD          static_2400  t=  34.9s E=   1745J
+rep 6 lavaMD          coord        t=  34.9s E=   1748J
+rep 6 lavaMD          drlcap       t=  31.7s E=   2272J
+rep 6 lavaMD          drlcap_power t=  31.4s E=   2382J
+rep 6 lavaMD          drlcap_hybrid t=  31.4s E=   2299J
+rep 6 lavaMD          rl           t=  31.8s E=   2272J
+rep 6 lavaMD          baseline     t=  31.5s E=   2334J
+rep 6 lud             static_2400  t=  38.4s E=   4392J
+rep 6 lud             coord        t=  38.5s E=   4389J
+rep 6 lud             drlcap       t=  40.0s E=   4472J
+rep 6 lud             drlcap_power t=  36.2s E=   5512J
+rep 6 lud             drlcap_hybrid t=  40.4s E=   4628J
+rep 6 lud             rl           t=  40.6s E=   4494J
+rep 6 lud             baseline     t=  35.2s E=   5762J
+rep 6 lud             static_2100  t=  42.4s E=   4039J
+rep 6 myocyte         coord        t=  25.3s E=   1046J
+rep 6 myocyte         drlcap       t=  25.2s E=   1040J
+rep 6 myocyte         drlcap_power t=  24.6s E=   1362J
+rep 6 myocyte         drlcap_hybrid t=  25.2s E=   1095J
+rep 6 myocyte         rl           t=  26.4s E=   1069J
+rep 6 myocyte         baseline     t=  24.6s E=   1357J
+rep 6 myocyte         static_2100  t=  28.5s E=    995J
+rep 6 myocyte         static_2400  t=  25.5s E=   1048J
+rep 6 streamcluster   drlcap       t=  34.8s E=   1171J
+rep 6 streamcluster   drlcap_power t=  30.4s E=   1284J
+rep 6 streamcluster   drlcap_hybrid t=  35.3s E=   1196J
+rep 6 streamcluster   rl           t=  36.2s E=   1123J
+rep 6 streamcluster   baseline     t=  34.1s E=   1384J
+rep 6 streamcluster   static_2100  t=  33.7s E=    955J
+rep 6 streamcluster   static_2400  t=  31.8s E=   1036J
+rep 6 streamcluster   coord        t=  36.6s E=   1004J
+rep 6 vgg16           drlcap_power t=  36.5s E=   3813J
+rep 6 vgg16           drlcap_hybrid t=  37.2s E=   3766J
+rep 6 vgg16           rl           t=  37.4s E=   3417J
+rep 6 vgg16           baseline     t=  35.4s E=   4349J
+rep 6 vgg16           static_2100  t=  37.3s E=   3026J
+rep 6 vgg16           static_2400  t=  36.3s E=   3401J
+rep 6 vgg16           coord        t=  39.4s E=   3023J
+rep 6 vgg16           drlcap       t=  37.0s E=   3283J
+rep 6 googlenet       drlcap_hybrid t= 108.1s E=   9079J
+rep 6 googlenet       rl           t= 108.7s E=   9162J
+rep 6 googlenet       baseline     t= 104.8s E=  11651J
+rep 6 googlenet       static_2100  t= 109.1s E=   8007J
+rep 6 googlenet       static_2400  t= 105.8s E=   9000J
+rep 6 googlenet       coord        t= 113.4s E=   8009J
+rep 6 googlenet       drlcap       t= 106.3s E=   9161J
+rep 6 googlenet       drlcap_power t= 105.7s E=  10316J
+rep 6 resnet50        rl           t=  63.6s E=   5210J
+rep 6 resnet50        baseline     t=  60.9s E=   6794J
+rep 6 resnet50        static_2100  t=  63.2s E=   4537J
+rep 6 resnet50        static_2400  t=  62.4s E=   5148J
+rep 6 resnet50        coord        t=  65.4s E=   4492J
+rep 6 resnet50        drlcap       t=  63.1s E=   5002J
+rep 6 resnet50        drlcap_power t=  62.4s E=   5911J
+rep 6 resnet50        drlcap_hybrid t=  62.6s E=   6127J
+rep 7 b+tree          rl           t=  26.3s E=    871J
+rep 7 b+tree          baseline     t=  25.9s E=   1023J
+rep 7 b+tree          static_2100  t=  26.0s E=    783J
+rep 7 b+tree          static_2400  t=  26.1s E=    884J
+rep 7 b+tree          coord        t=  26.6s E=    771J
+rep 7 b+tree          drlcap       t=  26.0s E=    887J
+rep 7 b+tree          drlcap_power t=  25.8s E=   1029J
+rep 7 b+tree          drlcap_hybrid t=  25.9s E=    969J
+rep 7 dwt2d           baseline     t=  20.6s E=    899J
+rep 7 dwt2d           static_2100  t=  22.1s E=    714J
+rep 7 dwt2d           static_2400  t=  21.2s E=    785J
+rep 7 dwt2d           coord        t=  22.8s E=    714J
+rep 7 dwt2d           drlcap       t=  21.5s E=    779J
+rep 7 dwt2d           drlcap_power t=  20.7s E=    911J
+rep 7 dwt2d           drlcap_hybrid t=  21.4s E=    838J
+rep 7 dwt2d           rl           t=  22.1s E=    802J
+rep 7 heartwall       static_2100  t=  28.1s E=   1256J
+rep 7 heartwall       static_2400  t=  28.0s E=   1427J
+rep 7 heartwall       coord        t=  28.6s E=   1251J
+rep 7 heartwall       drlcap       t=  28.1s E=   1401J
+rep 7 heartwall       drlcap_power t=  27.6s E=   1916J
+rep 7 heartwall       drlcap_hybrid t=  28.0s E=   1674J
+rep 7 heartwall       rl           t=  28.3s E=   1441J
+rep 7 heartwall       baseline     t=  27.4s E=   1918J
+rep 7 lavaMD          static_2400  t=  34.8s E=   1749J
+rep 7 lavaMD          coord        t=  34.8s E=   1745J
+rep 7 lavaMD          drlcap       t=  31.6s E=   2307J
+rep 7 lavaMD          drlcap_power t=  31.4s E=   2379J
+rep 7 lavaMD          drlcap_hybrid t=  31.6s E=   2290J
+rep 7 lavaMD          rl           t=  31.8s E=   2273J
+rep 7 lavaMD          baseline     t=  31.4s E=   2332J
+rep 7 lavaMD          static_2100  t=  38.9s E=   1665J
+rep 7 lud             coord        t=  38.4s E=   4391J
+rep 7 lud             drlcap       t=  39.8s E=   4491J
+rep 7 lud             drlcap_power t=  36.0s E=   5602J
+rep 7 lud             drlcap_hybrid t=  37.0s E=   5210J
+rep 7 lud             rl           t=  39.9s E=   4531J
+rep 7 lud             baseline     t=  35.2s E=   5722J
+rep 7 lud             static_2100  t=  42.2s E=   4034J
+rep 7 lud             static_2400  t=  38.4s E=   4402J
+rep 7 myocyte         drlcap       t=  25.1s E=   1056J
+rep 7 myocyte         drlcap_power t=  24.5s E=   1376J
+rep 7 myocyte         drlcap_hybrid t=  25.4s E=   1118J
+rep 7 myocyte         rl           t=  26.7s E=   1090J
+rep 7 myocyte         baseline     t=  24.3s E=   1338J
+rep 7 myocyte         static_2100  t=  28.5s E=    996J
+rep 7 myocyte         static_2400  t=  25.2s E=   1033J
+rep 7 myocyte         coord        t=  25.2s E=   1026J
+rep 7 streamcluster   drlcap_power t=  37.0s E=   1435J
+rep 7 streamcluster   drlcap_hybrid t=  36.4s E=   1162J
+rep 7 streamcluster   rl           t=  34.7s E=   1135J
+rep 7 streamcluster   baseline     t=  36.0s E=   1386J
+rep 7 streamcluster   static_2100  t=  36.5s E=   1019J
+rep 7 streamcluster   static_2400  t=  36.4s E=   1123J
+rep 7 streamcluster   coord        t=  35.4s E=    962J
+rep 7 streamcluster   drlcap       t=  31.9s E=   1053J
+rep 7 vgg16           drlcap_hybrid t=  37.6s E=   3445J
+rep 7 vgg16           rl           t=  37.2s E=   3424J
+rep 7 vgg16           baseline     t=  35.8s E=   4290J
+rep 7 vgg16           static_2100  t=  37.6s E=   2986J
+rep 7 vgg16           static_2400  t=  36.2s E=   3409J
+rep 7 vgg16           coord        t=  39.3s E=   3006J
+rep 7 vgg16           drlcap       t=  37.3s E=   3361J
+rep 7 vgg16           drlcap_power t=  36.0s E=   3970J
+rep 7 googlenet       rl           t= 108.7s E=   8950J
+rep 7 googlenet       baseline     t= 103.5s E=  11624J
+rep 7 googlenet       static_2100  t= 109.6s E=   8043J
+rep 7 googlenet       static_2400  t= 106.9s E=   9047J
+rep 7 googlenet       coord        t= 113.8s E=   8028J
+rep 7 googlenet       drlcap       t= 107.9s E=   8676J
+rep 7 googlenet       drlcap_power t= 112.6s E=   9896J
+rep 7 googlenet       drlcap_hybrid t= 111.0s E=   9756J
+rep 7 resnet50        baseline     t=  61.6s E=   6771J
+rep 7 resnet50        static_2100  t=  63.2s E=   4559J
+rep 7 resnet50        static_2400  t=  62.5s E=   5188J
+rep 7 resnet50        coord        t=  65.0s E=   4550J
+rep 7 resnet50        drlcap       t=  62.8s E=   5102J
+rep 7 resnet50        drlcap_power t=  62.8s E=   6049J
+rep 7 resnet50        drlcap_hybrid t=  62.4s E=   6066J
+rep 7 resnet50        rl           t=  63.5s E=   5095J
+rep 8 b+tree          baseline     t=  26.1s E=   1066J
+rep 8 b+tree          static_2100  t=  26.2s E=    780J
+rep 8 b+tree          static_2400  t=  26.2s E=    883J
+rep 8 b+tree          coord        t=  26.2s E=    763J
+rep 8 b+tree          drlcap       t=  26.0s E=    905J
+rep 8 b+tree          drlcap_power t=  25.9s E=   1034J
+rep 8 b+tree          drlcap_hybrid t=  26.0s E=    945J
+rep 8 b+tree          rl           t=  26.3s E=    861J
+rep 8 dwt2d           static_2100  t=  22.0s E=    713J
+rep 8 dwt2d           static_2400  t=  21.1s E=    775J
+rep 8 dwt2d           coord        t=  22.8s E=    720J
+rep 8 dwt2d           drlcap       t=  21.6s E=    805J
+rep 8 dwt2d           drlcap_power t=  20.7s E=    911J
+rep 8 dwt2d           drlcap_hybrid t=  21.1s E=    839J
+rep 8 dwt2d           rl           t=  21.8s E=    812J
+rep 8 dwt2d           baseline     t=  20.4s E=    889J
+rep 8 heartwall       static_2400  t=  28.0s E=   1434J
+rep 8 heartwall       coord        t=  28.5s E=   1248J
+rep 8 heartwall       drlcap       t=  28.0s E=   1473J
+rep 8 heartwall       drlcap_power t=  27.7s E=   1945J
+rep 8 heartwall       drlcap_hybrid t=  28.0s E=   1568J
+rep 8 heartwall       rl           t=  28.2s E=   1432J
+rep 8 heartwall       baseline     t=  27.6s E=   1920J
+rep 8 heartwall       static_2100  t=  28.2s E=   1279J
+rep 8 lavaMD          coord        t=  34.8s E=   1750J
+rep 8 lavaMD          drlcap       t=  31.7s E=   2291J
+rep 8 lavaMD          drlcap_power t=  31.4s E=   2390J
+rep 8 lavaMD          drlcap_hybrid t=  31.7s E=   2270J
+rep 8 lavaMD          rl           t=  31.9s E=   2267J
+rep 8 lavaMD          baseline     t=  31.5s E=   2324J
+rep 8 lavaMD          static_2100  t=  39.0s E=   1668J
+rep 8 lavaMD          static_2400  t=  34.8s E=   1743J
+rep 8 lud             drlcap       t=  39.3s E=   4512J
+rep 8 lud             drlcap_power t=  37.5s E=   5218J
+rep 8 lud             drlcap_hybrid t=  37.0s E=   5213J
+rep 8 lud             rl           t=  40.1s E=   4486J
+rep 8 lud             baseline     t=  35.4s E=   5727J
+rep 8 lud             static_2100  t=  42.3s E=   4034J
+rep 8 lud             static_2400  t=  38.4s E=   4413J
+rep 8 lud             coord        t=  38.6s E=   4402J
+rep 8 myocyte         drlcap_power t=  24.3s E=   1379J
+rep 8 myocyte         drlcap_hybrid t=  24.9s E=   1116J
+rep 8 myocyte         rl           t=  27.2s E=   1062J
+rep 8 myocyte         baseline     t=  24.6s E=   1342J
+rep 8 myocyte         static_2100  t=  28.2s E=    982J
+rep 8 myocyte         static_2400  t=  25.3s E=   1028J
+rep 8 myocyte         coord        t=  25.5s E=   1038J
+rep 8 myocyte         drlcap       t=  25.7s E=   1057J
+rep 8 streamcluster   drlcap_hybrid t=  33.2s E=   1120J
+rep 8 streamcluster   rl           t=  31.5s E=   1034J
+rep 8 streamcluster   baseline     t=  32.7s E=   1305J
+rep 8 streamcluster   static_2100  t=  36.4s E=   1023J
+rep 8 streamcluster   static_2400  t=  31.6s E=   1030J
+rep 8 streamcluster   coord        t=  31.1s E=    909J
+rep 8 streamcluster   drlcap       t=  31.9s E=   1049J
+rep 8 streamcluster   drlcap_power t=  30.4s E=   1268J
+rep 8 vgg16           rl           t=  36.8s E=   3486J
+rep 8 vgg16           baseline     t=  35.3s E=   4314J
+rep 8 vgg16           static_2100  t=  37.9s E=   2994J
+rep 8 vgg16           static_2400  t=  36.2s E=   3415J
+rep 8 vgg16           coord        t=  39.4s E=   2998J
+rep 8 vgg16           drlcap       t=  37.0s E=   3434J
+rep 8 vgg16           drlcap_power t=  37.1s E=   3730J
+rep 8 vgg16           drlcap_hybrid t=  36.5s E=   3842J
+rep 8 googlenet       baseline     t= 104.0s E=  11537J
+rep 8 googlenet       static_2100  t= 109.2s E=   7979J
+rep 8 googlenet       static_2400  t= 105.6s E=   8956J
+rep 8 googlenet       coord        t= 113.9s E=   7995J
+rep 8 googlenet       drlcap       t= 107.5s E=   8967J
+rep 8 googlenet       drlcap_power t= 108.0s E=  10159J
+rep 8 googlenet       drlcap_hybrid t= 110.0s E=   8762J
+rep 8 googlenet       rl           t= 108.4s E=   9002J
+rep 8 resnet50        static_2100  t=  63.3s E=   4548J
+rep 8 resnet50        static_2400  t=  62.2s E=   5109J
+rep 8 resnet50        coord        t=  65.0s E=   4484J
+rep 8 resnet50        drlcap       t=  62.8s E=   5168J
+rep 8 resnet50        drlcap_power t=  67.7s E=   5725J
+rep 8 resnet50        drlcap_hybrid t=  62.3s E=   6007J
+rep 8 resnet50        rl           t=  62.8s E=   5296J
+rep 8 resnet50        baseline     t=  61.2s E=   6755J
+rep 9 b+tree          static_2100  t=  26.4s E=    806J
+rep 9 b+tree          static_2400  t=  26.0s E=    877J
+rep 9 b+tree          coord        t=  26.3s E=    767J
+rep 9 b+tree          drlcap       t=  26.0s E=    890J
+rep 9 b+tree          drlcap_power t=  25.7s E=   1021J
+rep 9 b+tree          drlcap_hybrid t=  25.9s E=    931J
+rep 9 b+tree          rl           t=  26.6s E=    840J
+rep 9 b+tree          baseline     t=  25.8s E=   1008J
+rep 9 dwt2d           static_2400  t=  21.2s E=    784J
+rep 9 dwt2d           coord        t=  22.8s E=    718J
+rep 9 dwt2d           drlcap       t=  21.6s E=    798J
+rep 9 dwt2d           drlcap_power t=  20.7s E=    909J
+rep 9 dwt2d           drlcap_hybrid t=  21.7s E=    853J
+rep 9 dwt2d           rl           t=  21.8s E=    821J
+rep 9 dwt2d           baseline     t=  20.8s E=    893J
+rep 9 dwt2d           static_2100  t=  22.0s E=    708J
+rep 9 heartwall       coord        t=  28.5s E=   1246J
+rep 9 heartwall       drlcap       t=  28.1s E=   1411J
+rep 9 heartwall       drlcap_power t=  27.6s E=   1931J
+rep 9 heartwall       drlcap_hybrid t=  28.0s E=   1609J
+rep 9 heartwall       rl           t=  28.1s E=   1449J
+rep 9 heartwall       baseline     t=  27.4s E=   1919J
+rep 9 heartwall       static_2100  t=  28.2s E=   1276J
+rep 9 heartwall       static_2400  t=  27.9s E=   1442J
+rep 9 lavaMD          drlcap       t=  31.7s E=   2282J
+rep 9 lavaMD          drlcap_power t=  33.1s E=   2425J
+rep 9 lavaMD          drlcap_hybrid t=  31.6s E=   2284J
+rep 9 lavaMD          rl           t=  31.7s E=   2314J
+rep 9 lavaMD          baseline     t=  31.4s E=   2339J
+rep 9 lavaMD          static_2100  t=  39.0s E=   1668J
+rep 9 lavaMD          static_2400  t=  34.8s E=   1743J
+rep 9 lavaMD          coord        t=  34.9s E=   1748J
+rep 9 lud             drlcap_power t=  36.2s E=   5535J
+rep 9 lud             drlcap_hybrid t=  38.5s E=   4928J
+rep 9 lud             rl           t=  39.6s E=   4619J
+rep 9 lud             baseline     t=  35.3s E=   5744J
+rep 9 lud             static_2100  t=  42.4s E=   4056J
+rep 9 lud             static_2400  t=  38.4s E=   4395J
+rep 9 lud             coord        t=  38.4s E=   4441J
+rep 9 lud             drlcap       t=  37.1s E=   5241J
+rep 9 myocyte         drlcap_hybrid t=  25.1s E=   1140J
+rep 9 myocyte         rl           t=  26.5s E=   1108J
+rep 9 myocyte         baseline     t=  24.2s E=   1320J
+rep 9 myocyte         static_2100  t=  28.4s E=   1000J
+rep 9 myocyte         static_2400  t=  25.5s E=   1044J
+rep 9 myocyte         coord        t=  25.2s E=   1032J
+rep 9 myocyte         drlcap       t=  25.4s E=   1054J
+rep 9 myocyte         drlcap_power t=  24.6s E=   1356J
+rep 9 streamcluster   rl           t=  31.8s E=   1023J
+rep 9 streamcluster   baseline     t=  34.4s E=   1403J
+rep 9 streamcluster   static_2100  t=  33.5s E=    987J
+rep 9 streamcluster   static_2400  t=  30.2s E=   1009J
+rep 9 streamcluster   coord        t=  36.6s E=   1004J
+rep 9 streamcluster   drlcap       t=  34.8s E=   1123J
+rep 9 streamcluster   drlcap_power t=  34.8s E=   1424J
+rep 9 streamcluster   drlcap_hybrid t=  35.0s E=   1191J
+rep 9 vgg16           baseline     t=  35.1s E=   4276J
+rep 9 vgg16           static_2100  t=  37.7s E=   2990J
+rep 9 vgg16           static_2400  t=  36.8s E=   3405J
+rep 9 vgg16           coord        t=  39.6s E=   3018J
+rep 9 vgg16           drlcap       t=  36.1s E=   3822J
+rep 9 vgg16           drlcap_power t=  36.6s E=   3819J
+rep 9 vgg16           drlcap_hybrid t=  37.8s E=   3483J
+rep 9 vgg16           rl           t=  37.1s E=   3403J
+rep 9 googlenet       static_2100  t= 108.4s E=   7939J
+rep 9 googlenet       static_2400  t= 106.3s E=   8998J
+rep 9 googlenet       coord        t= 114.1s E=   8010J
+rep 9 googlenet       drlcap       t= 106.8s E=   8969J
+rep 9 googlenet       drlcap_power t= 106.5s E=  10530J
+rep 9 googlenet       drlcap_hybrid t= 111.3s E=   9089J
+rep 9 googlenet       rl           t= 107.6s E=   9056J
+rep 9 googlenet       baseline     t= 104.9s E=  11598J
+rep 9 resnet50        static_2400  t=  62.1s E=   5162J
+rep 9 resnet50        coord        t=  64.7s E=   4477J
+rep 9 resnet50        drlcap       t=  62.7s E=   5522J
+rep 9 resnet50        drlcap_power t=  62.0s E=   6580J
+rep 9 resnet50        drlcap_hybrid t=  61.9s E=   6231J
+rep 9 resnet50        rl           t=  63.1s E=   5197J
+rep 9 resnet50        baseline     t=  61.7s E=   6775J
+rep 9 resnet50        static_2100  t=  63.7s E=   4595J
+static_2100  b+tree          energy saving   23.4%  perf loss    1.4%  EDP improvement   22.3%
+static_2100  dwt2d           energy saving   20.2%  perf loss    6.5%  EDP improvement   15.1%
+static_2100  googlenet       energy saving   31.0%  perf loss    4.9%  EDP improvement   27.6%
+static_2100  heartwall       energy saving   33.5%  perf loss    2.2%  EDP improvement   32.1%
+static_2100  lavaMD          energy saving   28.5%  perf loss   24.0%  EDP improvement   11.4%
+static_2100  lud             energy saving   29.7%  perf loss   20.1%  EDP improvement   15.5%
+static_2100  myocyte         energy saving   26.4%  perf loss   15.6%  EDP improvement   14.9%
+static_2100  resnet50        energy saving   32.6%  perf loss    3.3%  EDP improvement   30.3%
+static_2100  streamcluster   energy saving   26.9%  perf loss    2.4%  EDP improvement   25.1%
+static_2100  vgg16           energy saving   30.1%  perf loss    6.6%  EDP improvement   25.5%
+static_2100  GEOMEAN         energy saving   28.3%  perf loss    8.4%  EDP improvement   22.3%
+static_2400  b+tree          energy saving   14.3%  perf loss    0.6%  EDP improvement   13.8%
+static_2400  dwt2d           energy saving   11.5%  perf loss    3.2%  EDP improvement    8.6%
+static_2400  googlenet       energy saving   22.4%  perf loss    2.0%  EDP improvement   20.8%
+static_2400  heartwall       energy saving   25.0%  perf loss    1.4%  EDP improvement   24.0%
+static_2400  lavaMD          energy saving   25.3%  perf loss   10.8%  EDP improvement   17.2%
+static_2400  lud             energy saving   23.5%  perf loss    8.9%  EDP improvement   16.6%
+static_2400  myocyte         energy saving   22.9%  perf loss    3.6%  EDP improvement   20.1%
+static_2400  resnet50        energy saving   24.2%  perf loss    1.4%  EDP improvement   23.1%
+static_2400  streamcluster   energy saving   21.0%  perf loss   -1.8%  EDP improvement   22.2%
+static_2400  vgg16           energy saving   21.4%  perf loss    2.8%  EDP improvement   19.2%
+static_2400  GEOMEAN         energy saving   21.3%  perf loss    3.2%  EDP improvement   18.7%
+coord        b+tree          energy saving   24.9%  perf loss    2.5%  EDP improvement   23.0%
+coord        dwt2d           energy saving   19.1%  perf loss   11.1%  EDP improvement   10.1%
+coord        googlenet       energy saving   30.9%  perf loss    9.3%  EDP improvement   24.5%
+coord        heartwall       energy saving   34.1%  perf loss    3.9%  EDP improvement   31.6%
+coord        lavaMD          energy saving   25.2%  perf loss   10.9%  EDP improvement   17.0%
+coord        lud             energy saving   23.5%  perf loss    9.1%  EDP improvement   16.5%
+coord        myocyte         energy saving   22.9%  perf loss    3.6%  EDP improvement   20.1%
+coord        resnet50        energy saving   33.6%  perf loss    5.7%  EDP improvement   29.8%
+coord        streamcluster   energy saving   29.7%  perf loss   -0.2%  EDP improvement   29.7%
+coord        vgg16           energy saving   30.5%  perf loss   10.9%  EDP improvement   22.9%
+coord        GEOMEAN         energy saving   27.6%  perf loss    6.6%  EDP improvement   22.8%
+drlcap       b+tree          energy saving   12.9%  perf loss    0.8%  EDP improvement   12.2%
+drlcap       dwt2d           energy saving    9.8%  perf loss    4.2%  EDP improvement    6.0%
+drlcap       googlenet       energy saving   21.2%  perf loss    3.0%  EDP improvement   18.8%
+drlcap       heartwall       energy saving   23.8%  perf loss    2.0%  EDP improvement   22.3%
+drlcap       lavaMD          energy saving    2.2%  perf loss    0.8%  EDP improvement    1.4%
+drlcap       lud             energy saving   19.4%  perf loss   10.7%  EDP improvement   10.8%
+drlcap       myocyte         energy saving   22.2%  perf loss    3.3%  EDP improvement   19.6%
+drlcap       resnet50        energy saving   19.8%  perf loss    2.1%  EDP improvement   18.2%
+drlcap       streamcluster   energy saving   19.0%  perf loss   -0.8%  EDP improvement   19.4%
+drlcap       vgg16           energy saving   20.9%  perf loss    4.0%  EDP improvement   17.8%
+drlcap       GEOMEAN         energy saving   17.4%  perf loss    3.0%  EDP improvement   14.9%
+drlcap_power b+tree          energy saving   -0.8%  perf loss   -0.1%  EDP improvement   -0.7%
+drlcap_power dwt2d           energy saving   -2.1%  perf loss    0.5%  EDP improvement   -2.6%
+drlcap_power googlenet       energy saving   10.8%  perf loss    3.1%  EDP improvement    8.1%
+drlcap_power heartwall       energy saving   -1.0%  perf loss    0.3%  EDP improvement   -1.3%
+drlcap_power lavaMD          energy saving   -1.9%  perf loss    0.5%  EDP improvement   -2.4%
+drlcap_power lud             energy saving    6.6%  perf loss    3.9%  EDP improvement    3.0%
+drlcap_power myocyte         energy saving   -1.8%  perf loss    0.1%  EDP improvement   -1.8%
+drlcap_power resnet50        energy saving    8.2%  perf loss    2.9%  EDP improvement    5.6%
+drlcap_power streamcluster   energy saving   -0.5%  perf loss   -1.6%  EDP improvement    0.8%
+drlcap_power vgg16           energy saving    9.7%  perf loss    4.4%  EDP improvement    5.8%
+drlcap_power GEOMEAN         energy saving    2.9%  perf loss    1.4%  EDP improvement    1.5%
+drlcap_hybrid b+tree          energy saving    9.0%  perf loss    0.6%  EDP improvement    8.5%
+drlcap_hybrid dwt2d           energy saving    5.7%  perf loss    3.9%  EDP improvement    2.0%
+drlcap_hybrid googlenet       energy saving   19.7%  perf loss    5.5%  EDP improvement   15.4%
+drlcap_hybrid heartwall       energy saving   16.5%  perf loss    1.8%  EDP improvement   15.0%
+drlcap_hybrid lavaMD          energy saving    1.8%  perf loss    0.7%  EDP improvement    1.2%
+drlcap_hybrid lud             energy saving   13.7%  perf loss    9.2%  EDP improvement    5.9%
+drlcap_hybrid myocyte         energy saving   16.9%  perf loss    3.1%  EDP improvement   14.4%
+drlcap_hybrid resnet50        energy saving   15.4%  perf loss    2.7%  EDP improvement   13.2%
+drlcap_hybrid streamcluster   energy saving   16.4%  perf loss   -0.9%  EDP improvement   17.0%
+drlcap_hybrid vgg16           energy saving   16.3%  perf loss    5.4%  EDP improvement   11.8%
+drlcap_hybrid GEOMEAN         energy saving   13.3%  perf loss    3.2%  EDP improvement   10.6%
+rl           b+tree          energy saving   16.3%  perf loss    1.7%  EDP improvement   15.0%
+rl           dwt2d           energy saving    9.3%  perf loss    6.8%  EDP improvement    3.2%
+rl           googlenet       energy saving   22.4%  perf loss    3.7%  EDP improvement   19.5%
+rl           heartwall       energy saving   24.5%  perf loss    2.7%  EDP improvement   22.5%
+rl           lavaMD          energy saving    2.1%  perf loss    1.4%  EDP improvement    0.8%
+rl           lud             energy saving   20.8%  perf loss   13.9%  EDP improvement    9.8%
+rl           myocyte         energy saving   20.0%  perf loss    9.4%  EDP improvement   12.5%
+rl           resnet50        energy saving   24.0%  perf loss    2.6%  EDP improvement   22.0%
+rl           streamcluster   energy saving   20.1%  perf loss    0.7%  EDP improvement   19.4%
+rl           vgg16           energy saving   20.8%  perf loss    4.9%  EDP improvement   16.9%
+rl           GEOMEAN         energy saving   18.3%  perf loss    4.7%  EDP improvement   14.4%
+saved /home/drl/project/drlcap/drlcap_repro/results/eval_main_v3_20261031_135056
+== seed / overhead ablation Sat Oct 31 11:42:26 PM IST 2026
+GPU: NVIDIA GeForce RTX 4070 Ti
+rep 0 b+tree          baseline     t=  26.0s E=   1036J
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793470376.853896 3295771 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+rep 0 b+tree          drlcap       t=  26.2s E=    849J
+rep 0 b+tree          drlcap_seed1 t=  26.4s E=    803J
+rep 0 b+tree          monitor_only t=  25.8s E=   1042J
+rep 0 dwt2d           drlcap       t=  21.5s E=    813J
+rep 0 dwt2d           drlcap_seed1 t=  22.0s E=    772J
+rep 0 dwt2d           monitor_only t=  20.3s E=    899J
+rep 0 dwt2d           baseline     t=  20.5s E=    882J
+rep 0 heartwall       drlcap_seed1 t=  28.2s E=   1405J
+rep 0 heartwall       monitor_only t=  27.4s E=   1915J
+rep 0 heartwall       baseline     t=  27.5s E=   1917J
+rep 0 heartwall       drlcap       t=  27.9s E=   1465J
+rep 0 lavaMD          monitor_only t=  31.5s E=   2362J
+rep 0 lavaMD          baseline     t=  31.5s E=   2347J
+rep 0 lavaMD          drlcap       t=  32.0s E=   2279J
+rep 0 lavaMD          drlcap_seed1 t=  32.1s E=   2256J
+rep 0 lud             baseline     t=  35.3s E=   5763J
+rep 0 lud             drlcap       t=  38.0s E=   4884J
+rep 0 lud             drlcap_seed1 t=  39.6s E=   4769J
+rep 0 lud             monitor_only t=  35.4s E=   5782J
+rep 0 myocyte         drlcap       t=  25.2s E=   1076J
+rep 0 myocyte         drlcap_seed1 t=  30.7s E=   1076J
+rep 0 myocyte         monitor_only t=  24.3s E=   1328J
+rep 0 myocyte         baseline     t=  24.3s E=   1328J
+rep 0 streamcluster   drlcap_seed1 t=  33.5s E=    937J
+rep 0 streamcluster   monitor_only t=  33.1s E=   1390J
+rep 0 streamcluster   baseline     t=  31.0s E=   1273J
+rep 0 streamcluster   drlcap       t=  33.5s E=   1112J
+rep 0 vgg16           monitor_only t=  35.3s E=   4301J
+rep 0 vgg16           baseline     t=  35.5s E=   4348J
+rep 0 vgg16           drlcap       t=  37.6s E=   3228J
+rep 0 vgg16           drlcap_seed1 t=  37.0s E=   3676J
+rep 0 googlenet       baseline     t= 104.3s E=  11598J
+rep 0 googlenet       drlcap       t= 108.0s E=   9412J
+rep 0 googlenet       drlcap_seed1 t= 108.2s E=   9100J
+rep 0 googlenet       monitor_only t= 103.8s E=  11625J
+rep 0 resnet50        drlcap       t=  62.1s E=   5644J
+rep 0 resnet50        drlcap_seed1 t=  63.0s E=   5394J
+rep 0 resnet50        monitor_only t=  61.7s E=   6780J
+rep 0 resnet50        baseline     t=  61.5s E=   6782J
+rep 1 b+tree          drlcap       t=  25.8s E=    903J
+rep 1 b+tree          drlcap_seed1 t=  26.6s E=    800J
+rep 1 b+tree          monitor_only t=  25.7s E=   1011J
+rep 1 b+tree          baseline     t=  25.9s E=   1031J
+rep 1 dwt2d           drlcap_seed1 t=  22.3s E=    779J
+rep 1 dwt2d           monitor_only t=  20.8s E=    919J
+rep 1 dwt2d           baseline     t=  20.7s E=    905J
+rep 1 dwt2d           drlcap       t=  21.5s E=    835J
+rep 1 heartwall       monitor_only t=  27.5s E=   1917J
+rep 1 heartwall       baseline     t=  27.4s E=   1898J
+rep 1 heartwall       drlcap       t=  28.0s E=   1504J
+rep 1 heartwall       drlcap_seed1 t=  28.2s E=   1424J
+rep 1 lavaMD          baseline     t=  31.5s E=   2323J
+rep 1 lavaMD          drlcap       t=  31.8s E=   2296J
+rep 1 lavaMD          drlcap_seed1 t=  32.1s E=   2278J
+rep 1 lavaMD          monitor_only t=  31.5s E=   2322J
+rep 1 lud             drlcap       t=  38.9s E=   4583J
+rep 1 lud             drlcap_seed1 t=  41.5s E=   4576J
+rep 1 lud             monitor_only t=  35.4s E=   5748J
+rep 1 lud             baseline     t=  35.5s E=   5741J
+rep 1 myocyte         drlcap_seed1 t=  30.4s E=   1118J
+rep 1 myocyte         monitor_only t=  24.3s E=   1332J
+rep 1 myocyte         baseline     t=  24.8s E=   1354J
+rep 1 myocyte         drlcap       t=  25.5s E=   1061J
+rep 1 streamcluster   monitor_only t=  35.1s E=   1418J
+rep 1 streamcluster   baseline     t=  34.6s E=   1399J
+rep 1 streamcluster   drlcap       t=  36.1s E=   1158J
+rep 1 streamcluster   drlcap_seed1 t=  33.0s E=   1015J
+rep 1 vgg16           baseline     t=  35.3s E=   4313J
+rep 1 vgg16           drlcap       t=  37.0s E=   3343J
+rep 1 vgg16           drlcap_seed1 t=  37.2s E=   3323J
+rep 1 vgg16           monitor_only t=  35.2s E=   4305J
+rep 1 googlenet       drlcap       t= 106.5s E=   9019J
+rep 1 googlenet       drlcap_seed1 t= 109.7s E=   8646J
+rep 1 googlenet       monitor_only t= 104.2s E=  11604J
+rep 1 googlenet       baseline     t= 103.9s E=  11520J
+rep 1 resnet50        drlcap_seed1 t=  63.2s E=   5447J
+rep 1 resnet50        monitor_only t=  61.3s E=   6788J
+rep 1 resnet50        baseline     t=  61.0s E=   6744J
+rep 1 resnet50        drlcap       t=  62.5s E=   5625J
+rep 2 b+tree          drlcap_seed1 t=  26.3s E=    822J
+rep 2 b+tree          monitor_only t=  25.9s E=   1037J
+rep 2 b+tree          baseline     t=  25.9s E=   1025J
+rep 2 b+tree          drlcap       t=  26.1s E=    903J
+rep 2 dwt2d           monitor_only t=  20.6s E=    911J
+rep 2 dwt2d           baseline     t=  20.5s E=    886J
+rep 2 dwt2d           drlcap       t=  21.6s E=    809J
+rep 2 dwt2d           drlcap_seed1 t=  22.5s E=    743J
+rep 2 heartwall       baseline     t=  27.7s E=   1882J
+rep 2 heartwall       drlcap       t=  28.1s E=   1471J
+rep 2 heartwall       drlcap_seed1 t=  28.2s E=   1448J
+rep 2 heartwall       monitor_only t=  27.5s E=   1931J
+rep 2 lavaMD          drlcap       t=  31.8s E=   2279J
+rep 2 lavaMD          drlcap_seed1 t=  32.2s E=   2302J
+rep 2 lavaMD          monitor_only t=  31.5s E=   2354J
+rep 2 lavaMD          baseline     t=  31.4s E=   2319J
+rep 2 lud             drlcap_seed1 t=  39.9s E=   4648J
+rep 2 lud             monitor_only t=  35.4s E=   5813J
+rep 2 lud             baseline     t=  35.5s E=   5769J
+rep 2 lud             drlcap       t=  40.3s E=   4458J
+rep 2 myocyte         monitor_only t=  24.6s E=   1381J
+rep 2 myocyte         baseline     t=  24.5s E=   1358J
+rep 2 myocyte         drlcap       t=  25.0s E=   1023J
+rep 2 myocyte         drlcap_seed1 t=  30.3s E=   1064J
+rep 2 streamcluster   baseline     t=  34.2s E=   1367J
+rep 2 streamcluster   drlcap       t=  35.3s E=   1144J
+rep 2 streamcluster   drlcap_seed1 t=  34.7s E=   1053J
+rep 2 streamcluster   monitor_only t=  35.0s E=   1421J
+rep 2 vgg16           drlcap       t=  36.2s E=   3618J
+rep 2 vgg16           drlcap_seed1 t=  36.9s E=   3587J
+rep 2 vgg16           monitor_only t=  35.6s E=   4366J
+rep 2 vgg16           baseline     t=  35.5s E=   4307J
+rep 2 googlenet       drlcap_seed1 t= 109.5s E=   8565J
+rep 2 googlenet       monitor_only t= 104.6s E=  11689J
+rep 2 googlenet       baseline     t= 103.0s E=  11565J
+rep 2 googlenet       drlcap       t= 105.8s E=   9420J
+rep 2 resnet50        monitor_only t=  61.4s E=   6781J
+rep 2 resnet50        baseline     t=  61.2s E=   6766J
+rep 2 resnet50        drlcap       t=  63.0s E=   5023J
+rep 2 resnet50        drlcap_seed1 t=  63.3s E=   5657J
+rep 3 b+tree          monitor_only t=  26.0s E=   1053J
+rep 3 b+tree          baseline     t=  25.8s E=   1015J
+rep 3 b+tree          drlcap       t=  26.3s E=    857J
+rep 3 b+tree          drlcap_seed1 t=  26.1s E=    840J
+rep 3 dwt2d           baseline     t=  20.3s E=    868J
+rep 3 dwt2d           drlcap       t=  21.5s E=    804J
+rep 3 dwt2d           drlcap_seed1 t=  22.2s E=    716J
+rep 3 dwt2d           monitor_only t=  20.6s E=    894J
+rep 3 heartwall       drlcap       t=  28.0s E=   1513J
+rep 3 heartwall       drlcap_seed1 t=  28.2s E=   1390J
+rep 3 heartwall       monitor_only t=  27.4s E=   1899J
+rep 3 heartwall       baseline     t=  27.4s E=   1896J
+rep 3 lavaMD          drlcap_seed1 t=  32.2s E=   2261J
+rep 3 lavaMD          monitor_only t=  31.6s E=   2361J
+rep 3 lavaMD          baseline     t=  31.5s E=   2333J
+rep 3 lavaMD          drlcap       t=  31.9s E=   2257J
+rep 3 lud             monitor_only t=  35.3s E=   5777J
+rep 3 lud             baseline     t=  35.3s E=   5736J
+rep 3 lud             drlcap       t=  39.7s E=   4441J
+rep 3 lud             drlcap_seed1 t=  39.6s E=   4659J
+rep 3 myocyte         baseline     t=  24.3s E=   1355J
+rep 3 myocyte         drlcap       t=  25.5s E=   1053J
+rep 3 myocyte         drlcap_seed1 t=  30.7s E=   1070J
+rep 3 myocyte         monitor_only t=  24.3s E=   1334J
+rep 3 streamcluster   drlcap       t=  31.3s E=   1008J
+rep 3 streamcluster   drlcap_seed1 t=  36.4s E=   1014J
+rep 3 streamcluster   monitor_only t=  34.7s E=   1389J
+rep 3 streamcluster   baseline     t=  30.9s E=   1271J
+rep 3 vgg16           drlcap_seed1 t=  37.2s E=   3592J
+rep 3 vgg16           monitor_only t=  35.3s E=   4339J
+rep 3 vgg16           baseline     t=  35.1s E=   4268J
+rep 3 vgg16           drlcap       t=  37.2s E=   3259J
+rep 3 googlenet       monitor_only t= 104.7s E=  11602J
+rep 3 googlenet       baseline     t= 102.8s E=  11561J
+rep 3 googlenet       drlcap       t= 106.6s E=   9413J
+rep 3 googlenet       drlcap_seed1 t= 109.5s E=   8588J
+rep 3 resnet50        baseline     t=  62.0s E=   6778J
+rep 3 resnet50        drlcap       t=  62.6s E=   4935J
+rep 3 resnet50        drlcap_seed1 t=  62.8s E=   5245J
+rep 3 resnet50        monitor_only t=  61.6s E=   6800J
+rep 4 b+tree          baseline     t=  25.9s E=   1039J
+rep 4 b+tree          drlcap       t=  25.9s E=    898J
+rep 4 b+tree          drlcap_seed1 t=  26.1s E=    828J
+rep 4 b+tree          monitor_only t=  26.0s E=   1039J
+rep 4 dwt2d           drlcap       t=  21.5s E=    796J
+rep 4 dwt2d           drlcap_seed1 t=  22.5s E=    739J
+rep 4 dwt2d           monitor_only t=  20.6s E=    900J
+rep 4 dwt2d           baseline     t=  20.6s E=    905J
+rep 4 heartwall       drlcap_seed1 t=  28.1s E=   1410J
+rep 4 heartwall       monitor_only t=  27.7s E=   1923J
+rep 4 heartwall       baseline     t=  27.4s E=   1898J
+rep 4 heartwall       drlcap       t=  27.9s E=   1437J
+rep 4 lavaMD          monitor_only t=  31.4s E=   2336J
+rep 4 lavaMD          baseline     t=  31.5s E=   2339J
+rep 4 lavaMD          drlcap       t=  31.8s E=   2275J
+rep 4 lavaMD          drlcap_seed1 t=  32.1s E=   2251J
+rep 4 lud             baseline     t=  35.3s E=   5730J
+rep 4 lud             drlcap       t=  40.6s E=   4354J
+rep 4 lud             drlcap_seed1 t=  39.0s E=   4859J
+rep 4 lud             monitor_only t=  35.4s E=   5769J
+rep 4 myocyte         drlcap       t=  25.2s E=   1108J
+rep 4 myocyte         drlcap_seed1 t=  30.7s E=   1080J
+rep 4 myocyte         monitor_only t=  24.5s E=   1349J
+rep 4 myocyte         baseline     t=  24.6s E=   1346J
+rep 4 streamcluster   drlcap_seed1 t=  34.7s E=   1010J
+rep 4 streamcluster   monitor_only t=  31.3s E=   1315J
+rep 4 streamcluster   baseline     t=  35.4s E=   1346J
+rep 4 streamcluster   drlcap       t=  30.0s E=    983J
+rep 4 vgg16           monitor_only t=  35.8s E=   4321J
+rep 4 vgg16           baseline     t=  35.6s E=   4341J
+rep 4 vgg16           drlcap       t=  36.4s E=   3578J
+rep 4 vgg16           drlcap_seed1 t=  37.0s E=   3723J
+rep 4 googlenet       baseline     t= 103.0s E=  11513J
+rep 4 googlenet       drlcap       t= 107.2s E=   8685J
+rep 4 googlenet       drlcap_seed1 t= 107.5s E=   9256J
+rep 4 googlenet       monitor_only t= 105.3s E=  11638J
+rep 4 resnet50        drlcap       t=  63.0s E=   5440J
+rep 4 resnet50        drlcap_seed1 t=  62.8s E=   5304J
+rep 4 resnet50        monitor_only t=  62.0s E=   6816J
+rep 4 resnet50        baseline     t=  61.7s E=   6774J
+drlcap       b+tree          energy saving   14.3%  perf loss    0.7%  EDP improvement   13.7%
+drlcap       dwt2d           energy saving    8.8%  perf loss    4.8%  EDP improvement    4.4%
+drlcap       googlenet       energy saving   20.4%  perf loss    3.3%  EDP improvement   17.8%
+drlcap       heartwall       energy saving   22.1%  perf loss    1.8%  EDP improvement   20.7%
+drlcap       lavaMD          energy saving    2.4%  perf loss    1.1%  EDP improvement    1.2%
+drlcap       lud             energy saving   20.9%  perf loss   11.7%  EDP improvement   11.8%
+drlcap       myocyte         energy saving   21.1%  perf loss    3.2%  EDP improvement   18.5%
+drlcap       resnet50        energy saving   21.2%  perf loss    1.9%  EDP improvement   19.8%
+drlcap       streamcluster   energy saving   18.8%  perf loss    0.1%  EDP improvement   18.5%
+drlcap       vgg16           energy saving   21.1%  perf loss    4.2%  EDP improvement   17.9%
+drlcap       GEOMEAN         energy saving   17.3%  perf loss    3.2%  EDP improvement   14.7%
+drlcap_seed1 b+tree          energy saving   20.5%  perf loss    1.6%  EDP improvement   19.2%
+drlcap_seed1 dwt2d           energy saving   15.7%  perf loss    8.8%  EDP improvement    8.3%
+drlcap_seed1 googlenet       energy saving   23.6%  perf loss    5.3%  EDP improvement   19.5%
+drlcap_seed1 heartwall       energy saving   25.4%  perf loss    2.6%  EDP improvement   23.5%
+drlcap_seed1 lavaMD          energy saving    2.7%  perf loss    2.1%  EDP improvement    0.6%
+drlcap_seed1 lud             energy saving   18.2%  perf loss   12.8%  EDP improvement    7.7%
+drlcap_seed1 myocyte         energy saving   19.8%  perf loss   24.7%  EDP improvement   -0.0%
+drlcap_seed1 resnet50        energy saving   20.1%  perf loss    2.5%  EDP improvement   18.1%
+drlcap_seed1 streamcluster   energy saving   24.4%  perf loss    3.7%  EDP improvement   21.7%
+drlcap_seed1 vgg16           energy saving   17.0%  perf loss    4.7%  EDP improvement   13.2%
+drlcap_seed1 GEOMEAN         energy saving   18.9%  perf loss    6.7%  EDP improvement   13.6%
+monitor_only b+tree          energy saving   -0.7%  perf loss   -0.0%  EDP improvement   -0.7%
+monitor_only dwt2d           energy saving   -1.7%  perf loss    0.3%  EDP improvement   -2.0%
+monitor_only googlenet       energy saving   -0.7%  perf loss    1.1%  EDP improvement   -1.8%
+monitor_only heartwall       energy saving   -1.0%  perf loss    0.1%  EDP improvement   -1.1%
+monitor_only lavaMD          energy saving   -0.7%  perf loss    0.0%  EDP improvement   -0.7%
+monitor_only lud             energy saving   -0.5%  perf loss   -0.0%  EDP improvement   -0.5%
+monitor_only myocyte         energy saving    0.3%  perf loss   -0.4%  EDP improvement    0.7%
+monitor_only resnet50        energy saving   -0.4%  perf loss    0.2%  EDP improvement   -0.5%
+monitor_only streamcluster   energy saving   -4.1%  perf loss    1.8%  EDP improvement   -6.0%
+monitor_only vgg16           energy saving   -0.2%  perf loss    0.2%  EDP improvement   -0.4%
+monitor_only GEOMEAN         energy saving   -1.0%  perf loss    0.3%  EDP improvement   -1.3%
+saved /home/drl/project/drlcap/drlcap_repro/results/eval_ablation_seed_overhead_v3_20261031_234228
+== frozen-network ablation Sun Nov  1 02:06:13 AM IST 2026
+GPU: NVIDIA GeForce RTX 4070 Ti
+rep 0 b+tree          baseline     t=  25.8s E=   1028J
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793479003.689138 3460697 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+rep 0 b+tree          drlcap_frozen t=  26.1s E=    886J
+rep 0 dwt2d           drlcap_frozen t=  21.4s E=    795J
+rep 0 dwt2d           baseline     t=  20.9s E=    911J
+rep 0 heartwall       baseline     t=  27.5s E=   1901J
+rep 0 heartwall       drlcap_frozen t=  27.9s E=   1461J
+rep 0 lavaMD          drlcap_frozen t=  31.7s E=   2280J
+rep 0 lavaMD          baseline     t=  31.5s E=   2334J
+rep 0 lud             baseline     t=  35.6s E=   5797J
+rep 0 lud             drlcap_frozen t=  38.3s E=   4604J
+rep 0 myocyte         drlcap_frozen t=  25.1s E=   1074J
+rep 0 myocyte         baseline     t=  24.6s E=   1353J
+rep 0 streamcluster   baseline     t=  34.8s E=   1392J
+rep 0 streamcluster   drlcap_frozen t=  32.8s E=   1085J
+rep 0 vgg16           drlcap_frozen t=  36.3s E=   3472J
+rep 0 vgg16           baseline     t=  35.2s E=   4351J
+rep 0 googlenet       baseline     t= 104.5s E=  11573J
+rep 0 googlenet       drlcap_frozen t= 106.1s E=   9165J
+rep 0 resnet50        drlcap_frozen t=  62.9s E=   5237J
+rep 0 resnet50        baseline     t=  62.2s E=   6786J
+rep 1 b+tree          drlcap_frozen t=  26.2s E=    920J
+rep 1 b+tree          baseline     t=  26.1s E=   1029J
+rep 1 dwt2d           baseline     t=  20.7s E=    902J
+rep 1 dwt2d           drlcap_frozen t=  21.5s E=    801J
+rep 1 heartwall       drlcap_frozen t=  28.0s E=   1436J
+rep 1 heartwall       baseline     t=  27.6s E=   1920J
+rep 1 lavaMD          baseline     t=  31.5s E=   2321J
+rep 1 lavaMD          drlcap_frozen t=  31.8s E=   2258J
+rep 1 lud             drlcap_frozen t=  38.3s E=   4605J
+rep 1 lud             baseline     t=  35.4s E=   5765J
+rep 1 myocyte         baseline     t=  24.6s E=   1387J
+rep 1 myocyte         drlcap_frozen t=  25.6s E=   1061J
+rep 1 streamcluster   drlcap_frozen t=  34.3s E=   1049J
+rep 1 streamcluster   baseline     t=  32.6s E=   1320J
+rep 1 vgg16           baseline     t=  35.6s E=   4345J
+rep 1 vgg16           drlcap_frozen t=  36.4s E=   3488J
+rep 1 googlenet       drlcap_frozen t= 106.1s E=   9196J
+rep 1 googlenet       baseline     t= 104.8s E=  11666J
+rep 1 resnet50        baseline     t=  61.9s E=   6788J
+rep 1 resnet50        drlcap_frozen t=  62.3s E=   5225J
+rep 2 b+tree          baseline     t=  25.7s E=   1034J
+rep 2 b+tree          drlcap_frozen t=  26.1s E=    886J
+rep 2 dwt2d           drlcap_frozen t=  21.5s E=    802J
+rep 2 dwt2d           baseline     t=  20.5s E=    897J
+rep 2 heartwall       baseline     t=  27.3s E=   1917J
+rep 2 heartwall       drlcap_frozen t=  27.9s E=   1471J
+rep 2 lavaMD          drlcap_frozen t=  31.6s E=   2269J
+rep 2 lavaMD          baseline     t=  31.5s E=   2336J
+rep 2 lud             baseline     t=  35.4s E=   5780J
+rep 2 lud             drlcap_frozen t=  38.3s E=   4625J
+rep 2 myocyte         drlcap_frozen t=  25.6s E=   1082J
+rep 2 myocyte         baseline     t=  24.1s E=   1335J
+rep 2 streamcluster   baseline     t=  32.7s E=   1312J
+rep 2 streamcluster   drlcap_frozen t=  34.9s E=   1145J
+rep 2 vgg16           drlcap_frozen t=  36.4s E=   3545J
+rep 2 vgg16           baseline     t=  35.0s E=   4273J
+rep 2 googlenet       baseline     t= 103.5s E=  11563J
+rep 2 googlenet       drlcap_frozen t= 105.6s E=   9134J
+rep 2 resnet50        drlcap_frozen t=  62.4s E=   5269J
+rep 2 resnet50        baseline     t=  61.5s E=   6804J
+rep 3 b+tree          drlcap_frozen t=  26.1s E=    931J
+rep 3 b+tree          baseline     t=  26.0s E=   1025J
+rep 3 dwt2d           baseline     t=  20.6s E=    892J
+rep 3 dwt2d           drlcap_frozen t=  21.2s E=    802J
+rep 3 heartwall       drlcap_frozen t=  27.7s E=   1432J
+rep 3 heartwall       baseline     t=  27.3s E=   1897J
+rep 3 lavaMD          baseline     t=  31.5s E=   2318J
+rep 3 lavaMD          drlcap_frozen t=  31.8s E=   2257J
+rep 3 lud             drlcap_frozen t=  38.1s E=   4587J
+rep 3 lud             baseline     t=  35.2s E=   5766J
+rep 3 myocyte         baseline     t=  24.6s E=   1384J
+rep 3 myocyte         drlcap_frozen t=  25.2s E=   1038J
+rep 3 streamcluster   drlcap_frozen t=  36.3s E=   1117J
+rep 3 streamcluster   baseline     t=  36.5s E=   1402J
+rep 3 vgg16           baseline     t=  35.7s E=   4281J
+rep 3 vgg16           drlcap_frozen t=  36.4s E=   3528J
+rep 3 googlenet       drlcap_frozen t= 106.7s E=   9232J
+rep 3 googlenet       baseline     t= 104.1s E=  11619J
+rep 3 resnet50        baseline     t=  62.1s E=   6835J
+rep 3 resnet50        drlcap_frozen t=  62.1s E=   5283J
+rep 4 b+tree          baseline     t=  25.6s E=   1035J
+rep 4 b+tree          drlcap_frozen t=  25.8s E=    883J
+rep 4 dwt2d           drlcap_frozen t=  21.5s E=    808J
+rep 4 dwt2d           baseline     t=  20.7s E=    898J
+rep 4 heartwall       baseline     t=  27.4s E=   1895J
+rep 4 heartwall       drlcap_frozen t=  27.8s E=   1442J
+rep 4 lavaMD          drlcap_frozen t=  31.8s E=   2273J
+rep 4 lavaMD          baseline     t=  31.4s E=   2332J
+rep 4 lud             baseline     t=  35.3s E=   5780J
+rep 4 lud             drlcap_frozen t=  38.5s E=   4529J
+rep 4 myocyte         drlcap_frozen t=  25.2s E=   1080J
+rep 4 myocyte         baseline     t=  24.2s E=   1338J
+rep 4 streamcluster   baseline     t=  35.0s E=   1411J
+rep 4 streamcluster   drlcap_frozen t=  30.3s E=   1014J
+rep 4 vgg16           drlcap_frozen t=  36.2s E=   3511J
+rep 4 vgg16           baseline     t=  35.4s E=   4349J
+rep 4 googlenet       baseline     t= 103.9s E=  11551J
+rep 4 googlenet       drlcap_frozen t= 105.0s E=   9193J
+rep 4 resnet50        drlcap_frozen t=  62.1s E=   5276J
+rep 4 resnet50        baseline     t=  61.9s E=   6764J
+drlcap_frozen b+tree          energy saving   12.5%  perf loss    0.8%  EDP improvement   11.8%
+drlcap_frozen dwt2d           energy saving   10.9%  perf loss    3.7%  EDP improvement    7.6%
+drlcap_frozen googlenet       energy saving   20.8%  perf loss    1.7%  EDP improvement   19.5%
+drlcap_frozen heartwall       energy saving   24.0%  perf loss    1.6%  EDP improvement   22.8%
+drlcap_frozen lavaMD          energy saving    2.6%  perf loss    0.8%  EDP improvement    1.8%
+drlcap_frozen lud             energy saving   20.6%  perf loss    8.3%  EDP improvement   13.9%
+drlcap_frozen myocyte         energy saving   21.5%  perf loss    3.6%  EDP improvement   18.7%
+drlcap_frozen resnet50        energy saving   22.6%  perf loss    0.7%  EDP improvement   22.1%
+drlcap_frozen streamcluster   energy saving   20.9%  perf loss   -1.7%  EDP improvement   22.2%
+drlcap_frozen vgg16           energy saving   18.8%  perf loss    2.7%  EDP improvement   16.6%
+drlcap_frozen GEOMEAN         energy saving   17.7%  perf loss    2.2%  EDP improvement   15.9%
+saved /home/drl/project/drlcap/drlcap_repro/results/eval_ablation_frozen_v3_20261101_020615
+== tables and figures Sun Nov  1 03:17:26 AM IST 2026
+| Policy | Energy saving | Perf. loss | EDP improvement |
+|---|---|---|---|
+| static_2100 | 28.3 % | 8.4 % | 22.3 % |
+| static_2400 | 21.3 % | 3.2 % | 18.7 % |
+| coord | 27.6 % | 6.6 % | 22.8 % |
+| drlcap | 17.4 % | 3.0 % | 14.9 % |
+| drlcap_power | 2.9 % | 1.4 % | 1.5 % |
+| drlcap_hybrid | 13.3 % | 3.2 % | 10.6 % |
+| rl | 18.3 % | 4.7 % | 14.4 % |
+
+| Policy | Rodinia E / slow / EDP | CNN E / slow / EDP | all: EDP impr. 95 % CI | all: energy saving 95 % CI |
+|---|---|---|---|---|
+| static_2100 | 27.1 / 10.0 / 19.8 | 31.2 / 4.9 / 27.9 | 21.7 – 22.9 | 28.1 – 28.6 |
+| static_2400 | 20.6 / 3.8 / 17.7 | 22.7 / 2.1 / 21.1 | 18.0 – 19.4 | 20.9 – 21.6 |
+| coord | 25.8 / 5.8 / 21.5 | 31.7 / 8.6 / 25.8 | 22.1 – 23.5 | 27.3 – 27.9 |
+| drlcap | 15.9 / 2.9 / 13.4 | 20.6 / 3.0 / 18.2 | 14.0 – 15.8 | 16.7 – 18.0 |
+| drlcap_power | -0.2 / 0.5 / -0.7 | 9.6 / 3.5 / 6.5 | 0.5 – 2.5 | 2.3 – 3.4 |
+| drlcap_hybrid | 11.6 / 2.6 / 9.3 | 17.2 / 4.5 / 13.4 | 9.7 – 11.5 | 12.6 – 14.0 |
+| rl | 16.5 / 5.1 / 12.2 | 22.4 / 3.8 / 19.5 | 13.7 – 15.2 | 17.9 – 18.7 |
+
+| Policy | Energy saving | Perf. loss | EDP improvement |
+|---|---|---|---|
+| drlcap | 17.3 % | 3.2 % | 14.7 % |
+| drlcap_seed1 | 18.9 % | 6.7 % | 13.6 % |
+| monitor_only | -1.0 % | 0.3 % | -1.3 % |
+
+| Policy | Rodinia E / slow / EDP | CNN E / slow / EDP | all: EDP impr. 95 % CI | all: energy saving 95 % CI |
+|---|---|---|---|---|
+| drlcap | 15.8 / 3.3 / 13.0 | 20.9 / 3.1 / 18.5 | 13.3 – 16.1 | 16.4 – 18.3 |
+| drlcap_seed1 | 18.4 / 7.8 / 12.0 | 20.3 / 4.2 / 17.0 | 12.5 – 14.5 | 18.3 – 19.7 |
+| monitor_only | -1.2 / 0.2 / -1.4 | -0.4 / 0.5 / -0.9 | -2.4 – -0.2 | -1.5 – -0.5 |
+
+| Policy | Energy saving | Perf. loss | EDP improvement |
+|---|---|---|---|
+| drlcap_frozen | 17.7 % | 2.2 % | 15.9 % |
+
+| Policy | Rodinia E / slow / EDP | CNN E / slow / EDP | all: EDP impr. 95 % CI | all: energy saving 95 % CI |
+|---|---|---|---|---|
+| drlcap_frozen | 16.4 / 2.4 / 14.4 | 20.7 / 1.7 / 19.4 | 14.9 – 16.9 | 17.3 – 18.2 |
+
+results/train_freq_s0_v3_20261031_114357 (freq): 2 distinct greedy actions; top (2415, None) 95.8 %, (2745, None) 4.2 %; median Q spread 55.63, median best-second gap 0.42
+results/train_freq_s1_v3_20261031_120914 (freq): 1 distinct greedy actions; top (1950, None) 100.0 %; median Q spread 89.05, median best-second gap 2.70
+results/train_power_s0_v3_20261031_123438 (power): 3 distinct greedy actions; top (None, 240) 50.2 %, (None, 145) 49.6 %, (None, 165) 0.1 %; median Q spread 51.98, median best-second gap 0.22
+results/train_hybrid_s0_v3_20261031_130005 (hybrid): 3 distinct greedy actions; top (2475, 285) 99.2 %, (2745, 285) 0.5 %, (2070, 259) 0.3 %; median Q spread 73.85, median best-second gap 1.02
+wrote fig01_geomean
+wrote fig02_heatmap_energy
+wrote fig02_heatmap_time
+wrote fig02_heatmap_edp
+wrote fig03_tradeoff
+wrote fig03_tradeoff_per_program
+wrote fig04_timeline_b+tree
+wrote fig04_timeline_dwt2d
+wrote fig04_timeline_heartwall
+wrote fig04_timeline_lavaMD
+wrote fig04_timeline_lud
+wrote fig04_timeline_myocyte
+wrote fig04_timeline_streamcluster
+wrote fig04_timeline_vgg16
+wrote fig04_timeline_googlenet
+wrote fig04_timeline_resnet50
+wrote fig05_cap_choices
+wrote fig06_training
+wrote fig07_cases
+wrote fig08_policy_map
+wrote fig09_overhead
+wrote fig10_ablations
+wrote fig11_noise
+== done Sun Nov  1 03:18:02 AM IST 2026

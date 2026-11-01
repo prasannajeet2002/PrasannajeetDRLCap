@@ -1,0 +1,4 @@
+results/train_freq_s0_v3_20261031_114357 (freq): 2 distinct greedy actions; top (2415, None) 95.8 %, (2745, None) 4.2 %; median Q spread 55.63, median best-second gap 0.42
+results/train_freq_s1_v3_20261031_120914 (freq): 1 distinct greedy actions; top (1950, None) 100.0 %; median Q spread 89.05, median best-second gap 2.70
+results/train_power_s0_v3_20261031_123438 (power): 3 distinct greedy actions; top (None, 240) 50.2 %, (None, 145) 49.6 %, (None, 165) 0.1 %; median Q spread 51.98, median best-second gap 0.22
+results/train_hybrid_s0_v3_20261031_130005 (hybrid): 3 distinct greedy actions; top (2475, 285) 99.2 %, (2745, 285) 0.5 %, (2070, 259) 0.3 %; median Q spread 73.85, median best-second gap 1.02

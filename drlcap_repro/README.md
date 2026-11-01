@@ -297,6 +297,92 @@ every policy, baseline included; with that correction DRLCap would be
 expected to fall slightly BEHIND the static 2400 MHz cap rather than tie
 it (expectation, not measured).
 
+## Results v3: faithful reproduction with fair measurement, 2026-10-31
+
+Changes vs. v2 (commit b3d5206): (1) the reward of action a_t is computed
+on samples t+1 -> t+2 (`drlcap.REWARD_DELAY = 1`), because a cap change
+shows up mostly one sample late (clock-change slope 0.29 in the next
+sample, 0.53 one sample later, from 4609 cap changes under load in the v2
+logs); (2) baseline, static and COORD jobs poll NVML every 300 ms like
+the agent loop. All five models retrained. Log
+`results/queue_v3_20261031_114355.log`, 2026-10-31 11:43 -> 11-01 03:18,
+no failed job. Figures: `results/plots_v3_20261101_031739/`.
+
+### Main comparison, 10 repeats (`results/eval_main_v3_20261031_135056`)
+
+| Policy | Energy saving | Perf. loss | EDP improvement | EDP 95 % CI |
+|---|---|---|---|---|
+| static 2100 MHz | 28.3 % | 8.4 % | 22.3 % | 21.7 – 22.9 |
+| static 2400 MHz | 21.3 % | 3.2 % | 18.7 % | 18.0 – 19.4 |
+| COORD-like | 27.6 % | 6.6 % | 22.8 % | 22.1 – 23.5 |
+| **DRLCap (frequency)** | **17.4 %** | **3.0 %** | **14.9 %** | 14.0 – 15.8 |
+| DRLCap power | 2.9 % | 1.4 % | 1.5 % | 0.5 – 2.5 |
+| DRLCap hybrid | 13.3 % | 3.2 % | 10.6 % | 9.7 – 11.5 |
+| RL (tabular double Q) | 18.3 % | 4.7 % | 14.4 % | 13.7 – 15.2 |
+
+DRLCap per program (energy / perf. loss / EDP, %): b+tree 12.9 / 0.8 /
+12.2, dwt2d 9.8 / 4.2 / 6.0, heartwall 23.8 / 2.0 / 22.3, lavaMD 2.2 /
+0.8 / 1.4, lud 19.4 / 10.7 / 10.8, myocyte 22.2 / 3.3 / 19.6,
+streamcluster 19.0 / -0.8 / 19.4, vgg16 20.9 / 4.0 / 17.8, googlenet
+21.2 / 3.0 / 18.8, resnet50 19.8 / 2.1 / 18.2.
+
+Facts:
+- With polling in every policy, the static and COORD numbers are
+  unchanged from v2 (within 0.5 points), while DRLCap and RL each lose
+  ~3.5 points EDP. DRLCap is now significantly BELOW the static 2400 MHz
+  cap (CIs do not overlap), and ~8 points EDP below COORD and static
+  2100. The paper's claim (DRLCap beats COORD and RL) is not reproduced.
+- The policies still collapse (`results/probe_policy_v3_20261101_031735.txt`):
+  freq_s0 2415 MHz in 95.8 % of random states, freq_s1 1950 MHz in 100 %,
+  hybrid 2475 MHz / 285 W in 99.2 %, power 240 W / 145 W. The reward
+  delay did not fix the collapse. In the main run DRLCap's mean cap is
+  2300-2400 MHz on every program except lavaMD (2674 MHz: case A forced
+  the maximum cap in 78.9 % of its steps, energy saving 2.2 %).
+- The power variant does nothing on Rodinia (-0.2 % energy; draw below
+  the 100 W minimum limit) and saves 9.6 % on the CNNs.
+
+### Ablations, 5 repeats each
+
+| Run | Energy saving | Perf. loss | EDP improvement | EDP 95 % CI |
+|---|---|---|---|---|
+| DRLCap seed 0 (online) | 17.3 % | 3.2 % | 14.7 % | 13.3 – 16.1 |
+| DRLCap seed 1 (online) | 18.9 % | 6.7 % | 13.6 % | 12.5 – 14.5 |
+| monitor only (caps never applied) | -1.0 % | 0.3 % | -1.3 % | -2.4 – -0.2 |
+| DRLCap seed 0 frozen (no online learning) | 17.7 % | 2.2 % | 15.9 % | 14.9 – 16.9 |
+
+- Monitor-only now costs 1.0 % energy (EDP -1.3 %) relative to an equally
+  polled baseline: this is the controller's own GPU-side overhead
+  (paper Fig. 11 analogue), the expected sign, small.
+- Seeds agree on EDP within noise but collapsed to different caps (2415 vs
+  1950 MHz), visible in the slowdown (3.2 % vs 6.7 %).
+- Frozen vs. online: within ~1 point; online learning neither helps nor
+  clearly hurts here.
+
+### Diagnosis: why DRLCap does not beat static caps (2026-11-01)
+
+From the v2/v3 training logs (`steps.csv`):
+1. **The Algorithm 1 / Eq. 1 reward is level-blind.** dp and df are
+   changes between consecutive samples (paper: "during the current and
+   the previous sample period"; authors' code: `fre = fre_g_ - fre_g`).
+   Holding ANY cap gives df = dp = 0 -> the top score. Mean reward when
+   the cap was unchanged 4.01, raised 3.15, lowered 2.33; at a steady
+   cap, case C gives 5.8 at 1800-2000 MHz and 5.3 at 2600-2800 MHz, case D
+   0.15 at both. The reward therefore penalises changing the cap but does
+   not prefer an energy-efficient level, and the learned policy "hold one
+   arbitrary cap" is optimal for it.
+2. **Case D carries almost no signal.** r = g * u_mem with u_mem as a
+   fraction; the median memory utilisation in case D is 1 %, so r ~ 0.05
+   (mean |r| 0.26 vs. 4-8 in cases A-C). Case D is the most common case
+   at test time (e.g. lud 1064 / 1304 steps, googlenet 2091 / 3577).
+3. **Case C is amplified** (g / u_core, mean |r| 8.3, std 7.3, clipped at
+   10), so the reward scale differs by >30x between cases.
+4. **Case A forces the maximum cap** whenever a sample shows 100 % core /
+   0 % memory utilisation (lavaMD 79 % of steps), forfeiting the savings
+   the static sweep shows for compute-bound programs.
+Causes 1-2 are properties of the reward as published (and of the
+authors' code), not of this implementation. See "Results v4" for the
+repaired reward (a documented deviation); v3 remains the faithful result.
+
 ## What matches the paper
 
 - State: GPU core utilisation, memory utilisation, power, SM frequency,
