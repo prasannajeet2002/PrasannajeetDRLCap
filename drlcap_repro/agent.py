@@ -28,7 +28,13 @@ import tensorflow as tf
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
 BUFFER_SIZE = 512
-GAMMA = 0.95
+# v4 DEVIATION: Table V gives gamma = 0.95. A frequency cap only affects
+# the next one or two 300 ms samples (it does not change the program's
+# future phases), so the long horizon only adds bootstrapping noise: an
+# offline replay of the same logged transitions gives a state-independent
+# high cap with gamma 0.95 and state-dependent caps with gamma 0-0.2
+# (README "Results v4"). v1-v3 used 0.95.
+GAMMA = 0.2
 EPSILON_START = 0.3
 EPSILON_END = 0.1
 TRAINING_ITERATIONS = 5000

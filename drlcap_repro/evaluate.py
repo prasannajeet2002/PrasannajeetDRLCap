@@ -229,7 +229,9 @@ def main():
                    "coord_util_threshold": COORD_UTIL_THRESHOLD,
                    "coord_caps": COORD_CAPS,
                    "baseline_nvml_polling_s": D.SAMPLE_INTERVAL,
-                   "reward_delay_samples": D.REWARD_DELAY}, f, indent=2)
+                   "reward_delay_samples": D.REWARD_DELAY,
+                   "reward_mode": D.R.REWARD_MODE,
+                   "force_case_a": D.FORCE_CASE_A}, f, indent=2)
 
     rows, job, coord = [], 0, {}
     try:

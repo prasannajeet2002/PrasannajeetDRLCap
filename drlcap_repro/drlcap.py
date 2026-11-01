@@ -55,6 +55,14 @@ SAMPLE_INTERVAL = 0.3
 # The transition stored is still (s_t, a_t, r, s_(t+1)). 0 = old behaviour.
 REWARD_DELAY = 1
 
+# Algorithm 1 case A forces the maximum cap when a sample shows 100 % core
+# and 0 % memory utilisation. On the 4070 Ti NVML reports 100 % whenever a
+# kernel ran for the whole period, and the training-set sweep shows the
+# maximum cap is the WORST EDP choice for the compute-bound programs
+# (gaussian, hotspot, particlefilter: EDP-best 2200-2400 MHz). v4 disables
+# the override (DEVIATION) and lets the v4 reward judge case A samples.
+FORCE_CASE_A = False
+
 # Action candidates: frequency caps in MHz (paper Table IV analogue),
 # chosen from the frequency_sweep.py results on this 4070 Ti (README):
 # under the default policy the SM clock peaks at ~2745 MHz; below 1800 MHz
@@ -85,6 +93,16 @@ VARIANTS = {
     "freq": [(f, None) for f in FREQ_CAPS],
     "power": [(None, p) for p in POWER_CAPS],
     "hybrid": [(f, p) for p in HYBRID_POWER for f in HYBRID_FREQ],
+    # v4: the frequency variant on the hybrid's 8-cap ladder (135 MHz
+    # apart) so each action gets ~8x more training samples
+    "freq8": [(f, None) for f in HYBRID_FREQ],
+    # v4 power and hybrid variants with as few actions per knob (8 power
+    # caps; 4 x 4 = 16 hybrid pairs) for the same reason
+    "power8": [(None, p) for p in HYBRID_POWER],
+    "hybrid16": [(f, p) for p in HYBRID_POWER[::2] + [HYBRID_POWER[-1]]
+                 if p != HYBRID_POWER[-2]
+                 for f in HYBRID_FREQ[::2] + [HYBRID_FREQ[-1]]
+                 if f != HYBRID_FREQ[-2]],
 }
 ACTIONS = VARIANTS["freq"]
 
@@ -156,6 +174,7 @@ def run_job(agent, workload, *, learn, actions=None,
     """
     actions = actions or ACTIONS
     c_idle = float(min(primary(a) for a in actions))
+    power_sum, power_n = 0.0, 0  # running mean board power (v4 reward)
     result = {}
 
     def target():
@@ -183,13 +202,15 @@ def run_job(agent, workload, *, learn, actions=None,
             cur = G.read()
             state = to_state(cur)
             r, case = (None, R.case_of(cur))
+            power_sum += cur["power"]
+            power_n += 1
 
             if pending:
                 pending[-1][2] = state  # next state of the newest decision
             if prev is not None and len(pending) > REWARD_DELAY:
                 s_old, a_old, s_next = pending.pop(0)
-                r, case = R.reward(prev, cur, primary(actions[a_old]),
-                                   c_idle)
+                r, case = R.compute(prev, cur, primary(actions[a_old]),
+                                    c_idle, power_sum / power_n)
                 agent.remember(s_old, a_old, r, s_next, done)
                 if learn:
                     agent.learn()
@@ -199,7 +220,7 @@ def run_job(agent, workload, *, learn, actions=None,
             if epsilon_fn is not None:
                 epsilon_fn()
             action, explored = agent.act(state, greedy=greedy)
-            forced = case == "A"
+            forced = FORCE_CASE_A and case == "A"
             if forced:  # Algorithm 1 line 7: compute-bound -> max cap
                 action = len(actions) - 1
             cap = actions[action]
@@ -281,6 +302,8 @@ def train(iterations, tag, seed, variant="freq", kind="ddqn"):
             "variant": variant, "agent": kind, "actions": actions,
             "buckets": BUCKETS, "sample_interval_s": SAMPLE_INTERVAL,
             "reward_delay_samples": REWARD_DELAY,
+            "reward_mode": R.REWARD_MODE, "reward_scale": R.REWARD_SCALE,
+            "force_case_a": FORCE_CASE_A,
             "iterations": iterations, "seed": seed, "train_set": W.TRAIN,
             "hyper": {k: getattr(A, k) for k in (
                 "BATCH_SIZE", "LEARNING_RATE", "BUFFER_SIZE", "GAMMA",

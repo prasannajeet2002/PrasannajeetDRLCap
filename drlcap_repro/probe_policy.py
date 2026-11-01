@@ -25,6 +25,17 @@ import drlcap as D
 
 N = 2000
 
+# telemetry typical of each kind of phase on the 4070 Ti (training sweep);
+# clock = the clock the GPU would run at under a mid (2200 MHz) cap
+TYPICAL = [
+    ("idle", dict(util=0.0, mem_util=0.0, power=25.0, clock=210.0)),
+    ("host-bound", dict(util=5.0, mem_util=0.0, power=40.0, clock=2200.0)),
+    ("compute-bound", dict(util=95.0, mem_util=0.0, power=60.0,
+                           clock=2200.0)),
+    ("memory-heavy", dict(util=100.0, mem_util=60.0, power=120.0,
+                          clock=2200.0)),
+]
+
 
 def main(dirs):
     rng = np.random.default_rng(0)
@@ -46,6 +57,12 @@ def main(dirs):
               + ", ".join(f"{actions[a]} {100 * c / N:.1f} %" for c, a in top)
               + f"; median Q spread {np.median(qs[:, -1] - qs[:, 0]):.2f}"
               f", median best-second gap {np.median(qs[:, -1] - qs[:, -2]):.2f}")
+        typ = np.array([D.to_state(dict(x, temp=50.0, energy_j=0.0))
+                        for _, x in TYPICAL], dtype=np.float32)
+        a = model.predict(typ, verbose=0).argmax(1)
+        print("    typical states: " + ", ".join(
+            f"{name} -> {D.primary(actions[i])}"
+            for (name, _), i in zip(TYPICAL, a)))
 
 
 if __name__ == "__main__":

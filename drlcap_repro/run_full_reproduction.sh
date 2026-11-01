@@ -12,24 +12,27 @@
 #      plots.py)
 # v3 (2026-10-31): reward attributed one sample later (drlcap.REWARD_DELAY)
 # and NVML polled every 300 ms in every policy, baseline included.
+# v4 (2026-11-01, final, deviations in README "Results v4"): EDP-local
+# reward (reward.REWARD_MODE), no case-A forced maximum, gamma 0.2,
+# 8 frequency caps / 8 power caps / 4x4 hybrid pairs.
 # Every run writes its own timestamped results/ directory; a failure stops
 # the queue (set -e) and gpu_control resets the GPU on exit.
 set -euo pipefail
 source /home/drl/miniconda3/etc/profile.d/conda.sh
 conda activate prasannajeet_env
 cd "$(dirname "$0")"
-V=v3
+V=v4
 LOG=results/queue_${V}_$(date +%Y%m%d_%H%M%S).log
 exec > >(tee -a "$LOG") 2>&1
 
 latest() { ls -d results/"$1"_2* | tail -1; }
 
 echo "== training $(date)"
-python drlcap.py train --variant freq   --agent ddqn    --seed 0 --tag freq_s0_$V
-python drlcap.py train --variant freq   --agent ddqn    --seed 1 --tag freq_s1_$V
-python drlcap.py train --variant power  --agent ddqn    --seed 0 --tag power_s0_$V
-python drlcap.py train --variant hybrid --agent ddqn    --seed 0 --tag hybrid_s0_$V
-python drlcap.py train --variant freq   --agent tabular --seed 0 --tag rl_s0_$V
+python drlcap.py train --variant freq8    --agent ddqn    --seed 0 --tag freq_s0_$V
+python drlcap.py train --variant freq8    --agent ddqn    --seed 1 --tag freq_s1_$V
+python drlcap.py train --variant power8   --agent ddqn    --seed 0 --tag power_s0_$V
+python drlcap.py train --variant hybrid16 --agent ddqn    --seed 0 --tag hybrid_s0_$V
+python drlcap.py train --variant freq8    --agent tabular --seed 0 --tag rl_s0_$V
 
 T_FREQ=$(latest train_freq_s0_$V)
 T_FREQ1=$(latest train_freq_s1_$V)

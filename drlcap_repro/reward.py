@@ -107,3 +107,50 @@ def reward(prev, cur, cap_mhz, c_idle):
     else:
         r = g * (cur["mem_util"] / 100.0)
     return max(-REWARD_CLIP, min(REWARD_CLIP, r)), case
+
+
+# ---------------------------------------------------------------------------
+# v4 reward repair (DEVIATION from the paper, README "Results v4").
+#
+# The Algorithm 1 / Eq. 1 reward above scores only the CHANGE between two
+# consecutive samples, so holding any cap earns the top score and no cap
+# level is preferred; case D (r = g * u_mem, median u_mem 1 %) carries
+# almost no signal. The v4 reward keeps the Algorithm 1 case split and the
+# idle rule (case B, r = c / cap) but scores every non-idle sample by its
+# local EDP cost: minimising E * T over the phases of a job is the same as
+# minimising (P + Pbar) per unit of work in every phase, Pbar being the
+# job's mean power (Lagrangian of EDP = E * T). When the GPU is the
+# bottleneck (core utilisation >= GPU_BOUND_UTIL) the work rate is SM busy
+# fraction x actual clock; below that the host sets the pace, the rate
+# does not depend on the GPU clock and the cost reduces to P + Pbar
+# (the per-sample utilisation, quantised to 1 %, would otherwise add
+# noise far larger than the cap's effect). No constant is fitted to data;
+# REWARD_SCALE only sets the magnitude, GPU_BOUND_UTIL is the same 50 %
+# threshold as the COORD-like baseline.
+REWARD_MODE = "edp_local"   # "alg1" = paper reward above (v1-v3)
+REWARD_SCALE = 3.0
+F_REF_MHZ = 2745.0          # default boost clock under load (sweep)
+P_REF_W = 285.0             # default board power limit
+R_IDLE_MAX_V4 = 1.0         # idle reward c / cap in (0.66, 1]
+GPU_BOUND_UTIL = 50.0
+
+
+def reward_edp_local(cur, cap_mhz, c_idle, pbar):
+    """v4 reward for the action whose effect is visible in `cur`."""
+    case = case_of(cur)
+    if case == "B":
+        return R_IDLE_MAX_V4 * c_idle / cap_mhz, case
+    if cur["util"] >= GPU_BOUND_UTIL:
+        rate = cur["util"] / 100.0 * cur["clock"] / F_REF_MHZ
+    else:
+        rate = 1.0  # host-bound: speed independent of the GPU clock
+    cost = (cur["power"] + pbar) / P_REF_W / rate
+    r = -REWARD_SCALE * math.log(cost)
+    return max(-REWARD_CLIP, min(REWARD_CLIP, r)), case
+
+
+def compute(prev, cur, cap_mhz, c_idle, pbar):
+    """Reward under the configured REWARD_MODE."""
+    if REWARD_MODE == "alg1":
+        return reward(prev, cur, cap_mhz, c_idle)
+    return reward_edp_local(cur, cap_mhz, c_idle, pbar)

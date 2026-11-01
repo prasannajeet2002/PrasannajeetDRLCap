@@ -1,0 +1,351 @@
+{
+  "variant": "freq",
+  "agent": "ddqn",
+  "actions": [
+    [
+      1800,
+      null
+    ],
+    [
+      1815,
+      null
+    ],
+    [
+      1830,
+      null
+    ],
+    [
+      1845,
+      null
+    ],
+    [
+      1860,
+      null
+    ],
+    [
+      1875,
+      null
+    ],
+    [
+      1890,
+      null
+    ],
+    [
+      1905,
+      null
+    ],
+    [
+      1920,
+      null
+    ],
+    [
+      1935,
+      null
+    ],
+    [
+      1950,
+      null
+    ],
+    [
+      1965,
+      null
+    ],
+    [
+      1980,
+      null
+    ],
+    [
+      1995,
+      null
+    ],
+    [
+      2010,
+      null
+    ],
+    [
+      2025,
+      null
+    ],
+    [
+      2040,
+      null
+    ],
+    [
+      2055,
+      null
+    ],
+    [
+      2070,
+      null
+    ],
+    [
+      2085,
+      null
+    ],
+    [
+      2100,
+      null
+    ],
+    [
+      2115,
+      null
+    ],
+    [
+      2130,
+      null
+    ],
+    [
+      2145,
+      null
+    ],
+    [
+      2160,
+      null
+    ],
+    [
+      2175,
+      null
+    ],
+    [
+      2190,
+      null
+    ],
+    [
+      2205,
+      null
+    ],
+    [
+      2220,
+      null
+    ],
+    [
+      2235,
+      null
+    ],
+    [
+      2250,
+      null
+    ],
+    [
+      2265,
+      null
+    ],
+    [
+      2280,
+      null
+    ],
+    [
+      2295,
+      null
+    ],
+    [
+      2310,
+      null
+    ],
+    [
+      2325,
+      null
+    ],
+    [
+      2340,
+      null
+    ],
+    [
+      2355,
+      null
+    ],
+    [
+      2370,
+      null
+    ],
+    [
+      2385,
+      null
+    ],
+    [
+      2400,
+      null
+    ],
+    [
+      2415,
+      null
+    ],
+    [
+      2430,
+      null
+    ],
+    [
+      2445,
+      null
+    ],
+    [
+      2460,
+      null
+    ],
+    [
+      2475,
+      null
+    ],
+    [
+      2490,
+      null
+    ],
+    [
+      2505,
+      null
+    ],
+    [
+      2520,
+      null
+    ],
+    [
+      2535,
+      null
+    ],
+    [
+      2550,
+      null
+    ],
+    [
+      2565,
+      null
+    ],
+    [
+      2580,
+      null
+    ],
+    [
+      2595,
+      null
+    ],
+    [
+      2610,
+      null
+    ],
+    [
+      2625,
+      null
+    ],
+    [
+      2640,
+      null
+    ],
+    [
+      2655,
+      null
+    ],
+    [
+      2670,
+      null
+    ],
+    [
+      2685,
+      null
+    ],
+    [
+      2700,
+      null
+    ],
+    [
+      2715,
+      null
+    ],
+    [
+      2730,
+      null
+    ],
+    [
+      2745,
+      null
+    ]
+  ],
+  "buckets": {
+    "util": [
+      0.0,
+      100.0,
+      20
+    ],
+    "mem_util": [
+      0.0,
+      100.0,
+      20
+    ],
+    "power": [
+      10.0,
+      285.0,
+      20
+    ],
+    "temp": [
+      30.0,
+      90.0,
+      30
+    ]
+  },
+  "sample_interval_s": 0.3,
+  "reward_delay_samples": 1,
+  "reward_mode": "edp_local",
+  "reward_scale": 3.0,
+  "force_case_a": false,
+  "iterations": 1500,
+  "seed": 0,
+  "train_set": [
+    "backprop",
+    "bfs",
+    "gaussian",
+    "hotspot",
+    "huffman",
+    "nw",
+    "particlefilter",
+    "pathfinder"
+  ],
+  "hyper": {
+    "BATCH_SIZE": 32,
+    "LEARNING_RATE": 0.001,
+    "BUFFER_SIZE": 512,
+    "GAMMA": 0.95,
+    "EPSILON_START": 0.3,
+    "EPSILON_END": 0.1,
+    "TARGET_UPDATE": 8,
+    "HIDDEN_UNITS": 20,
+    "PER_ALPHA": 0.6,
+    "PER_BETA_START": 0.4,
+    "PER_BETA_INCREMENT": 0.001,
+    "PER_EPS": 0.01,
+    "PER_ABS_ERR_UPPER": 1.0,
+    "LEARN_START_OFFLINE": 512,
+    "LEARN_START_ONLINE": 32
+  },
+  "tabular": {
+    "ALPHA": 0.1,
+    "GAMMA": 0.95
+  },
+  "reward": {
+    "STEP_MHZ": 15,
+    "N": 3,
+    "G_POWER_DOWN": [
+      5.0,
+      -1.0,
+      -2.0,
+      -3.0
+    ],
+    "G_POWER_UP": [
+      -1.0,
+      -2.0,
+      -3.0,
+      -4.0
+    ],
+    "P_THRESH_W": [
+      5.0,
+      15.0,
+      30.0
+    ],
+    "R_CASE_A": [
+      5.0,
+      2.5,
+      0.0,
+      -2.5
+    ],
+    "R_IDLE_MAX": 5.0,
+    "REWARD_CLIP": 10.0
+  }
+}
