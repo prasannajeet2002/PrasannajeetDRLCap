@@ -383,6 +383,124 @@ Causes 1-2 are properties of the reward as published (and of the
 authors' code), not of this implementation. See "Results v4" for the
 repaired reward (a documented deviation); v3 remains the faithful result.
 
+## Results v4: repaired DRLCap (final, kept), 2026-11-02
+
+v4 keeps everything from v3 (reward delay, polling in every policy) and
+changes four things to fix the causes found above. All four are
+deviations from the paper (Deviations 15-18 below); v3 is the faithful
+result, v4 is the best this implementation achieves.
+
+1. **Reward** `reward.REWARD_MODE = "edp_local"`: idle samples (case B)
+   keep the paper's c / cap; otherwise
+   r = -3 log((P + Pbar) / 285 W / rate), clipped to +-10, with
+   rate = u_core * f / 2745 MHz if u_core >= 50 % and rate = 1 if the GPU
+   is host-bound, Pbar = the job's running mean power. Minimising E * T
+   over phases means minimising (P + Pbar) per unit of work, so this is a
+   local form of the EDP objective. Checked offline against a per-sample
+   sweep of the 8 training programs (`results/reward_sweep_20261101_085612*`,
+   `reward_design.py`): the cap it ranks best is on average 2.0 % EDP
+   worse than each program's EDP-best cap (max 14.2 %, Spearman 0.76),
+   compared with 9.5 % (Spearman 0.24) for Algorithm 1 / Eq. 1.
+2. **No forced maximum in case A** (`drlcap.FORCE_CASE_A = False`): the
+   sweep shows the maximum cap is the worst EDP choice for compute-bound
+   programs on the 4070 Ti.
+3. **gamma 0.2** instead of 0.95 (Table V): a cap only affects the next
+   one or two samples. Replaying the logged v3 transitions with gamma 0.95
+   gave one constant high cap; with gamma 0 - 0.2 the greedy cap depended
+   on the state (`offline_gamma.py`).
+4. **Fewer, wider actions**: 8 frequency caps 1800-2745 MHz (step 135),
+   8 power caps 100-285 W, 4 x 4 hybrid pairs, instead of 64 caps 15 MHz
+   apart; with 5000 training steps each of 64 caps is tried only a few
+   dozen times. The tabular RL baseline uses the same reward, gamma and
+   8 caps, so the comparison stays like-for-like.
+
+Log `results/queue_v4_20261101_110400.log`, 2026-11-01 11:04 -> 11-02
+02:45, no failed job. Figures: `results/plots_v4_20261102_024521/`.
+Training runs `results/train_{freq_s0,freq_s1,power_s0,hybrid_s0,rl_s0}_v4_*`.
+
+### Main comparison, 10 repeats (`results/eval_main_v4_20261101_131118`)
+
+| Policy | Energy saving | Perf. loss | EDP improvement | EDP 95 % CI | v3 EDP |
+|---|---|---|---|---|---|
+| static 2100 MHz | 28.3 % | 8.2 % | 22.4 % | 21.7 – 23.1 | 22.3 % |
+| static 2400 MHz | 20.9 % | 3.8 % | 17.9 % | 17.2 – 18.6 | 18.7 % |
+| COORD-like | 27.5 % | 6.9 % | 22.5 % | 21.8 – 23.2 | 22.8 % |
+| **DRLCap (frequency)** | **19.8 %** | **5.2 %** | **15.6 %** | 14.5 – 16.8 | 14.9 % |
+| DRLCap power | 0.2 % | 0.8 % | -0.6 % | -1.7 – 0.4 | 1.5 % |
+| DRLCap hybrid | 21.8 % | 12.7 % | 11.9 % | 10.8 – 13.1 | 10.6 % |
+| RL (tabular double Q) | 19.1 % | 6.7 % | 13.7 % | 13.0 – 14.4 | 14.4 % |
+
+Rodinia / CNN split (energy / slowdown / EDP, %): DRLCap 19.7 / 6.0 / 14.8
+and 20.1 / 3.2 / 17.5; COORD 25.6 / 6.0 / 21.1 and 31.6 / 8.9 / 25.5;
+static 2100 27.1 / 9.6 / 20.0 and 31.1 / 4.9 / 27.7.
+
+DRLCap per program (energy / perf. loss / EDP, %; mean cap): b+tree
+20.1 / 2.3 / 18.3 (1953 MHz), dwt2d 17.0 / 10.7 / 8.1 (1859), heartwall
+23.8 / 2.2 / 22.2 (2277), lavaMD 19.9 / 9.7 / 12.2 (2424), lud 19.7 /
+10.0 / 11.6 (2340), myocyte 17.3 / 5.0 / 13.2 (2418), streamcluster
+19.6 / 2.6 / 17.2 (2244), vgg16 20.2 / 4.1 / 17.0 (2213), googlenet
+21.1 / 4.3 / 17.8 (2207), resnet50 18.8 / 1.3 / 17.8 (2281).
+
+Facts:
+- DRLCap is still significantly below COORD and static 2100 MHz (about
+  7 points EDP, CIs do not overlap) and below static 2400 MHz. It beats
+  static 2100 on one program (lavaMD 12.2 vs 11.0) and COORD on none.
+  The paper's claim (DRLCap beats COORD and RL) is not reproduced.
+- Versus v3: +0.7 points EDP (CIs overlap, so not a clear gain); energy
+  saving +2.4 points, slowdown +2.2 points. lavaMD improves most
+  (EDP 1.4 -> 12.2) because case A no longer forces the maximum cap;
+  myocyte gets worse (19.6 -> 13.2).
+- DRLCap now beats the RL baseline (15.6 vs 13.7, CIs do not overlap);
+  in v3 they were equal.
+- **The policy adapts, but its level is too high when the GPU is busy.**
+  Caps chosen during the main run (`steps.csv`): idle samples mean 2102
+  MHz (1800 in 45 %), host-bound (u_core < 50 %) 2130 MHz (1800 in 43 %),
+  GPU-busy (u_core >= 50 %) 2379 MHz (2475 30 %, 2610 24 %, 2340 23 %).
+  The static sweep and static 2100 suggest ~2100 MHz for the busy phases
+  of these programs. The RL baseline does not adapt (mean 2266-2270 MHz
+  in all three classes, Fig. 5 almost uniform over the 8 caps).
+- Policy probe (`results/probe_policy_v4_*.txt`): freq_s0 5 distinct
+  greedy actions (2475 43 %, 1800 36 %, 2610 14 %), freq_s1 5 (2340 45 %,
+  2205 30 %, 1935 20 %); v3 collapsed to one cap in 96-100 % of random
+  states. Median best-vs-second Q gap is small (0.08 / 0.11), i.e. the
+  network separates neighbouring caps weakly. freq_s0 picks 2475 MHz for
+  a synthetic idle state (the validation run picked 1800).
+- Training (Fig. 6): the mean chosen action keeps swinging between 0.1
+  and 0.8 of the cap range until step 5000; the policy has not settled.
+- The power variant does nothing (0.2 % energy): Rodinia draws less than
+  the 100 W minimum limit, and it picks 259 W, which does not bind, for
+  39 % of steps. The hybrid saves energy but costs 12.7 % time (lud -14.8 %
+  EDP at 1800 MHz / 100 W).
+
+### Ablations, 5 repeats each
+
+| Run | Energy saving | Perf. loss | EDP improvement | EDP 95 % CI |
+|---|---|---|---|---|
+| DRLCap seed 0 (online) | 20.0 % | 5.1 % | 16.0 % | 14.7 – 17.2 |
+| DRLCap seed 1 (online) | 23.5 % | 6.5 % | 18.6 % | 17.2 – 20.0 |
+| monitor only (caps never applied) | -0.8 % | 0.4 % | -1.2 % | -2.4 – -0.1 |
+| DRLCap seed 0 frozen (no online learning) | 19.8 % | 4.1 % | 16.4 % | 15.5 – 17.3 |
+
+- Seed matters: seed 1 is 2.6 points better (it picks 2205 MHz in
+  43 % of steps) but still ~4 points below COORD / static 2100. The main
+  table uses seed 0 as planned before the run.
+- Overhead: monitoring alone costs 0.8 % energy, as in v3 (1.0 %).
+- Frozen vs. online: within 0.5 points, as in v3; online learning during
+  a 20-100 s test job does not change the result.
+
+### Conclusion of the reproduction
+
+On the RTX 4070 Ti, with the Rodinia + CNN workloads available here,
+DRLCap does not reach the static 2100 MHz cap or the COORD-like policy,
+neither as published (v3, 14.9 % EDP) nor with the repaired reward, gamma
+and action set (v4, 15.6 %; 18.6 % with the second seed). The repairs
+made the policy state-dependent (v3 was constant) and lifted it above
+the RL baseline, but it still selects caps that are too high in
+GPU-busy phases. Hypotheses, not tested: 5000 training steps are too
+few for a stable policy (Fig. 6), and the u_core * f work proxy rewards
+higher clocks on memory-heavy phases where the clock does not raise
+throughput.
+
 ## What matches the paper
 
 - State: GPU core utilisation, memory utilisation, power, SM frequency,
@@ -443,3 +561,19 @@ repaired reward (a documented deviation); v3 remains the faithful result.
 12. **Online learning** in deployment starts after one batch (32 samples),
     since a test job is shorter than the 512 steps needed to fill the
     buffer; offline training waits for a full buffer as the authors do.
+13. **Reward delay** (v3, v4): the reward of action a_t is computed on
+    samples t+1 -> t+2 (`drlcap.REWARD_DELAY = 1`) because a cap change
+    shows up mostly one sample late on this GPU.
+14. **NVML polling in every policy** (v3, v4): baseline, static and COORD
+    jobs poll NVML every 300 ms like the agent, because polling alone
+    lowers measured energy by 2.5-4 % (`diag_monitor_effect.py`).
+
+v4 only (see "Results v4"; v3 is the faithful result):
+
+15. **Reward**: EDP-local reward (`reward.REWARD_MODE = "edp_local"`)
+    instead of Algorithm 1 / Eq. 1, case B unchanged.
+16. **Case A** no longer forces the maximum cap (`drlcap.FORCE_CASE_A`).
+17. **gamma 0.2** instead of 0.95 (DRLCap and the RL baseline).
+18. **Action sets**: 8 frequency caps (1800-2745 MHz, step 135), 8 power
+    caps (100-285 W), 4 x 4 hybrid pairs; the RL baseline uses the 8
+    frequency caps.

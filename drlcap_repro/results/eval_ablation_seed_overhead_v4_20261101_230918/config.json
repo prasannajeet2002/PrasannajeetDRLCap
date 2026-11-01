@@ -1,0 +1,49 @@
+{
+  "policies": [
+    "baseline",
+    "drlcap",
+    "drlcap_seed1",
+    "monitor_only"
+  ],
+  "models": {
+    "drlcap": [
+      "results/train_freq_s0_v4_20261101_110402/model_final.keras",
+      "freq8",
+      "ddqn"
+    ],
+    "drlcap_seed1": [
+      "results/train_freq_s1_v4_20261101_112923/model_final.keras",
+      "freq8",
+      "ddqn"
+    ],
+    "monitor_only": [
+      "results/train_freq_s0_v4_20261101_110402/model_final.keras",
+      "freq8",
+      "ddqn"
+    ]
+  },
+  "workloads": [
+    "b+tree",
+    "dwt2d",
+    "heartwall",
+    "lavaMD",
+    "lud",
+    "myocyte",
+    "streamcluster",
+    "vgg16",
+    "googlenet",
+    "resnet50"
+  ],
+  "repeats": 5,
+  "epsilon": 0.1,
+  "online": true,
+  "coord_util_threshold": 50.0,
+  "coord_caps": {
+    "compute": 2400,
+    "memory": 1800
+  },
+  "baseline_nvml_polling_s": 0.3,
+  "reward_delay_samples": 1,
+  "reward_mode": "edp_local",
+  "force_case_a": false
+}

@@ -1,0 +1,8 @@
+results/train_freq_s0_v4_20261101_110402 (freq8): 5 distinct greedy actions; top (2475, None) 42.8 %, (1800, None) 36.2 %, (2610, None) 14.2 %; median Q spread 0.86, median best-second gap 0.08
+    typical states: idle -> 2475, host-bound -> 1800, compute-bound -> 2475, memory-heavy -> 2610
+results/train_freq_s1_v4_20261101_112923 (freq8): 5 distinct greedy actions; top (2340, None) 45.0 %, (2205, None) 29.6 %, (1935, None) 20.1 %; median Q spread 0.56, median best-second gap 0.11
+    typical states: idle -> 2205, host-bound -> 2205, compute-bound -> 2340, memory-heavy -> 2340
+results/train_power_s0_v4_20261101_115437 (power8): 7 distinct greedy actions; top (None, 259) 89.5 %, (None, 232) 6.8 %, (None, 153) 2.2 %; median Q spread 1.25, median best-second gap 0.51
+    typical states: idle -> 232, host-bound -> 100, compute-bound -> 153, memory-heavy -> 259
+results/train_hybrid_s0_v4_20261101_122008 (hybrid16): 8 distinct greedy actions; top (1800, 100) 75.5 %, (2070, 285) 6.2 %, (2070, 100) 6.2 %; median Q spread 1.39, median best-second gap 0.21
+    typical states: idle -> 2070, host-bound -> 2070, compute-bound -> 2340, memory-heavy -> 1800
