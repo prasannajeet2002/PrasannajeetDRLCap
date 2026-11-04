@@ -139,7 +139,7 @@ TRACE_FIELDS = ["t_ms", "event", "sample", "decision", "action", "cap",
                 "next_state_sample", "is_end"]
 
 LOG_FIELDS = ["job", "workload", "t", "util", "mem_util", "power", "clock",
-              "temp", "case", "reward", "action", "cap_mhz", "power_cap_w",
+              "temp", "case", "reward", "reward_raw", "action", "cap_mhz", "power_cap_w",
               "explore",
               "forced_max", "epsilon", "updates", "loss"]
 
@@ -274,6 +274,8 @@ def run_job(agent, workload, *, learn, actions=None,
                         ("util", "mem_util", "power", "clock", "temp")},
                     "case": case,
                     "reward": "" if r is None else round(r, 4),
+                    "reward_raw": "" if r is None or R.REWARD_MODE != "alg1"
+                    else round(R.LAST_RAW, 4),
                     "action": action, "cap_mhz": cap[0] or "",
                     "power_cap_w": cap[1] or "",
                     "explore": int(explored), "forced_max": int(forced),
@@ -408,6 +410,7 @@ def apply_overrides(args):
     global REWARD_DELAY, FORCE_CASE_A
     if args.gamma is not None:
         A.GAMMA = args.gamma
+        T.GAMMA = args.gamma
     if args.reward_mode is not None:
         R.REWARD_MODE = args.reward_mode
     if args.reward_delay is not None:

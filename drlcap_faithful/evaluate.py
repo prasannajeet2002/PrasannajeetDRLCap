@@ -113,11 +113,28 @@ def profile(workload):
 
 
 def load_model_spec(path):
-    """(variant, agent kind) of a trained model from its run's config."""
+    """(variant, agent kind, settings) of a trained model from its run's
+    config. `settings` are the one-setting-variant knobs the model was
+    trained with; online learning during evaluation uses the same ones."""
     cfg_path = os.path.join(os.path.dirname(path), "config.json")
     with open(cfg_path) as f:
         cfg = json.load(f)
-    return cfg.get("variant", "freq"), cfg.get("agent", "ddqn")
+    settings = {"gamma": cfg["hyper"]["GAMMA"],
+                "reward_mode": cfg["reward_mode"],
+                "reward_delay": cfg["reward_delay_samples"],
+                "force_case_a": cfg["force_case_a"]}
+    return cfg.get("variant", "freq"), cfg.get("agent", "ddqn"), settings
+
+
+def use_settings(settings):
+    """Set the controller to a model's training-time settings. The agent's
+    gamma is read when its training step is first traced, i.e. by the
+    first learn() of a freshly built agent, so this runs before building it."""
+    A.GAMMA = settings["gamma"]
+    D.T.GAMMA = settings["gamma"]
+    D.R.REWARD_MODE = settings["reward_mode"]
+    D.REWARD_DELAY = settings["reward_delay"]
+    D.FORCE_CASE_A = settings["force_case_a"]
 
 
 def geomean(x):
@@ -229,9 +246,8 @@ def main():
                    "coord_util_threshold": COORD_UTIL_THRESHOLD,
                    "coord_caps": COORD_CAPS,
                    "baseline_nvml_polling_s": D.SAMPLE_INTERVAL,
-                   "reward_delay_samples": D.REWARD_DELAY,
-                   "reward_mode": D.R.REWARD_MODE,
-                   "force_case_a": D.FORCE_CASE_A}, f, indent=2)
+                   "per_model_settings": "models[name][3], from each "
+                                         "model's training config"}, f, indent=2)
 
     rows, job, coord = [], 0, {}
     try:
@@ -258,7 +274,8 @@ def main():
                     elif policy == "coord":
                         res = baseline_job(name, coord[name]["cap_mhz"])
                     else:
-                        path, variant, kind = specs[policy]
+                        path, variant, kind, settings = specs[policy]
+                        use_settings(settings)
                         actions = D.VARIANTS[variant]
                         agent = D.make_agent(kind, len(actions), 1000 + job)
                         agent.load(path)

@@ -158,6 +158,9 @@ class DDQNAgent:
         self.learn_start = LEARN_START_OFFLINE
         self.replay = PrioritizedReplay()
         self.epsilon = EPSILON_START
+        # read at construction so a per-run override of GAMMA (variant
+        # flags, evaluation of a variant model) applies to this agent
+        self.gamma = GAMMA
         self.updates = 0
         self.last_loss = float("nan")
 
@@ -187,7 +190,7 @@ class DDQNAgent:
         next_a = tf.argmax(self.q(s2, training=False), axis=1)
         next_q = tf.gather(self.q_target(s2, training=False), next_a,
                            batch_dims=1)
-        y = r + GAMMA * (1.0 - d) * next_q
+        y = r + self.gamma * (1.0 - d) * next_q
         with tf.GradientTape() as tape:
             q_sa = tf.gather(self.q(s, training=True), a, batch_dims=1)
             td = y - q_sa

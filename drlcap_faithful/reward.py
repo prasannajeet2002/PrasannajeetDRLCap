@@ -90,22 +90,31 @@ def case_of(sample):
     return "D"
 
 
+# unclipped value of the last reward computed, logged so the frequency of
+# clipping can be reported (review: "document ... clipping")
+LAST_RAW = None
+
+
 def reward(prev, cur, cap_mhz, c_idle):
     """Reward for the action that moved the GPU from `prev` to `cur`."""
+    global LAST_RAW
     # whole watts, as in the authors' code, so sensor noise below 1 W
     # does not flip the sign of dp
     dp = math.floor(cur["power"]) - math.floor(prev["power"])
     df = cur["clock"] - prev["clock"]
     case = case_of(cur)
     if case == "A":
-        return R_CASE_A[_bin(dp, P_THRESH_W)], case
+        LAST_RAW = R_CASE_A[_bin(dp, P_THRESH_W)]
+        return LAST_RAW, case
     if case == "B":
-        return R_IDLE_MAX * c_idle / cap_mhz, case
+        LAST_RAW = R_IDLE_MAX * c_idle / cap_mhz
+        return LAST_RAW, case
     g = score_g(dp, df)
     if case == "C":
         r = g / (cur["util"] / 100.0)
     else:
         r = g * (cur["mem_util"] / 100.0)
+    LAST_RAW = r
     return max(-REWARD_CLIP, min(REWARD_CLIP, r)), case
 
 
