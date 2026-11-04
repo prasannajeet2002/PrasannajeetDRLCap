@@ -1,0 +1,4 @@
+name,suite,split,input,cmd,cwd,runs,exit,runtime_s,samples,on_gpu1,on_other_gpu,mean_util,max_util,mean_mem_util,max_mem_util,mean_power_w,max_power_w
+qe,Quantum ESPRESSO,test,AUSURF112 (Table II: ausurf112),/home/drl/project/drlcap/benchmarks/qe-src/bin/pw.x -in ausurf.in,/home/drl/project/drlcap/drlcap_faithful/tmp/qe_ausurf112,1,1,36.49,161,True,False,73.1,100,9.4,87,70.5,143.6
+vgg16,CNN,test,"CIFAR-100, batch 128, 400 steps",/home/drl/miniconda3/envs/prasannajeet_env/bin/python /home/drl/project/drlcap/drlcap_faithful/cnn_workload.py vgg16 --steps 400,/home/drl/project/drlcap/drlcap_faithful,1,0,36.0,160,True,False,18.3,82,12.3,69,73.0,192.2
+googlenet,CNN,test,"CIFAR-100, batch 128, 200 steps",/home/drl/miniconda3/envs/prasannajeet_env/bin/python /home/drl/project/drlcap/drlcap_faithful/cnn_workload.py googlenet --steps 200,/home/drl/project/drlcap/drlcap_faithful,1,0,90.81,402,True,False,35.7,100,31.6,100,100.3,202.3

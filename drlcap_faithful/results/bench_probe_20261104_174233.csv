@@ -1,0 +1,2 @@
+name,suite,split,input,cmd,cwd,runs,exit,runtime_s,samples,on_gpu1,on_other_gpu,mean_util,max_util,mean_mem_util,max_mem_util,mean_power_w,max_power_w
+qe,Quantum ESPRESSO,test,"AUSURF112 (Table II: ausurf112), diagonalization='cg' (Davidson runs out of the 12 GB)",/home/drl/project/drlcap/benchmarks/qe-src/bin/pw.x -in ausurf.in,/home/drl/project/drlcap/drlcap_faithful/tmp/qe_ausurf112,1,2,733.64,3260,True,False,92.6,100,87.6,100,146.4,158.9

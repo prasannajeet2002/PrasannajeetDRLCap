@@ -1,5 +1,6 @@
 # Third-party benchmark suite and datasets (large; fetch separately)
-benchmarks/
+benchmarks/*
+!benchmarks/build_scripts/
 rodinia-3.1-data.tar.gz
 
 # Python
@@ -10,3 +11,7 @@ __pycache__/
 cuda_test
 gpu_compute_test
 *.bak
+
+# drlcap_faithful scratch (GROMACS/QE run dirs, program outputs)
+drlcap_faithful/tmp/
+drlcap_faithful/results/*_logs/
