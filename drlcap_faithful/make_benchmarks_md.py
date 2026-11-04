@@ -62,6 +62,14 @@ CHANGED_INPUTS = [
 ]
 
 
+ROOT = "/home/drl/project/drlcap/"
+
+
+def short(text):
+    """Paths relative to the project folder, for readability."""
+    return text.replace(ROOT, "").replace("/home/drl/miniconda3/envs/prasannajeet_env/bin/", "")
+
+
 def main():
     rows = list(csv.DictReader(open("results/benchmark_table.csv")))
     out = ["# Expanded benchmark set (review item 5)", "",
@@ -83,12 +91,17 @@ def main():
                          ("test", "Test set (paper Table II)")):
         sel = [r for r in rows if r["split"] == split]
         out += ["", f"## {title}: {len(sel)} programs", "",
-                "| Application | Suite | Input | Runs / job | Job (s) | GPU 1 | Util % | "
-                "Mem util % | Power W | Character |", "|---|---|---|---|---|---|---|---|---|---|"]
+                "| Application | Suite | Input | Command (run in cwd) | Runs / job | Job (s) | "
+                "GPU 1 | Util % | Mem util % | Power W | Character |",
+                "|---|---|---|---|---|---|---|---|---|---|---|"]
         for r in sel:
             gpu = "yes" if r["on_gpu1"] == "True" and r["on_other_gpu"] == "False" else \
                   ("not seen in 0.2 s polls" if r["on_other_gpu"] == "False" else "CHECK")
-            out.append(f"| {r['application']} | {r['suite']} | {r['input']} | {r['repeat']} | "
+            cmd = short(r["command"])
+            if len(cmd) > 140:
+                cmd = cmd[:137] + "..."
+            out.append(f"| {r['application']} | {r['suite']} | {r['input']} | "
+                       f"`{cmd}` (cwd `{short(r['cwd'])}`) | {r['repeat']} | "
                        f"{r['job_s']} | {gpu} | {r['mean_util']} | {r['mean_mem_util']} | "
                        f"{r['mean_power_w']} | {r['character']} |")
         counts = {}
@@ -96,7 +109,8 @@ def main():
             counts[r["character"]] = counts.get(r["character"], 0) + 1
         out += ["", "Character counts: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items()))]
     out += ["", "Execution commands and working directories for every program are in "
-            "`results/benchmark_table.csv` (columns `command`, `cwd`) and in "
+            "`results/benchmark_table.csv` (columns `command`, `cwd`, full paths; "
+            "the tpacf command lists 101 input files and is cut short above) and in "
             "`workloads.py`. Character = coarse label from the job's mean NVML "
             "utilisation (< 30 % low-GPU / host-bound; memory util >= 40 % memory-heavy; "
             "< 15 % compute-heavy; else mixed)."]

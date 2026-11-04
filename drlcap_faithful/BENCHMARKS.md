@@ -41,108 +41,108 @@ All programs run unmodified on the RTX 4070 Ti (GPU 1, `CUDA_VISIBLE_DEVICES=1`)
 
 ## Training set: 64 programs
 
-| Application | Suite | Input | Runs / job | Job (s) | GPU 1 | Util % | Mem util % | Power W | Character |
-|---|---|---|---|---|---|---|---|---|---|
-| backprop | Rodinia | 524288 input units | 22 | 9.0 | yes | 4.8 | 0.5 | 37.2 | low-GPU / host-bound |
-| bfs | Rodinia | graph1MW_6 (1M nodes) | 9 | 9.1 | yes | 4.7 | 0.1 | 40.4 | low-GPU / host-bound |
-| gaussian | Rodinia | 4096x4096 matrix | 3 | 9.0 | yes | 87.4 | 7.8 | 87.9 | compute-heavy |
-| hotspot | Rodinia | 1024x1024 grid, 100000 iterations | 1 | 9.3 | yes | 91.7 | 0.1 | 92.1 | compute-heavy |
-| huffman | Rodinia | test1024_H2 input | 45 | 9.2 | yes | 11.1 | 0.3 | 49.4 | low-GPU / host-bound |
-| nw | Rodinia | 16384x16384, penalty 10 | 3 | 9.7 | yes | 12.8 | 1.1 | 42.6 | low-GPU / host-bound |
-| particlefilter | Rodinia | 128x128x100, 200000 particles | 1 | 11.0 | yes | 95.1 | 0.5 | 85.7 | compute-heavy |
-| pathfinder | Rodinia | 100000 cols x 5000 rows, pyramid 20 | 1 | 25.7 | yes | 2.6 | 0.0 | 15.2 | low-GPU / host-bound |
-| b+tree | Rodinia | mil.txt (1M keys) | 11 | 9.6 | yes | 1.7 | 0.2 | 38.1 | low-GPU / host-bound |
-| dwt2d | Rodinia | 1024x1024 rgb.bmp, 5/3 forward, 3 levels | 45 | 9.3 | yes | 3.2 | 0.2 | 44.6 | low-GPU / host-bound |
-| lavaMD | Rodinia | 60 boxes per dim | 1 | 10.6 | yes | 81.2 | 0.0 | 72.3 | compute-heavy |
-| streamcluster | Rodinia | 524288 points, 256 dims | 1 | 30.6 | yes | 26.8 | 10.4 | 46.5 | low-GPU / host-bound |
-| pb-cutcp | Parboil | large: watbox.sl100.pqr | 6 | 9.4 | yes | 0.7 | 0.1 | 41.6 | low-GPU / host-bound |
-| pb-mri-gridding | Parboil | small: small.uks | 1 | 6.8 | yes | 0.3 | 0.0 | 39.2 | low-GPU / host-bound |
-| pb-mri-q | Parboil | large: 64x64x64 | 42 | 8.4 | yes | 3.8 | 0.6 | 45.0 | low-GPU / host-bound |
-| pb-sgemm | Parboil | medium: matrix1 x matrix2t | 9 | 8.8 | yes | 0.6 | 0.1 | 41.0 | low-GPU / host-bound |
-| pb-stencil | Parboil | default: 512x512x64, 100 iters | 15 | 9.9 | yes | 2.3 | 0.5 | 45.4 | low-GPU / host-bound |
-| pb-tpacf | Parboil | large: 100 random sets, 10391 points | 15 | 10.5 | yes | 37.2 | 0.0 | 70.1 | compute-heavy |
-| shoc-BusSpeedDownload | SHOC | size class 4, default passes | 6 | 9.2 | yes | 58.4 | 2.3 | 52.0 | compute-heavy |
-| shoc-BusSpeedReadback | SHOC | size class 4, default passes | 5 | 10.2 | yes | 48.9 | 1.6 | 49.0 | compute-heavy |
-| shoc-MaxFlops | SHOC | size class 4, 1 pass | 2 | 20.2 | yes | 97.5 | 0.1 | 77.0 | compute-heavy |
-| shoc-BFS | SHOC | size class 4, default passes | 22 | 6.5 | yes | 15.8 | 0.0 | 53.5 | low-GPU / host-bound |
-| shoc-FFT | SHOC | size class 4, default passes | 6 | 9.7 | yes | 15.4 | 7.3 | 49.3 | low-GPU / host-bound |
-| shoc-MD5Hash | SHOC | size class 4, default passes | 15 | 8.8 | yes | 57.4 | 0.2 | 164.1 | compute-heavy |
-| shoc-NeuralNet | SHOC | size class 4, default passes | 22 | 5.0 | not seen in 0.2 s polls | 11.1 | 0.5 | 72.9 | low-GPU / host-bound |
-| shoc-Reduction | SHOC | size class 4, default passes | 6 | 8.8 | yes | 57.5 | 54.9 | 91.9 | memory-heavy |
-| shoc-Sort | SHOC | size class 4, default passes | 7 | 8.1 | yes | 41.9 | 21.8 | 68.4 | mixed |
-| shoc-Stencil2D | SHOC | size class 4, default passes | 1 | 89.2 | yes | 13.0 | 12.6 | 40.9 | low-GPU / host-bound |
-| shoc-Triad | SHOC | size class 4, default passes | 5 | 9.5 | yes | 21.8 | 5.6 | 52.1 | low-GPU / host-bound |
-| shoc-S3D | SHOC | size class 4, default passes | 21 | 7.8 | yes | 30.1 | 19.0 | 67.3 | mixed |
-| poly-2dconv | PolyBench | default 4096x4096 | 15 | 9.2 | yes | 2.3 | 0.1 | 44.5 | low-GPU / host-bound |
-| poly-2mm | PolyBench | default 2048^3 | 1 | 123.0 | yes | 0.0 | 0.0 | 13.8 | low-GPU / host-bound |
-| poly-3dconv | PolyBench | default 256^3 | 22 | 8.8 | yes | 5.7 | 0.4 | 36.9 | low-GPU / host-bound |
-| poly-3mm | PolyBench | default 512^3 | 9 | 10.1 | yes | 0.7 | 0.1 | 38.9 | low-GPU / host-bound |
-| poly-atax | PolyBench | default 4096x4096 | 22 | 5.9 | yes | 6.3 | 0.8 | 41.6 | low-GPU / host-bound |
-| poly-bicg | PolyBench | default 4096x4096 | 22 | 6.8 | yes | 2.5 | 0.4 | 41.5 | low-GPU / host-bound |
-| poly-covar | PolyBench | default 2048x2048 | 1 | 14.4 | yes | 1.2 | 0.0 | 41.4 | low-GPU / host-bound |
-| poly-gemm | PolyBench | default 512^3 | 22 | 11.1 | yes | 0.2 | 0.0 | 39.5 | low-GPU / host-bound |
-| poly-gesummv | PolyBench | default 4096 | 21 | 6.6 | yes | 4.4 | 0.4 | 41.5 | low-GPU / host-bound |
-| poly-gramschm | PolyBench | default 2048x2048 | 1 | 112.1 | yes | 1.0 | 0.0 | 15.8 | low-GPU / host-bound |
-| poly-mvt | PolyBench | default 4096 | 22 | 8.3 | yes | 5.0 | 2.4 | 36.9 | low-GPU / host-bound |
-| poly-syr2k | PolyBench | default 2048x2048 | 1 | 15.6 | yes | 0.0 | 0.0 | 40.0 | low-GPU / host-bound |
-| poly-syrk | PolyBench | default 1024x1024 | 9 | 9.9 | yes | 0.5 | 0.1 | 38.8 | low-GPU / host-bound |
-| sdk-BlackScholes | CUDA SDK | default problem size | 11 | 8.4 | yes | 6.1 | 5.2 | 58.6 | low-GPU / host-bound |
-| sdk-convolutionFFT2D | CUDA SDK | default problem size | 3 | 7.9 | yes | 0.8 | 0.0 | 41.0 | low-GPU / host-bound |
-| sdk-fastWalshTransform | CUDA SDK | default problem size | 3 | 11.7 | yes | 1.0 | 0.2 | 37.8 | low-GPU / host-bound |
-| sdk-MonteCarloMultiGPU | CUDA SDK | default problem size | 45 | 9.2 | yes | 9.3 | 0.5 | 49.9 | low-GPU / host-bound |
-| sdk-sortingNetworks | CUDA SDK | default problem size | 3 | 9.7 | yes | 0.4 | 0.0 | 39.8 | low-GPU / host-bound |
-| sdk-transpose | CUDA SDK | default problem size | 21 | 5.7 | yes | 5.2 | 0.5 | 43.5 | low-GPU / host-bound |
-| sdk-reduction | CUDA SDK | default problem size | 15 | 8.6 | yes | 6.1 | 3.0 | 44.5 | low-GPU / host-bound |
-| sdk-mergeSort | CUDA SDK | default problem size | 22 | 8.1 | yes | 4.5 | 1.4 | 42.4 | low-GPU / host-bound |
-| sdk-histogram | CUDA SDK | default problem size | 11 | 9.0 | yes | 1.0 | 0.3 | 40.6 | low-GPU / host-bound |
-| sdk-scalarProd | CUDA SDK | default problem size | 38 | 8.1 | yes | 3.0 | 0.7 | 43.2 | low-GPU / host-bound |
-| sdk-quasirandomGenerator | CUDA SDK | default problem size | 11 | 7.4 | yes | 2.4 | 0.0 | 40.4 | low-GPU / host-bound |
-| sdk-SobolQRNG | CUDA SDK | default problem size | 22 | 7.2 | yes | 2.1 | 0.0 | 41.5 | low-GPU / host-bound |
-| sdk-matrixMul | CUDA SDK | default problem size | 45 | 9.1 | yes | 18.1 | 0.9 | 48.1 | low-GPU / host-bound |
-| sdk-cudaTensorCoreGemm | CUDA SDK | default problem size | 7 | 9.4 | yes | 0.8 | 0.0 | 40.7 | low-GPU / host-bound |
-| sdk-dct8x8 | CUDA SDK | default problem size | 22 | 9.2 | yes | 7.7 | 0.8 | 41.1 | low-GPU / host-bound |
-| sdk-convolutionSeparable | CUDA SDK | default problem size | 6 | 9.2 | yes | 1.2 | 0.2 | 40.0 | low-GPU / host-bound |
-| sdk-eigenvalues | CUDA SDK | default problem size | 15 | 7.2 | yes | 56.5 | 0.3 | 55.5 | compute-heavy |
-| sdk-dxtc | CUDA SDK | default problem size | 45 | 8.4 | yes | 4.4 | 0.6 | 47.7 | low-GPU / host-bound |
-| sdk-interval | CUDA SDK | default problem size | 3 | 11.2 | yes | 2.5 | 0.3 | 39.2 | low-GPU / host-bound |
-| sdk-lineOfSight | CUDA SDK | default problem size | 45 | 9.3 | yes | 3.9 | 0.9 | 43.0 | low-GPU / host-bound |
-| sdk-radixSortThrust | CUDA SDK | default problem size | 11 | 7.5 | yes | 0.8 | 0.1 | 48.5 | low-GPU / host-bound |
+| Application | Suite | Input | Command (run in cwd) | Runs / job | Job (s) | GPU 1 | Util % | Mem util % | Power W | Character |
+|---|---|---|---|---|---|---|---|---|---|---|
+| backprop | Rodinia | 524288 input units | `./backprop 524288` (cwd `benchmarks/rodinia/cuda/backprop`) | 22 | 9.0 | yes | 4.8 | 0.5 | 37.2 | low-GPU / host-bound |
+| bfs | Rodinia | graph1MW_6 (1M nodes) | `./bfs benchmarks/rodinia/data/bfs/graph1MW_6.txt` (cwd `benchmarks/rodinia/cuda/bfs`) | 9 | 9.1 | yes | 4.7 | 0.1 | 40.4 | low-GPU / host-bound |
+| gaussian | Rodinia | 4096x4096 matrix | `./gaussian -s 4096 -q` (cwd `benchmarks/rodinia/cuda/gaussian`) | 3 | 9.0 | yes | 87.4 | 7.8 | 87.9 | compute-heavy |
+| hotspot | Rodinia | 1024x1024 grid, 100000 iterations | `./hotspot 1024 2 100000 benchmarks/rodinia/data/hotspot/temp_1024 benchmarks/rodinia/data/hotspot/power_1024 /dev/null` (cwd `benchmarks/rodinia/cuda/hotspot`) | 1 | 9.3 | yes | 91.7 | 0.1 | 92.1 | compute-heavy |
+| huffman | Rodinia | test1024_H2 input | `./pavle benchmarks/rodinia/data/huffman/test1024_H2.206587175259.in` (cwd `benchmarks/rodinia/cuda/huffman`) | 45 | 9.2 | yes | 11.1 | 0.3 | 49.4 | low-GPU / host-bound |
+| nw | Rodinia | 16384x16384, penalty 10 | `./needle 16384 10` (cwd `benchmarks/rodinia/cuda/nw`) | 3 | 9.7 | yes | 12.8 | 1.1 | 42.6 | low-GPU / host-bound |
+| particlefilter | Rodinia | 128x128x100, 200000 particles | `./particlefilter_float -x 128 -y 128 -z 100 -np 200000` (cwd `benchmarks/rodinia/cuda/particlefilter`) | 1 | 11.0 | yes | 95.1 | 0.5 | 85.7 | compute-heavy |
+| pathfinder | Rodinia | 100000 cols x 5000 rows, pyramid 20 | `./pathfinder 100000 5000 20` (cwd `benchmarks/rodinia/cuda/pathfinder`) | 1 | 25.7 | yes | 2.6 | 0.0 | 15.2 | low-GPU / host-bound |
+| b+tree | Rodinia | mil.txt (1M keys) | `./b+tree.out file benchmarks/rodinia/data/b+tree/mil.txt command benchmarks/rodinia/data/b+tree/command.txt` (cwd `benchmarks/rodinia/cuda/b+tree`) | 11 | 9.6 | yes | 1.7 | 0.2 | 38.1 | low-GPU / host-bound |
+| dwt2d | Rodinia | 1024x1024 rgb.bmp, 5/3 forward, 3 levels | `./dwt2d rgb.bmp -d 1024x1024 -f -5 -l 3` (cwd `benchmarks/rodinia/cuda/dwt2d`) | 45 | 9.3 | yes | 3.2 | 0.2 | 44.6 | low-GPU / host-bound |
+| lavaMD | Rodinia | 60 boxes per dim | `./lavaMD -boxes1d 60` (cwd `benchmarks/rodinia/cuda/lavaMD`) | 1 | 10.6 | yes | 81.2 | 0.0 | 72.3 | compute-heavy |
+| streamcluster | Rodinia | 524288 points, 256 dims | `./sc_gpu 10 20 256 524288 524288 2000 none /dev/null 1` (cwd `benchmarks/rodinia/cuda/streamcluster`) | 1 | 30.6 | yes | 26.8 | 10.4 | 46.5 | low-GPU / host-bound |
+| pb-cutcp | Parboil | large: watbox.sl100.pqr | `benchmarks/parboil-2.5/benchmarks/cutcp/build/cuda_default/cutcp -i benchmarks/parboil-2.5/datasets/cutcp/large/input/watbox.sl100.pqr -o...` (cwd `benchmarks/parboil-2.5/benchmarks/cutcp`) | 6 | 9.4 | yes | 0.7 | 0.1 | 41.6 | low-GPU / host-bound |
+| pb-mri-gridding | Parboil | small: small.uks | `benchmarks/parboil-2.5/benchmarks/mri-gridding/build/cuda_default/mri-gridding -i benchmarks/parboil-2.5/datasets/mri-gridding/small/inpu...` (cwd `benchmarks/parboil-2.5/benchmarks/mri-gridding`) | 1 | 6.8 | yes | 0.3 | 0.0 | 39.2 | low-GPU / host-bound |
+| pb-mri-q | Parboil | large: 64x64x64 | `benchmarks/parboil-2.5/benchmarks/mri-q/build/cuda_default/mri-q -i benchmarks/parboil-2.5/datasets/mri-q/large/input/64_64_64_dataset.bi...` (cwd `benchmarks/parboil-2.5/benchmarks/mri-q`) | 42 | 8.4 | yes | 3.8 | 0.6 | 45.0 | low-GPU / host-bound |
+| pb-sgemm | Parboil | medium: matrix1 x matrix2t | `benchmarks/parboil-2.5/benchmarks/sgemm/build/cuda_default/sgemm -i benchmarks/parboil-2.5/datasets/sgemm/medium/input/matrix1.txt,benchm...` (cwd `benchmarks/parboil-2.5/benchmarks/sgemm`) | 9 | 8.8 | yes | 0.6 | 0.1 | 41.0 | low-GPU / host-bound |
+| pb-stencil | Parboil | default: 512x512x64, 100 iters | `benchmarks/parboil-2.5/benchmarks/stencil/build/cuda_default/stencil -i benchmarks/parboil-2.5/datasets/stencil/default/input/512x512x64x...` (cwd `benchmarks/parboil-2.5/benchmarks/stencil`) | 15 | 9.9 | yes | 2.3 | 0.5 | 45.4 | low-GPU / host-bound |
+| pb-tpacf | Parboil | large: 100 random sets, 10391 points | `benchmarks/parboil-2.5/benchmarks/tpacf/build/cuda_default/tpacf -i benchmarks/parboil-2.5/datasets/tpacf/large/input/Datapnts.1,benchmar...` (cwd `benchmarks/parboil-2.5/benchmarks/tpacf`) | 15 | 10.5 | yes | 37.2 | 0.0 | 70.1 | compute-heavy |
+| shoc-BusSpeedDownload | SHOC | size class 4, default passes | `./BusSpeedDownload -s 4` (cwd `benchmarks/shoc/build/src/cuda/level0/`) | 6 | 9.2 | yes | 58.4 | 2.3 | 52.0 | compute-heavy |
+| shoc-BusSpeedReadback | SHOC | size class 4, default passes | `./BusSpeedReadback -s 4` (cwd `benchmarks/shoc/build/src/cuda/level0/`) | 5 | 10.2 | yes | 48.9 | 1.6 | 49.0 | compute-heavy |
+| shoc-MaxFlops | SHOC | size class 4, 1 pass | `./MaxFlops -s 4 --passes 1` (cwd `benchmarks/shoc/build/src/cuda/level0/`) | 2 | 20.2 | yes | 97.5 | 0.1 | 77.0 | compute-heavy |
+| shoc-BFS | SHOC | size class 4, default passes | `./BFS -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/bfs`) | 22 | 6.5 | yes | 15.8 | 0.0 | 53.5 | low-GPU / host-bound |
+| shoc-FFT | SHOC | size class 4, default passes | `./FFT -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/fft`) | 6 | 9.7 | yes | 15.4 | 7.3 | 49.3 | low-GPU / host-bound |
+| shoc-MD5Hash | SHOC | size class 4, default passes | `./MD5Hash -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/md5hash`) | 15 | 8.8 | yes | 57.4 | 0.2 | 164.1 | compute-heavy |
+| shoc-NeuralNet | SHOC | size class 4, default passes | `./NeuralNet -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/neuralnet`) | 22 | 5.0 | not seen in 0.2 s polls | 11.1 | 0.5 | 72.9 | low-GPU / host-bound |
+| shoc-Reduction | SHOC | size class 4, default passes | `./Reduction -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/reduction`) | 6 | 8.8 | yes | 57.5 | 54.9 | 91.9 | memory-heavy |
+| shoc-Sort | SHOC | size class 4, default passes | `./Sort -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/sort`) | 7 | 8.1 | yes | 41.9 | 21.8 | 68.4 | mixed |
+| shoc-Stencil2D | SHOC | size class 4, default passes | `./Stencil2D -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/stencil2d`) | 1 | 89.2 | yes | 13.0 | 12.6 | 40.9 | low-GPU / host-bound |
+| shoc-Triad | SHOC | size class 4, default passes | `./Triad -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/triad`) | 5 | 9.5 | yes | 21.8 | 5.6 | 52.1 | low-GPU / host-bound |
+| shoc-S3D | SHOC | size class 4, default passes | `./S3D -s 4` (cwd `benchmarks/shoc/build/src/cuda/level2/s3d`) | 21 | 7.8 | yes | 30.1 | 19.0 | 67.3 | mixed |
+| poly-2dconv | PolyBench | default 4096x4096 | `./2DConvolution.exe` (cwd `benchmarks/polybench-gpu/CUDA/2DCONV`) | 15 | 9.2 | yes | 2.3 | 0.1 | 44.5 | low-GPU / host-bound |
+| poly-2mm | PolyBench | default 2048^3 | `./2mm.exe` (cwd `benchmarks/polybench-gpu/CUDA/2MM`) | 1 | 123.0 | yes | 0.0 | 0.0 | 13.8 | low-GPU / host-bound |
+| poly-3dconv | PolyBench | default 256^3 | `./3DConvolution.exe` (cwd `benchmarks/polybench-gpu/CUDA/3DCONV`) | 22 | 8.8 | yes | 5.7 | 0.4 | 36.9 | low-GPU / host-bound |
+| poly-3mm | PolyBench | default 512^3 | `./3mm.exe` (cwd `benchmarks/polybench-gpu/CUDA/3MM`) | 9 | 10.1 | yes | 0.7 | 0.1 | 38.9 | low-GPU / host-bound |
+| poly-atax | PolyBench | default 4096x4096 | `./atax.exe` (cwd `benchmarks/polybench-gpu/CUDA/ATAX`) | 22 | 5.9 | yes | 6.3 | 0.8 | 41.6 | low-GPU / host-bound |
+| poly-bicg | PolyBench | default 4096x4096 | `./bicg.exe` (cwd `benchmarks/polybench-gpu/CUDA/BICG`) | 22 | 6.8 | yes | 2.5 | 0.4 | 41.5 | low-GPU / host-bound |
+| poly-covar | PolyBench | default 2048x2048 | `./covariance.exe` (cwd `benchmarks/polybench-gpu/CUDA/COVAR`) | 1 | 14.4 | yes | 1.2 | 0.0 | 41.4 | low-GPU / host-bound |
+| poly-gemm | PolyBench | default 512^3 | `./gemm.exe` (cwd `benchmarks/polybench-gpu/CUDA/GEMM`) | 22 | 11.1 | yes | 0.2 | 0.0 | 39.5 | low-GPU / host-bound |
+| poly-gesummv | PolyBench | default 4096 | `./gesummv.exe` (cwd `benchmarks/polybench-gpu/CUDA/GESUMMV`) | 21 | 6.6 | yes | 4.4 | 0.4 | 41.5 | low-GPU / host-bound |
+| poly-gramschm | PolyBench | default 2048x2048 | `./gramschmidt.exe` (cwd `benchmarks/polybench-gpu/CUDA/GRAMSCHM`) | 1 | 112.1 | yes | 1.0 | 0.0 | 15.8 | low-GPU / host-bound |
+| poly-mvt | PolyBench | default 4096 | `./mvt.exe` (cwd `benchmarks/polybench-gpu/CUDA/MVT`) | 22 | 8.3 | yes | 5.0 | 2.4 | 36.9 | low-GPU / host-bound |
+| poly-syr2k | PolyBench | default 2048x2048 | `./syr2k.exe` (cwd `benchmarks/polybench-gpu/CUDA/SYR2K`) | 1 | 15.6 | yes | 0.0 | 0.0 | 40.0 | low-GPU / host-bound |
+| poly-syrk | PolyBench | default 1024x1024 | `./syrk.exe` (cwd `benchmarks/polybench-gpu/CUDA/SYRK`) | 9 | 9.9 | yes | 0.5 | 0.1 | 38.8 | low-GPU / host-bound |
+| sdk-BlackScholes | CUDA SDK | default problem size | `./BlackScholes` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/BlackScholes`) | 11 | 8.4 | yes | 6.1 | 5.2 | 58.6 | low-GPU / host-bound |
+| sdk-convolutionFFT2D | CUDA SDK | default problem size | `./convolutionFFT2D` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/convolutionFFT2D`) | 3 | 7.9 | yes | 0.8 | 0.0 | 41.0 | low-GPU / host-bound |
+| sdk-fastWalshTransform | CUDA SDK | default problem size | `./fastWalshTransform` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/fastWalshTransform`) | 3 | 11.7 | yes | 1.0 | 0.2 | 37.8 | low-GPU / host-bound |
+| sdk-MonteCarloMultiGPU | CUDA SDK | default problem size | `./MonteCarloMultiGPU` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/MonteCarloMultiGPU`) | 45 | 9.2 | yes | 9.3 | 0.5 | 49.9 | low-GPU / host-bound |
+| sdk-sortingNetworks | CUDA SDK | default problem size | `./sortingNetworks` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/sortingNetworks`) | 3 | 9.7 | yes | 0.4 | 0.0 | 39.8 | low-GPU / host-bound |
+| sdk-transpose | CUDA SDK | default problem size | `./transpose` (cwd `benchmarks/cuda-samples/Samples/6_Performance/transpose`) | 21 | 5.7 | yes | 5.2 | 0.5 | 43.5 | low-GPU / host-bound |
+| sdk-reduction | CUDA SDK | default problem size | `./reduction` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/reduction`) | 15 | 8.6 | yes | 6.1 | 3.0 | 44.5 | low-GPU / host-bound |
+| sdk-mergeSort | CUDA SDK | default problem size | `./mergeSort` (cwd `benchmarks/cuda-samples/Samples/0_Introduction/mergeSort`) | 22 | 8.1 | yes | 4.5 | 1.4 | 42.4 | low-GPU / host-bound |
+| sdk-histogram | CUDA SDK | default problem size | `./histogram` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/histogram`) | 11 | 9.0 | yes | 1.0 | 0.3 | 40.6 | low-GPU / host-bound |
+| sdk-scalarProd | CUDA SDK | default problem size | `./scalarProd` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/scalarProd`) | 38 | 8.1 | yes | 3.0 | 0.7 | 43.2 | low-GPU / host-bound |
+| sdk-quasirandomGenerator | CUDA SDK | default problem size | `./quasirandomGenerator` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/quasirandomGenerator`) | 11 | 7.4 | yes | 2.4 | 0.0 | 40.4 | low-GPU / host-bound |
+| sdk-SobolQRNG | CUDA SDK | default problem size | `./SobolQRNG` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/SobolQRNG`) | 22 | 7.2 | yes | 2.1 | 0.0 | 41.5 | low-GPU / host-bound |
+| sdk-matrixMul | CUDA SDK | default problem size | `./matrixMul` (cwd `benchmarks/cuda-samples/Samples/0_Introduction/matrixMul`) | 45 | 9.1 | yes | 18.1 | 0.9 | 48.1 | low-GPU / host-bound |
+| sdk-cudaTensorCoreGemm | CUDA SDK | default problem size | `./cudaTensorCoreGemm` (cwd `benchmarks/cuda-samples/Samples/3_CUDA_Features/cudaTensorCoreGemm`) | 7 | 9.4 | yes | 0.8 | 0.0 | 40.7 | low-GPU / host-bound |
+| sdk-dct8x8 | CUDA SDK | default problem size | `./dct8x8` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/dct8x8`) | 22 | 9.2 | yes | 7.7 | 0.8 | 41.1 | low-GPU / host-bound |
+| sdk-convolutionSeparable | CUDA SDK | default problem size | `./convolutionSeparable` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/convolutionSeparable`) | 6 | 9.2 | yes | 1.2 | 0.2 | 40.0 | low-GPU / host-bound |
+| sdk-eigenvalues | CUDA SDK | default problem size | `./eigenvalues` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/eigenvalues`) | 15 | 7.2 | yes | 56.5 | 0.3 | 55.5 | compute-heavy |
+| sdk-dxtc | CUDA SDK | default problem size | `./dxtc` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/dxtc`) | 45 | 8.4 | yes | 4.4 | 0.6 | 47.7 | low-GPU / host-bound |
+| sdk-interval | CUDA SDK | default problem size | `./interval` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/interval`) | 3 | 11.2 | yes | 2.5 | 0.3 | 39.2 | low-GPU / host-bound |
+| sdk-lineOfSight | CUDA SDK | default problem size | `./lineOfSight` (cwd `benchmarks/cuda-samples/Samples/4_CUDA_Libraries/lineOfSight`) | 45 | 9.3 | yes | 3.9 | 0.9 | 43.0 | low-GPU / host-bound |
+| sdk-radixSortThrust | CUDA SDK | default problem size | `./radixSortThrust` (cwd `benchmarks/cuda-samples/Samples/2_Concepts_and_Techniques/radixSortThrust`) | 11 | 7.5 | yes | 0.8 | 0.1 | 48.5 | low-GPU / host-bound |
 
 Character counts: compute-heavy 10, low-GPU / host-bound 51, memory-heavy 1, mixed 2
 
 ## Validation set (tuning only, never reported as unseen tests): 11 programs
 
-| Application | Suite | Input | Runs / job | Job (s) | GPU 1 | Util % | Mem util % | Power W | Character |
-|---|---|---|---|---|---|---|---|---|---|
-| heartwall | Rodinia | test.avi, 104 frames | 15 | 10.4 | yes | 34.3 | 2.4 | 68.6 | compute-heavy |
-| lud | Rodinia | 32768x32768 matrix | 1 | 11.7 | yes | 75.0 | 67.7 | 163.9 | memory-heavy |
-| myocyte | Rodinia | 6000 ms, 1 instance | 1 | 24.6 | yes | 65.0 | 0.8 | 58.5 | compute-heavy |
-| pb-histo | Parboil | large: img.bin, 10000 iters | 2 | 9.4 | yes | 23.4 | 2.9 | 68.9 | low-GPU / host-bound |
-| pb-lbm | Parboil | long: 120x120x150, 3000 steps | 3 | 10.4 | yes | 70.8 | 69.0 | 116.9 | memory-heavy |
-| shoc-GEMM | SHOC | size class 4, default passes | 2 | 9.5 | yes | 69.0 | 6.0 | 89.3 | compute-heavy |
-| shoc-Scan | SHOC | size class 4, default passes | 3 | 10.8 | yes | 72.7 | 72.7 | 98.2 | memory-heavy |
-| poly-corr | PolyBench | default 2048x2048 | 1 | 13.5 | yes | 6.7 | 0.0 | 43.2 | low-GPU / host-bound |
-| poly-fdtd-2d | PolyBench | default 2048x2048, 500 steps | 3 | 10.6 | yes | 7.4 | 0.1 | 49.1 | low-GPU / host-bound |
-| sdk-binomialOptions | CUDA SDK | default problem size | 2 | 7.9 | yes | 0.4 | 0.0 | 39.9 | low-GPU / host-bound |
-| sdk-FDTD3d | CUDA SDK | default problem size | 1 | 12.6 | yes | 0.4 | 0.1 | 39.4 | low-GPU / host-bound |
+| Application | Suite | Input | Command (run in cwd) | Runs / job | Job (s) | GPU 1 | Util % | Mem util % | Power W | Character |
+|---|---|---|---|---|---|---|---|---|---|---|
+| heartwall | Rodinia | test.avi, 104 frames | `./heartwall benchmarks/rodinia/data/heartwall/test.avi 104` (cwd `benchmarks/rodinia/cuda/heartwall`) | 15 | 10.4 | yes | 34.3 | 2.4 | 68.6 | compute-heavy |
+| lud | Rodinia | 32768x32768 matrix | `cuda/lud_cuda -s 32768` (cwd `benchmarks/rodinia/cuda/lud`) | 1 | 11.7 | yes | 75.0 | 67.7 | 163.9 | memory-heavy |
+| myocyte | Rodinia | 6000 ms, 1 instance | `./myocyte.out 6000 1 0` (cwd `benchmarks/rodinia/cuda/myocyte`) | 1 | 24.6 | yes | 65.0 | 0.8 | 58.5 | compute-heavy |
+| pb-histo | Parboil | large: img.bin, 10000 iters | `benchmarks/parboil-2.5/benchmarks/histo/build/cuda_default/histo -i benchmarks/parboil-2.5/datasets/histo/large/input/img.bin -o drlcap_f...` (cwd `benchmarks/parboil-2.5/benchmarks/histo`) | 2 | 9.4 | yes | 23.4 | 2.9 | 68.9 | low-GPU / host-bound |
+| pb-lbm | Parboil | long: 120x120x150, 3000 steps | `benchmarks/parboil-2.5/benchmarks/lbm/build/cuda_default/lbm -i benchmarks/parboil-2.5/datasets/lbm/long/input/120_120_150_ldc.of -o drlc...` (cwd `benchmarks/parboil-2.5/benchmarks/lbm`) | 3 | 10.4 | yes | 70.8 | 69.0 | 116.9 | memory-heavy |
+| shoc-GEMM | SHOC | size class 4, default passes | `./GEMM -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/gemm`) | 2 | 9.5 | yes | 69.0 | 6.0 | 89.3 | compute-heavy |
+| shoc-Scan | SHOC | size class 4, default passes | `./Scan -s 4` (cwd `benchmarks/shoc/build/src/cuda/level1/scan`) | 3 | 10.8 | yes | 72.7 | 72.7 | 98.2 | memory-heavy |
+| poly-corr | PolyBench | default 2048x2048 | `./correlation.exe` (cwd `benchmarks/polybench-gpu/CUDA/CORR`) | 1 | 13.5 | yes | 6.7 | 0.0 | 43.2 | low-GPU / host-bound |
+| poly-fdtd-2d | PolyBench | default 2048x2048, 500 steps | `./fdtd2d.exe` (cwd `benchmarks/polybench-gpu/CUDA/FDTD-2D`) | 3 | 10.6 | yes | 7.4 | 0.1 | 49.1 | low-GPU / host-bound |
+| sdk-binomialOptions | CUDA SDK | default problem size | `./binomialOptions` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/binomialOptions`) | 2 | 7.9 | yes | 0.4 | 0.0 | 39.9 | low-GPU / host-bound |
+| sdk-FDTD3d | CUDA SDK | default problem size | `./FDTD3d` (cwd `benchmarks/cuda-samples/Samples/5_Domain_Specific/FDTD3d`) | 1 | 12.6 | yes | 0.4 | 0.1 | 39.4 | low-GPU / host-bound |
 
 Character counts: compute-heavy 3, low-GPU / host-bound 5, memory-heavy 3
 
 ## Test set (paper Table II): 10 programs
 
-| Application | Suite | Input | Runs / job | Job (s) | GPU 1 | Util % | Mem util % | Power W | Character |
-|---|---|---|---|---|---|---|---|---|---|
-| lulesh | LLNL | -s 150 (Table II) | 1 | 153.9 | yes | 98.1 | 39.5 | 111.2 | mixed |
-| cloverleaf | UK-MAC | clover.in 3840x3840, 2955 steps (Table II: 3840) | 1 | 213.2 | yes | 99.3 | 83.2 | 143.8 | memory-heavy |
-| tealeaf | UK-MAC | tea.in 4000x4000, 10 steps (Table II: 4000) | 1 | 81.7 | yes | 98.7 | 98.8 | 153.8 | memory-heavy |
-| minibude | UoB-HPC | bm1 deck, 65536 poses (Table II); one run is 1.6 s, so a job repeats it (see TEST_REPEAT) | 10 | 15.8 | yes | 86.9 | 28.6 | 115.8 | mixed |
-| comd | NVIDIA | EAM, 90x90x90 cells (Table II: 100; 100^3 runs out of the 12 GB of the 4070 Ti, the paper's V100S has 32 GB) | 1 | 27.7 | yes | 87.5 | 2.1 | 84.8 | compute-heavy |
-| gromacs | GROMACS | water-cut1.0 0768 (Table II), PME, 20000 steps | 1 | 88.5 | yes | 71.1 | 20.5 | 201.3 | mixed |
-| minife | Mantevo | 300x300x300 (Table II: 400; 320^3 and larger run out of memory on this machine) | 1 | 9.6 | yes | 69.4 | 62.0 | 119.0 | memory-heavy |
-| vgg16 | CNN | CIFAR-100, batch 128, 400 steps | 1 | 36.0 | yes | 18.3 | 12.3 | 73.0 | low-GPU / host-bound |
-| googlenet | CNN | CIFAR-100, batch 128, 200 steps | 1 | 90.8 | yes | 35.7 | 31.6 | 100.3 | mixed |
-| qe | Quantum ESPRESSO | AUSURF112 (Table II: ausurf112), diagonalization='cg' (Davidson runs out of the 12 GB) | 1 | 733.6 | yes | 92.6 | 87.6 | 146.4 | memory-heavy |
+| Application | Suite | Input | Command (run in cwd) | Runs / job | Job (s) | GPU 1 | Util % | Mem util % | Power W | Character |
+|---|---|---|---|---|---|---|---|---|---|---|
+| lulesh | LLNL | -s 150 (Table II) | `./lulesh -s 150` (cwd `benchmarks/lulesh/cuda/src`) | 1 | 153.9 | yes | 98.1 | 39.5 | 111.2 | mixed |
+| cloverleaf | UK-MAC | clover.in 3840x3840, 2955 steps (Table II: 3840) | `./clover_leaf` (cwd `benchmarks/cloverleaf-cuda`) | 1 | 213.2 | yes | 99.3 | 83.2 | 143.8 | memory-heavy |
+| tealeaf | UK-MAC | tea.in 4000x4000, 10 steps (Table II: 4000) | `./tea_leaf` (cwd `benchmarks/tealeaf-cuda`) | 1 | 81.7 | yes | 98.7 | 98.8 | 153.8 | memory-heavy |
+| minibude | UoB-HPC | bm1 deck, 65536 poses (Table II); one run is 1.6 s, so a job repeats it (see TEST_REPEAT) | `./cuda-bude --deck benchmarks/minibude/data/bm1 -n 65536` (cwd `benchmarks/minibude/build`) | 10 | 15.8 | yes | 86.9 | 28.6 | 115.8 | mixed |
+| comd | NVIDIA | EAM, 90x90x90 cells (Table II: 100; 100^3 runs out of the 12 GB of the 4070 Ti, the paper's V100S has 32 GB) | `./CoMD-cuda -e -d benchmarks/comd-cuda/pots -x 90 -y 90 -z 90` (cwd `benchmarks/comd-cuda/bin`) | 1 | 27.7 | yes | 87.5 | 2.1 | 84.8 | compute-heavy |
+| gromacs | GROMACS | water-cut1.0 0768 (Table II), PME, 20000 steps | `benchmarks/gromacs/bin/gmx mdrun -s topol.tpr -nb gpu -pme gpu -ntmpi 1 -ntomp 16 -nsteps 20000 -noconfout -g md.log` (cwd `drlcap_faithful/tmp/gromacs_0768`) | 1 | 88.5 | yes | 71.1 | 20.5 | 201.3 | mixed |
+| minife | Mantevo | 300x300x300 (Table II: 400; 320^3 and larger run out of memory on this machine) | `./miniFE.x -nx 300 -ny 300 -nz 300` (cwd `benchmarks/minife/cuda/src`) | 1 | 9.6 | yes | 69.4 | 62.0 | 119.0 | memory-heavy |
+| vgg16 | CNN | CIFAR-100, batch 128, 400 steps | `python drlcap_faithful/cnn_workload.py vgg16 --steps 400` (cwd `drlcap_faithful`) | 1 | 36.0 | yes | 18.3 | 12.3 | 73.0 | low-GPU / host-bound |
+| googlenet | CNN | CIFAR-100, batch 128, 200 steps | `python drlcap_faithful/cnn_workload.py googlenet --steps 200` (cwd `drlcap_faithful`) | 1 | 90.8 | yes | 35.7 | 31.6 | 100.3 | mixed |
+| qe | Quantum ESPRESSO | AUSURF112 (Table II: ausurf112), diagonalization='cg' (Davidson runs out of the 12 GB) | `benchmarks/qe-src/bin/pw.x -in ausurf.in` (cwd `drlcap_faithful/tmp/qe_ausurf112`) | 1 | 733.6 | yes | 92.6 | 87.6 | 146.4 | memory-heavy |
 
 Character counts: compute-heavy 1, low-GPU / host-bound 1, memory-heavy 4, mixed 4
 
-Execution commands and working directories for every program are in `results/benchmark_table.csv` (columns `command`, `cwd`) and in `workloads.py`. Character = coarse label from the job's mean NVML utilisation (< 30 % low-GPU / host-bound; memory util >= 40 % memory-heavy; < 15 % compute-heavy; else mixed).
+Execution commands and working directories for every program are in `results/benchmark_table.csv` (columns `command`, `cwd`, full paths; the tpacf command lists 101 input files and is cut short above) and in `workloads.py`. Character = coarse label from the job's mean NVML utilisation (< 30 % low-GPU / host-bound; memory util >= 40 % memory-heavy; < 15 % compute-heavy; else mixed).
