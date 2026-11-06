@@ -220,7 +220,10 @@ TEST_PROGS = [
     _w("gromacs", "GROMACS", GMX_RUN,
        [GMX, "mdrun", "-s", "topol.tpr", "-nb", "gpu", "-pme", "gpu",
         "-ntmpi", "1", "-ntomp", "16", "-nsteps", "20000", "-noconfout",
-        "-g", "md.log"], "water-cut1.0 0768 (Table II), PME, 20000 steps", "test"),
+        "-g", "md.log"], "water-cut1.0 0768 (Table II), PME, 20000 steps", "test",
+       # mdrun keeps #md.log.N# backups and aborts after 99 of them
+       # (run 2026-11-06); -1 just overwrites the discarded output files
+       env={"GMX_MAXBACKUP": "-1"}),
     _w("minife", "Mantevo", os.path.join(BENCH, "minife", "cuda", "src"),
        ["./miniFE.x", "-nx", "300", "-ny", "300", "-nz", "300"],
        "300x300x300 (Table II: 400; 320^3 and larger run out of memory "
