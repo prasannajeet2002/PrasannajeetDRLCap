@@ -1,0 +1,77 @@
+{
+  "policies": [
+    "baseline",
+    "drlcap",
+    "drlcap_seed1",
+    "drlcap_seed2",
+    "monitor_only"
+  ],
+  "models": {
+    "drlcap": [
+      "results/train_freq_s0_f1_20261104_182918/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "alg1",
+        "reward_delay": 0,
+        "force_case_a": true
+      }
+    ],
+    "drlcap_seed1": [
+      "results/train_freq_s1_f1_20261104_201048/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "alg1",
+        "reward_delay": 0,
+        "force_case_a": true
+      }
+    ],
+    "drlcap_seed2": [
+      "results/train_freq_s2_f1_20261104_203606/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "alg1",
+        "reward_delay": 0,
+        "force_case_a": true
+      }
+    ],
+    "monitor_only": [
+      "results/train_freq_s0_f1_20261104_182918/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "alg1",
+        "reward_delay": 0,
+        "force_case_a": true
+      }
+    ]
+  },
+  "workloads": [
+    "lulesh",
+    "cloverleaf",
+    "tealeaf",
+    "minibude",
+    "comd",
+    "gromacs",
+    "minife",
+    "vgg16",
+    "googlenet",
+    "qe"
+  ],
+  "repeats": 5,
+  "epsilon": 0.1,
+  "online": true,
+  "coord_util_threshold": 50.0,
+  "coord_caps": {
+    "compute": 2400,
+    "memory": 1800
+  },
+  "baseline_nvml_polling_s": 0.3,
+  "per_model_settings": "models[name][3], from each model's training config"
+}

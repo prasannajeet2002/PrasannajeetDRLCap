@@ -1,0 +1,103 @@
+{
+  "policies": [
+    "baseline",
+    "static_1800",
+    "static_2745",
+    "drlcap",
+    "var_edplocal",
+    "var_gamma02",
+    "var_nocasea",
+    "var_delay1",
+    "var_freq8"
+  ],
+  "models": {
+    "drlcap": [
+      "results/train_freq_s0_f1_20261104_182918/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "alg1",
+        "reward_delay": 0,
+        "force_case_a": true
+      }
+    ],
+    "var_edplocal": [
+      "results/train_var_edplocal_f1_20261107_170257/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "edp_local",
+        "reward_delay": 0,
+        "force_case_a": true
+      }
+    ],
+    "var_gamma02": [
+      "results/train_var_gamma02_f1_20261107_172819/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.2,
+        "reward_mode": "alg1",
+        "reward_delay": 0,
+        "force_case_a": true
+      }
+    ],
+    "var_nocasea": [
+      "results/train_var_nocasea_f1_20261107_175343/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "alg1",
+        "reward_delay": 0,
+        "force_case_a": false
+      }
+    ],
+    "var_delay1": [
+      "results/train_var_delay1_f1_20261107_181927/model_final.keras",
+      "freq",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "alg1",
+        "reward_delay": 1,
+        "force_case_a": true
+      }
+    ],
+    "var_freq8": [
+      "results/train_var_freq8_f1_20261107_184448/model_final.keras",
+      "freq8",
+      "ddqn",
+      {
+        "gamma": 0.95,
+        "reward_mode": "alg1",
+        "reward_delay": 0,
+        "force_case_a": true
+      }
+    ]
+  },
+  "workloads": [
+    "lulesh",
+    "cloverleaf",
+    "tealeaf",
+    "minibude",
+    "comd",
+    "gromacs",
+    "minife",
+    "vgg16",
+    "googlenet",
+    "qe"
+  ],
+  "repeats": 5,
+  "epsilon": 0.1,
+  "online": true,
+  "coord_util_threshold": 50.0,
+  "coord_caps": {
+    "compute": 2400,
+    "memory": 1800
+  },
+  "baseline_nvml_polling_s": 0.3,
+  "per_model_settings": "models[name][3], from each model's training config"
+}

@@ -1,0 +1,1711 @@
+== 2b. main comparison, repeat 9 Fri Nov  6 09:42:43 PM IST 2026
+GPU: NVIDIA GeForce RTX 4070 Ti
+coord profile {'workload': 'lulesh', 'time_s': 153.96322296001017, 'mean_util': 98.07662082514734, 'mean_mem_util': 39.412573673870334, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'cloverleaf', 'time_s': 213.259229590185, 'mean_util': 99.28977272727273, 'mean_mem_util': 83.18181818181819, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'tealeaf', 'time_s': 81.71765427011997, 'mean_util': 98.84758364312268, 'mean_mem_util': 98.88475836431226, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'minibude', 'time_s': 15.335776929743588, 'mean_util': 75.16, 'mean_mem_util': 0.06, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'comd', 'time_s': 27.766725739929825, 'mean_util': 86.17391304347827, 'mean_mem_util': 2.0217391304347827, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'gromacs', 'time_s': 83.02174045983702, 'mean_util': 76.27372262773723, 'mean_mem_util': 22.55109489051095, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'minife', 'time_s': 9.552208970300853, 'mean_util': 59.5, 'mean_mem_util': 51.59375, 'category': 'compute', 'cap_mhz': 2400}
+coord profile {'workload': 'vgg16', 'time_s': 35.34545937972143, 'mean_util': 18.666666666666668, 'mean_mem_util': 13.52991452991453, 'category': 'memory', 'cap_mhz': 1800}
+coord profile {'workload': 'googlenet', 'time_s': 91.37224153988063, 'mean_util': 34.44039735099338, 'mean_mem_util': 30.264900662251655, 'category': 'memory', 'cap_mhz': 1800}
+coord profile {'workload': 'qe', 'time_s': 732.9473886704072, 'mean_util': 92.52821576763486, 'mean_mem_util': 87.34107883817427, 'category': 'compute', 'cap_mhz': 2400}
+rep 0 lulesh          baseline     t= 154.0s E=  16447J
+rep 0 lulesh          static_1800  t= 219.9s E=  12852J
+rep 0 lulesh          static_2100  t= 191.6s E=  12298J
+rep 0 lulesh          static_2400  t= 171.2s E=  13155J
+rep 0 lulesh          static_2745  t= 153.9s E=  16510J
+rep 0 lulesh          coord        t= 171.2s E=  13104J
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793984106.758539 1771537 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+rep 0 lulesh          drlcap       t= 174.7s E=  13972J
+rep 0 lulesh          drlcap_power t= 154.2s E=  16482J
+rep 0 lulesh          drlcap_hybrid t= 168.7s E=  14265J
+rep 0 lulesh          rl           t= 181.0s E=  13365J
+rep 0 cloverleaf      static_1800  t= 274.0s E=  21975J
+rep 0 cloverleaf      static_2100  t= 247.4s E=  21421J
+rep 0 cloverleaf      static_2400  t= 227.9s E=  22927J
+rep 0 cloverleaf      static_2745  t= 213.2s E=  29714J
+rep 0 cloverleaf      coord        t= 227.9s E=  22859J
+rep 0 cloverleaf      drlcap       t= 227.3s E=  25274J
+rep 0 cloverleaf      drlcap_power t= 214.7s E=  28728J
+rep 0 cloverleaf      drlcap_hybrid t= 220.9s E=  26991J
+rep 0 cloverleaf      rl           t= 238.7s E=  23131J
+rep 0 cloverleaf      baseline     t= 213.3s E=  29732J
+rep 0 tealeaf         static_2100  t=  81.8s E=   8341J
+rep 0 tealeaf         static_2400  t=  81.8s E=   9142J
+rep 0 tealeaf         static_2745  t=  81.7s E=  12136J
+rep 0 tealeaf         coord        t=  81.8s E=   9182J
+rep 0 tealeaf         drlcap       t=  81.7s E=  10362J
+rep 0 tealeaf         drlcap_power t=  81.8s E=  11179J
+rep 0 tealeaf         drlcap_hybrid t=  81.8s E=  10378J
+rep 0 tealeaf         rl           t=  81.8s E=   9387J
+rep 0 tealeaf         baseline     t=  81.7s E=  12157J
+rep 0 tealeaf         static_1800  t=  81.9s E=   8201J
+rep 0 minibude        static_2400  t=  16.7s E=   1682J
+rep 0 minibude        static_2745  t=  15.3s E=   2326J
+rep 0 minibude        coord        t=  16.7s E=   1709J
+rep 0 minibude        drlcap       t=  15.3s E=   2293J
+rep 0 minibude        drlcap_power t=  15.4s E=   2235J
+rep 0 minibude        drlcap_hybrid t=  15.4s E=   2299J
+rep 0 minibude        rl           t=  16.0s E=   2219J
+rep 0 minibude        baseline     t=  15.3s E=   2326J
+rep 0 minibude        static_1800  t=  21.5s E=   1555J
+rep 0 minibude        static_2100  t=  18.6s E=   1479J
+rep 0 comd            static_2745  t=  27.6s E=   2247J
+rep 0 comd            coord        t=  30.9s E=   1691J
+rep 0 comd            drlcap       t=  29.3s E=   2007J
+rep 0 comd            drlcap_power t=  27.7s E=   2276J
+rep 0 comd            drlcap_hybrid t=  29.4s E=   2034J
+rep 0 comd            rl           t=  31.2s E=   1931J
+rep 0 comd            baseline     t=  27.7s E=   2294J
+rep 0 comd            static_1800  t=  39.8s E=   1804J
+rep 0 comd            static_2100  t=  34.7s E=   1618J
+rep 0 comd            static_2400  t=  30.9s E=   1712J
+rep 0 gromacs         coord        t=  90.4s E=  12984J
+rep 0 gromacs         drlcap       t=  88.3s E=  14986J
+rep 0 gromacs         drlcap_power t=  91.8s E=  13869J
+rep 0 gromacs         drlcap_hybrid t=  89.8s E=  14453J
+rep 0 gromacs         rl           t=  92.2s E=  12974J
+rep 0 gromacs         baseline     t=  82.8s E=  16813J
+rep 0 gromacs         static_1800  t= 106.8s E=  11346J
+rep 0 gromacs         static_2100  t=  97.0s E=  11121J
+rep 0 gromacs         static_2400  t=  90.2s E=  12994J
+rep 0 gromacs         static_2745  t=  83.1s E=  16874J
+rep 0 minife          drlcap       t=   9.6s E=    863J
+rep 0 minife          drlcap_power t=   9.5s E=    897J
+rep 0 minife          drlcap_hybrid t=   9.7s E=    844J
+rep 0 minife          rl           t=   9.6s E=    813J
+rep 0 minife          baseline     t=   9.5s E=   1010J
+rep 0 minife          static_1800  t=   9.8s E=    703J
+rep 0 minife          static_2100  t=   9.7s E=    721J
+rep 0 minife          static_2400  t=   9.6s E=    787J
+rep 0 minife          static_2745  t=   9.5s E=   1004J
+rep 0 minife          coord        t=   9.7s E=    788J
+WARNING:tensorflow:5 out of the last 274 calls to <function DDQNAgent._train_step at 0x747bfdb53c70> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+rep 0 vgg16           drlcap_power t=  35.8s E=   2145J
+rep 0 vgg16           drlcap_hybrid t=  37.0s E=   2256J
+rep 0 vgg16           rl           t=  36.9s E=   1998J
+rep 0 vgg16           baseline     t=  35.8s E=   2464J
+rep 0 vgg16           static_1800  t=  37.4s E=   1733J
+rep 0 vgg16           static_2100  t=  35.8s E=   1714J
+rep 0 vgg16           static_2400  t=  36.3s E=   1931J
+rep 0 vgg16           static_2745  t=  35.5s E=   2430J
+rep 0 vgg16           coord        t=  37.3s E=   1718J
+rep 0 vgg16           drlcap       t=  35.9s E=   2256J
+rep 0 googlenet       drlcap_hybrid t=  92.8s E=   8006J
+rep 0 googlenet       rl           t=  94.4s E=   6615J
+rep 0 googlenet       baseline     t=  90.2s E=   8650J
+rep 0 googlenet       static_1800  t=  96.5s E=   6028J
+rep 0 googlenet       static_2100  t=  93.3s E=   6063J
+rep 0 googlenet       static_2400  t=  92.2s E=   6802J
+rep 0 googlenet       static_2745  t=  90.5s E=   8699J
+rep 0 googlenet       coord        t=  97.0s E=   6006J
+rep 0 googlenet       drlcap       t=  92.9s E=   7792J
+rep 0 googlenet       drlcap_power t=  93.5s E=   7682J
+rep 0 qe              rl           t= 764.7s E=  78847J
+rep 0 qe              baseline     t= 732.8s E= 103877J
+rep 0 qe              static_1800  t= 808.7s E=  71577J
+rep 0 qe              static_2100  t= 777.2s E=  71790J
+rep 0 qe              static_2400  t= 754.4s E=  78556J
+rep 0 qe              static_2745  t= 734.4s E= 103878J
+rep 0 qe              coord        t= 754.2s E=  78473J
+rep 0 qe              drlcap       t= 756.7s E=  82678J
+rep 0 qe              drlcap_power t= 734.3s E= 100468J
+rep 0 qe              drlcap_hybrid t= 754.6s E=  85461J
+static_1800  cloverleaf      energy saving   26.1%  perf loss   28.4%  EDP improvement    5.1%
+static_1800  comd            energy saving   21.4%  perf loss   43.7%  EDP improvement  -13.0%
+static_1800  googlenet       energy saving   30.3%  perf loss    6.9%  EDP improvement   25.5%
+static_1800  gromacs         energy saving   32.5%  perf loss   29.0%  EDP improvement   13.0%
+static_1800  lulesh          energy saving   21.9%  perf loss   42.8%  EDP improvement  -11.6%
+static_1800  minibude        energy saving   33.2%  perf loss   40.6%  EDP improvement    6.0%
+static_1800  minife          energy saving   30.4%  perf loss    2.8%  EDP improvement   28.5%
+static_1800  qe              energy saving   31.1%  perf loss   10.4%  EDP improvement   24.0%
+static_1800  tealeaf         energy saving   32.5%  perf loss    0.2%  EDP improvement   32.4%
+static_1800  vgg16           energy saving   29.7%  perf loss    4.6%  EDP improvement   26.4%
+static_1800  GEOMEAN         energy saving   29.0%  perf loss   19.8%  EDP improvement   15.0%
+static_2100  cloverleaf      energy saving   28.0%  perf loss   16.0%  EDP improvement   16.4%
+static_2100  comd            energy saving   29.5%  perf loss   25.3%  EDP improvement   11.7%
+static_2100  googlenet       energy saving   29.9%  perf loss    3.4%  EDP improvement   27.5%
+static_2100  gromacs         energy saving   33.9%  perf loss   17.2%  EDP improvement   22.5%
+static_2100  lulesh          energy saving   25.2%  perf loss   24.4%  EDP improvement    7.0%
+static_2100  minibude        energy saving   36.4%  perf loss   21.5%  EDP improvement   22.8%
+static_2100  minife          energy saving   28.6%  perf loss    1.7%  EDP improvement   27.4%
+static_2100  qe              energy saving   30.9%  perf loss    6.1%  EDP improvement   26.7%
+static_2100  tealeaf         energy saving   31.4%  perf loss    0.1%  EDP improvement   31.3%
+static_2100  vgg16           energy saving   30.4%  perf loss    0.2%  EDP improvement   30.3%
+static_2100  GEOMEAN         energy saving   30.5%  perf loss   11.2%  EDP improvement   22.7%
+static_2400  cloverleaf      energy saving   22.9%  perf loss    6.8%  EDP improvement   17.6%
+static_2400  comd            energy saving   25.4%  perf loss   11.6%  EDP improvement   16.7%
+static_2400  googlenet       energy saving   21.4%  perf loss    2.1%  EDP improvement   19.7%
+static_2400  gromacs         energy saving   22.7%  perf loss    9.0%  EDP improvement   15.8%
+static_2400  lulesh          energy saving   20.0%  perf loss   11.2%  EDP improvement   11.1%
+static_2400  minibude        energy saving   27.7%  perf loss    9.1%  EDP improvement   21.1%
+static_2400  minife          energy saving   22.1%  perf loss    0.7%  EDP improvement   21.6%
+static_2400  qe              energy saving   24.4%  perf loss    2.9%  EDP improvement   22.1%
+static_2400  tealeaf         energy saving   24.8%  perf loss    0.1%  EDP improvement   24.8%
+static_2400  vgg16           energy saving   21.6%  perf loss    1.5%  EDP improvement   20.4%
+static_2400  GEOMEAN         energy saving   23.3%  perf loss    5.4%  EDP improvement   19.2%
+static_2745  cloverleaf      energy saving    0.1%  perf loss   -0.0%  EDP improvement    0.1%
+static_2745  comd            energy saving    2.0%  perf loss   -0.3%  EDP improvement    2.3%
+static_2745  googlenet       energy saving   -0.6%  perf loss    0.2%  EDP improvement   -0.8%
+static_2745  gromacs         energy saving   -0.4%  perf loss    0.3%  EDP improvement   -0.7%
+static_2745  lulesh          energy saving   -0.4%  perf loss   -0.0%  EDP improvement   -0.4%
+static_2745  minibude        energy saving   -0.0%  perf loss   -0.2%  EDP improvement    0.1%
+static_2745  minife          energy saving    0.6%  perf loss    0.1%  EDP improvement    0.5%
+static_2745  qe              energy saving   -0.0%  perf loss    0.2%  EDP improvement   -0.2%
+static_2745  tealeaf         energy saving    0.2%  perf loss   -0.0%  EDP improvement    0.2%
+static_2745  vgg16           energy saving    1.4%  perf loss   -0.7%  EDP improvement    2.1%
+static_2745  GEOMEAN         energy saving    0.3%  perf loss   -0.0%  EDP improvement    0.3%
+coord        cloverleaf      energy saving   23.1%  perf loss    6.8%  EDP improvement   17.9%
+coord        comd            energy saving   26.3%  perf loss   11.7%  EDP improvement   17.7%
+coord        googlenet       energy saving   30.6%  perf loss    7.5%  EDP improvement   25.3%
+coord        gromacs         energy saving   22.8%  perf loss    9.2%  EDP improvement   15.7%
+coord        lulesh          energy saving   20.3%  perf loss   11.2%  EDP improvement   11.4%
+coord        minibude        energy saving   26.5%  perf loss    9.1%  EDP improvement   19.8%
+coord        minife          energy saving   22.0%  perf loss    1.7%  EDP improvement   20.7%
+coord        qe              energy saving   24.5%  perf loss    2.9%  EDP improvement   22.3%
+coord        tealeaf         energy saving   24.5%  perf loss    0.1%  EDP improvement   24.4%
+coord        vgg16           energy saving   30.3%  perf loss    4.1%  EDP improvement   27.4%
+coord        GEOMEAN         energy saving   25.1%  perf loss    6.4%  EDP improvement   20.4%
+drlcap       cloverleaf      energy saving   15.0%  perf loss    6.5%  EDP improvement    9.4%
+drlcap       comd            energy saving   12.5%  perf loss    5.8%  EDP improvement    7.5%
+drlcap       googlenet       energy saving    9.9%  perf loss    2.9%  EDP improvement    7.3%
+drlcap       gromacs         energy saving   10.9%  perf loss    6.7%  EDP improvement    4.9%
+drlcap       lulesh          energy saving   15.0%  perf loss   13.5%  EDP improvement    3.6%
+drlcap       minibude        energy saving    1.4%  perf loss    0.1%  EDP improvement    1.3%
+drlcap       minife          energy saving   14.6%  perf loss    0.5%  EDP improvement   14.2%
+drlcap       qe              energy saving   20.4%  perf loss    3.3%  EDP improvement   17.8%
+drlcap       tealeaf         energy saving   14.8%  perf loss    0.0%  EDP improvement   14.7%
+drlcap       vgg16           energy saving    8.4%  perf loss    0.3%  EDP improvement    8.1%
+drlcap       GEOMEAN         energy saving   12.4%  perf loss    3.9%  EDP improvement    9.0%
+drlcap_power cloverleaf      energy saving    3.4%  perf loss    0.6%  EDP improvement    2.8%
+drlcap_power comd            energy saving    0.8%  perf loss    0.0%  EDP improvement    0.8%
+drlcap_power googlenet       energy saving   11.2%  perf loss    3.7%  EDP improvement    7.9%
+drlcap_power gromacs         energy saving   17.5%  perf loss   10.9%  EDP improvement    8.6%
+drlcap_power lulesh          energy saving   -0.2%  perf loss    0.1%  EDP improvement   -0.3%
+drlcap_power minibude        energy saving    3.9%  perf loss    0.5%  EDP improvement    3.4%
+drlcap_power minife          energy saving   11.2%  perf loss    0.2%  EDP improvement   11.0%
+drlcap_power qe              energy saving    3.3%  perf loss    0.2%  EDP improvement    3.1%
+drlcap_power tealeaf         energy saving    8.0%  perf loss    0.1%  EDP improvement    8.0%
+drlcap_power vgg16           energy saving   13.0%  perf loss    0.1%  EDP improvement   12.8%
+drlcap_power GEOMEAN         energy saving    7.4%  perf loss    1.6%  EDP improvement    5.9%
+drlcap_hybrid cloverleaf      energy saving    9.2%  perf loss    3.6%  EDP improvement    6.0%
+drlcap_hybrid comd            energy saving   11.4%  perf loss    6.2%  EDP improvement    5.8%
+drlcap_hybrid googlenet       energy saving    7.4%  perf loss    2.9%  EDP improvement    4.8%
+drlcap_hybrid gromacs         energy saving   14.0%  perf loss    8.5%  EDP improvement    6.8%
+drlcap_hybrid lulesh          energy saving   13.3%  perf loss    9.6%  EDP improvement    5.0%
+drlcap_hybrid minibude        energy saving    1.2%  perf loss    0.4%  EDP improvement    0.8%
+drlcap_hybrid minife          energy saving   16.5%  perf loss    1.6%  EDP improvement   15.2%
+drlcap_hybrid qe              energy saving   17.7%  perf loss    3.0%  EDP improvement   15.3%
+drlcap_hybrid tealeaf         energy saving   14.6%  perf loss    0.2%  EDP improvement   14.5%
+drlcap_hybrid vgg16           energy saving    8.5%  perf loss    3.3%  EDP improvement    5.5%
+drlcap_hybrid GEOMEAN         energy saving   11.5%  perf loss    3.9%  EDP improvement    8.1%
+rl           cloverleaf      energy saving   22.2%  perf loss   11.9%  EDP improvement   12.9%
+rl           comd            energy saving   15.8%  perf loss   12.7%  EDP improvement    5.1%
+rl           googlenet       energy saving   23.5%  perf loss    4.6%  EDP improvement   20.0%
+rl           gromacs         energy saving   22.8%  perf loss   11.3%  EDP improvement   14.1%
+rl           lulesh          energy saving   18.7%  perf loss   17.5%  EDP improvement    4.5%
+rl           minibude        energy saving    4.6%  perf loss    4.4%  EDP improvement    0.3%
+rl           minife          energy saving   19.5%  perf loss    0.6%  EDP improvement   19.0%
+rl           qe              energy saving   24.1%  perf loss    4.4%  EDP improvement   20.8%
+rl           tealeaf         energy saving   22.8%  perf loss    0.1%  EDP improvement   22.7%
+rl           vgg16           energy saving   18.9%  perf loss    3.0%  EDP improvement   16.4%
+rl           GEOMEAN         energy saving   19.5%  perf loss    6.9%  EDP improvement   13.9%
+saved /home/drl/project/drlcap/drlcap_faithful/results/eval_main_rep9_f1_20261106_214245
+== 3a. seeds and monitoring overhead Sat Nov  7 02:24:30 AM IST 2026
+GPU: NVIDIA GeForce RTX 4070 Ti
+rep 0 lulesh          baseline     t= 154.0s E=  16495J
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793998629.300178 1888181 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+rep 0 lulesh          drlcap       t= 172.3s E=  14109J
+rep 0 lulesh          drlcap_seed1 t= 170.8s E=  14325J
+rep 0 lulesh          drlcap_seed2 t= 174.4s E=  13995J
+rep 0 lulesh          monitor_only t= 153.9s E=  16600J
+rep 0 cloverleaf      drlcap       t= 230.5s E=  24263J
+rep 0 cloverleaf      drlcap_seed1 t= 230.5s E=  24128J
+rep 0 cloverleaf      drlcap_seed2 t= 227.3s E=  24901J
+rep 0 cloverleaf      monitor_only t= 212.9s E=  29819J
+rep 0 cloverleaf      baseline     t= 212.9s E=  29748J
+rep 0 tealeaf         drlcap_seed1 t=  81.8s E=   9362J
+rep 0 tealeaf         drlcap_seed2 t=  81.8s E=   9558J
+rep 0 tealeaf         monitor_only t=  81.7s E=  12218J
+rep 0 tealeaf         baseline     t=  81.7s E=  12230J
+rep 0 tealeaf         drlcap       t=  81.8s E=  10046J
+rep 0 minibude        drlcap_seed2 t=  16.3s E=   2200J
+rep 0 minibude        monitor_only t=  15.3s E=   2353J
+rep 0 minibude        baseline     t=  15.2s E=   2305J
+rep 0 minibude        drlcap       t=  15.3s E=   2287J
+rep 0 minibude        drlcap_seed1 t=  15.7s E=   2231J
+rep 0 comd            monitor_only t=  27.6s E=   2268J
+rep 0 comd            baseline     t=  27.7s E=   2256J
+rep 0 comd            drlcap       t=  29.1s E=   2036J
+rep 0 comd            drlcap_seed1 t=  31.1s E=   1856J
+rep 0 comd            drlcap_seed2 t=  30.3s E=   1983J
+rep 0 gromacs         baseline     t=  82.9s E=  16904J
+rep 0 gromacs         drlcap       t=  87.8s E=  14335J
+rep 0 gromacs         drlcap_seed1 t=  90.0s E=  13996J
+rep 0 gromacs         drlcap_seed2 t=  91.9s E=  13066J
+rep 0 gromacs         monitor_only t=  82.8s E=  16979J
+rep 0 minife          drlcap       t=   9.6s E=    837J
+rep 0 minife          drlcap_seed1 t=   9.7s E=    788J
+rep 0 minife          drlcap_seed2 t=   9.8s E=    968J
+WARNING:tensorflow:5 out of the last 251 calls to <function DDQNAgent._train_step at 0x74721c5abf40> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+rep 0 minife          monitor_only t=   9.6s E=   1042J
+rep 0 minife          baseline     t=   9.6s E=   1013J
+WARNING:tensorflow:6 out of the last 252 calls to <function DDQNAgent._train_step at 0x747214659cf0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+rep 0 vgg16           drlcap_seed1 t=  36.9s E=   1763J
+rep 0 vgg16           drlcap_seed2 t=  36.2s E=   2073J
+rep 0 vgg16           monitor_only t=  35.8s E=   2516J
+rep 0 vgg16           baseline     t=  35.6s E=   2441J
+rep 0 vgg16           drlcap       t=  36.0s E=   2136J
+rep 0 googlenet       drlcap_seed2 t=  93.9s E=   6743J
+rep 0 googlenet       monitor_only t=  91.7s E=   8766J
+rep 0 googlenet       baseline     t=  90.6s E=   8687J
+rep 0 googlenet       drlcap       t=  92.2s E=   7867J
+rep 0 googlenet       drlcap_seed1 t=  94.1s E=   6921J
+rep 0 qe              monitor_only t= 732.9s E= 104079J
+rep 0 qe              baseline     t= 735.0s E= 104020J
+rep 0 qe              drlcap       t= 756.2s E=  81209J
+rep 0 qe              drlcap_seed1 t= 758.2s E=  81715J
+rep 0 qe              drlcap_seed2 t= 754.1s E=  87420J
+rep 1 lulesh          drlcap       t= 174.7s E=  13806J
+rep 1 lulesh          drlcap_seed1 t= 170.6s E=  14220J
+rep 1 lulesh          drlcap_seed2 t= 174.5s E=  14127J
+rep 1 lulesh          monitor_only t= 153.9s E=  16549J
+rep 1 lulesh          baseline     t= 154.0s E=  16529J
+rep 1 cloverleaf      drlcap_seed1 t= 224.7s E=  25328J
+rep 1 cloverleaf      drlcap_seed2 t= 233.5s E=  23750J
+rep 1 cloverleaf      monitor_only t= 212.9s E=  29819J
+rep 1 cloverleaf      baseline     t= 212.9s E=  29723J
+rep 1 cloverleaf      drlcap       t= 229.4s E=  24344J
+rep 1 tealeaf         drlcap_seed2 t=  81.8s E=  10178J
+rep 1 tealeaf         monitor_only t=  81.7s E=  12238J
+rep 1 tealeaf         baseline     t=  81.7s E=  12225J
+rep 1 tealeaf         drlcap       t=  81.7s E=  10650J
+rep 1 tealeaf         drlcap_seed1 t=  81.8s E=   9293J
+rep 1 minibude        monitor_only t=  15.3s E=   2317J
+rep 1 minibude        baseline     t=  15.3s E=   2307J
+rep 1 minibude        drlcap       t=  15.3s E=   2304J
+rep 1 minibude        drlcap_seed1 t=  16.2s E=   2186J
+rep 1 minibude        drlcap_seed2 t=  15.5s E=   2324J
+rep 1 comd            baseline     t=  27.7s E=   2265J
+rep 1 comd            drlcap       t=  29.4s E=   2008J
+rep 1 comd            drlcap_seed1 t=  30.9s E=   1958J
+rep 1 comd            drlcap_seed2 t=  30.2s E=   1970J
+rep 1 comd            monitor_only t=  27.7s E=   2275J
+rep 1 gromacs         drlcap       t=  88.5s E=  15032J
+rep 1 gromacs         drlcap_seed1 t=  91.4s E=  13315J
+rep 1 gromacs         drlcap_seed2 t=  90.8s E=  13354J
+rep 1 gromacs         monitor_only t=  82.7s E=  16914J
+rep 1 gromacs         baseline     t=  83.1s E=  16985J
+rep 1 minife          drlcap_seed1 t=   9.7s E=    793J
+rep 1 minife          drlcap_seed2 t=   9.7s E=    996J
+rep 1 minife          monitor_only t=   9.6s E=   1041J
+rep 1 minife          baseline     t=   9.6s E=   1023J
+rep 1 minife          drlcap       t=   9.6s E=    844J
+rep 1 vgg16           drlcap_seed2 t=  36.1s E=   1998J
+rep 1 vgg16           monitor_only t=  35.9s E=   2504J
+rep 1 vgg16           baseline     t=  35.4s E=   2458J
+rep 1 vgg16           drlcap       t=  36.1s E=   2210J
+rep 1 vgg16           drlcap_seed1 t=  36.3s E=   1735J
+rep 1 googlenet       monitor_only t=  91.7s E=   8759J
+rep 1 googlenet       baseline     t=  90.7s E=   8694J
+rep 1 googlenet       drlcap       t=  91.9s E=   7559J
+rep 1 googlenet       drlcap_seed1 t=  93.4s E=   6485J
+rep 1 googlenet       drlcap_seed2 t=  92.9s E=   6753J
+rep 1 qe              baseline     t= 732.8s E= 103938J
+rep 1 qe              drlcap       t= 757.2s E=  82049J
+rep 1 qe              drlcap_seed1 t= 761.5s E=  80310J
+rep 1 qe              drlcap_seed2 t= 761.6s E=  79777J
+rep 1 qe              monitor_only t= 733.8s E= 104426J
+rep 2 lulesh          drlcap_seed1 t= 169.1s E=  14230J
+rep 2 lulesh          drlcap_seed2 t= 174.1s E=  13781J
+rep 2 lulesh          monitor_only t= 154.0s E=  16614J
+rep 2 lulesh          baseline     t= 154.0s E=  16524J
+rep 2 lulesh          drlcap       t= 173.3s E=  14170J
+rep 2 cloverleaf      drlcap_seed2 t= 226.2s E=  25780J
+rep 2 cloverleaf      monitor_only t= 212.9s E=  29743J
+rep 2 cloverleaf      baseline     t= 213.3s E=  29705J
+rep 2 cloverleaf      drlcap       t= 228.3s E=  24865J
+rep 2 cloverleaf      drlcap_seed1 t= 228.7s E=  24147J
+rep 2 tealeaf         monitor_only t=  81.7s E=  12223J
+rep 2 tealeaf         baseline     t=  81.7s E=  12198J
+rep 2 tealeaf         drlcap       t=  81.8s E=   9626J
+rep 2 tealeaf         drlcap_seed1 t=  81.8s E=   9193J
+rep 2 tealeaf         drlcap_seed2 t=  81.8s E=   9216J
+rep 2 minibude        baseline     t=  15.3s E=   2328J
+rep 2 minibude        drlcap       t=  15.3s E=   2304J
+rep 2 minibude        drlcap_seed1 t=  16.2s E=   2195J
+rep 2 minibude        drlcap_seed2 t=  15.6s E=   2233J
+rep 2 minibude        monitor_only t=  15.3s E=   2325J
+rep 2 comd            drlcap       t=  29.2s E=   2041J
+rep 2 comd            drlcap_seed1 t=  31.6s E=   1924J
+rep 2 comd            drlcap_seed2 t=  30.4s E=   1957J
+rep 2 comd            monitor_only t=  27.7s E=   2277J
+rep 2 comd            baseline     t=  27.7s E=   2271J
+rep 2 gromacs         drlcap_seed1 t=  90.6s E=  13332J
+rep 2 gromacs         drlcap_seed2 t=  90.7s E=  13392J
+rep 2 gromacs         monitor_only t=  82.8s E=  16943J
+rep 2 gromacs         baseline     t=  84.0s E=  17550J
+rep 2 gromacs         drlcap       t=  88.2s E=  14277J
+rep 2 minife          drlcap_seed2 t=   9.7s E=    979J
+rep 2 minife          monitor_only t=   9.6s E=   1043J
+rep 2 minife          baseline     t=   9.6s E=   1011J
+rep 2 minife          drlcap       t=   9.9s E=    847J
+rep 2 minife          drlcap_seed1 t=   9.8s E=    785J
+rep 2 vgg16           monitor_only t=  36.0s E=   2487J
+rep 2 vgg16           baseline     t=  35.9s E=   2462J
+rep 2 vgg16           drlcap       t=  35.8s E=   2202J
+rep 2 vgg16           drlcap_seed1 t=  36.2s E=   2106J
+rep 2 vgg16           drlcap_seed2 t=  36.8s E=   2002J
+rep 2 googlenet       baseline     t=  90.9s E=   8704J
+rep 2 googlenet       drlcap       t=  91.8s E=   7167J
+rep 2 googlenet       drlcap_seed1 t=  93.8s E=   6423J
+rep 2 googlenet       drlcap_seed2 t=  94.2s E=   6659J
+rep 2 googlenet       monitor_only t=  92.8s E=   8800J
+rep 2 qe              drlcap       t= 758.8s E=  80582J
+rep 2 qe              drlcap_seed1 t= 757.4s E=  81759J
+rep 2 qe              drlcap_seed2 t= 758.5s E=  81173J
+rep 2 qe              monitor_only t= 734.4s E= 104266J
+rep 2 qe              baseline     t= 734.0s E= 104185J
+rep 3 lulesh          drlcap_seed2 t= 170.5s E=  14154J
+rep 3 lulesh          monitor_only t= 153.9s E=  16603J
+rep 3 lulesh          baseline     t= 154.0s E=  16531J
+rep 3 lulesh          drlcap       t= 175.2s E=  13833J
+rep 3 lulesh          drlcap_seed1 t= 172.9s E=  14204J
+rep 3 cloverleaf      monitor_only t= 213.3s E=  29838J
+rep 3 cloverleaf      baseline     t= 213.3s E=  29745J
+rep 3 cloverleaf      drlcap       t= 225.1s E=  25488J
+rep 3 cloverleaf      drlcap_seed1 t= 223.4s E=  25812J
+rep 3 cloverleaf      drlcap_seed2 t= 226.2s E=  25486J
+rep 3 tealeaf         baseline     t=  81.7s E=  12065J
+rep 3 tealeaf         drlcap       t=  81.8s E=   9818J
+rep 3 tealeaf         drlcap_seed1 t=  81.8s E=   8655J
+rep 3 tealeaf         drlcap_seed2 t=  81.8s E=   9374J
+rep 3 tealeaf         monitor_only t=  81.7s E=  12197J
+rep 3 minibude        drlcap       t=  15.2s E=   2373J
+rep 3 minibude        drlcap_seed1 t=  16.1s E=   2221J
+rep 3 minibude        drlcap_seed2 t=  15.6s E=   2266J
+rep 3 minibude        monitor_only t=  15.3s E=   2317J
+rep 3 minibude        baseline     t=  15.2s E=   2302J
+rep 3 comd            drlcap_seed1 t=  31.7s E=   1957J
+rep 3 comd            drlcap_seed2 t=  30.8s E=   1957J
+rep 3 comd            monitor_only t=  27.7s E=   2279J
+rep 3 comd            baseline     t=  27.7s E=   2269J
+rep 3 comd            drlcap       t=  29.1s E=   2118J
+rep 3 gromacs         drlcap_seed2 t=  90.3s E=  13483J
+rep 3 gromacs         monitor_only t=  83.1s E=  16957J
+rep 3 gromacs         baseline     t=  83.0s E=  16904J
+rep 3 gromacs         drlcap       t=  88.1s E=  14254J
+rep 3 gromacs         drlcap_seed1 t=  89.4s E=  14205J
+rep 3 minife          monitor_only t=   9.7s E=   1046J
+rep 3 minife          baseline     t=   9.6s E=   1022J
+rep 3 minife          drlcap       t=   9.6s E=    849J
+rep 3 minife          drlcap_seed1 t=   9.8s E=    791J
+rep 3 minife          drlcap_seed2 t=   9.6s E=    962J
+rep 3 vgg16           baseline     t=  35.3s E=   2427J
+rep 3 vgg16           drlcap       t=  35.5s E=   2235J
+rep 3 vgg16           drlcap_seed1 t=  36.5s E=   1758J
+rep 3 vgg16           drlcap_seed2 t=  36.4s E=   2046J
+rep 3 vgg16           monitor_only t=  36.1s E=   2454J
+rep 3 googlenet       drlcap       t=  93.3s E=   7367J
+rep 3 googlenet       drlcap_seed1 t=  93.8s E=   7363J
+rep 3 googlenet       drlcap_seed2 t=  92.2s E=   7280J
+rep 3 googlenet       monitor_only t=  92.4s E=   8796J
+rep 3 googlenet       baseline     t=  90.7s E=   8653J
+rep 3 qe              drlcap_seed1 t= 755.4s E=  81919J
+rep 3 qe              drlcap_seed2 t= 757.3s E=  81969J
+rep 3 qe              monitor_only t= 733.6s E= 104164J
+rep 3 qe              baseline     t= 732.5s E= 104045J
+rep 3 qe              drlcap       t= 759.2s E=  82250J
+rep 4 lulesh          monitor_only t= 154.1s E=  16586J
+rep 4 lulesh          baseline     t= 154.0s E=  16521J
+rep 4 lulesh          drlcap       t= 175.5s E=  13795J
+rep 4 lulesh          drlcap_seed1 t= 170.4s E=  14452J
+rep 4 lulesh          drlcap_seed2 t= 172.1s E=  14090J
+rep 4 cloverleaf      baseline     t= 213.2s E=  29809J
+rep 4 cloverleaf      drlcap       t= 228.5s E=  24597J
+rep 4 cloverleaf      drlcap_seed1 t= 230.1s E=  24018J
+rep 4 cloverleaf      drlcap_seed2 t= 224.7s E=  26221J
+rep 4 cloverleaf      monitor_only t= 213.2s E=  29871J
+rep 4 tealeaf         drlcap       t=  81.8s E=  10084J
+rep 4 tealeaf         drlcap_seed1 t=  81.8s E=   9312J
+rep 4 tealeaf         drlcap_seed2 t=  81.8s E=   9693J
+rep 4 tealeaf         monitor_only t=  81.7s E=  12237J
+rep 4 tealeaf         baseline     t=  81.7s E=  12247J
+rep 4 minibude        drlcap_seed1 t=  16.1s E=   2184J
+rep 4 minibude        drlcap_seed2 t=  15.5s E=   2329J
+rep 4 minibude        monitor_only t=  15.3s E=   2336J
+rep 4 minibude        baseline     t=  15.2s E=   2327J
+rep 4 minibude        drlcap       t=  15.3s E=   2313J
+rep 4 comd            drlcap_seed2 t=  30.7s E=   1972J
+rep 4 comd            monitor_only t=  27.6s E=   2270J
+rep 4 comd            baseline     t=  27.6s E=   2265J
+rep 4 comd            drlcap       t=  29.4s E=   2023J
+rep 4 comd            drlcap_seed1 t=  30.4s E=   1996J
+rep 4 gromacs         monitor_only t=  82.8s E=  17033J
+rep 4 gromacs         baseline     t=  84.0s E=  17611J
+rep 4 gromacs         drlcap       t=  90.0s E=  14331J
+rep 4 gromacs         drlcap_seed1 t=  94.5s E=  14880J
+rep 4 gromacs         drlcap_seed2 t=  90.1s E=  13717J
+rep 4 minife          baseline     t=   9.6s E=   1029J
+rep 4 minife          drlcap       t=   9.7s E=    844J
+rep 4 minife          drlcap_seed1 t=   9.8s E=    800J
+rep 4 minife          drlcap_seed2 t=   9.7s E=    983J
+rep 4 minife          monitor_only t=   9.6s E=   1025J
+rep 4 vgg16           drlcap       t=  36.5s E=   2200J
+rep 4 vgg16           drlcap_seed1 t=  35.9s E=   1844J
+rep 4 vgg16           drlcap_seed2 t=  35.9s E=   2257J
+rep 4 vgg16           monitor_only t=  35.7s E=   2492J
+rep 4 vgg16           baseline     t=  35.6s E=   2465J
+rep 4 googlenet       drlcap_seed1 t=  95.2s E=   6272J
+rep 4 googlenet       drlcap_seed2 t=  93.9s E=   7091J
+rep 4 googlenet       monitor_only t=  91.5s E=   8843J
+rep 4 googlenet       baseline     t=  91.4s E=   8740J
+rep 4 googlenet       drlcap       t=  93.3s E=   7277J
+rep 4 qe              drlcap_seed2 t= 761.8s E=  81377J
+rep 4 qe              monitor_only t= 733.0s E= 103463J
+rep 4 qe              baseline     t= 734.9s E= 104339J
+rep 4 qe              drlcap       t= 757.3s E=  81215J
+rep 4 qe              drlcap_seed1 t= 755.5s E=  84573J
+drlcap       cloverleaf      energy saving   16.9%  perf loss    7.2%  EDP improvement   11.0%
+drlcap       comd            energy saving    9.7%  perf loss    5.7%  EDP improvement    4.6%
+drlcap       googlenet       energy saving   14.4%  perf loss    1.8%  EDP improvement   12.8%
+drlcap       gromacs         energy saving   16.0%  perf loss    6.2%  EDP improvement   10.8%
+drlcap       lulesh          energy saving   15.6%  perf loss   13.1%  EDP improvement    4.5%
+drlcap       minibude        energy saving   -0.1%  perf loss    0.2%  EDP improvement   -0.3%
+drlcap       minife          energy saving   17.2%  perf loss    1.1%  EDP improvement   16.3%
+drlcap       qe              energy saving   21.8%  perf loss    3.3%  EDP improvement   19.2%
+drlcap       tealeaf         energy saving   17.6%  perf loss    0.1%  EDP improvement   17.6%
+drlcap       vgg16           energy saving   10.4%  perf loss    1.1%  EDP improvement    9.4%
+drlcap       GEOMEAN         energy saving   14.1%  perf loss    3.9%  EDP improvement   10.8%
+drlcap_seed1 cloverleaf      energy saving   17.0%  perf loss    6.7%  EDP improvement   11.5%
+drlcap_seed1 comd            energy saving   14.4%  perf loss   12.4%  EDP improvement    3.8%
+drlcap_seed1 googlenet       energy saving   23.0%  perf loss    3.5%  EDP improvement   20.3%
+drlcap_seed1 gromacs         energy saving   18.9%  perf loss    9.4%  EDP improvement   11.3%
+drlcap_seed1 lulesh          energy saving   13.5%  perf loss   10.9%  EDP improvement    4.1%
+drlcap_seed1 minibude        energy saving    4.8%  perf loss    5.3%  EDP improvement   -0.2%
+drlcap_seed1 minife          energy saving   22.4%  perf loss    2.0%  EDP improvement   20.8%
+drlcap_seed1 qe              energy saving   21.2%  perf loss    3.2%  EDP improvement   18.6%
+drlcap_seed1 tealeaf         energy saving   24.8%  perf loss    0.1%  EDP improvement   24.8%
+drlcap_seed1 vgg16           energy saving   24.9%  perf loss    2.2%  EDP improvement   23.2%
+drlcap_seed1 GEOMEAN         energy saving   18.7%  perf loss    5.5%  EDP improvement   14.2%
+drlcap_seed2 cloverleaf      energy saving   15.2%  perf loss    6.8%  EDP improvement    9.5%
+drlcap_seed2 comd            energy saving   13.1%  perf loss   10.1%  EDP improvement    4.4%
+drlcap_seed2 googlenet       energy saving   20.6%  perf loss    2.8%  EDP improvement   18.3%
+drlcap_seed2 gromacs         energy saving   22.0%  perf loss    8.8%  EDP improvement   15.2%
+drlcap_seed2 lulesh          energy saving   15.1%  perf loss   12.4%  EDP improvement    4.5%
+drlcap_seed2 minibude        energy saving    1.9%  perf loss    2.9%  EDP improvement   -0.9%
+drlcap_seed2 minife          energy saving    4.1%  perf loss    1.1%  EDP improvement    3.1%
+drlcap_seed2 qe              energy saving   20.9%  perf loss    3.4%  EDP improvement   18.2%
+drlcap_seed2 tealeaf         energy saving   21.2%  perf loss    0.1%  EDP improvement   21.2%
+drlcap_seed2 vgg16           energy saving   15.3%  perf loss    2.0%  EDP improvement   13.7%
+drlcap_seed2 GEOMEAN         energy saving   15.2%  perf loss    5.0%  EDP improvement   11.0%
+monitor_only cloverleaf      energy saving   -0.2%  perf loss   -0.0%  EDP improvement   -0.2%
+monitor_only comd            energy saving   -0.4%  perf loss   -0.1%  EDP improvement   -0.2%
+monitor_only googlenet       energy saving   -1.1%  perf loss    1.3%  EDP improvement   -2.4%
+monitor_only gromacs         energy saving    1.3%  perf loss   -0.7%  EDP improvement    2.0%
+monitor_only lulesh          energy saving   -0.4%  perf loss   -0.0%  EDP improvement   -0.4%
+monitor_only minibude        energy saving   -0.7%  perf loss    0.4%  EDP improvement   -1.1%
+monitor_only minife          energy saving   -1.9%  perf loss    0.1%  EDP improvement   -2.0%
+monitor_only qe              energy saving    0.0%  perf loss   -0.0%  EDP improvement    0.1%
+monitor_only tealeaf         energy saving   -0.2%  perf loss    0.0%  EDP improvement   -0.2%
+monitor_only vgg16           energy saving   -1.6%  perf loss    0.9%  EDP improvement   -2.5%
+monitor_only GEOMEAN         energy saving   -0.5%  perf loss    0.2%  EDP improvement   -0.7%
+saved /home/drl/project/drlcap/drlcap_faithful/results/eval_seeds_overhead_f1_20261107_022433
+== 3b. frozen network (no online learning) Sat Nov  7 12:53:55 PM IST 2026
+GPU: NVIDIA GeForce RTX 4070 Ti
+rep 0 lulesh          baseline     t= 154.0s E=  16415J
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794036393.530951 2166448 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+rep 0 lulesh          drlcap_frozen t= 158.0s E=  15553J
+rep 0 cloverleaf      drlcap_frozen t= 235.4s E=  22287J
+rep 0 cloverleaf      baseline     t= 212.9s E=  29701J
+rep 0 tealeaf         baseline     t=  81.7s E=  12191J
+rep 0 tealeaf         drlcap_frozen t=  81.8s E=   8898J
+rep 0 minibude        drlcap_frozen t=  15.4s E=   2307J
+rep 0 minibude        baseline     t=  15.3s E=   2297J
+rep 0 comd            baseline     t=  27.7s E=   2273J
+rep 0 comd            drlcap_frozen t=  28.5s E=   2168J
+rep 0 gromacs         drlcap_frozen t=  90.0s E=  17302J
+rep 0 gromacs         baseline     t=  82.8s E=  16931J
+rep 0 minife          baseline     t=   9.6s E=   1027J
+rep 0 minife          drlcap_frozen t=   9.6s E=    815J
+rep 0 vgg16           drlcap_frozen t=  36.1s E=   2070J
+rep 0 vgg16           baseline     t=  35.7s E=   2463J
+rep 0 googlenet       baseline     t=  91.4s E=   8682J
+rep 0 googlenet       drlcap_frozen t=  93.9s E=   7300J
+rep 0 qe              drlcap_frozen t= 752.9s E=  76842J
+rep 0 qe              baseline     t= 733.8s E= 104178J
+rep 1 lulesh          drlcap_frozen t= 158.0s E=  15565J
+rep 1 lulesh          baseline     t= 154.1s E=  16408J
+rep 1 cloverleaf      baseline     t= 212.9s E=  29682J
+rep 1 cloverleaf      drlcap_frozen t= 235.0s E=  22241J
+rep 1 tealeaf         drlcap_frozen t=  81.8s E=   8862J
+rep 1 tealeaf         baseline     t=  81.7s E=  12179J
+rep 1 minibude        baseline     t=  15.2s E=   2335J
+rep 1 minibude        drlcap_frozen t=  15.4s E=   2294J
+rep 1 comd            drlcap_frozen t=  28.3s E=   2194J
+rep 1 comd            baseline     t=  27.7s E=   2255J
+rep 1 gromacs         baseline     t=  83.3s E=  16862J
+rep 1 gromacs         drlcap_frozen t=  85.1s E=  16224J
+rep 1 minife          drlcap_frozen t=   9.6s E=    829J
+rep 1 minife          baseline     t=   9.6s E=   1015J
+rep 1 vgg16           baseline     t=  35.9s E=   2473J
+rep 1 vgg16           drlcap_frozen t=  36.2s E=   2061J
+rep 1 googlenet       drlcap_frozen t=  92.9s E=   7105J
+rep 1 googlenet       baseline     t=  91.2s E=   8688J
+rep 1 qe              baseline     t= 735.0s E= 103777J
+rep 1 qe              drlcap_frozen t= 752.9s E=  76805J
+rep 2 lulesh          baseline     t= 154.0s E=  16516J
+rep 2 lulesh          drlcap_frozen t= 158.2s E=  15678J
+rep 2 cloverleaf      drlcap_frozen t= 234.8s E=  22284J
+rep 2 cloverleaf      baseline     t= 213.2s E=  29542J
+rep 2 tealeaf         baseline     t=  81.7s E=  12186J
+rep 2 tealeaf         drlcap_frozen t=  81.8s E=   8867J
+rep 2 minibude        drlcap_frozen t=  15.3s E=   2292J
+rep 2 minibude        baseline     t=  15.2s E=   2313J
+rep 2 comd            baseline     t=  27.7s E=   2259J
+rep 2 comd            drlcap_frozen t=  28.6s E=   2148J
+rep 2 gromacs         drlcap_frozen t=  83.6s E=  16361J
+rep 2 gromacs         baseline     t=  82.7s E=  16855J
+rep 2 minife          baseline     t=   9.6s E=   1026J
+rep 2 minife          drlcap_frozen t=   9.6s E=    835J
+rep 2 vgg16           drlcap_frozen t=  36.0s E=   2113J
+rep 2 vgg16           baseline     t=  36.0s E=   2470J
+rep 2 googlenet       baseline     t=  91.3s E=   8633J
+rep 2 googlenet       drlcap_frozen t=  91.7s E=   7169J
+rep 2 qe              drlcap_frozen t= 752.7s E=  77031J
+rep 2 qe              baseline     t= 735.1s E= 104163J
+rep 3 lulesh          drlcap_frozen t= 158.0s E=  15578J
+rep 3 lulesh          baseline     t= 154.0s E=  16424J
+rep 3 cloverleaf      baseline     t= 213.2s E=  29716J
+rep 3 cloverleaf      drlcap_frozen t= 235.0s E=  22297J
+rep 3 tealeaf         drlcap_frozen t=  81.8s E=   8850J
+rep 3 tealeaf         baseline     t=  81.7s E=  12206J
+rep 3 minibude        baseline     t=  15.2s E=   2343J
+rep 3 minibude        drlcap_frozen t=  15.3s E=   2287J
+rep 3 comd            drlcap_frozen t=  28.3s E=   2186J
+rep 3 comd            baseline     t=  27.7s E=   2255J
+rep 3 gromacs         baseline     t=  82.9s E=  16776J
+rep 3 gromacs         drlcap_frozen t=  88.8s E=  16689J
+rep 3 minife          drlcap_frozen t=   9.6s E=    826J
+rep 3 minife          baseline     t=   9.6s E=   1015J
+rep 3 vgg16           baseline     t=  36.1s E=   2459J
+rep 3 vgg16           drlcap_frozen t=  35.8s E=   2063J
+rep 3 googlenet       drlcap_frozen t=  93.2s E=   7220J
+rep 3 googlenet       baseline     t=  90.7s E=   8682J
+rep 3 qe              baseline     t= 733.9s E= 104086J
+rep 3 qe              drlcap_frozen t= 752.9s E=  76718J
+rep 4 lulesh          baseline     t= 155.7s E=  16595J
+rep 4 lulesh          drlcap_frozen t= 157.8s E=  15633J
+rep 4 cloverleaf      drlcap_frozen t= 235.0s E=  22254J
+rep 4 cloverleaf      baseline     t= 212.9s E=  29724J
+rep 4 tealeaf         baseline     t=  81.7s E=  12197J
+rep 4 tealeaf         drlcap_frozen t=  81.8s E=   8905J
+rep 4 minibude        drlcap_frozen t=  15.5s E=   2256J
+rep 4 minibude        baseline     t=  15.3s E=   2299J
+rep 4 comd            baseline     t=  27.7s E=   2275J
+rep 4 comd            drlcap_frozen t=  28.4s E=   2154J
+rep 4 gromacs         drlcap_frozen t=  84.2s E=  16102J
+rep 4 gromacs         baseline     t=  87.5s E=  17244J
+rep 4 minife          baseline     t=   9.7s E=   1035J
+rep 4 minife          drlcap_frozen t=   9.7s E=    827J
+rep 4 vgg16           drlcap_frozen t=  36.7s E=   2111J
+rep 4 vgg16           baseline     t=  35.6s E=   2458J
+rep 4 googlenet       baseline     t=  90.6s E=   8671J
+rep 4 googlenet       drlcap_frozen t=  93.4s E=   7282J
+rep 4 qe              drlcap_frozen t= 752.9s E=  77075J
+rep 4 qe              baseline     t= 734.4s E= 104068J
+drlcap_frozen cloverleaf      energy saving   24.9%  perf loss   10.4%  EDP improvement   17.2%
+drlcap_frozen comd            energy saving    4.1%  perf loss    2.6%  EDP improvement    1.6%
+drlcap_frozen googlenet       energy saving   16.8%  perf loss    2.2%  EDP improvement   15.0%
+drlcap_frozen gromacs         energy saving    2.3%  perf loss    3.0%  EDP improvement   -0.6%
+drlcap_frozen lulesh          energy saving    5.3%  perf loss    2.4%  EDP improvement    3.0%
+drlcap_frozen minibude        energy saving    1.3%  perf loss    0.9%  EDP improvement    0.4%
+drlcap_frozen minife          energy saving   19.3%  perf loss   -0.0%  EDP improvement   19.3%
+drlcap_frozen qe              energy saving   26.1%  perf loss    2.5%  EDP improvement   24.2%
+drlcap_frozen tealeaf         energy saving   27.2%  perf loss    0.1%  EDP improvement   27.1%
+drlcap_frozen vgg16           energy saving   15.5%  perf loss    0.8%  EDP improvement   14.8%
+drlcap_frozen GEOMEAN         energy saving   14.8%  perf loss    2.4%  EDP improvement   12.8%
+saved /home/drl/project/drlcap/drlcap_faithful/results/eval_frozen_f1_20261107_125357
+== 4. v4 settings one at a time Sat Nov  7 05:02:55 PM IST 2026
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794051177.827300 2258182 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 pb-stencil      t=   9.1s E=    330J cap=1937.4193548387098/ step=31/5000 eps=0.299 updates=0 (9s)
+job   1 poly-covar      t=  13.5s E=    383J cap=2016.195652173913/ step=77/5000 eps=0.297 updates=0 (14s)
+job   2 shoc-Stencil2D  t=  89.4s E=   2701J cap=2226.9463087248323/ step=375/5000 eps=0.285 updates=0 (90s)
+job   3 b+tree          t=   9.7s E=    299J cap=1897.7272727272727/ step=408/5000 eps=0.284 updates=0 (10s)
+job   4 sdk-convolutionFFT2D t=   7.8s E=    243J cap=1962.2222222222222/ step=435/5000 eps=0.283 updates=0 (8s)
+job   5 shoc-MD5Hash    t=  10.0s E=   1334J cap=2367.794117647059/ step=469/5000 eps=0.281 updates=0 (10s)
+job   6 sdk-quasirandomGenerator t=   7.6s E=    259J cap=1967.3076923076924/ step=495/5000 eps=0.280 updates=0 (8s)
+job   7 huffman         t=  10.5s E=    360J cap=1972.2857142857142/ step=530/5000 eps=0.279 updates=19 (11s)
+job   8 sdk-convolutionSeparable t=   9.2s E=    273J cap=1954.8387096774193/ step=561/5000 eps=0.278 updates=50 (9s)
+job   9 sdk-mergeSort   t=   8.2s E=    277J cap=2016.9642857142858/ step=589/5000 eps=0.276 updates=78 (8s)
+job  10 lavaMD          t=  10.6s E=    760J cap=2575.4166666666665/ step=625/5000 eps=0.275 updates=114 (11s)
+job  11 gaussian        t=  11.1s E=    604J cap=1955.5263157894738/ step=663/5000 eps=0.274 updates=152 (12s)
+job  12 poly-syrk       t=   9.8s E=    308J cap=1976.8181818181818/ step=696/5000 eps=0.272 updates=185 (10s)
+job  13 poly-atax       t=   6.2s E=    209J cap=1960.7142857142858/ step=717/5000 eps=0.271 updates=206 (6s)
+job  14 shoc-BusSpeedReadback t=  10.2s E=    337J cap=1966.7142857142858/ step=752/5000 eps=0.270 updates=241 (11s)
+job  15 sdk-sortingNetworks t=   9.7s E=    293J cap=1915.4545454545455/ step=785/5000 eps=0.269 updates=274 (10s)
+job  16 streamcluster   t=  30.3s E=    930J cap=1917.7722772277227/ step=886/5000 eps=0.265 updates=375 (30s)
+job  17 sdk-dct8x8      t=   9.7s E=    303J cap=1894.5454545454545/ step=919/5000 eps=0.263 updates=408 (10s)
+job  18 poly-gemm       t=  10.7s E=    341J cap=1954.5833333333333/ step=955/5000 eps=0.262 updates=444 (11s)
+job  19 shoc-MaxFlops   t=  21.9s E=   1471J cap=2517.328767123288/ step=1028/5000 eps=0.259 updates=517 (22s)
+job  20 shoc-BusSpeedDownload t=   9.3s E=    313J cap=1965.0/ step=1059/5000 eps=0.258 updates=548 (9s)
+job  21 sdk-interval    t=  11.3s E=    333J cap=1917.2368421052631/ step=1097/5000 eps=0.256 updates=586 (12s)
+job  22 hotspot         t=   9.6s E=    823J cap=2620.78125/ step=1129/5000 eps=0.255 updates=618 (10s)
+job  23 bfs             t=   9.0s E=    291J cap=1956.2903225806451/ step=1160/5000 eps=0.254 updates=649 (9s)
+job  24 poly-2dconv     t=   9.5s E=    300J cap=1972.03125/ step=1192/5000 eps=0.252 updates=681 (10s)
+job  25 shoc-NeuralNet  t=   5.6s E=    190J cap=2003.6842105263158/ step=1211/5000 eps=0.252 updates=700 (6s)
+job  26 pb-tpacf        t=  10.9s E=    571J cap=2131.6216216216217/ step=1248/5000 eps=0.250 updates=737 (11s)
+job  27 sdk-MonteCarloMultiGPU t=  10.2s E=    382J cap=1923.5294117647059/ step=1282/5000 eps=0.249 updates=771 (10s)
+job  28 shoc-BFS        t=   6.9s E=    242J cap=1856.875/ step=1306/5000 eps=0.248 updates=795 (7s)
+job  29 poly-bicg       t=   6.9s E=    236J cap=1950.0/ step=1330/5000 eps=0.247 updates=819 (7s)
+job  30 shoc-Triad      t=   9.3s E=    296J cap=1924.3548387096773/ step=1361/5000 eps=0.246 updates=850 (9s)
+job  31 sdk-BlackScholes t=   8.5s E=    345J cap=1877.5862068965516/ step=1390/5000 eps=0.244 updates=879 (9s)
+job  32 backprop        t=   9.5s E=    299J cap=1853.90625/ step=1422/5000 eps=0.243 updates=911 (10s)
+job  33 particlefilter  t=  11.2s E=    948J cap=2692.5/ step=1460/5000 eps=0.242 updates=949 (12s)
+job  34 shoc-FFT        t=   9.8s E=    342J cap=1898.6363636363637/ step=1493/5000 eps=0.240 updates=982 (10s)
+job  35 shoc-Sort       t=   8.2s E=    358J cap=1954.2857142857142/ step=1521/5000 eps=0.239 updates=1010 (8s)
+job  36 sdk-histogram   t=   9.0s E=    302J cap=1914.6774193548388/ step=1552/5000 eps=0.238 updates=1041 (9s)
+job  37 sdk-transpose   t=   6.2s E=    218J cap=1917.142857142857/ step=1573/5000 eps=0.237 updates=1062 (6s)
+job  38 sdk-lineOfSight t=  10.4s E=    348J cap=1865.5714285714287/ step=1608/5000 eps=0.236 updates=1097 (11s)
+job  39 poly-3dconv     t=   9.4s E=    303J cap=1919.53125/ step=1640/5000 eps=0.234 updates=1129 (10s)
+job  40 shoc-Reduction  t=   9.4s E=    620J cap=1937.34375/ step=1672/5000 eps=0.233 updates=1161 (10s)
+job  41 sdk-matrixMul   t=  10.2s E=    373J cap=1962.3529411764705/ step=1706/5000 eps=0.232 updates=1195 (10s)
+job  42 dwt2d           t=  10.3s E=    348J cap=1972.2857142857142/ step=1741/5000 eps=0.230 updates=1230 (11s)
+job  43 poly-gesummv    t=   7.1s E=    228J cap=1883.75/ step=1765/5000 eps=0.229 updates=1254 (7s)
+job  44 sdk-eigenvalues t=   8.9s E=    373J cap=2128.5/ step=1795/5000 eps=0.228 updates=1284 (9s)
+job  45 sdk-scalarProd  t=   8.8s E=    307J cap=2021.5/ step=1825/5000 eps=0.227 updates=1314 (9s)
+job  46 poly-mvt        t=   8.4s E=    270J cap=1975.1785714285713/ step=1853/5000 eps=0.226 updates=1342 (9s)
+job  47 pb-mri-gridding t=   6.8s E=    188J cap=1940.8695652173913/ step=1876/5000 eps=0.225 updates=1365 (7s)
+job  48 pb-cutcp        t=   9.6s E=    293J cap=1922.8125/ step=1908/5000 eps=0.224 updates=1397 (10s)
+job  49 pathfinder      t=  24.3s E=    262J cap=1916.111111111111/ step=1989/5000 eps=0.220 updates=1478 (24s)
+job  50 sdk-fastWalshTransform t=  11.5s E=    334J cap=1930.0/ step=2028/5000 eps=0.219 updates=1517 (12s)
+job  51 poly-gramschm   t=  95.4s E=   1096J cap=2159.9528301886794/ step=2346/5000 eps=0.206 updates=1835 (96s)
+job  52 sdk-radixSortThrust t=   7.4s E=    336J cap=2671.2/ step=2371/5000 eps=0.205 updates=1860 (8s)
+job  53 nw              t=  10.1s E=    358J cap=2610.0/ step=2405/5000 eps=0.204 updates=1894 (10s)
+job  54 sdk-reduction   t=   8.5s E=    373J cap=2616.206896551724/ step=2434/5000 eps=0.203 updates=1923 (9s)
+job  55 pb-mri-q        t=   8.7s E=    315J cap=2143.448275862069/ step=2463/5000 eps=0.202 updates=1952 (9s)
+job  56 sdk-SobolQRNG   t=   7.9s E=    257J cap=1950.0/ step=2490/5000 eps=0.200 updates=1979 (8s)
+job  57 shoc-S3D        t=   8.0s E=    509J cap=2579.4444444444443/ step=2517/5000 eps=0.199 updates=2006 (8s)
+job  58 poly-syr2k      t=  14.4s E=    506J cap=2468.877551020408/ step=2566/5000 eps=0.197 updates=2055 (15s)
+job  59 sdk-dxtc        t=   8.7s E=    371J cap=2653.9655172413795/ step=2595/5000 eps=0.196 updates=2084 (9s)
+job  60 sdk-cudaTensorCoreGemm t=   9.4s E=    309J cap=2161.40625/ step=2627/5000 eps=0.195 updates=2116 (10s)
+job  61 poly-3mm        t=   9.5s E=    330J cap=2318.4375/ step=2659/5000 eps=0.194 updates=2148 (10s)
+job  62 pb-sgemm        t=   9.0s E=    317J cap=2395.0/ step=2689/5000 eps=0.192 updates=2178 (9s)
+job  63 poly-2mm        t= 113.9s E=   1276J cap=2273.2105263157896/ step=3069/5000 eps=0.177 updates=2558 (114s)
+job  64 sdk-quasirandomGenerator t=   7.5s E=    261J cap=2406.0/ step=3094/5000 eps=0.176 updates=2583 (8s)
+job  65 poly-syrk       t=   9.8s E=    337J cap=2384.5454545454545/ step=3127/5000 eps=0.175 updates=2616 (10s)
+job  66 sdk-lineOfSight t=   9.6s E=    370J cap=2426.71875/ step=3159/5000 eps=0.174 updates=2648 (10s)
+job  67 poly-2mm        t= 116.9s E=   1266J cap=2311.1923076923076/ step=3549/5000 eps=0.158 updates=3038 (117s)
+job  68 poly-bicg       t=   7.1s E=    228J cap=1999.375/ step=3573/5000 eps=0.157 updates=3062 (7s)
+job  69 poly-gemm       t=  10.6s E=    320J cap=1876.25/ step=3609/5000 eps=0.156 updates=3098 (11s)
+job  70 sdk-eigenvalues t=   8.2s E=    343J cap=2331.4285714285716/ step=3637/5000 eps=0.155 updates=3126 (9s)
+job  71 sdk-dct8x8      t=   9.3s E=    347J cap=2512.7419354838707/ step=3668/5000 eps=0.153 updates=3157 (9s)
+job  72 sdk-fastWalshTransform t=  11.5s E=    368J cap=2455.0/ step=3707/5000 eps=0.152 updates=3196 (12s)
+job  73 poly-3mm        t=   9.4s E=    337J cap=2423.90625/ step=3739/5000 eps=0.150 updates=3228 (10s)
+job  74 sdk-reduction   t=   9.0s E=    300J cap=1991.5/ step=3769/5000 eps=0.149 updates=3258 (9s)
+job  75 sdk-mergeSort   t=   8.1s E=    280J cap=2202.8571428571427/ step=3797/5000 eps=0.148 updates=3286 (9s)
+job  76 sdk-SobolQRNG   t=   7.4s E=    254J cap=2299.2/ step=3822/5000 eps=0.147 updates=3311 (8s)
+job  77 poly-gesummv    t=   6.9s E=    237J cap=2037.5/ step=3846/5000 eps=0.146 updates=3335 (7s)
+job  78 nw              t=  10.2s E=    291J cap=2042.6470588235295/ step=3880/5000 eps=0.145 updates=3369 (10s)
+job  79 backprop        t=   9.2s E=    294J cap=2103.3870967741937/ step=3911/5000 eps=0.144 updates=3400 (9s)
+job  80 pb-mri-gridding t=   6.7s E=    210J cap=2283.2608695652175/ step=3934/5000 eps=0.143 updates=3423 (7s)
+job  81 pb-mri-q        t=   8.4s E=    295J cap=2260.1785714285716/ step=3962/5000 eps=0.142 updates=3451 (9s)
+job  82 poly-2dconv     t=   9.3s E=    297J cap=2201.25/ step=3994/5000 eps=0.140 updates=3483 (10s)
+job  83 shoc-BFS        t=   6.8s E=    239J cap=2265.6521739130435/ step=4017/5000 eps=0.139 updates=3506 (7s)
+job  84 sdk-scalarProd  t=   8.5s E=    295J cap=2244.8275862068967/ step=4046/5000 eps=0.138 updates=3535 (9s)
+job  85 poly-syr2k      t=  14.5s E=    440J cap=2403.3673469387754/ step=4095/5000 eps=0.136 updates=3584 (15s)
+job  86 shoc-Triad      t=   9.3s E=    360J cap=2546.6129032258063/ step=4126/5000 eps=0.135 updates=3615 (9s)
+job  87 sdk-convolutionSeparable t=   9.2s E=    331J cap=2495.8064516129034/ step=4157/5000 eps=0.134 updates=3646 (9s)
+job  88 bfs             t=   8.9s E=    304J cap=2359.0/ step=4187/5000 eps=0.133 updates=3676 (9s)
+job  89 hotspot         t=   9.4s E=    820J cap=2671.40625/ step=4219/5000 eps=0.131 updates=3708 (10s)
+job  90 sdk-interval    t=  11.2s E=    341J cap=2352.6315789473683/ step=4257/5000 eps=0.130 updates=3746 (12s)
+job  91 sdk-transpose   t=   6.0s E=    214J cap=2278.5/ step=4277/5000 eps=0.129 updates=3766 (6s)
+job  92 pb-cutcp        t=   9.4s E=    355J cap=2555.15625/ step=4309/5000 eps=0.128 updates=3798 (10s)
+job  93 pb-tpacf        t=  10.3s E=    561J cap=2445.4285714285716/ step=4344/5000 eps=0.126 updates=3833 (11s)
+job  94 shoc-S3D        t=   8.1s E=    452J cap=2445.0/ step=4372/5000 eps=0.125 updates=3861 (8s)
+job  95 pb-stencil      t=   9.7s E=    432J cap=2561.3636363636365/ step=4405/5000 eps=0.124 updates=3894 (10s)
+job  96 streamcluster   t=  30.3s E=   1048J cap=2383.6633663366338/ step=4506/5000 eps=0.120 updates=3995 (30s)
+job  97 pb-sgemm        t=   8.6s E=    269J cap=2181.206896551724/ step=4535/5000 eps=0.119 updates=4024 (9s)
+job  98 shoc-NeuralNet  t=   5.4s E=    191J cap=2201.842105263158/ step=4554/5000 eps=0.118 updates=4043 (6s)
+job  99 pathfinder      t=  24.3s E=    258J cap=2270.487804878049/ step=4636/5000 eps=0.115 updates=4125 (25s)
+job 100 shoc-MD5Hash    t=   9.6s E=   1302J cap=2503.59375/ step=4668/5000 eps=0.113 updates=4157 (10s)
+job 101 poly-gramschm   t=  92.8s E=   1138J cap=2224.1129032258063/ step=4978/5000 eps=0.101 updates=4467 (93s)
+job 102 poly-covar      t=  13.4s E=    428J cap=2585.3333333333335/ step=5023/5000 eps=0.100 updates=4512 (14s)
+saved /home/drl/project/drlcap/drlcap_faithful/results/train_var_edplocal_f1_20261107_170257
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794052699.269883 2272631 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 pb-stencil      t=   9.2s E=    321J cap=2031.2903225806451/ step=31/5000 eps=0.299 updates=0 (9s)
+job   1 poly-covar      t=  13.4s E=    416J cap=2151.3333333333335/ step=76/5000 eps=0.297 updates=0 (14s)
+job   2 shoc-Stencil2D  t=  89.0s E=   2621J cap=2072.5252525252527/ step=373/5000 eps=0.285 updates=0 (89s)
+job   3 b+tree          t=   9.7s E=    295J cap=2016.8181818181818/ step=406/5000 eps=0.284 updates=0 (10s)
+job   4 sdk-convolutionFFT2D t=   7.8s E=    237J cap=2108.653846153846/ step=432/5000 eps=0.283 updates=0 (8s)
+job   5 shoc-MD5Hash    t=  10.1s E=   1182J cap=2280.8823529411766/ step=466/5000 eps=0.281 updates=0 (10s)
+job   6 sdk-quasirandomGenerator t=   7.6s E=    241J cap=2005.3846153846155/ step=492/5000 eps=0.280 updates=0 (8s)
+job   7 huffman         t=  10.0s E=    350J cap=2110.1470588235293/ step=526/5000 eps=0.279 updates=15 (10s)
+job   8 sdk-convolutionSeparable t=   9.3s E=    285J cap=2066.1290322580644/ step=557/5000 eps=0.278 updates=46 (9s)
+job   9 sdk-mergeSort   t=   8.1s E=    277J cap=2094.1071428571427/ step=585/5000 eps=0.277 updates=74 (8s)
+job  10 lavaMD          t=  10.6s E=    743J cap=2583.75/ step=621/5000 eps=0.275 updates=110 (11s)
+job  11 gaussian        t=  10.7s E=    599J cap=2090.8333333333335/ step=657/5000 eps=0.274 updates=146 (11s)
+job  12 poly-syrk       t=   9.8s E=    307J cap=2069.5454545454545/ step=690/5000 eps=0.272 updates=179 (10s)
+job  13 poly-atax       t=   6.1s E=    211J cap=2103.5714285714284/ step=711/5000 eps=0.272 updates=200 (6s)
+job  14 shoc-BusSpeedReadback t=  10.2s E=    330J cap=2116.764705882353/ step=745/5000 eps=0.270 updates=234 (10s)
+job  15 sdk-sortingNetworks t=   9.7s E=    291J cap=2027.2727272727273/ step=778/5000 eps=0.269 updates=267 (10s)
+job  16 streamcluster   t=  30.1s E=    937J cap=2047.7227722772277/ step=879/5000 eps=0.265 updates=368 (30s)
+job  17 sdk-dct8x8      t=   9.6s E=    297J cap=2024.53125/ step=911/5000 eps=0.264 updates=400 (10s)
+job  18 poly-gemm       t=  10.4s E=    329J cap=2064.4285714285716/ step=946/5000 eps=0.262 updates=435 (11s)
+job  19 shoc-MaxFlops   t=  20.9s E=   1503J cap=2660.5714285714284/ step=1016/5000 eps=0.259 updates=505 (21s)
+job  20 shoc-BusSpeedDownload t=   9.2s E=    349J cap=2238.8709677419356/ step=1047/5000 eps=0.258 updates=536 (9s)
+job  21 sdk-interval    t=  11.2s E=    315J cap=2057.7631578947367/ step=1085/5000 eps=0.257 updates=574 (12s)
+job  22 hotspot         t=   9.5s E=    816J cap=2649.375/ step=1117/5000 eps=0.255 updates=606 (10s)
+job  23 bfs             t=   8.9s E=    315J cap=2305.0/ step=1147/5000 eps=0.254 updates=636 (9s)
+job  24 poly-2dconv     t=   9.3s E=    331J cap=2277.65625/ step=1179/5000 eps=0.253 updates=668 (10s)
+job  25 shoc-NeuralNet  t=   5.5s E=    217J cap=2365.2631578947367/ step=1198/5000 eps=0.252 updates=687 (6s)
+job  26 pb-tpacf        t=  10.5s E=    590J cap=2310.4166666666665/ step=1234/5000 eps=0.251 updates=723 (11s)
+job  27 sdk-MonteCarloMultiGPU t=  10.0s E=    398J cap=2066.470588235294/ step=1268/5000 eps=0.249 updates=757 (10s)
+job  28 shoc-BFS        t=   6.9s E=    233J cap=1996.304347826087/ step=1291/5000 eps=0.248 updates=780 (7s)
+job  29 poly-bicg       t=   6.9s E=    226J cap=2046.5217391304348/ step=1314/5000 eps=0.247 updates=803 (7s)
+job  30 shoc-Triad      t=   9.2s E=    332J cap=2378.2258064516127/ step=1345/5000 eps=0.246 updates=834 (9s)
+job  31 sdk-BlackScholes t=   8.4s E=    365J cap=2154.310344827586/ step=1374/5000 eps=0.245 updates=863 (9s)
+job  32 backprop        t=   9.4s E=    305J cap=2064.375/ step=1406/5000 eps=0.244 updates=895 (10s)
+job  33 particlefilter  t=  11.2s E=    936J cap=2684.6052631578946/ step=1444/5000 eps=0.242 updates=933 (12s)
+job  34 shoc-FFT        t=   9.8s E=    354J cap=2151.3636363636365/ step=1477/5000 eps=0.241 updates=966 (10s)
+job  35 shoc-Sort       t=   8.0s E=    429J cap=2428.3333333333335/ step=1504/5000 eps=0.240 updates=993 (8s)
+job  36 sdk-histogram   t=   9.0s E=    288J cap=2070.0/ step=1534/5000 eps=0.239 updates=1023 (9s)
+job  37 sdk-transpose   t=   6.0s E=    208J cap=2087.25/ step=1554/5000 eps=0.238 updates=1043 (6s)
+job  38 sdk-lineOfSight t=   9.9s E=    334J cap=2003.3823529411766/ step=1588/5000 eps=0.237 updates=1077 (10s)
+job  39 poly-3dconv     t=   9.4s E=    305J cap=2042.34375/ step=1620/5000 eps=0.235 updates=1109 (10s)
+job  40 shoc-Reduction  t=   9.3s E=    589J cap=2084.516129032258/ step=1651/5000 eps=0.234 updates=1140 (9s)
+job  41 sdk-matrixMul   t=  10.1s E=    388J cap=2115.4411764705883/ step=1685/5000 eps=0.233 updates=1174 (10s)
+job  42 dwt2d           t=  10.1s E=    353J cap=2113.676470588235/ step=1719/5000 eps=0.231 updates=1208 (10s)
+job  43 poly-gesummv    t=   7.0s E=    238J cap=2082.5/ step=1743/5000 eps=0.230 updates=1232 (7s)
+job  44 sdk-eigenvalues t=   7.5s E=    402J cap=2607.6923076923076/ step=1769/5000 eps=0.229 updates=1258 (8s)
+job  45 sdk-scalarProd  t=   8.5s E=    310J cap=2170.862068965517/ step=1798/5000 eps=0.228 updates=1287 (9s)
+job  46 poly-mvt        t=   8.3s E=    316J cap=2441.25/ step=1826/5000 eps=0.227 updates=1315 (9s)
+job  47 pb-mri-gridding t=   7.0s E=    205J cap=2086.875/ step=1850/5000 eps=0.226 updates=1339 (7s)
+job  48 pb-cutcp        t=   9.5s E=    303J cap=2133.75/ step=1882/5000 eps=0.225 updates=1371 (10s)
+job  49 pathfinder      t=  24.3s E=    242J cap=2025.1851851851852/ step=1963/5000 eps=0.222 updates=1452 (24s)
+job  50 sdk-fastWalshTransform t=  11.5s E=    378J cap=2527.6923076923076/ step=2002/5000 eps=0.220 updates=1491 (12s)
+job  51 poly-gramschm   t=  94.7s E=   1161J cap=2146.28164556962/ step=2318/5000 eps=0.207 updates=1807 (95s)
+job  52 sdk-radixSortThrust t=   7.6s E=    264J cap=2291.5384615384614/ step=2344/5000 eps=0.206 updates=1833 (8s)
+job  53 nw              t=   9.9s E=    278J cap=2200.4545454545455/ step=2377/5000 eps=0.205 updates=1866 (10s)
+job  54 sdk-reduction   t=   8.7s E=    297J cap=2211.206896551724/ step=2406/5000 eps=0.204 updates=1895 (9s)
+job  55 pb-mri-q        t=   8.5s E=    301J cap=2233.448275862069/ step=2435/5000 eps=0.203 updates=1924 (9s)
+job  56 sdk-SobolQRNG   t=   7.4s E=    239J cap=2186.4/ step=2460/5000 eps=0.202 updates=1949 (8s)
+job  57 shoc-S3D        t=   8.3s E=    393J cap=2213.5714285714284/ step=2488/5000 eps=0.201 updates=1977 (8s)
+job  58 poly-syr2k      t=  14.4s E=    423J cap=2229.4897959183672/ step=2537/5000 eps=0.199 updates=2026 (15s)
+job  59 sdk-dxtc        t=   9.1s E=    316J cap=2197.7419354838707/ step=2568/5000 eps=0.197 updates=2057 (9s)
+job  60 sdk-cudaTensorCoreGemm t=   9.3s E=    294J cap=2210.625/ step=2600/5000 eps=0.196 updates=2089 (10s)
+job  61 poly-3mm        t=   9.4s E=    293J cap=2196.09375/ step=2632/5000 eps=0.195 updates=2121 (10s)
+job  62 pb-sgemm        t=   8.6s E=    269J cap=2215.344827586207/ step=2661/5000 eps=0.194 updates=2150 (9s)
+job  63 poly-2mm        t= 115.2s E=   1291J cap=2060.234375/ step=3045/5000 eps=0.178 updates=2534 (115s)
+job  64 sdk-quasirandomGenerator t=   7.7s E=    235J cap=1899.8076923076924/ step=3071/5000 eps=0.177 updates=2560 (8s)
+job  65 poly-syrk       t=   9.8s E=    287J cap=1853.6363636363637/ step=3104/5000 eps=0.176 updates=2593 (10s)
+job  66 sdk-lineOfSight t=  10.2s E=    325J cap=1858.6764705882354/ step=3138/5000 eps=0.175 updates=2627 (10s)
+job  67 poly-2mm        t= 117.1s E=   1260J cap=1967.2307692307693/ step=3528/5000 eps=0.159 updates=3017 (117s)
+job  68 poly-bicg       t=   7.0s E=    226J cap=1983.75/ step=3552/5000 eps=0.158 updates=3041 (7s)
+job  69 poly-gemm       t=  10.6s E=    323J cap=1898.3333333333333/ step=3588/5000 eps=0.157 updates=3077 (11s)
+job  70 sdk-eigenvalues t=   8.8s E=    330J cap=2124.0/ step=3618/5000 eps=0.155 updates=3107 (9s)
+job  71 sdk-dct8x8      t=   9.6s E=    295J cap=1979.53125/ step=3650/5000 eps=0.154 updates=3139 (10s)
+job  72 sdk-fastWalshTransform t=  11.5s E=    278J cap=1901.1538461538462/ step=3689/5000 eps=0.152 updates=3178 (12s)
+job  73 poly-3mm        t=   9.7s E=    299J cap=1976.3636363636363/ step=3722/5000 eps=0.151 updates=3211 (10s)
+job  74 sdk-reduction   t=   8.7s E=    293J cap=1942.2413793103449/ step=3751/5000 eps=0.150 updates=3240 (9s)
+job  75 sdk-mergeSort   t=   8.1s E=    260J cap=2031.6666666666667/ step=3778/5000 eps=0.149 updates=3267 (8s)
+job  76 sdk-SobolQRNG   t=   7.5s E=    241J cap=1945.9615384615386/ step=3804/5000 eps=0.148 updates=3293 (8s)
+job  77 poly-gesummv    t=   7.0s E=    223J cap=1931.25/ step=3828/5000 eps=0.147 updates=3317 (7s)
+job  78 nw              t=  10.0s E=    290J cap=1995.8823529411766/ step=3862/5000 eps=0.146 updates=3351 (10s)
+job  79 backprop        t=   9.5s E=    294J cap=1940.15625/ step=3894/5000 eps=0.144 updates=3383 (10s)
+job  80 pb-mri-gridding t=   6.7s E=    184J cap=1959.1304347826087/ step=3917/5000 eps=0.143 updates=3406 (7s)
+job  81 pb-mri-q        t=   8.8s E=    291J cap=1996.0/ step=3947/5000 eps=0.142 updates=3436 (9s)
+job  82 poly-2dconv     t=   9.4s E=    294J cap=2063.4375/ step=3979/5000 eps=0.141 updates=3468 (10s)
+job  83 shoc-BFS        t=   6.9s E=    235J cap=2061.521739130435/ step=4002/5000 eps=0.140 updates=3491 (7s)
+job  84 sdk-scalarProd  t=   8.7s E=    285J cap=2075.689655172414/ step=4031/5000 eps=0.139 updates=3520 (9s)
+job  85 poly-syr2k      t=  14.4s E=    401J cap=2259.183673469388/ step=4080/5000 eps=0.137 updates=3569 (15s)
+job  86 shoc-Triad      t=   9.3s E=    295J cap=2202.0967741935483/ step=4111/5000 eps=0.136 updates=3600 (9s)
+job  87 sdk-convolutionSeparable t=   9.1s E=    274J cap=2119.3548387096776/ step=4142/5000 eps=0.134 updates=3631 (9s)
+job  88 bfs             t=   8.9s E=    272J cap=2090.5/ step=4172/5000 eps=0.133 updates=3661 (9s)
+job  89 hotspot         t=   9.4s E=    829J cap=2667.65625/ step=4204/5000 eps=0.132 updates=3693 (10s)
+job  90 sdk-interval    t=  11.2s E=    327J cap=2116.184210526316/ step=4242/5000 eps=0.130 updates=3731 (12s)
+job  91 sdk-transpose   t=   6.0s E=    208J cap=2026.4285714285713/ step=4263/5000 eps=0.130 updates=3752 (6s)
+job  92 pb-cutcp        t=   9.5s E=    297J cap=2083.125/ step=4295/5000 eps=0.128 updates=3784 (10s)
+job  93 pb-tpacf        t=  10.5s E=    588J cap=2367.0833333333335/ step=4331/5000 eps=0.127 updates=3820 (11s)
+job  94 shoc-S3D        t=   8.0s E=    451J cap=2447.222222222222/ step=4358/5000 eps=0.126 updates=3847 (8s)
+job  95 pb-stencil      t=   8.9s E=    365J cap=2383.0/ step=4388/5000 eps=0.125 updates=3877 (9s)
+job  96 streamcluster   t=  36.3s E=   1338J cap=2388.3196721311474/ step=4510/5000 eps=0.120 updates=3999 (37s)
+job  97 pb-sgemm        t=   8.7s E=    257J cap=1924.1379310344828/ step=4539/5000 eps=0.118 updates=4028 (9s)
+job  98 shoc-NeuralNet  t=   5.4s E=    184J cap=2018.6842105263158/ step=4558/5000 eps=0.118 updates=4047 (6s)
+job  99 pathfinder      t=  24.3s E=    231J cap=1904.6296296296296/ step=4639/5000 eps=0.114 updates=4128 (24s)
+job 100 shoc-MD5Hash    t=   9.3s E=   1341J cap=2507.8125/ step=4671/5000 eps=0.113 updates=4160 (10s)
+job 101 poly-gramschm   t=  94.8s E=   1133J cap=1958.5917721518988/ step=4987/5000 eps=0.101 updates=4476 (95s)
+job 102 poly-covar      t=  13.6s E=    375J cap=2067.717391304348/ step=5033/5000 eps=0.100 updates=4522 (14s)
+saved /home/drl/project/drlcap/drlcap_faithful/results/train_var_gamma02_f1_20261107_172819
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794054223.601364 2286779 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 pb-stencil      t=   9.3s E=    328J cap=1946.25/ step=32/5000 eps=0.299 updates=0 (10s)
+job   1 poly-covar      t=  13.6s E=    354J cap=2028.2608695652175/ step=78/5000 eps=0.297 updates=0 (14s)
+job   2 shoc-Stencil2D  t=  89.4s E=   2670J cap=2167.44966442953/ step=376/5000 eps=0.285 updates=0 (90s)
+job   3 b+tree          t=   9.6s E=    294J cap=1922.2727272727273/ step=409/5000 eps=0.284 updates=0 (10s)
+job   4 sdk-convolutionFFT2D t=   7.8s E=    235J cap=1989.8076923076924/ step=435/5000 eps=0.283 updates=0 (8s)
+job   5 shoc-MD5Hash    t=  11.3s E=   1012J cap=1942.8947368421052/ step=473/5000 eps=0.281 updates=0 (12s)
+job   6 sdk-quasirandomGenerator t=   7.6s E=    237J cap=1936.7307692307693/ step=499/5000 eps=0.280 updates=0 (8s)
+job   7 huffman         t=  10.3s E=    361J cap=2012.142857142857/ step=534/5000 eps=0.279 updates=23 (11s)
+job   8 sdk-convolutionSeparable t=   9.2s E=    290J cap=1958.225806451613/ step=565/5000 eps=0.277 updates=54 (9s)
+job   9 sdk-mergeSort   t=   8.2s E=    280J cap=1996.0714285714287/ step=593/5000 eps=0.276 updates=82 (8s)
+job  10 lavaMD          t=  13.7s E=    616J cap=1969.2391304347825/ step=639/5000 eps=0.274 updates=128 (14s)
+job  11 gaussian        t=  11.2s E=    579J cap=1900.657894736842/ step=677/5000 eps=0.273 updates=166 (11s)
+job  12 poly-syrk       t=   9.8s E=    306J cap=2021.8181818181818/ step=710/5000 eps=0.272 updates=199 (10s)
+job  13 poly-atax       t=   6.2s E=    212J cap=2032.857142857143/ step=731/5000 eps=0.271 updates=220 (6s)
+job  14 shoc-BusSpeedReadback t=  10.2s E=    326J cap=1978.6764705882354/ step=765/5000 eps=0.269 updates=254 (10s)
+job  15 sdk-sortingNetworks t=   9.7s E=    287J cap=1905.4545454545455/ step=798/5000 eps=0.268 updates=287 (10s)
+job  16 streamcluster   t=  36.7s E=   1028J cap=1937.560975609756/ step=921/5000 eps=0.263 updates=410 (37s)
+job  17 sdk-dct8x8      t=   9.6s E=    308J cap=1985.4545454545455/ step=954/5000 eps=0.262 updates=443 (10s)
+job  18 poly-gemm       t=  10.5s E=    324J cap=1902.5/ step=990/5000 eps=0.260 updates=479 (11s)
+job  19 shoc-MaxFlops   t=  29.1s E=   1277J cap=1949.5360824742268/ step=1087/5000 eps=0.257 updates=576 (29s)
+job  20 shoc-BusSpeedDownload t=   9.4s E=    307J cap=1951.875/ step=1119/5000 eps=0.255 updates=608 (10s)
+job  21 sdk-interval    t=  11.2s E=    323J cap=1969.7368421052631/ step=1157/5000 eps=0.254 updates=646 (12s)
+job  22 hotspot         t=  12.4s E=    654J cap=1983.9285714285713/ step=1199/5000 eps=0.252 updates=688 (13s)
+job  23 bfs             t=   9.1s E=    295J cap=2043.8709677419354/ step=1230/5000 eps=0.251 updates=719 (9s)
+job  24 poly-2dconv     t=   9.5s E=    290J cap=1942.5/ step=1262/5000 eps=0.250 updates=751 (10s)
+job  25 shoc-NeuralNet  t=   5.6s E=    178J cap=1880.5263157894738/ step=1281/5000 eps=0.249 updates=770 (6s)
+job  26 pb-tpacf        t=  11.2s E=    503J cap=1929.4736842105262/ step=1319/5000 eps=0.247 updates=808 (12s)
+job  27 sdk-MonteCarloMultiGPU t=  10.2s E=    382J cap=1943.8235294117646/ step=1353/5000 eps=0.246 updates=842 (10s)
+job  28 shoc-BFS        t=   7.1s E=    238J cap=1909.375/ step=1377/5000 eps=0.245 updates=866 (7s)
+job  29 poly-bicg       t=   7.0s E=    225J cap=1930.0/ step=1401/5000 eps=0.244 updates=890 (7s)
+job  30 shoc-Triad      t=   9.3s E=    293J cap=1893.28125/ step=1433/5000 eps=0.243 updates=922 (10s)
+job  31 sdk-BlackScholes t=   8.5s E=    339J cap=1895.6896551724137/ step=1462/5000 eps=0.242 updates=951 (9s)
+job  32 backprop        t=   9.6s E=    300J cap=1895.15625/ step=1494/5000 eps=0.240 updates=983 (10s)
+job  33 particlefilter  t=  15.2s E=    764J cap=1962.0588235294117/ step=1545/5000 eps=0.238 updates=1034 (15s)
+job  34 shoc-FFT        t=   9.8s E=    331J cap=1925.909090909091/ step=1578/5000 eps=0.237 updates=1067 (10s)
+job  35 shoc-Sort       t=   8.2s E=    340J cap=1871.7857142857142/ step=1606/5000 eps=0.236 updates=1095 (9s)
+job  36 sdk-histogram   t=   9.0s E=    289J cap=1971.2903225806451/ step=1637/5000 eps=0.235 updates=1126 (9s)
+job  37 sdk-transpose   t=   6.2s E=    207J cap=1880.7142857142858/ step=1658/5000 eps=0.234 updates=1147 (6s)
+job  38 sdk-lineOfSight t=  10.1s E=    336J cap=1995.8823529411766/ step=1692/5000 eps=0.232 updates=1181 (10s)
+job  39 poly-3dconv     t=   9.3s E=    307J cap=2008.125/ step=1724/5000 eps=0.231 updates=1213 (10s)
+job  40 shoc-Reduction  t=   9.4s E=    596J cap=1952.8125/ step=1756/5000 eps=0.230 updates=1245 (10s)
+job  41 sdk-matrixMul   t=  10.3s E=    374J cap=1937.5714285714287/ step=1791/5000 eps=0.228 updates=1280 (11s)
+job  42 dwt2d           t=  10.2s E=    347J cap=2017.5/ step=1825/5000 eps=0.227 updates=1314 (10s)
+job  43 poly-gesummv    t=   7.0s E=    232J cap=1960.625/ step=1849/5000 eps=0.226 updates=1338 (7s)
+job  44 sdk-eigenvalues t=   9.1s E=    352J cap=2033.225806451613/ step=1880/5000 eps=0.225 updates=1369 (9s)
+job  45 sdk-scalarProd  t=   8.9s E=    293J cap=1896.0/ step=1910/5000 eps=0.224 updates=1399 (9s)
+job  46 poly-mvt        t=   8.5s E=    270J cap=1872.4137931034484/ step=1939/5000 eps=0.222 updates=1428 (9s)
+job  47 pb-mri-gridding t=   6.7s E=    212J cap=1967.608695652174/ step=1962/5000 eps=0.222 updates=1451 (7s)
+job  48 pb-cutcp        t=   9.6s E=    313J cap=2010.46875/ step=1994/5000 eps=0.220 updates=1483 (10s)
+job  49 pathfinder      t=  24.3s E=    268J cap=1943.3333333333333/ step=2075/5000 eps=0.217 updates=1564 (24s)
+job  50 sdk-fastWalshTransform t=  11.5s E=    326J cap=1945.0/ step=2114/5000 eps=0.215 updates=1603 (12s)
+job  51 poly-gramschm   t=  95.7s E=   1078J cap=1941.3009404388715/ step=2433/5000 eps=0.203 updates=1922 (96s)
+job  52 sdk-radixSortThrust t=   7.8s E=    235J cap=1900.9615384615386/ step=2459/5000 eps=0.202 updates=1948 (8s)
+job  53 nw              t=  10.2s E=    291J cap=1989.7058823529412/ step=2493/5000 eps=0.200 updates=1982 (10s)
+job  54 sdk-reduction   t=   8.8s E=    314J cap=2007.0/ step=2523/5000 eps=0.199 updates=2012 (9s)
+job  55 pb-mri-q        t=   9.0s E=    287J cap=1871.0/ step=2553/5000 eps=0.198 updates=2042 (9s)
+job  56 sdk-SobolQRNG   t=   7.6s E=    243J cap=1940.1923076923076/ step=2579/5000 eps=0.197 updates=2068 (8s)
+job  57 shoc-S3D        t=   8.6s E=    389J cap=1906.0344827586207/ step=2608/5000 eps=0.196 updates=2097 (9s)
+job  58 poly-syr2k      t=  14.5s E=    387J cap=1936.530612244898/ step=2657/5000 eps=0.194 updates=2146 (15s)
+job  59 sdk-dxtc        t=   9.6s E=    318J cap=1927.03125/ step=2689/5000 eps=0.192 updates=2178 (10s)
+job  60 sdk-cudaTensorCoreGemm t=   9.4s E=    285J cap=1976.25/ step=2721/5000 eps=0.191 updates=2210 (10s)
+job  61 poly-3mm        t=   9.6s E=    292J cap=1925.0/ step=2754/5000 eps=0.190 updates=2243 (10s)
+job  62 pb-sgemm        t=   8.6s E=    260J cap=1928.2758620689656/ step=2783/5000 eps=0.189 updates=2272 (9s)
+job  63 poly-2mm        t= 118.0s E=   1265J cap=1922.824427480916/ step=3176/5000 eps=0.173 updates=2665 (118s)
+job  64 sdk-quasirandomGenerator t=   7.9s E=    244J cap=1929.4444444444443/ step=3203/5000 eps=0.172 updates=2692 (8s)
+job  65 poly-syrk       t=   9.9s E=    297J cap=1924.090909090909/ step=3236/5000 eps=0.171 updates=2725 (10s)
+job  66 sdk-lineOfSight t=  10.3s E=    335J cap=1910.5714285714287/ step=3271/5000 eps=0.169 updates=2760 (11s)
+job  67 poly-2mm        t= 112.8s E=   1237J cap=1915.970744680851/ step=3647/5000 eps=0.154 updates=3136 (113s)
+job  68 poly-bicg       t=   7.0s E=    217J cap=1882.5/ step=3671/5000 eps=0.153 updates=3160 (7s)
+job  69 poly-gemm       t=  10.5s E=    328J cap=1930.8333333333333/ step=3707/5000 eps=0.152 updates=3196 (11s)
+job  70 sdk-eigenvalues t=   9.5s E=    332J cap=1884.84375/ step=3739/5000 eps=0.150 updates=3228 (10s)
+job  71 sdk-dct8x8      t=   9.7s E=    307J cap=1910.0/ step=3772/5000 eps=0.149 updates=3261 (10s)
+job  72 sdk-fastWalshTransform t=  11.5s E=    338J cap=1886.1538461538462/ step=3811/5000 eps=0.148 updates=3300 (12s)
+job  73 poly-3mm        t=   9.6s E=    279J cap=1861.875/ step=3843/5000 eps=0.146 updates=3332 (10s)
+job  74 sdk-reduction   t=   8.7s E=    297J cap=1945.5/ step=3873/5000 eps=0.145 updates=3362 (9s)
+job  75 sdk-mergeSort   t=   8.3s E=    261J cap=1908.75/ step=3901/5000 eps=0.144 updates=3390 (8s)
+job  76 sdk-SobolQRNG   t=   7.5s E=    233J cap=1846.1538461538462/ step=3927/5000 eps=0.143 updates=3416 (8s)
+job  77 poly-gesummv    t=   6.9s E=    234J cap=2250.6521739130435/ step=3950/5000 eps=0.142 updates=3439 (7s)
+job  78 nw              t=   9.8s E=    280J cap=2318.6363636363635/ step=3983/5000 eps=0.141 updates=3472 (10s)
+job  79 backprop        t=   9.1s E=    322J cap=2323.064516129032/ step=4014/5000 eps=0.139 updates=3503 (9s)
+job  80 pb-mri-gridding t=   6.7s E=    225J cap=2568.913043478261/ step=4037/5000 eps=0.139 updates=3526 (7s)
+job  81 pb-mri-q        t=   8.2s E=    349J cap=2588.035714285714/ step=4065/5000 eps=0.137 updates=3554 (9s)
+job  82 poly-2dconv     t=   9.3s E=    297J cap=2139.6774193548385/ step=4096/5000 eps=0.136 updates=3585 (9s)
+job  83 shoc-BFS        t=   6.6s E=    274J cap=2434.5652173913045/ step=4119/5000 eps=0.135 updates=3608 (7s)
+job  84 sdk-scalarProd  t=   8.3s E=    291J cap=2293.3928571428573/ step=4147/5000 eps=0.134 updates=3636 (9s)
+job  85 poly-syr2k      t=  14.4s E=    454J cap=2253.3673469387754/ step=4196/5000 eps=0.132 updates=3685 (15s)
+job  86 shoc-Triad      t=   9.3s E=    324J cap=2325.0/ step=4228/5000 eps=0.131 updates=3717 (10s)
+job  87 sdk-convolutionSeparable t=   9.2s E=    308J cap=2384.032258064516/ step=4259/5000 eps=0.130 updates=3748 (9s)
+job  88 bfs             t=   8.9s E=    294J cap=2327.0/ step=4289/5000 eps=0.128 updates=3778 (9s)
+job  89 hotspot         t=  11.6s E=    615J cap=2155.0/ step=4328/5000 eps=0.127 updates=3817 (12s)
+job  90 sdk-interval    t=  11.3s E=    335J cap=2240.5263157894738/ step=4366/5000 eps=0.125 updates=3855 (12s)
+job  91 sdk-transpose   t=   6.0s E=    206J cap=2172.1428571428573/ step=4387/5000 eps=0.125 updates=3876 (6s)
+job  92 pb-cutcp        t=   9.6s E=    290J cap=2183.90625/ step=4419/5000 eps=0.123 updates=3908 (10s)
+job  93 pb-tpacf        t=  10.6s E=    490J cap=2217.9166666666665/ step=4455/5000 eps=0.122 updates=3944 (11s)
+job  94 shoc-S3D        t=   8.3s E=    402J cap=2191.6071428571427/ step=4483/5000 eps=0.121 updates=3972 (9s)
+job  95 pb-stencil      t=   9.2s E=    332J cap=2212.7419354838707/ step=4514/5000 eps=0.119 updates=4003 (9s)
+job  96 streamcluster   t=  33.1s E=   1020J cap=2008.918918918919/ step=4625/5000 eps=0.115 updates=4114 (33s)
+job  97 pb-sgemm        t=   8.7s E=    266J cap=2090.1724137931033/ step=4654/5000 eps=0.114 updates=4143 (9s)
+job  98 shoc-NeuralNet  t=   5.4s E=    186J cap=2179.7368421052633/ step=4673/5000 eps=0.113 updates=4162 (6s)
+job  99 pathfinder      t=  24.2s E=    252J cap=2521.8518518518517/ step=4754/5000 eps=0.110 updates=4243 (24s)
+job 100 shoc-MD5Hash    t=   9.3s E=   1267J cap=2541.2903225806454/ step=4785/5000 eps=0.109 updates=4274 (9s)
+job 101 poly-gramschm   t=  93.7s E=   1245J cap=2447.3961661341855/ step=5098/5000 eps=0.100 updates=4587 (94s)
+saved /home/drl/project/drlcap/drlcap_faithful/results/train_var_nocasea_f1_20261107_175343
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794055767.694962 2300867 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 pb-stencil      t=  10.2s E=    351J cap=2006.142857142857/ step=35/5000 eps=0.299 updates=0 (11s)
+job   1 poly-covar      t=  13.6s E=    387J cap=2099.6739130434785/ step=81/5000 eps=0.297 updates=0 (14s)
+job   2 shoc-Stencil2D  t=  88.7s E=   2620J cap=2055.4054054054054/ step=377/5000 eps=0.285 updates=0 (89s)
+job   3 b+tree          t=   9.6s E=    296J cap=1973.1818181818182/ step=410/5000 eps=0.284 updates=0 (10s)
+job   4 sdk-convolutionFFT2D t=   7.8s E=    241J cap=2040.0/ step=437/5000 eps=0.283 updates=0 (8s)
+job   5 shoc-MD5Hash    t=  10.0s E=   1265J cap=2360.294117647059/ step=471/5000 eps=0.281 updates=0 (10s)
+job   6 sdk-quasirandomGenerator t=   7.7s E=    241J cap=1971.3461538461538/ step=497/5000 eps=0.280 updates=0 (8s)
+job   7 huffman         t=  10.2s E=    343J cap=2031.6176470588234/ step=531/5000 eps=0.279 updates=12 (10s)
+job   8 sdk-convolutionSeparable t=   9.4s E=    281J cap=2002.5/ step=563/5000 eps=0.278 updates=43 (10s)
+job   9 sdk-mergeSort   t=   8.4s E=    264J cap=1968.75/ step=591/5000 eps=0.276 updates=70 (9s)
+job  10 lavaMD          t=  10.6s E=    743J cap=2575.0/ step=627/5000 eps=0.275 updates=105 (11s)
+job  11 gaussian        t=  10.5s E=    603J cap=2113.75/ step=663/5000 eps=0.274 updates=140 (11s)
+job  12 poly-syrk       t=   9.9s E=    302J cap=1960.909090909091/ step=696/5000 eps=0.272 updates=172 (10s)
+job  13 poly-atax       t=   6.1s E=    205J cap=2022.857142857143/ step=717/5000 eps=0.271 updates=192 (6s)
+job  14 shoc-BusSpeedReadback t=  10.2s E=    328J cap=1978.2857142857142/ step=752/5000 eps=0.270 updates=226 (11s)
+job  15 sdk-sortingNetworks t=   9.7s E=    292J cap=2025.909090909091/ step=785/5000 eps=0.269 updates=258 (10s)
+job  16 streamcluster   t=  36.8s E=   1048J cap=2015.6097560975609/ step=908/5000 eps=0.264 updates=380 (37s)
+job  17 sdk-dct8x8      t=   9.7s E=    304J cap=1991.3636363636363/ step=941/5000 eps=0.262 updates=412 (10s)
+job  18 poly-gemm       t=  10.5s E=    327J cap=2016.857142857143/ step=976/5000 eps=0.261 updates=446 (11s)
+job  19 shoc-MaxFlops   t=  18.0s E=   1274J cap=2618.6065573770493/ step=1037/5000 eps=0.259 updates=506 (18s)
+job  20 shoc-BusSpeedDownload t=   9.3s E=    310J cap=2056.451612903226/ step=1068/5000 eps=0.257 updates=536 (9s)
+job  21 sdk-interval    t=  11.3s E=    302J cap=2000.5263157894738/ step=1106/5000 eps=0.256 updates=573 (12s)
+job  22 hotspot         t=   9.6s E=    820J cap=2605.909090909091/ step=1139/5000 eps=0.254 updates=605 (10s)
+job  23 bfs             t=   9.0s E=    274J cap=2027.0/ step=1169/5000 eps=0.253 updates=634 (9s)
+job  24 poly-2dconv     t=   9.4s E=    299J cap=2018.4375/ step=1201/5000 eps=0.252 updates=665 (10s)
+job  25 shoc-NeuralNet  t=   5.5s E=    192J cap=2083.4210526315787/ step=1220/5000 eps=0.251 updates=683 (6s)
+job  26 pb-tpacf        t=  11.0s E=    535J cap=2138.108108108108/ step=1257/5000 eps=0.250 updates=719 (11s)
+job  27 sdk-MonteCarloMultiGPU t=  10.0s E=    404J cap=2090.294117647059/ step=1291/5000 eps=0.248 updates=752 (10s)
+job  28 shoc-BFS        t=   6.9s E=    251J cap=2088.125/ step=1315/5000 eps=0.247 updates=775 (7s)
+job  29 poly-bicg       t=   6.9s E=    224J cap=2057.608695652174/ step=1338/5000 eps=0.247 updates=797 (7s)
+job  30 shoc-Triad      t=   9.3s E=    284J cap=2018.225806451613/ step=1369/5000 eps=0.245 updates=827 (9s)
+job  31 sdk-BlackScholes t=   8.5s E=    352J cap=2028.6206896551723/ step=1398/5000 eps=0.244 updates=855 (9s)
+job  32 backprop        t=   9.5s E=    303J cap=2026.875/ step=1430/5000 eps=0.243 updates=886 (10s)
+job  33 particlefilter  t=  11.2s E=    941J cap=2696.842105263158/ step=1468/5000 eps=0.241 updates=923 (12s)
+job  34 shoc-FFT        t=   9.8s E=    335J cap=2055.0/ step=1501/5000 eps=0.240 updates=955 (10s)
+job  35 shoc-Sort       t=   8.1s E=    344J cap=2001.4285714285713/ step=1529/5000 eps=0.239 updates=982 (8s)
+job  36 sdk-histogram   t=   9.0s E=    279J cap=2017.0/ step=1559/5000 eps=0.238 updates=1011 (9s)
+job  37 sdk-transpose   t=   6.1s E=    213J cap=2025.0/ step=1580/5000 eps=0.237 updates=1031 (6s)
+job  38 sdk-lineOfSight t=  10.0s E=    335J cap=2001.1764705882354/ step=1614/5000 eps=0.235 updates=1064 (10s)
+job  39 poly-3dconv     t=   9.3s E=    291J cap=1985.3225806451612/ step=1645/5000 eps=0.234 updates=1094 (9s)
+job  40 shoc-Reduction  t=   9.3s E=    609J cap=2028.3870967741937/ step=1676/5000 eps=0.233 updates=1124 (9s)
+job  41 sdk-matrixMul   t=  10.2s E=    370J cap=1991.9117647058824/ step=1710/5000 eps=0.232 updates=1157 (10s)
+job  42 dwt2d           t=  10.1s E=    343J cap=2056.764705882353/ step=1744/5000 eps=0.230 updates=1190 (10s)
+job  43 poly-gesummv    t=   7.0s E=    231J cap=1994.375/ step=1768/5000 eps=0.229 updates=1213 (7s)
+job  44 sdk-eigenvalues t=   7.7s E=    398J cap=2529.8076923076924/ step=1794/5000 eps=0.228 updates=1238 (8s)
+job  45 sdk-scalarProd  t=   8.5s E=    311J cap=2177.5862068965516/ step=1823/5000 eps=0.227 updates=1266 (9s)
+job  46 poly-mvt        t=   8.5s E=    274J cap=2020.344827586207/ step=1852/5000 eps=0.226 updates=1294 (9s)
+job  47 pb-mri-gridding t=   6.7s E=    186J cap=1996.9565217391305/ step=1875/5000 eps=0.225 updates=1316 (7s)
+job  48 pb-cutcp        t=   9.6s E=    296J cap=2029.21875/ step=1907/5000 eps=0.224 updates=1347 (10s)
+job  49 pathfinder      t=  24.3s E=    240J cap=2066.5243902439024/ step=1989/5000 eps=0.220 updates=1428 (25s)
+job  50 sdk-fastWalshTransform t=  11.5s E=    312J cap=2024.6153846153845/ step=2028/5000 eps=0.219 updates=1466 (12s)
+job  51 poly-gramschm   t=  92.3s E=   1058J cap=2040.4383116883116/ step=2336/5000 eps=0.207 updates=1773 (93s)
+job  52 sdk-radixSortThrust t=   7.7s E=    249J cap=2049.8076923076924/ step=2362/5000 eps=0.206 updates=1798 (8s)
+job  53 nw              t=  10.1s E=    281J cap=2027.6470588235295/ step=2396/5000 eps=0.204 updates=1831 (10s)
+job  54 sdk-reduction   t=   8.7s E=    290J cap=1987.7586206896551/ step=2425/5000 eps=0.203 updates=1859 (9s)
+job  55 pb-mri-q        t=   8.8s E=    296J cap=2036.5/ step=2455/5000 eps=0.202 updates=1888 (9s)
+job  56 sdk-SobolQRNG   t=   7.7s E=    247J cap=2010.0/ step=2481/5000 eps=0.201 updates=1913 (8s)
+job  57 shoc-S3D        t=   8.3s E=    389J cap=2088.214285714286/ step=2509/5000 eps=0.200 updates=1940 (8s)
+job  58 poly-syr2k      t=  14.5s E=    383J cap=2012.142857142857/ step=2558/5000 eps=0.198 updates=1988 (15s)
+job  59 sdk-dxtc        t=   9.4s E=    320J cap=2038.59375/ step=2590/5000 eps=0.196 updates=2019 (10s)
+job  60 sdk-cudaTensorCoreGemm t=   9.4s E=    289J cap=2025.9375/ step=2622/5000 eps=0.195 updates=2050 (10s)
+job  61 poly-3mm        t=   9.6s E=    294J cap=2037.1875/ step=2654/5000 eps=0.194 updates=2081 (10s)
+job  62 pb-sgemm        t=   8.7s E=    270J cap=2015.0/ step=2684/5000 eps=0.193 updates=2110 (9s)
+job  63 poly-2mm        t= 120.4s E=   1299J cap=2042.5436408977557/ step=3085/5000 eps=0.177 updates=2510 (121s)
+job  64 sdk-quasirandomGenerator t=   7.7s E=    235J cap=1995.576923076923/ step=3111/5000 eps=0.176 updates=2535 (8s)
+job  65 poly-syrk       t=   9.9s E=    292J cap=1935.0/ step=3144/5000 eps=0.174 updates=2567 (10s)
+job  66 sdk-lineOfSight t=  10.0s E=    338J cap=2020.1470588235295/ step=3178/5000 eps=0.173 updates=2600 (10s)
+job  67 poly-2mm        t= 113.9s E=   1238J cap=2018.5657894736842/ step=3558/5000 eps=0.158 updates=2979 (114s)
+job  68 poly-bicg       t=   7.0s E=    222J cap=1975.0/ step=3582/5000 eps=0.157 updates=3002 (7s)
+job  69 poly-gemm       t=  10.4s E=    322J cap=2018.5714285714287/ step=3617/5000 eps=0.155 updates=3036 (11s)
+job  70 sdk-eigenvalues t=   9.2s E=    331J cap=2013.3870967741937/ step=3648/5000 eps=0.154 updates=3066 (9s)
+job  71 sdk-dct8x8      t=   9.6s E=    300J cap=1997.34375/ step=3680/5000 eps=0.153 updates=3097 (10s)
+job  72 sdk-fastWalshTransform t=  11.5s E=    332J cap=2010.7692307692307/ step=3719/5000 eps=0.151 updates=3135 (12s)
+job  73 poly-3mm        t=   9.5s E=    285J cap=2040.9375/ step=3751/5000 eps=0.150 updates=3166 (10s)
+job  74 sdk-reduction   t=   8.7s E=    282J cap=1977.4137931034484/ step=3780/5000 eps=0.149 updates=3194 (9s)
+job  75 sdk-mergeSort   t=   8.2s E=    263J cap=1979.4642857142858/ step=3808/5000 eps=0.148 updates=3221 (9s)
+job  76 sdk-SobolQRNG   t=   7.5s E=    247J cap=2007.6923076923076/ step=3834/5000 eps=0.147 updates=3246 (8s)
+job  77 poly-gesummv    t=   7.0s E=    234J cap=2023.75/ step=3858/5000 eps=0.146 updates=3269 (7s)
+job  78 nw              t=  10.0s E=    259J cap=1952.2058823529412/ step=3892/5000 eps=0.144 updates=3302 (10s)
+job  79 backprop        t=   9.4s E=    294J cap=1957.96875/ step=3924/5000 eps=0.143 updates=3333 (10s)
+job  80 pb-mri-gridding t=   6.7s E=    164J cap=2019.7826086956522/ step=3947/5000 eps=0.142 updates=3355 (7s)
+job  81 pb-mri-q        t=   8.7s E=    285J cap=1997.0689655172414/ step=3976/5000 eps=0.141 updates=3383 (9s)
+job  82 poly-2dconv     t=   9.4s E=    298J cap=2043.75/ step=4008/5000 eps=0.140 updates=3414 (10s)
+job  83 shoc-BFS        t=   6.8s E=    233J cap=2002.8260869565217/ step=4031/5000 eps=0.139 updates=3436 (7s)
+job  84 sdk-scalarProd  t=   8.5s E=    311J cap=2268.6206896551726/ step=4060/5000 eps=0.138 updates=3464 (9s)
+job  85 poly-syr2k      t=  14.5s E=    455J cap=2298.673469387755/ step=4109/5000 eps=0.136 updates=3512 (15s)
+job  86 shoc-Triad      t=   9.3s E=    323J cap=2240.625/ step=4141/5000 eps=0.134 updates=3543 (10s)
+job  87 sdk-convolutionSeparable t=   9.1s E=    337J cap=2608.548387096774/ step=4172/5000 eps=0.133 updates=3573 (9s)
+job  88 bfs             t=   8.9s E=    334J cap=2639.0/ step=4202/5000 eps=0.132 updates=3602 (9s)
+job  89 hotspot         t=   9.2s E=    842J cap=2745.0/ step=4233/5000 eps=0.131 updates=3632 (9s)
+job  90 sdk-interval    t=  11.2s E=    338J cap=2327.3684210526317/ step=4271/5000 eps=0.129 updates=3669 (12s)
+job  91 sdk-transpose   t=   5.9s E=    220J cap=2347.5/ step=4291/5000 eps=0.128 updates=3688 (6s)
+job  92 pb-cutcp        t=   9.4s E=    322J cap=2377.03125/ step=4323/5000 eps=0.127 updates=3719 (10s)
+job  93 pb-tpacf        t=  10.4s E=    584J cap=2466.0/ step=4358/5000 eps=0.126 updates=3753 (11s)
+job  94 shoc-S3D        t=   8.5s E=    393J cap=2123.2758620689656/ step=4387/5000 eps=0.125 updates=3781 (9s)
+job  95 pb-stencil      t=  10.2s E=    361J cap=2127.794117647059/ step=4421/5000 eps=0.123 updates=3814 (10s)
+job  96 streamcluster   t=  36.8s E=   1072J cap=2031.341463414634/ step=4544/5000 eps=0.118 updates=3936 (37s)
+job  97 pb-sgemm        t=   8.6s E=    287J cap=2310.0/ step=4573/5000 eps=0.117 updates=3964 (9s)
+job  98 shoc-NeuralNet  t=   5.2s E=    206J cap=2445.8333333333335/ step=4591/5000 eps=0.116 updates=3981 (6s)
+job  99 pathfinder      t=  24.4s E=    247J cap=2048.7804878048782/ step=4673/5000 eps=0.113 updates=4062 (25s)
+job 100 shoc-MD5Hash    t=   9.4s E=   1266J cap=2528.4375/ step=4705/5000 eps=0.112 updates=4093 (10s)
+job 101 poly-gramschm   t=  94.9s E=   1175J cap=2100.3322784810125/ step=5021/5000 eps=0.100 updates=4408 (95s)
+saved /home/drl/project/drlcap/drlcap_faithful/results/train_var_delay1_f1_20261107_181927
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794057288.508710 2314545 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+GPU: NVIDIA GeForce RTX 4070 Ti
+job   0 pb-stencil      t=  10.0s E=    371J cap=2129.5588235294117/ step=34/5000 eps=0.299 updates=0 (10s)
+job   1 poly-covar      t=  13.6s E=    422J cap=2131.6304347826085/ step=80/5000 eps=0.297 updates=0 (14s)
+job   2 shoc-Stencil2D  t=  89.3s E=   2643J cap=2259.8154362416108/ step=378/5000 eps=0.285 updates=0 (90s)
+job   3 b+tree          t=   9.5s E=    285J cap=1985.625/ step=410/5000 eps=0.284 updates=0 (10s)
+job   4 sdk-convolutionFFT2D t=   7.8s E=    235J cap=2059.6153846153848/ step=436/5000 eps=0.283 updates=0 (8s)
+job   5 shoc-MD5Hash    t=   9.6s E=   1312J cap=2542.5/ step=468/5000 eps=0.281 updates=0 (10s)
+job   6 sdk-quasirandomGenerator t=   7.5s E=    276J cap=2288.076923076923/ step=494/5000 eps=0.280 updates=0 (8s)
+job   7 huffman         t=  10.1s E=    365J cap=2181.176470588235/ step=528/5000 eps=0.279 updates=17 (10s)
+job   8 sdk-convolutionSeparable t=   9.3s E=    293J cap=2027.8125/ step=560/5000 eps=0.278 updates=49 (10s)
+job   9 sdk-mergeSort   t=   8.1s E=    275J cap=2094.1071428571427/ step=588/5000 eps=0.277 updates=77 (9s)
+job  10 lavaMD          t=  10.6s E=    748J cap=2587.5/ step=624/5000 eps=0.275 updates=113 (11s)
+job  11 gaussian        t=  10.9s E=    599J cap=2044.4594594594594/ step=661/5000 eps=0.274 updates=150 (11s)
+job  12 poly-syrk       t=   9.8s E=    337J cap=2282.7272727272725/ step=694/5000 eps=0.272 updates=183 (10s)
+job  13 poly-atax       t=   6.0s E=    220J cap=2306.25/ step=714/5000 eps=0.271 updates=203 (6s)
+job  14 shoc-BusSpeedReadback t=  10.2s E=    343J cap=2161.323529411765/ step=748/5000 eps=0.270 updates=237 (10s)
+job  15 sdk-sortingNetworks t=   9.7s E=    343J cap=2458.6363636363635/ step=781/5000 eps=0.269 updates=270 (10s)
+job  16 streamcluster   t=  30.8s E=    969J cap=2160.4368932038833/ step=884/5000 eps=0.265 updates=373 (31s)
+job  17 sdk-dct8x8      t=   9.7s E=    301J cap=1971.8181818181818/ step=917/5000 eps=0.263 updates=406 (10s)
+job  18 poly-gemm       t=  10.5s E=    322J cap=2043.0/ step=952/5000 eps=0.262 updates=441 (11s)
+job  19 shoc-MaxFlops   t=  21.1s E=   1406J cap=2532.042253521127/ step=1023/5000 eps=0.259 updates=512 (21s)
+job  20 shoc-BusSpeedDownload t=   9.3s E=    314J cap=2074.3548387096776/ step=1054/5000 eps=0.258 updates=543 (9s)
+job  21 sdk-interval    t=  11.3s E=    312J cap=1995.3947368421052/ step=1092/5000 eps=0.256 updates=581 (12s)
+job  22 hotspot         t=   9.5s E=    808J cap=2635.3125/ step=1124/5000 eps=0.255 updates=613 (10s)
+job  23 bfs             t=   9.0s E=    280J cap=2029.5/ step=1154/5000 eps=0.254 updates=643 (9s)
+job  24 poly-2dconv     t=   9.5s E=    308J cap=2061.5625/ step=1186/5000 eps=0.253 updates=675 (10s)
+job  25 shoc-NeuralNet  t=   5.5s E=    191J cap=2048.684210526316/ step=1205/5000 eps=0.252 updates=694 (6s)
+job  26 pb-tpacf        t=  10.7s E=    582J cap=2280.0/ step=1241/5000 eps=0.250 updates=730 (11s)
+job  27 sdk-MonteCarloMultiGPU t=  10.0s E=    385J cap=2014.4117647058824/ step=1275/5000 eps=0.249 updates=764 (10s)
+job  28 shoc-BFS        t=   6.9s E=    238J cap=1968.75/ step=1299/5000 eps=0.248 updates=788 (7s)
+job  29 poly-bicg       t=   6.9s E=    233J cap=2041.875/ step=1323/5000 eps=0.247 updates=812 (7s)
+job  30 shoc-Triad      t=   9.4s E=    299J cap=1994.0625/ step=1355/5000 eps=0.246 updates=844 (10s)
+job  31 sdk-BlackScholes t=   8.4s E=    350J cap=1967.5862068965516/ step=1384/5000 eps=0.245 updates=873 (9s)
+job  32 backprop        t=   9.4s E=    295J cap=1981.40625/ step=1416/5000 eps=0.243 updates=905 (10s)
+job  33 particlefilter  t=  11.3s E=    932J cap=2659.7368421052633/ step=1454/5000 eps=0.242 updates=943 (12s)
+job  34 shoc-FFT        t=   9.7s E=    350J cap=2053.6363636363635/ step=1487/5000 eps=0.241 updates=976 (10s)
+job  35 shoc-Sort       t=   8.1s E=    333J cap=1980.0/ step=1514/5000 eps=0.239 updates=1003 (8s)
+job  36 sdk-histogram   t=   8.9s E=    330J cap=2394.0/ step=1544/5000 eps=0.238 updates=1033 (9s)
+job  37 sdk-transpose   t=   5.7s E=    245J cap=2588.684210526316/ step=1563/5000 eps=0.238 updates=1052 (6s)
+job  38 sdk-lineOfSight t=   9.4s E=    400J cap=2605.78125/ step=1595/5000 eps=0.236 updates=1084 (10s)
+job  39 poly-3dconv     t=   9.0s E=    350J cap=2547.0/ step=1625/5000 eps=0.235 updates=1114 (9s)
+job  40 shoc-Reduction  t=   9.0s E=    764J cap=2551.5/ step=1655/5000 eps=0.234 updates=1144 (9s)
+job  41 sdk-matrixMul   t=   9.4s E=    446J cap=2529.84375/ step=1687/5000 eps=0.233 updates=1176 (10s)
+job  42 dwt2d           t=   9.4s E=    401J cap=2584.6875/ step=1719/5000 eps=0.231 updates=1208 (10s)
+job  43 poly-gesummv    t=   6.7s E=    271J cap=2533.695652173913/ step=1742/5000 eps=0.230 updates=1231 (7s)
+job  44 sdk-eigenvalues t=   7.4s E=    402J cap=2658.6/ step=1767/5000 eps=0.229 updates=1256 (8s)
+job  45 sdk-scalarProd  t=   8.1s E=    364J cap=2690.0/ step=1794/5000 eps=0.228 updates=1283 (8s)
+job  46 poly-mvt        t=   8.1s E=    320J cap=2585.0/ step=1821/5000 eps=0.227 updates=1310 (8s)
+job  47 pb-mri-gridding t=   6.7s E=    246J cap=2598.2608695652175/ step=1844/5000 eps=0.226 updates=1333 (7s)
+job  48 pb-cutcp        t=   9.5s E=    371J cap=2605.78125/ step=1876/5000 eps=0.225 updates=1365 (10s)
+job  49 pathfinder      t=  24.3s E=    272J cap=2600.0/ step=1957/5000 eps=0.222 updates=1446 (24s)
+job  50 sdk-fastWalshTransform t=  11.5s E=    392J cap=2578.846153846154/ step=1996/5000 eps=0.220 updates=1485 (12s)
+job  51 poly-gramschm   t=  94.7s E=   1175J cap=2547.6265822784812/ step=2312/5000 eps=0.208 updates=1801 (95s)
+job  52 sdk-radixSortThrust t=   7.5s E=    295J cap=2545.2/ step=2337/5000 eps=0.207 updates=1826 (8s)
+job  53 nw              t=  10.1s E=    334J cap=2570.294117647059/ step=2371/5000 eps=0.205 updates=1860 (10s)
+job  54 sdk-reduction   t=   8.6s E=    357J cap=2516.896551724138/ step=2400/5000 eps=0.204 updates=1889 (9s)
+job  55 pb-mri-q        t=   8.2s E=    345J cap=2523.214285714286/ step=2428/5000 eps=0.203 updates=1917 (9s)
+job  56 sdk-SobolQRNG   t=   7.2s E=    294J cap=2572.2/ step=2453/5000 eps=0.202 updates=1942 (8s)
+job  57 shoc-S3D        t=   8.0s E=    450J cap=2510.0/ step=2480/5000 eps=0.201 updates=1969 (8s)
+job  58 poly-syr2k      t=  14.4s E=    488J cap=2541.122448979592/ step=2529/5000 eps=0.199 updates=2018 (15s)
+job  59 sdk-dxtc        t=   8.8s E=    369J cap=2497.5/ step=2559/5000 eps=0.198 updates=2048 (9s)
+job  60 sdk-cudaTensorCoreGemm t=   9.3s E=    347J cap=2583.8709677419356/ step=2590/5000 eps=0.196 updates=2079 (9s)
+job  61 poly-3mm        t=   9.4s E=    353J cap=2504.53125/ step=2622/5000 eps=0.195 updates=2111 (10s)
+job  62 pb-sgemm        t=   8.5s E=    327J cap=2568.103448275862/ step=2651/5000 eps=0.194 updates=2140 (9s)
+job  63 poly-2mm        t= 119.9s E=   1320J cap=2501.325/ step=3051/5000 eps=0.178 updates=2540 (120s)
+job  64 sdk-quasirandomGenerator t=   7.5s E=    260J cap=2415.6/ step=3076/5000 eps=0.177 updates=2565 (8s)
+job  65 poly-syrk       t=   9.8s E=    344J cap=2425.909090909091/ step=3109/5000 eps=0.176 updates=2598 (10s)
+job  66 sdk-lineOfSight t=   9.5s E=    364J cap=2415.9375/ step=3141/5000 eps=0.174 updates=2630 (10s)
+job  67 poly-2mm        t= 117.2s E=   1279J cap=2525.4092071611253/ step=3532/5000 eps=0.159 updates=3021 (118s)
+job  68 poly-bicg       t=   6.6s E=    246J cap=2432.0454545454545/ step=3554/5000 eps=0.158 updates=3043 (7s)
+job  69 poly-gemm       t=  10.3s E=    371J cap=2355.4285714285716/ step=3589/5000 eps=0.156 updates=3078 (11s)
+job  70 sdk-eigenvalues t=   8.3s E=    367J cap=2277.3214285714284/ step=3617/5000 eps=0.155 updates=3106 (9s)
+job  71 sdk-dct8x8      t=   9.5s E=    319J cap=2107.96875/ step=3649/5000 eps=0.154 updates=3138 (10s)
+job  72 sdk-fastWalshTransform t=  11.5s E=    333J cap=2270.769230769231/ step=3688/5000 eps=0.153 updates=3177 (12s)
+job  73 poly-3mm        t=   9.5s E=    296J cap=2188.125/ step=3720/5000 eps=0.151 updates=3209 (10s)
+job  74 sdk-reduction   t=   8.6s E=    309J cap=2298.103448275862/ step=3749/5000 eps=0.150 updates=3238 (9s)
+job  75 sdk-mergeSort   t=   8.1s E=    282J cap=2335.0/ step=3776/5000 eps=0.149 updates=3265 (8s)
+job  76 sdk-SobolQRNG   t=   7.3s E=    257J cap=2350.8/ step=3801/5000 eps=0.148 updates=3290 (8s)
+job  77 poly-gesummv    t=   6.9s E=    250J cap=2311.875/ step=3825/5000 eps=0.147 updates=3314 (7s)
+job  78 nw              t=  10.0s E=    275J cap=2300.294117647059/ step=3859/5000 eps=0.146 updates=3348 (10s)
+job  79 backprop        t=   9.3s E=    305J cap=2209.3548387096776/ step=3890/5000 eps=0.144 updates=3379 (9s)
+job  80 pb-mri-gridding t=   6.7s E=    186J cap=2146.304347826087/ step=3913/5000 eps=0.144 updates=3402 (7s)
+job  81 pb-mri-q        t=   8.6s E=    297J cap=2172.4137931034484/ step=3942/5000 eps=0.142 updates=3431 (9s)
+job  82 poly-2dconv     t=   9.3s E=    299J cap=2248.548387096774/ step=3973/5000 eps=0.141 updates=3462 (9s)
+job  83 shoc-BFS        t=   6.7s E=    240J cap=2199.1304347826085/ step=3996/5000 eps=0.140 updates=3485 (7s)
+job  84 sdk-scalarProd  t=   8.5s E=    297J cap=2246.896551724138/ step=4025/5000 eps=0.139 updates=3514 (9s)
+job  85 poly-syr2k      t=  14.4s E=    377J cap=2213.265306122449/ step=4074/5000 eps=0.137 updates=3563 (15s)
+job  86 shoc-Triad      t=   9.4s E=    307J cap=2221.875/ step=4106/5000 eps=0.136 updates=3595 (10s)
+job  87 sdk-convolutionSeparable t=   9.2s E=    279J cap=2200.6451612903224/ step=4137/5000 eps=0.135 updates=3626 (9s)
+job  88 bfs             t=   8.9s E=    277J cap=2196.0/ step=4167/5000 eps=0.133 updates=3656 (9s)
+job  89 hotspot         t=   9.4s E=    833J cap=2664.84375/ step=4199/5000 eps=0.132 updates=3688 (10s)
+job  90 sdk-interval    t=  11.2s E=    352J cap=2258.2894736842104/ step=4237/5000 eps=0.131 updates=3726 (12s)
+job  91 sdk-transpose   t=   5.7s E=    249J cap=2630.25/ step=4257/5000 eps=0.130 updates=3746 (6s)
+job  92 pb-cutcp        t=   9.5s E=    316J cap=2272.5/ step=4289/5000 eps=0.128 updates=3778 (10s)
+job  93 pb-tpacf        t=  10.6s E=    597J cap=2325.0/ step=4325/5000 eps=0.127 updates=3814 (11s)
+job  94 shoc-S3D        t=   8.5s E=    397J cap=2009.4827586206898/ step=4354/5000 eps=0.126 updates=3843 (9s)
+job  95 pb-stencil      t=   9.2s E=    343J cap=2205.0/ step=4385/5000 eps=0.125 updates=3874 (9s)
+job  96 streamcluster   t=  36.7s E=   1085J cap=2146.829268292683/ step=4508/5000 eps=0.120 updates=3997 (37s)
+job  97 pb-sgemm        t=   8.7s E=    265J cap=2097.9310344827586/ step=4537/5000 eps=0.119 updates=4026 (9s)
+job  98 shoc-NeuralNet  t=   5.6s E=    187J cap=2119.7368421052633/ step=4556/5000 eps=0.118 updates=4045 (6s)
+job  99 pathfinder      t=  24.3s E=    249J cap=2091.6666666666665/ step=4637/5000 eps=0.115 updates=4126 (24s)
+job 100 shoc-MD5Hash    t=   9.5s E=   1314J cap=2491.875/ step=4669/5000 eps=0.113 updates=4158 (10s)
+job 101 poly-gramschm   t=  95.0s E=   1135J cap=2213.5173501577287/ step=4986/5000 eps=0.101 updates=4475 (95s)
+job 102 poly-covar      t=  13.5s E=    423J cap=2290.108695652174/ step=5032/5000 eps=0.100 updates=4521 (14s)
+saved /home/drl/project/drlcap/drlcap_faithful/results/train_var_freq8_f1_20261107_184448
+GPU: NVIDIA GeForce RTX 4070 Ti
+rep 0 lulesh          baseline     t= 153.8s E=  16429J
+rep 0 lulesh          static_1800  t= 219.7s E=  12852J
+rep 0 lulesh          static_2745  t= 153.9s E=  16541J
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794059346.460818 2328371 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+rep 0 lulesh          drlcap       t= 174.8s E=  13811J
+rep 0 lulesh          var_edplocal t= 166.8s E=  14639J
+rep 0 lulesh          var_gamma02  t= 157.5s E=  15963J
+rep 0 lulesh          var_nocasea  t= 177.7s E=  13618J
+rep 0 lulesh          var_delay1   t= 169.7s E=  14370J
+rep 0 lulesh          var_freq8    t= 171.3s E=  13950J
+rep 0 cloverleaf      static_1800  t= 274.0s E=  22103J
+rep 0 cloverleaf      static_2745  t= 213.3s E=  29784J
+rep 0 cloverleaf      drlcap       t= 229.7s E=  24394J
+rep 0 cloverleaf      var_edplocal t= 228.1s E=  25030J
+rep 0 cloverleaf      var_gamma02  t= 244.6s E=  21623J
+rep 0 cloverleaf      var_nocasea  t= 229.8s E=  24304J
+rep 0 cloverleaf      var_delay1   t= 226.8s E=  24737J
+rep 0 cloverleaf      var_freq8    t= 228.6s E=  24571J
+rep 0 cloverleaf      baseline     t= 213.3s E=  29787J
+rep 0 tealeaf         static_2745  t=  81.7s E=  12186J
+rep 0 tealeaf         drlcap       t=  81.8s E=   9840J
+rep 0 tealeaf         var_edplocal t=  81.8s E=   9679J
+rep 0 tealeaf         var_gamma02  t=  81.8s E=   8531J
+rep 0 tealeaf         var_nocasea  t=  81.8s E=   9218J
+rep 0 tealeaf         var_delay1   t=  81.8s E=   9434J
+rep 0 tealeaf         var_freq8    t=  81.8s E=   8615J
+rep 0 tealeaf         baseline     t=  81.7s E=  12178J
+rep 0 tealeaf         static_1800  t=  81.9s E=   8204J
+rep 0 minibude        drlcap       t=  15.4s E=   2299J
+rep 0 minibude        var_edplocal t=  15.7s E=   2199J
+rep 0 minibude        var_gamma02  t=  15.8s E=   2219J
+rep 0 minibude        var_nocasea  t=  16.6s E=   1790J
+rep 0 minibude        var_delay1   t=  15.8s E=   2214J
+rep 0 minibude        var_freq8    t=  15.9s E=   2162J
+rep 0 minibude        baseline     t=  15.0s E=   2295J
+rep 0 minibude        static_1800  t=  21.5s E=   1556J
+rep 0 minibude        static_2745  t=  15.3s E=   2297J
+rep 0 comd            var_edplocal t=  30.1s E=   1987J
+rep 0 comd            var_gamma02  t=  29.8s E=   1932J
+rep 0 comd            var_nocasea  t=  30.7s E=   1820J
+rep 0 comd            var_delay1   t=  31.4s E=   1900J
+rep 0 comd            var_freq8    t=  31.4s E=   1867J
+rep 0 comd            baseline     t=  27.8s E=   2282J
+rep 0 comd            static_1800  t=  39.8s E=   1793J
+rep 0 comd            static_2745  t=  27.7s E=   2258J
+rep 0 comd            drlcap       t=  29.5s E=   2046J
+rep 0 gromacs         var_gamma02  t=  93.3s E=  13060J
+rep 0 gromacs         var_nocasea  t=  91.7s E=  13903J
+rep 0 gromacs         var_delay1   t=  90.5s E=  13523J
+rep 0 gromacs         var_freq8    t=  91.2s E=  13183J
+rep 0 gromacs         baseline     t=  83.1s E=  16972J
+rep 0 gromacs         static_1800  t= 107.1s E=  11362J
+rep 0 gromacs         static_2745  t=  83.9s E=  17531J
+rep 0 gromacs         drlcap       t=  88.3s E=  14073J
+rep 0 gromacs         var_edplocal t=  91.6s E=  13867J
+rep 0 minife          var_nocasea  t=   9.6s E=    813J
+rep 0 minife          var_delay1   t=   9.8s E=    817J
+rep 0 minife          var_freq8    t=   9.8s E=    729J
+rep 0 minife          baseline     t=   9.5s E=   1013J
+rep 0 minife          static_1800  t=   9.8s E=    708J
+rep 0 minife          static_2745  t=   9.6s E=   1013J
+WARNING:tensorflow:5 out of the last 280 calls to <function DDQNAgent._train_step at 0x7422306dc1f0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+rep 0 minife          drlcap       t=   9.6s E=    855J
+WARNING:tensorflow:6 out of the last 282 calls to <function DDQNAgent._train_step at 0x7422306df0a0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+rep 0 minife          var_edplocal t=   9.6s E=    847J
+rep 0 minife          var_gamma02  t=   9.6s E=    745J
+rep 0 vgg16           var_delay1   t=  36.1s E=   1855J
+rep 0 vgg16           var_freq8    t=  36.7s E=   1823J
+rep 0 vgg16           baseline     t=  35.5s E=   2475J
+rep 0 vgg16           static_1800  t=  37.2s E=   1749J
+rep 0 vgg16           static_2745  t=  35.8s E=   2462J
+rep 0 vgg16           drlcap       t=  36.6s E=   2074J
+rep 0 vgg16           var_edplocal t=  36.7s E=   1962J
+rep 0 vgg16           var_gamma02  t=  36.5s E=   2131J
+rep 0 vgg16           var_nocasea  t=  36.1s E=   2110J
+rep 0 googlenet       var_freq8    t=  94.3s E=   6257J
+rep 0 googlenet       baseline     t=  90.5s E=   8703J
+rep 0 googlenet       static_1800  t=  96.0s E=   5977J
+rep 0 googlenet       static_2745  t=  90.7s E=   8732J
+rep 0 googlenet       drlcap       t=  94.4s E=   7494J
+rep 0 googlenet       var_edplocal t=  95.2s E=   6772J
+rep 0 googlenet       var_gamma02  t=  94.6s E=   6309J
+rep 0 googlenet       var_nocasea  t=  94.2s E=   6666J
+rep 0 googlenet       var_delay1   t=  94.0s E=   6348J
+rep 0 qe              baseline     t= 734.2s E= 104045J
+rep 0 qe              static_1800  t= 809.9s E=  71599J
+rep 0 qe              static_2745  t= 733.6s E= 104218J
+rep 0 qe              drlcap       t= 756.8s E=  82079J
+rep 0 qe              var_edplocal t= 754.8s E=  85656J
+rep 0 qe              var_gamma02  t= 774.5s E=  73263J
+rep 0 qe              var_nocasea  t= 761.0s E=  82605J
+rep 0 qe              var_delay1   t= 766.3s E=  79139J
+rep 0 qe              var_freq8    t= 765.5s E=  75668J
+rep 1 lulesh          static_1800  t= 219.8s E=  12893J
+rep 1 lulesh          static_2745  t= 154.7s E=  16515J
+rep 1 lulesh          drlcap       t= 174.1s E=  13897J
+rep 1 lulesh          var_edplocal t= 166.8s E=  14588J
+rep 1 lulesh          var_gamma02  t= 160.3s E=  15041J
+rep 1 lulesh          var_nocasea  t= 175.0s E=  13833J
+rep 1 lulesh          var_delay1   t= 170.7s E=  14173J
+rep 1 lulesh          var_freq8    t= 171.9s E=  13747J
+rep 1 lulesh          baseline     t= 154.5s E=  16545J
+rep 1 cloverleaf      static_2745  t= 213.3s E=  29735J
+rep 1 cloverleaf      drlcap       t= 231.9s E=  24519J
+rep 1 cloverleaf      var_edplocal t= 228.1s E=  25316J
+rep 1 cloverleaf      var_gamma02  t= 244.8s E=  21688J
+rep 1 cloverleaf      var_nocasea  t= 231.5s E=  24242J
+rep 1 cloverleaf      var_delay1   t= 227.1s E=  25174J
+rep 1 cloverleaf      var_freq8    t= 234.4s E=  22678J
+rep 1 cloverleaf      baseline     t= 212.9s E=  29743J
+rep 1 cloverleaf      static_1800  t= 274.0s E=  21930J
+rep 1 tealeaf         drlcap       t=  81.8s E=   9964J
+rep 1 tealeaf         var_edplocal t=  81.8s E=   9849J
+rep 1 tealeaf         var_gamma02  t=  81.8s E=   8524J
+rep 1 tealeaf         var_nocasea  t=  81.8s E=   9660J
+rep 1 tealeaf         var_delay1   t=  81.8s E=   9775J
+rep 1 tealeaf         var_freq8    t=  81.8s E=   8620J
+rep 1 tealeaf         baseline     t=  81.7s E=  12184J
+rep 1 tealeaf         static_1800  t=  81.9s E=   8197J
+rep 1 tealeaf         static_2745  t=  81.7s E=  12154J
+rep 1 minibude        var_edplocal t=  15.8s E=   2187J
+rep 1 minibude        var_gamma02  t=  16.0s E=   2150J
+rep 1 minibude        var_nocasea  t=  16.7s E=   1793J
+rep 1 minibude        var_delay1   t=  15.8s E=   2199J
+rep 1 minibude        var_freq8    t=  15.7s E=   2197J
+rep 1 minibude        baseline     t=  15.3s E=   2322J
+rep 1 minibude        static_1800  t=  21.5s E=   1563J
+rep 1 minibude        static_2745  t=  15.3s E=   2318J
+rep 1 minibude        drlcap       t=  15.4s E=   2291J
+rep 1 comd            var_gamma02  t=  30.5s E=   1870J
+rep 1 comd            var_nocasea  t=  30.7s E=   1822J
+rep 1 comd            var_delay1   t=  30.9s E=   1913J
+rep 1 comd            var_freq8    t=  31.8s E=   1808J
+rep 1 comd            baseline     t=  27.8s E=   2268J
+rep 1 comd            static_1800  t=  39.8s E=   1780J
+rep 1 comd            static_2745  t=  27.7s E=   2292J
+rep 1 comd            drlcap       t=  28.9s E=   2148J
+rep 1 comd            var_edplocal t=  30.3s E=   1932J
+rep 1 gromacs         var_nocasea  t=  91.5s E=  14047J
+rep 1 gromacs         var_delay1   t=  89.5s E=  13805J
+rep 1 gromacs         var_freq8    t=  93.1s E=  12270J
+rep 1 gromacs         baseline     t=  83.2s E=  16993J
+rep 1 gromacs         static_1800  t= 106.7s E=  11375J
+rep 1 gromacs         static_2745  t=  83.0s E=  16903J
+rep 1 gromacs         drlcap       t=  87.3s E=  14793J
+rep 1 gromacs         var_edplocal t=  92.0s E=  13813J
+rep 1 gromacs         var_gamma02  t=  94.6s E=  12181J
+rep 1 minife          var_delay1   t=   9.7s E=    838J
+rep 1 minife          var_freq8    t=   9.7s E=    738J
+rep 1 minife          baseline     t=   9.6s E=   1017J
+rep 1 minife          static_1800  t=   9.8s E=    721J
+rep 1 minife          static_2745  t=   9.5s E=   1008J
+rep 1 minife          drlcap       t=   9.6s E=    837J
+rep 1 minife          var_edplocal t=   9.6s E=    868J
+rep 1 minife          var_gamma02  t=  10.0s E=    749J
+rep 1 minife          var_nocasea  t=   9.9s E=    808J
+rep 1 vgg16           var_freq8    t=  36.6s E=   1840J
+rep 1 vgg16           baseline     t=  35.9s E=   2507J
+rep 1 vgg16           static_1800  t=  36.9s E=   1758J
+rep 1 vgg16           static_2745  t=  36.3s E=   2487J
+rep 1 vgg16           drlcap       t=  36.1s E=   2269J
+rep 1 vgg16           var_edplocal t=  36.8s E=   1925J
+rep 1 vgg16           var_gamma02  t=  36.6s E=   1854J
+rep 1 vgg16           var_nocasea  t=  36.3s E=   2290J
+rep 1 vgg16           var_delay1   t=  36.0s E=   2190J
+rep 1 googlenet       baseline     t=  90.5s E=   8660J
+rep 1 googlenet       static_1800  t=  96.6s E=   6053J
+rep 1 googlenet       static_2745  t=  91.2s E=   8755J
+rep 1 googlenet       drlcap       t=  92.0s E=   7701J
+rep 1 googlenet       var_edplocal t=  93.7s E=   6676J
+rep 1 googlenet       var_gamma02  t=  95.4s E=   6242J
+rep 1 googlenet       var_nocasea  t=  93.0s E=   7030J
+rep 1 googlenet       var_delay1   t=  92.6s E=   6883J
+rep 1 googlenet       var_freq8    t=  93.0s E=   6536J
+rep 1 qe              static_1800  t= 808.1s E=  72164J
+rep 1 qe              static_2745  t= 732.9s E= 104199J
+rep 1 qe              drlcap       t= 753.3s E=  84693J
+rep 1 qe              var_edplocal t= 753.1s E=  88112J
+rep 1 qe              var_gamma02  t= 788.6s E=  72912J
+rep 1 qe              var_nocasea  t= 756.7s E=  84288J
+rep 1 qe              var_delay1   t= 761.6s E=  82100J
+rep 1 qe              var_freq8    t= 764.5s E=  77513J
+rep 1 qe              baseline     t= 734.9s E= 104333J
+rep 2 lulesh          static_2745  t= 154.1s E=  16498J
+rep 2 lulesh          drlcap       t= 173.4s E=  13952J
+rep 2 lulesh          var_edplocal t= 167.7s E=  14470J
+rep 2 lulesh          var_gamma02  t= 161.1s E=  14890J
+rep 2 lulesh          var_nocasea  t= 175.3s E=  13629J
+rep 2 lulesh          var_delay1   t= 170.3s E=  14325J
+rep 2 lulesh          var_freq8    t= 167.8s E=  14618J
+rep 2 lulesh          baseline     t= 154.0s E=  16544J
+rep 2 lulesh          static_1800  t= 219.6s E=  12920J
+rep 2 cloverleaf      drlcap       t= 225.5s E=  25750J
+rep 2 cloverleaf      var_edplocal t= 227.1s E=  25284J
+rep 2 cloverleaf      var_gamma02  t= 244.7s E=  21624J
+rep 2 cloverleaf      var_nocasea  t= 229.1s E=  24747J
+rep 2 cloverleaf      var_delay1   t= 233.8s E=  23923J
+rep 2 cloverleaf      var_freq8    t= 242.8s E=  21850J
+rep 2 cloverleaf      baseline     t= 213.1s E=  29749J
+rep 2 cloverleaf      static_1800  t= 274.0s E=  21907J
+rep 2 cloverleaf      static_2745  t= 213.3s E=  29755J
+rep 2 tealeaf         var_edplocal t=  81.8s E=   9653J
+rep 2 tealeaf         var_gamma02  t=  81.8s E=   8511J
+rep 2 tealeaf         var_nocasea  t=  81.8s E=   9855J
+rep 2 tealeaf         var_delay1   t=  81.8s E=   9209J
+rep 2 tealeaf         var_freq8    t=  81.8s E=   9026J
+rep 2 tealeaf         baseline     t=  81.7s E=  12195J
+rep 2 tealeaf         static_1800  t=  81.9s E=   8212J
+rep 2 tealeaf         static_2745  t=  81.7s E=  12158J
+rep 2 tealeaf         drlcap       t=  81.8s E=  10359J
+rep 2 minibude        var_gamma02  t=  16.3s E=   2141J
+rep 2 minibude        var_nocasea  t=  17.1s E=   1756J
+rep 2 minibude        var_delay1   t=  16.4s E=   2163J
+rep 2 minibude        var_freq8    t=  16.1s E=   2122J
+rep 2 minibude        baseline     t=  15.3s E=   2299J
+rep 2 minibude        static_1800  t=  21.6s E=   1564J
+rep 2 minibude        static_2745  t=  15.3s E=   2293J
+rep 2 minibude        drlcap       t=  15.4s E=   2284J
+rep 2 minibude        var_edplocal t=  15.5s E=   2224J
+rep 2 comd            var_nocasea  t=  30.5s E=   1829J
+rep 2 comd            var_delay1   t=  31.3s E=   1874J
+rep 2 comd            var_freq8    t=  31.5s E=   1825J
+rep 2 comd            baseline     t=  27.7s E=   2253J
+rep 2 comd            static_1800  t=  39.8s E=   1777J
+rep 2 comd            static_2745  t=  27.7s E=   2278J
+rep 2 comd            drlcap       t=  29.4s E=   2060J
+rep 2 comd            var_edplocal t=  30.2s E=   1965J
+rep 2 comd            var_gamma02  t=  30.3s E=   1902J
+rep 2 gromacs         var_delay1   t=  89.9s E=  13691J
+rep 2 gromacs         var_freq8    t=  89.8s E=  13520J
+rep 2 gromacs         baseline     t=  82.9s E=  16925J
+rep 2 gromacs         static_1800  t= 106.7s E=  11356J
+rep 2 gromacs         static_2745  t=  82.6s E=  16900J
+rep 2 gromacs         drlcap       t=  88.1s E=  14345J
+rep 2 gromacs         var_edplocal t=  91.6s E=  14026J
+rep 2 gromacs         var_gamma02  t=  92.5s E=  13062J
+rep 2 gromacs         var_nocasea  t=  90.6s E=  14318J
+rep 2 minife          var_freq8    t=   9.7s E=    753J
+rep 2 minife          baseline     t=   9.7s E=   1016J
+rep 2 minife          static_1800  t=   9.8s E=    703J
+rep 2 minife          static_2745  t=   9.6s E=   1006J
+rep 2 minife          drlcap       t=   9.9s E=    826J
+rep 2 minife          var_edplocal t=   9.6s E=    896J
+rep 2 minife          var_gamma02  t=   9.7s E=    732J
+rep 2 minife          var_nocasea  t=   9.6s E=    793J
+rep 2 minife          var_delay1   t=  10.0s E=    826J
+rep 2 vgg16           baseline     t=  35.3s E=   2432J
+rep 2 vgg16           static_1800  t=  37.1s E=   1750J
+rep 2 vgg16           static_2745  t=  36.4s E=   2483J
+rep 2 vgg16           drlcap       t=  36.4s E=   2111J
+rep 2 vgg16           var_edplocal t=  35.9s E=   1882J
+rep 2 vgg16           var_gamma02  t=  35.9s E=   1764J
+rep 2 vgg16           var_nocasea  t=  36.2s E=   2110J
+rep 2 vgg16           var_delay1   t=  36.0s E=   1916J
+rep 2 vgg16           var_freq8    t=  36.6s E=   1816J
+rep 2 googlenet       static_1800  t=  96.6s E=   5997J
+rep 2 googlenet       static_2745  t=  91.8s E=   8772J
+rep 2 googlenet       drlcap       t=  92.4s E=   7315J
+rep 2 googlenet       var_edplocal t=  94.0s E=   6830J
+rep 2 googlenet       var_gamma02  t=  95.3s E=   6354J
+rep 2 googlenet       var_nocasea  t=  93.1s E=   6849J
+rep 2 googlenet       var_delay1   t=  95.1s E=   6398J
+rep 2 googlenet       var_freq8    t=  92.8s E=   6533J
+rep 2 googlenet       baseline     t=  91.2s E=   8677J
+rep 2 qe              static_2745  t= 734.7s E= 103957J
+rep 2 qe              drlcap       t= 760.8s E=  79771J
+rep 2 qe              var_edplocal t= 754.3s E=  85842J
+rep 2 qe              var_gamma02  t= 786.3s E=  72748J
+rep 2 qe              var_nocasea  t= 761.6s E=  84672J
+rep 2 qe              var_delay1   t= 762.0s E=  82427J
+rep 2 qe              var_freq8    t= 758.7s E=  79115J
+rep 2 qe              baseline     t= 732.9s E= 104115J
+rep 2 qe              static_1800  t= 807.9s E=  71391J
+rep 3 lulesh          drlcap       t= 173.3s E=  13995J
+rep 3 lulesh          var_edplocal t= 166.8s E=  14565J
+rep 3 lulesh          var_gamma02  t= 185.4s E=  12652J
+rep 3 lulesh          var_nocasea  t= 176.5s E=  13636J
+rep 3 lulesh          var_delay1   t= 172.2s E=  14129J
+rep 3 lulesh          var_freq8    t= 167.1s E=  14675J
+rep 3 lulesh          baseline     t= 153.9s E=  16503J
+rep 3 lulesh          static_1800  t= 219.6s E=  12865J
+rep 3 lulesh          static_2745  t= 154.0s E=  16540J
+rep 3 cloverleaf      var_edplocal t= 228.8s E=  25225J
+rep 3 cloverleaf      var_gamma02  t= 244.9s E=  21578J
+rep 3 cloverleaf      var_nocasea  t= 230.5s E=  24673J
+rep 3 cloverleaf      var_delay1   t= 229.0s E=  24007J
+rep 3 cloverleaf      var_freq8    t= 232.3s E=  23320J
+rep 3 cloverleaf      baseline     t= 213.0s E=  29748J
+rep 3 cloverleaf      static_1800  t= 274.0s E=  21861J
+rep 3 cloverleaf      static_2745  t= 212.9s E=  29760J
+rep 3 cloverleaf      drlcap       t= 227.8s E=  24885J
+rep 3 tealeaf         var_gamma02  t=  81.8s E=   8500J
+rep 3 tealeaf         var_nocasea  t=  81.8s E=   9490J
+rep 3 tealeaf         var_delay1   t=  81.8s E=   9356J
+rep 3 tealeaf         var_freq8    t=  81.8s E=   8624J
+rep 3 tealeaf         baseline     t=  81.7s E=  12161J
+rep 3 tealeaf         static_1800  t=  81.9s E=   8183J
+rep 3 tealeaf         static_2745  t=  81.7s E=  12130J
+rep 3 tealeaf         drlcap       t=  81.8s E=   9727J
+rep 3 tealeaf         var_edplocal t=  81.8s E=   9864J
+rep 3 minibude        var_nocasea  t=  16.7s E=   1759J
+rep 3 minibude        var_delay1   t=  16.2s E=   2131J
+rep 3 minibude        var_freq8    t=  15.9s E=   2168J
+rep 3 minibude        baseline     t=  15.2s E=   2321J
+rep 3 minibude        static_1800  t=  21.5s E=   1557J
+rep 3 minibude        static_2745  t=  15.3s E=   2300J
+rep 3 minibude        drlcap       t=  15.4s E=   2307J
+rep 3 minibude        var_edplocal t=  15.7s E=   2218J
+rep 3 minibude        var_gamma02  t=  15.9s E=   2222J
+rep 3 comd            var_delay1   t=  30.8s E=   1911J
+rep 3 comd            var_freq8    t=  31.9s E=   1807J
+rep 3 comd            baseline     t=  27.7s E=   2228J
+rep 3 comd            static_1800  t=  39.8s E=   1773J
+rep 3 comd            static_2745  t=  27.7s E=   2261J
+rep 3 comd            drlcap       t=  29.0s E=   2101J
+rep 3 comd            var_edplocal t=  30.9s E=   1869J
+rep 3 comd            var_gamma02  t=  30.4s E=   1895J
+rep 3 comd            var_nocasea  t=  30.9s E=   1855J
+rep 3 gromacs         var_freq8    t=  91.3s E=  13132J
+rep 3 gromacs         baseline     t=  82.9s E=  16944J
+rep 3 gromacs         static_1800  t= 107.0s E=  11377J
+rep 3 gromacs         static_2745  t=  82.7s E=  16940J
+rep 3 gromacs         drlcap       t=  87.9s E=  14225J
+rep 3 gromacs         var_edplocal t=  93.5s E=  14048J
+rep 3 gromacs         var_gamma02  t=  94.4s E=  12924J
+rep 3 gromacs         var_nocasea  t=  92.6s E=  13467J
+rep 3 gromacs         var_delay1   t=  90.2s E=  14005J
+rep 3 minife          baseline     t=   9.7s E=   1034J
+rep 3 minife          static_1800  t=   9.9s E=    711J
+rep 3 minife          static_2745  t=   9.7s E=   1016J
+rep 3 minife          drlcap       t=   9.6s E=    846J
+rep 3 minife          var_edplocal t=   9.7s E=    849J
+rep 3 minife          var_gamma02  t=   9.8s E=    732J
+rep 3 minife          var_nocasea  t=   9.6s E=    818J
+rep 3 minife          var_delay1   t=   9.8s E=    821J
+rep 3 minife          var_freq8    t=   9.7s E=    741J
+rep 3 vgg16           static_1800  t=  36.7s E=   1697J
+rep 3 vgg16           static_2745  t=  35.0s E=   2460J
+rep 3 vgg16           drlcap       t=  36.1s E=   2182J
+rep 3 vgg16           var_edplocal t=  36.0s E=   1965J
+rep 3 vgg16           var_gamma02  t=  36.7s E=   1748J
+rep 3 vgg16           var_nocasea  t=  35.5s E=   2002J
+rep 3 vgg16           var_delay1   t=  35.8s E=   2067J
+rep 3 vgg16           var_freq8    t=  36.4s E=   1823J
+rep 3 vgg16           baseline     t=  35.1s E=   2428J
+rep 3 googlenet       static_2745  t=  91.2s E=   8739J
+rep 3 googlenet       drlcap       t=  92.9s E=   7649J
+rep 3 googlenet       var_edplocal t=  93.3s E=   6629J
+rep 3 googlenet       var_gamma02  t=  95.8s E=   6186J
+rep 3 googlenet       var_nocasea  t=  93.9s E=   6660J
+rep 3 googlenet       var_delay1   t=  95.1s E=   6223J
+rep 3 googlenet       var_freq8    t=  96.9s E=   6218J
+rep 3 googlenet       baseline     t=  92.2s E=   8778J
+rep 3 googlenet       static_1800  t=  96.0s E=   6015J
+rep 3 qe              drlcap       t= 761.4s E=  80817J
+rep 3 qe              var_edplocal t= 747.8s E=  89195J
+rep 3 qe              var_gamma02  t= 786.2s E=  72562J
+rep 3 qe              var_nocasea  t= 755.4s E=  84366J
+rep 3 qe              var_delay1   t= 762.5s E=  78784J
+rep 3 qe              var_freq8    t= 756.6s E=  79480J
+rep 3 qe              baseline     t= 734.0s E= 104198J
+rep 3 qe              static_1800  t= 810.7s E=  71617J
+rep 3 qe              static_2745  t= 732.4s E= 103900J
+rep 4 lulesh          var_edplocal t= 167.8s E=  14350J
+rep 4 lulesh          var_gamma02  t= 178.2s E=  12900J
+rep 4 lulesh          var_nocasea  t= 176.4s E=  13684J
+rep 4 lulesh          var_delay1   t= 172.6s E=  14116J
+rep 4 lulesh          var_freq8    t= 169.4s E=  14221J
+rep 4 lulesh          baseline     t= 154.4s E=  16516J
+rep 4 lulesh          static_1800  t= 219.7s E=  12911J
+rep 4 lulesh          static_2745  t= 153.9s E=  16576J
+rep 4 lulesh          drlcap       t= 174.5s E=  14017J
+rep 4 cloverleaf      var_gamma02  t= 244.6s E=  21686J
+rep 4 cloverleaf      var_nocasea  t= 230.9s E=  24465J
+rep 4 cloverleaf      var_delay1   t= 229.8s E=  24817J
+rep 4 cloverleaf      var_freq8    t= 237.4s E=  22692J
+rep 4 cloverleaf      baseline     t= 213.2s E=  29790J
+rep 4 cloverleaf      static_1800  t= 274.0s E=  21901J
+rep 4 cloverleaf      static_2745  t= 213.3s E=  29823J
+rep 4 cloverleaf      drlcap       t= 228.6s E=  24778J
+rep 4 cloverleaf      var_edplocal t= 228.7s E=  24733J
+rep 4 tealeaf         var_nocasea  t=  81.8s E=   9448J
+rep 4 tealeaf         var_delay1   t=  81.8s E=   9104J
+rep 4 tealeaf         var_freq8    t=  81.8s E=   8644J
+rep 4 tealeaf         baseline     t=  81.7s E=  12208J
+rep 4 tealeaf         static_1800  t=  81.9s E=   8211J
+rep 4 tealeaf         static_2745  t=  81.7s E=  12166J
+rep 4 tealeaf         drlcap       t=  81.8s E=  10170J
+rep 4 tealeaf         var_edplocal t=  81.8s E=   9583J
+rep 4 tealeaf         var_gamma02  t=  81.8s E=   8520J
+rep 4 minibude        var_delay1   t=  15.8s E=   2218J
+rep 4 minibude        var_freq8    t=  15.9s E=   2178J
+rep 4 minibude        baseline     t=  15.3s E=   2319J
+rep 4 minibude        static_1800  t=  21.6s E=   1566J
+rep 4 minibude        static_2745  t=  15.3s E=   2295J
+rep 4 minibude        drlcap       t=  15.3s E=   2293J
+rep 4 minibude        var_edplocal t=  15.6s E=   2259J
+rep 4 minibude        var_gamma02  t=  16.1s E=   2148J
+rep 4 minibude        var_nocasea  t=  16.4s E=   1774J
+rep 4 comd            var_freq8    t=  31.9s E=   1836J
+rep 4 comd            baseline     t=  27.6s E=   2244J
+rep 4 comd            static_1800  t=  39.7s E=   1767J
+rep 4 comd            static_2745  t=  27.7s E=   2252J
+rep 4 comd            drlcap       t=  29.1s E=   2072J
+rep 4 comd            var_edplocal t=  30.3s E=   1956J
+rep 4 comd            var_gamma02  t=  30.3s E=   1976J
+rep 4 comd            var_nocasea  t=  31.0s E=   1891J
+rep 4 comd            var_delay1   t=  30.9s E=   1916J
+rep 4 gromacs         baseline     t=  82.7s E=  16905J
+rep 4 gromacs         static_1800  t= 106.8s E=  11400J
+rep 4 gromacs         static_2745  t=  82.9s E=  16886J
+rep 4 gromacs         drlcap       t=  88.0s E=  14531J
+rep 4 gromacs         var_edplocal t=  92.4s E=  13894J
+rep 4 gromacs         var_gamma02  t=  93.6s E=  13202J
+rep 4 gromacs         var_nocasea  t=  98.0s E=  13746J
+rep 4 gromacs         var_delay1   t=  89.4s E=  14738J
+rep 4 gromacs         var_freq8    t=  92.3s E=  12482J
+rep 4 minife          static_1800  t=   9.9s E=    715J
+rep 4 minife          static_2745  t=   9.6s E=   1022J
+rep 4 minife          drlcap       t=   9.6s E=    843J
+rep 4 minife          var_edplocal t=   9.6s E=    880J
+rep 4 minife          var_gamma02  t=   9.8s E=    747J
+rep 4 minife          var_nocasea  t=   9.6s E=    801J
+rep 4 minife          var_delay1   t=   9.8s E=    782J
+rep 4 minife          var_freq8    t=   9.7s E=    740J
+rep 4 minife          baseline     t=   9.5s E=   1006J
+rep 4 vgg16           static_2745  t=  35.4s E=   2421J
+rep 4 vgg16           drlcap       t=  36.8s E=   2167J
+rep 4 vgg16           var_edplocal t=  35.9s E=   2133J
+rep 4 vgg16           var_gamma02  t=  36.0s E=   2055J
+rep 4 vgg16           var_nocasea  t=  36.2s E=   2211J
+rep 4 vgg16           var_delay1   t=  36.5s E=   1915J
+rep 4 vgg16           var_freq8    t=  36.6s E=   1827J
+rep 4 vgg16           baseline     t=  36.3s E=   2479J
+rep 4 vgg16           static_1800  t=  37.2s E=   1726J
+rep 4 googlenet       drlcap       t=  93.9s E=   7792J
+rep 4 googlenet       var_edplocal t=  92.4s E=   7250J
+rep 4 googlenet       var_gamma02  t=  94.6s E=   6519J
+rep 4 googlenet       var_nocasea  t=  93.7s E=   6921J
+rep 4 googlenet       var_delay1   t=  94.1s E=   6579J
+rep 4 googlenet       var_freq8    t=  93.1s E=   7289J
+rep 4 googlenet       baseline     t=  92.2s E=   8721J
+rep 4 googlenet       static_1800  t=  96.8s E=   5961J
+rep 4 googlenet       static_2745  t=  91.3s E=   8716J
+rep 4 qe              var_edplocal t= 754.0s E=  86382J
+rep 4 qe              var_gamma02  t= 787.9s E=  72796J
+rep 4 qe              var_nocasea  t= 758.9s E=  82257J
+rep 4 qe              var_delay1   t= 760.9s E=  80157J
+rep 4 qe              var_freq8    t= 753.9s E=  84403J
+rep 4 qe              baseline     t= 734.3s E= 104376J
+rep 4 qe              static_1800  t= 808.8s E=  71641J
+rep 4 qe              static_2745  t= 733.7s E= 104413J
+rep 4 qe              drlcap       t= 758.7s E=  83415J
+static_1800  cloverleaf      energy saving   26.3%  perf loss   28.6%  EDP improvement    5.2%
+static_1800  comd            energy saving   21.2%  perf loss   43.5%  EDP improvement  -13.1%
+static_1800  googlenet       energy saving   31.1%  perf loss    5.6%  EDP improvement   27.3%
+static_1800  gromacs         energy saving   32.9%  perf loss   28.8%  EDP improvement   13.6%
+static_1800  lulesh          energy saving   21.9%  perf loss   42.5%  EDP improvement  -11.3%
+static_1800  minibude        energy saving   32.5%  perf loss   41.5%  EDP improvement    4.4%
+static_1800  minife          energy saving   30.0%  perf loss    2.4%  EDP improvement   28.3%
+static_1800  qe              energy saving   31.2%  perf loss   10.2%  EDP improvement   24.2%
+static_1800  tealeaf         energy saving   32.7%  perf loss    0.2%  EDP improvement   32.6%
+static_1800  vgg16           energy saving   29.6%  perf loss    4.0%  EDP improvement   26.8%
+static_1800  GEOMEAN         energy saving   29.0%  perf loss   19.5%  EDP improvement   15.2%
+static_2745  cloverleaf      energy saving   -0.0%  perf loss    0.1%  EDP improvement   -0.1%
+static_2745  comd            energy saving   -0.6%  perf loss   -0.0%  EDP improvement   -0.5%
+static_2745  googlenet       energy saving   -0.4%  perf loss   -0.1%  EDP improvement   -0.3%
+static_2745  gromacs         energy saving   -0.5%  perf loss    0.1%  EDP improvement   -0.6%
+static_2745  lulesh          energy saving   -0.2%  perf loss    0.0%  EDP improvement   -0.2%
+static_2745  minibude        energy saving    0.5%  perf loss    0.6%  EDP improvement   -0.1%
+static_2745  minife          energy saving    0.4%  perf loss   -0.2%  EDP improvement    0.6%
+static_2745  qe              energy saving    0.1%  perf loss   -0.1%  EDP improvement    0.2%
+static_2745  tealeaf         energy saving    0.2%  perf loss    0.0%  EDP improvement    0.2%
+static_2745  vgg16           energy saving    0.1%  perf loss    0.4%  EDP improvement   -0.4%
+static_2745  GEOMEAN         energy saving   -0.0%  perf loss    0.1%  EDP improvement   -0.1%
+drlcap       cloverleaf      energy saving   16.5%  perf loss    7.3%  EDP improvement   10.4%
+drlcap       comd            energy saving    7.5%  perf loss    5.3%  EDP improvement    2.7%
+drlcap       googlenet       energy saving   12.8%  perf loss    2.0%  EDP improvement   11.1%
+drlcap       gromacs         energy saving   15.1%  perf loss    6.0%  EDP improvement   10.0%
+drlcap       lulesh          energy saving   15.6%  perf loss   12.9%  EDP improvement    4.7%
+drlcap       minibude        energy saving    0.7%  perf loss    1.0%  EDP improvement   -0.3%
+drlcap       minife          energy saving   17.3%  perf loss    0.6%  EDP improvement   16.8%
+drlcap       qe              energy saving   21.2%  perf loss    3.3%  EDP improvement   18.6%
+drlcap       tealeaf         energy saving   17.8%  perf loss    0.1%  EDP improvement   17.8%
+drlcap       vgg16           energy saving   12.3%  perf loss    2.2%  EDP improvement   10.4%
+drlcap       GEOMEAN         energy saving   13.9%  perf loss    4.0%  EDP improvement   10.4%
+var_edplocal cloverleaf      energy saving   15.6%  perf loss    7.1%  EDP improvement    9.6%
+var_edplocal comd            energy saving   13.9%  perf loss    9.5%  EDP improvement    5.7%
+var_edplocal googlenet       energy saving   21.5%  perf loss    2.6%  EDP improvement   19.5%
+var_edplocal gromacs         energy saving   17.8%  perf loss   11.1%  EDP improvement    8.7%
+var_edplocal lulesh          energy saving   12.0%  perf loss    8.5%  EDP improvement    4.6%
+var_edplocal minibude        energy saving    4.1%  perf loss    2.9%  EDP improvement    1.3%
+var_edplocal minife          energy saving   14.7%  perf loss    0.5%  EDP improvement   14.3%
+var_edplocal qe              energy saving   16.5%  perf loss    2.6%  EDP improvement   14.4%
+var_edplocal tealeaf         energy saving   20.2%  perf loss    0.1%  EDP improvement   20.1%
+var_edplocal vgg16           energy saving   19.9%  perf loss    1.8%  EDP improvement   18.5%
+var_edplocal GEOMEAN         energy saving   15.7%  perf loss    4.6%  EDP improvement   11.9%
+var_gamma02  cloverleaf      energy saving   27.3%  perf loss   14.8%  EDP improvement   16.5%
+var_gamma02  comd            energy saving   15.1%  perf loss    9.2%  EDP improvement    7.3%
+var_gamma02  googlenet       energy saving   27.4%  perf loss    4.2%  EDP improvement   24.4%
+var_gamma02  gromacs         energy saving   24.0%  perf loss   12.9%  EDP improvement   14.2%
+var_gamma02  lulesh          energy saving   13.4%  perf loss    9.3%  EDP improvement    5.9%
+var_gamma02  minibude        energy saving    5.9%  perf loss    5.2%  EDP improvement    0.9%
+var_gamma02  minife          energy saving   27.2%  perf loss    1.9%  EDP improvement   25.8%
+var_gamma02  qe              energy saving   30.1%  perf loss    6.9%  EDP improvement   25.3%
+var_gamma02  tealeaf         energy saving   30.1%  perf loss    0.1%  EDP improvement   30.0%
+var_gamma02  vgg16           energy saving   22.5%  perf loss    2.0%  EDP improvement   20.9%
+var_gamma02  GEOMEAN         energy saving   22.7%  perf loss    6.6%  EDP improvement   17.6%
+var_nocasea  cloverleaf      energy saving   17.7%  perf loss    8.1%  EDP improvement   11.1%
+var_nocasea  comd            energy saving   18.3%  perf loss   11.0%  EDP improvement    9.3%
+var_nocasea  googlenet       energy saving   21.6%  perf loss    2.5%  EDP improvement   19.7%
+var_nocasea  gromacs         energy saving   18.0%  perf loss   11.9%  EDP improvement    8.2%
+var_nocasea  lulesh          energy saving   17.1%  perf loss   14.3%  EDP improvement    5.3%
+var_nocasea  minibude        energy saving   23.2%  perf loss    9.7%  EDP improvement   15.8%
+var_nocasea  minife          energy saving   20.7%  perf loss    0.8%  EDP improvement   20.0%
+var_nocasea  qe              energy saving   19.7%  perf loss    3.4%  EDP improvement   17.1%
+var_nocasea  tealeaf         energy saving   21.8%  perf loss    0.1%  EDP improvement   21.7%
+var_nocasea  vgg16           energy saving   13.0%  perf loss    1.2%  EDP improvement   11.9%
+var_nocasea  GEOMEAN         energy saving   19.2%  perf loss    6.2%  EDP improvement   14.2%
+var_delay1   cloverleaf      energy saving   17.6%  perf loss    7.6%  EDP improvement   11.3%
+var_delay1   comd            energy saving   15.6%  perf loss   12.0%  EDP improvement    5.5%
+var_delay1   googlenet       energy saving   25.5%  perf loss    3.1%  EDP improvement   23.2%
+var_delay1   gromacs         energy saving   17.7%  perf loss    8.4%  EDP improvement   10.8%
+var_delay1   lulesh          energy saving   13.8%  perf loss   11.0%  EDP improvement    4.4%
+var_delay1   minibude        energy saving    5.5%  perf loss    5.1%  EDP improvement    0.7%
+var_delay1   minife          energy saving   19.7%  perf loss    2.3%  EDP improvement   17.9%
+var_delay1   qe              energy saving   22.7%  perf loss    3.9%  EDP improvement   19.7%
+var_delay1   tealeaf         energy saving   23.1%  perf loss    0.1%  EDP improvement   23.0%
+var_delay1   vgg16           energy saving   19.3%  perf loss    1.3%  EDP improvement   18.3%
+var_delay1   GEOMEAN         energy saving   18.2%  perf loss    5.4%  EDP improvement   13.8%
+var_freq8    cloverleaf      energy saving   22.6%  perf loss   10.3%  EDP improvement   14.7%
+var_freq8    comd            energy saving   18.9%  perf loss   14.3%  EDP improvement    7.3%
+var_freq8    googlenet       energy saving   24.6%  perf loss    3.0%  EDP improvement   22.4%
+var_freq8    gromacs         energy saving   23.8%  perf loss   10.3%  EDP improvement   16.0%
+var_freq8    lulesh          energy saving   13.7%  perf loss   10.0%  EDP improvement    5.1%
+var_freq8    minibude        energy saving    6.3%  perf loss    4.6%  EDP improvement    2.0%
+var_freq8    minife          energy saving   27.2%  perf loss    1.2%  EDP improvement   26.4%
+var_freq8    qe              energy saving   24.0%  perf loss    3.5%  EDP improvement   21.3%
+var_freq8    tealeaf         energy saving   28.6%  perf loss    0.1%  EDP improvement   28.5%
+var_freq8    vgg16           energy saving   25.9%  perf loss    2.7%  EDP improvement   23.9%
+var_freq8    GEOMEAN         energy saving   21.8%  perf loss    5.9%  EDP improvement   17.2%
+saved /home/drl/project/drlcap/drlcap_faithful/results/eval_variants_f1_20261107_191012
+== done Sun Nov  8 02:32:37 PM IST 2026
