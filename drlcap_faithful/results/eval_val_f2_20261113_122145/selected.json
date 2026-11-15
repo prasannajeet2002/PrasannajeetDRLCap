@@ -1,0 +1,61 @@
+{
+  "criterion": "best geometric-mean EDP improvement on the validation programs",
+  "validation_programs": [
+    "lud",
+    "myocyte",
+    "heartwall",
+    "pb-lbm",
+    "pb-histo",
+    "shoc-Scan",
+    "shoc-GEMM",
+    "poly-fdtd-2d",
+    "poly-corr",
+    "sdk-FDTD3d",
+    "sdk-binomialOptions"
+  ],
+  "repeats": 3,
+  "candidates": [
+    {
+      "policy": "seed0",
+      "model": "results/train_freq_s0_f2_20261113_092403/model_final.keras",
+      "energy_saving_pct": 4.2,
+      "perf_loss_pct": 0.52,
+      "edp_improvement_pct": 3.72
+    },
+    {
+      "policy": "seed1",
+      "model": "results/train_freq_s1_f2_20261113_094923/model_final.keras",
+      "energy_saving_pct": 9.39,
+      "perf_loss_pct": 1.64,
+      "edp_improvement_pct": 7.9
+    },
+    {
+      "policy": "seed2",
+      "model": "results/train_freq_s2_f2_20261113_101444/model_final.keras",
+      "energy_saving_pct": 13.7,
+      "perf_loss_pct": 3.27,
+      "edp_improvement_pct": 10.87
+    },
+    {
+      "policy": "seed3",
+      "model": "results/train_freq_s3_f2_20261113_104010/model_final.keras",
+      "energy_saving_pct": 11.7,
+      "perf_loss_pct": 2.72,
+      "edp_improvement_pct": 9.31
+    },
+    {
+      "policy": "seed4",
+      "model": "results/train_freq_s4_f2_20261113_110527/model_final.keras",
+      "energy_saving_pct": 13.67,
+      "perf_loss_pct": 1.85,
+      "edp_improvement_pct": 12.09
+    }
+  ],
+  "selected": {
+    "policy": "seed4",
+    "model": "results/train_freq_s4_f2_20261113_110527/model_final.keras",
+    "energy_saving_pct": 13.67,
+    "perf_loss_pct": 1.85,
+    "edp_improvement_pct": 12.09
+  }
+}

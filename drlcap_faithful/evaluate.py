@@ -113,8 +113,8 @@ def profile(workload):
 
 
 def load_model_spec(path):
-    """(variant, agent kind, settings) of a trained model from its run's
-    config. `settings` are the one-setting-variant knobs the model was
+    """(variant, agent kind, settings, actions) of a trained model from
+    its run's config. `settings` are the one-setting-variant knobs the model was
     trained with; online learning during evaluation uses the same ones."""
     cfg_path = os.path.join(os.path.dirname(path), "config.json")
     with open(cfg_path) as f:
@@ -123,7 +123,10 @@ def load_model_spec(path):
                 "reward_mode": cfg["reward_mode"],
                 "reward_delay": cfg["reward_delay_samples"],
                 "force_case_a": cfg["force_case_a"]}
-    return cfg.get("variant", "freq"), cfg.get("agent", "ddqn"), settings
+    # the model's own action candidates (f1: 1800-2745 MHz, f2: 2100-2745)
+    actions = [tuple(a) for a in cfg["actions"]]
+    return cfg.get("variant", "freq"), cfg.get("agent", "ddqn"), settings, \
+        actions
 
 
 def use_settings(settings):
@@ -247,12 +250,15 @@ def main():
                    "coord_caps": COORD_CAPS,
                    "baseline_nvml_polling_s": D.SAMPLE_INTERVAL,
                    "per_model_settings": "models[name][3], from each "
-                                         "model's training config"}, f, indent=2)
+                                         "model's training config; "
+                                         "models[name][4] = its actions"},
+                  f, indent=2)
 
     rows, job, coord = [], 0, {}
     try:
         if args.coord:  # COORD knows each program's category ahead of time
             for name in args.workloads:
+                D.wait_gpu_free()
                 coord[name] = profile(name)
                 print("coord profile", coord[name], flush=True)
                 time.sleep(2.0)
@@ -267,6 +273,10 @@ def main():
                 k = (rep + wi) % len(policies)
                 order = policies[k:] + policies[:k]
                 for policy in order:
+                    # another user's job appeared: the run that just ended
+                    # may have shared the GPU with it, so mark it
+                    if D.wait_gpu_free() and rows:
+                        rows[-1]["gpu_shared"] = 1
                     if policy == "baseline":
                         res = baseline_job(name)
                     elif policy.startswith("static_"):
@@ -274,9 +284,9 @@ def main():
                     elif policy == "coord":
                         res = baseline_job(name, coord[name]["cap_mhz"])
                     else:
-                        path, variant, kind, settings = specs[policy]
+                        path, variant, kind, settings, actions = \
+                            specs[policy]
                         use_settings(settings)
-                        actions = D.VARIANTS[variant]
                         agent = D.make_agent(kind, len(actions), 1000 + job)
                         agent.load(path)
                         agent.epsilon = args.epsilon
@@ -285,7 +295,8 @@ def main():
                                         learn=not args.no_online,
                                         log=steps, job_id=job,
                                         apply_caps=policy != "monitor_only")
-                    res.update(policy=policy, repeat=rep, job=job)
+                    res.update(policy=policy, repeat=rep, job=job,
+                               gpu_shared=0)
                     rows.append(res)
                     job += 1
                     print(f"rep {rep} {name:15s} {policy:12s} "
@@ -301,7 +312,12 @@ def main():
         G.reset_cap()
         step_log.close()
 
-    summary = summarize(rows, os.path.join(run_dir, "summary.csv"))
+    with open(raw_path, "w", newline="") as f:  # final gpu_shared marks
+        wr = csv.DictWriter(f, fieldnames=list(rows[0]))
+        wr.writeheader()
+        wr.writerows(rows)
+    summary = summarize([r for r in rows if not r["gpu_shared"]],
+                        os.path.join(run_dir, "summary.csv"))
     for s in summary:
         print(f"{s['policy']:12s} {s['workload']:15s} "
               f"energy saving {s['energy_saving_pct']:6.1f}%"

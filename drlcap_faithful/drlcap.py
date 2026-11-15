@@ -22,6 +22,7 @@ Offline training:
 Reference configuration = the paper (Table V, Algorithm 1, Eq. 1). One
 setting can be changed per run for the review's ablations:
     --gamma G  --reward-mode edp_local  --reward-delay 1  --no-force-case-a
+    --cap-min MHZ
 Transition-timing trace of one job (review item 3):
     python drlcap.py trace <workload> --out trace.csv
 """
@@ -77,6 +78,16 @@ CAP_MIN = 1800
 CAP_MAX = 2745
 CAP_STEP = 15
 FREQ_CAPS = list(range(CAP_MIN, CAP_MAX + 1, CAP_STEP))
+# f2 (F2_CHANGES.md) trains with --cap-min 2100: the paper sets "the
+# minimum value of the frequency cap to a higher value ... since the lower
+# capping can significantly negatively impact the application performance,
+# as shown in Section III" (Sec. V), and on its two consumer cards uses
+# only the top 21 of 126 and 33 of 120 supported frequency levels (Table
+# IV: RTX 3080 Ti 1625-1925 MHz, RTX 2080 Ti 1635-2115 MHz, i.e. down to
+# 84 % / 77 % of the maximum). In our Section III sweep of the training programs, 2100 MHz is
+# where the compute-bound programs use the least energy; below it energy
+# and runtime both get worse. 2100/2745 = 0.77, 44 caps. The default here
+# stays 1800 so the f1 commands still reproduce f1.
 
 # Power-capping variant: the whole range the driver accepts, 100-285 W in
 # 5 W steps (38 actions). Measured Rodinia jobs draw only ~30-100 W at
@@ -109,6 +120,22 @@ VARIANTS = {
                  if f != HYBRID_FREQ[-2]],
 }
 ACTIONS = VARIANTS["freq"]
+
+
+def set_freq_range(cap_min):
+    """Rebuild the frequency action candidates for another minimum cap
+    (--cap-min): all 15 MHz caps cap_min..CAP_MAX for the frequency
+    variant, 8 of them evenly spread for the hybrid variant."""
+    global CAP_MIN, FREQ_CAPS, HYBRID_FREQ, ACTIONS
+    if cap_min % CAP_STEP or not G.MIN_CLOCK_MHZ <= cap_min < CAP_MAX:
+        raise ValueError(f"cap-min {cap_min} is not on the 15 MHz ladder")
+    CAP_MIN = cap_min
+    FREQ_CAPS = list(range(CAP_MIN, CAP_MAX + 1, CAP_STEP))
+    idx = np.round(np.linspace(0, len(FREQ_CAPS) - 1, 8)).astype(int)
+    HYBRID_FREQ = [FREQ_CAPS[i] for i in idx]
+    VARIANTS["freq"] = [(f, None) for f in FREQ_CAPS]
+    VARIANTS["hybrid"] = [(f, p) for p in HYBRID_POWER for f in HYBRID_FREQ]
+    ACTIONS = VARIANTS["freq"]
 
 
 def primary(action):
@@ -157,6 +184,25 @@ def to_state(sample):
     # order as in the paper: util, mem util, power, frequency, temperature
     u, m, p, t, f = feats
     return np.array([u, m, p, f, t], dtype=np.float32)
+
+
+def wait_gpu_free(poll_s=30.0):
+    """Block while another user's job is on the 4070 Ti: it would distort
+    the measurement and would itself run under our caps. Called between
+    jobs, when the cap is reset and none of our programs is running.
+    Returns True if it had to wait."""
+    if not G.gpu_busy_by_others():
+        return False
+    time.sleep(3.0)  # one of our own programs may still be exiting
+    if not G.gpu_busy_by_others():
+        return False
+    print(f"GPU {G.GPU_ID} busy with {G.gpu_busy_by_others()}, waiting "
+          f"({time.strftime('%F %T')})", flush=True)
+    while G.gpu_busy_by_others():
+        time.sleep(poll_s)
+    print(f"GPU {G.GPU_ID} free again ({time.strftime('%F %T')})", flush=True)
+    time.sleep(10.0)  # let the board settle back to idle
+    return True
 
 
 def make_agent(kind, num_actions, seed):
@@ -341,6 +387,7 @@ def train(iterations, tag, seed, variant="freq", kind="ddqn"):
     with open(os.path.join(run_dir, "config.json"), "w") as f:
         json.dump({
             "variant": variant, "agent": kind, "actions": actions,
+            "cap_min_mhz": CAP_MIN,
             "buckets": BUCKETS, "sample_interval_s": SAMPLE_INTERVAL,
             "reward_delay_samples": REWARD_DELAY,
             "reward_mode": R.REWARD_MODE, "reward_scale": R.REWARD_SCALE,
@@ -376,6 +423,7 @@ def train(iterations, tag, seed, variant="freq", kind="ddqn"):
             for workload in rng.permutation(W.TRAIN):
                 if progress["step"] >= iterations:
                     break
+                wait_gpu_free()
                 t0 = time.time()
                 res = run_job(agent, str(workload), learn=True,
                               actions=actions, epsilon_fn=eps_schedule,
@@ -417,6 +465,8 @@ def apply_overrides(args):
         REWARD_DELAY = args.reward_delay
     if args.no_force_case_a:
         FORCE_CASE_A = False
+    if args.cap_min is not None:
+        set_freq_range(args.cap_min)
 
 
 def trace_job(workload, path, seed=0):
@@ -449,6 +499,8 @@ def main():
         p.add_argument("--reward-mode", choices=["alg1", "edp_local"])
         p.add_argument("--reward-delay", type=int)
         p.add_argument("--no-force-case-a", action="store_true")
+        p.add_argument("--cap-min", type=int, metavar="MHZ",
+                       help="minimum frequency cap (default %d)" % CAP_MIN)
     args = ap.parse_args()
     apply_overrides(args)
     if args.cmd == "train":
