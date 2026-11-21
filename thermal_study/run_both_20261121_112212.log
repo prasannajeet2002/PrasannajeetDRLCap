@@ -1,0 +1,17 @@
+GPU: NVIDIA GeForce RTX 4070 Ti
+launches 111202 status no error
+leak rep 0 cap 2100 done
+launches 132626 status no error
+leak rep 0 cap 2505 done
+launches 111222 status no error
+leak rep 1 cap 2100 done
+launches 132481 status no error
+leak rep 1 cap 2505 done
+Traceback (most recent call last):
+  File "/home/drl/project/drlcap/thermal_study/run_thermal.py", line 194, in <module>
+    main()
+  File "/home/drl/project/drlcap/thermal_study/run_thermal.py", line 185, in main
+    exp_wear(args, log, os.path.join(args.out, "runs.csv"))
+  File "/home/drl/project/drlcap/thermal_study/run_thermal.py", line 107, in exp_wear
+    _, variant, kind, settings, actions = E.load_model_spec(path)
+ValueError: not enough values to unpack (expected 5, got 4)
