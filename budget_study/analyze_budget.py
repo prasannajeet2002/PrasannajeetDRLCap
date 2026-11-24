@@ -18,7 +18,8 @@ by = defaultdict(list)
 for r in rows:
     by[(r["workload"], r["policy"])].append(r)
 progs = sorted({r["workload"] for r in rows})
-pols = [p for p in ("drlcap", "drlcap_shield", "lowest_safe") if any(k[1] == p for k in by)]
+pols = [p for p in ("drlcap", "drlcap_shield", "lowest_safe", "drlcap_kshield", "lowest_safe_k")
+        if any(k[1] == p for k in by)]
 T0 = {w: np.mean([float(r["time_s"]) for r in by[(w, "baseline")]]) for w in progs}
 E0 = {w: np.mean([float(r["energy_j"]) for r in by[(w, "baseline")]]) for w in progs}
 lines, summ = [], {}
@@ -26,6 +27,7 @@ hdr = f"{'program':11s}" + "".join(f" | {p:>21s}" for p in pols)
 lines += [f"slowdown % / energy saved % vs NVIDIA default (mean of repeats), budget {delta:g} %", hdr]
 viol = defaultdict(int)
 est_err = defaultdict(list)
+kv = defaultdict(list)
 for w in progs:
     cells = []
     for p in pols:
@@ -36,6 +38,9 @@ for w in progs:
         for r, s in zip(rs, sd):
             if r["est_slowdown_pct"]:
                 est_err[p].append(float(r["est_slowdown_pct"]) - s)
+            if r.get("e2_est_pct"):
+                est_err[p + " (E2 alone)"].append(float(r["e2_est_pct"]) - s)
+                kv[p].append(float(r["k_valid_frac"]))
         summ.setdefault(p, []).append((T / T0[w], E / E0[w]))
         cells.append(f"{100*(T/T0[w]-1):6.1f} / {100*(1-E/E0[w]):5.1f}  max{max(sd):5.1f}")
     lines.append(f"{w:11s}" + "".join(f" | {c:>21s}" for c in cells))
@@ -51,5 +56,9 @@ for p in pols:
         d = np.array(est_err[p])
         line += f"  est-true MAE {np.abs(d).mean():.2f} bias {d.mean():+.2f}"
     lines.append(line)
+    if kv[p]:
+        d = np.array(est_err[p + " (E2 alone)"])
+        lines.append(f"{'':14s} same runs, E2 estimate alone: MAE {np.abs(d).mean():.2f} bias {d.mean():+.2f};"
+                     f" kernel estimate used in {100*np.mean(kv[p]):.0f} % of steps")
 print("\n".join(lines))
 open(os.path.join(out, "SUMMARY.txt"), "w").write("\n".join(lines) + "\n")

@@ -7,6 +7,10 @@ Policies per program and repeat, in rotating order:
   drlcap         f2 selected model, online learning (as in the f2 evaluation)
   drlcap_shield  the same model wrapped by the budget shield (shield.py)
   lowest_safe    no learning: always the lowest cap the shield allows
+  drlcap_kshield drlcap_shield with the kernel-timing estimate (kshield.py,
+                 E2 fallback); the CUPTI tracer runs only for the *_k policies,
+                 so its overhead counts against them
+  lowest_safe_k  lowest_safe with the kernel-timing estimate
 Reuses drlcap_faithful and the thermal_study logger unchanged.
 """
 
@@ -25,9 +29,23 @@ from run_thermal import A, D, E, G, W  # noqa: E402
 
 import pynvml  # noqa: E402
 
+import kshield as K  # noqa: E402
 import shield as S  # noqa: E402
 
 POLICIES = ["baseline", "drlcap", "drlcap_shield", "lowest_safe"]
+KPOLICIES = ["baseline", "drlcap", "drlcap_shield", "drlcap_kshield", "lowest_safe_k"]
+LIB = os.path.join(HERE, "cupti", "libkernel_stream.so")
+
+
+def tracing(ktrace_dir):
+    """Workloads inherit os.environ (workloads.gpu_env)."""
+    if ktrace_dir is None:
+        os.environ.pop("CUDA_INJECTION64_PATH", None)
+        os.environ.pop("KTRACE_DIR", None)
+    else:
+        os.makedirs(ktrace_dir)
+        os.environ["CUDA_INJECTION64_PATH"] = LIB
+        os.environ["KTRACE_DIR"] = ktrace_dir
 
 
 def main():
@@ -37,13 +55,18 @@ def main():
     ap.add_argument("--repeats", type=int, default=3)
     ap.add_argument("--workloads", nargs="+", default=W.TEST)
     ap.add_argument("--policies", nargs="+", default=POLICIES)
+    ap.add_argument("--kernel", action="store_true",
+                    help="default policies become " + " ".join(KPOLICIES))
+    ap.add_argument("--tag", default="budget")
     args = ap.parse_args()
+    if args.kernel and args.policies == POLICIES:
+        args.policies = KPOLICIES
 
     print("GPU:", G.init())
     if G.gpu_busy_by_others():
         raise SystemExit(f"GPU {G.GPU_ID} busy: {G.gpu_busy_by_others()}")
     handle = pynvml.nvmlDeviceGetHandleByIndex(G.GPU_ID)
-    out = os.path.join(HERE, "results", f"budget_d{args.delta:g}_{time.strftime('%Y%m%d_%H%M%S')}")
+    out = os.path.join(HERE, "results", f"{args.tag}_d{args.delta:g}_{time.strftime('%Y%m%d_%H%M%S')}")
     os.makedirs(out)
     path = os.path.abspath(RT.F2_MODEL)
     variant, kind, settings, actions = E.load_model_spec(path)
@@ -64,35 +87,48 @@ def main():
                     shared = D.wait_gpu_free()
                     log.tag = {"exp": "budget", "job": job, "policy": policy,
                                "workload": name, "phase": "run"}
-                    est = masked = ""
+                    est = masked = e2_est = k_est = k_valid = ""
                     if policy == "baseline":
                         res = E.baseline_job(name)
                     else:
                         E.use_settings(settings)
-                        budget = S.Budget(args.delta, args.margin)
-                        if policy == "lowest_safe":
+                        kdir = None
+                        if policy.endswith("_k") or policy == "drlcap_kshield":
+                            kdir = os.path.join(out, "ktrace", f"job{job}")
+                            budget = K.KernelBudget(kdir, args.delta, args.margin)
+                        else:
+                            budget = S.Budget(args.delta, args.margin)
+                        if policy.startswith("lowest_safe"):
                             ag = S.LowestSafe(actions, budget, seed=job)
                         else:
                             ag = D.make_agent(kind, len(actions), 1000 + job)
                             ag.load(path)
                             ag.epsilon = A.EPSILON_END
                             ag.learn_start = A.LEARN_START_ONLINE
-                            if policy == "drlcap_shield":
+                            if policy in ("drlcap_shield", "drlcap_kshield"):
                                 ag = S.ShieldedAgent(ag, actions, budget)
                         # Algorithm 1's "compute-bound -> max cap" belongs to
                         # DRLCap; the non-learning reference must not get it
-                        D.FORCE_CASE_A = policy != "lowest_safe"
+                        D.FORCE_CASE_A = not policy.startswith("lowest_safe")
+                        tracing(kdir)
                         try:
                             res = D.run_job(ag, name, actions=actions, learn=True,
                                             log=steps, job_id=job)
                         finally:
                             D.FORCE_CASE_A = True
+                            tracing(None)
                         if policy != "drlcap":
                             est = round(100 * budget.slowdown(), 2)
                             masked = ag.masked_steps
+                            if kdir:
+                                budget.save_diag(os.path.join(kdir, "kshield_steps.csv"))
+                                e2_est = round(100 * budget.e2_slow, 2)
+                                k_est = round(100 * budget.k_slow, 2)
+                                k_valid = round(budget.k_valid / max(budget.n_obs, 1), 3)
                     log.tag = dict(log.tag, phase="gap")
                     res.update(policy=policy, repeat=rep, job=job,
                                est_slowdown_pct=est, masked_steps=masked,
+                               e2_est_pct=e2_est, k_est_pct=k_est, k_valid_frac=k_valid,
                                delta=args.delta, margin=args.margin,
                                gpu_shared=int(bool(shared)))
                     rows.append(res)

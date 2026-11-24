@@ -1,0 +1,7 @@
+__pycache__/
+cupti/*.so
+# raw kernel streams: committed as results/*/ktrace.tar.gz (tar xzf to replay)
+results/*/ktrace/
+# debug and smoke runs of the tracer and kernel shield
+results/kdebug_*/
+results/ksmoke_*/

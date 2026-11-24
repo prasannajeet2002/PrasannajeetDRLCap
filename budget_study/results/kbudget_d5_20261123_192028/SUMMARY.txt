@@ -1,0 +1,19 @@
+slowdown % / energy saved % vs NVIDIA default (mean of repeats), budget 5 %
+program     |                drlcap |         drlcap_shield |        drlcap_kshield |         lowest_safe_k
+cloverleaf  |    5.2 /  17.4  max  5.8 |    4.3 /  14.2  max  5.3 |    4.3 /  13.8  max  4.8 |    6.3 /  15.7  max  6.4
+comd        |    8.1 /  15.3  max  8.8 |    3.8 /   8.9  max  4.1 |    3.9 /   9.1  max  5.2 |    4.2 /  11.9  max  4.4
+googlenet   |    1.6 /  14.6  max  6.0 |    0.2 /  15.1  max  3.8 |    0.2 /  13.5  max  4.8 |    0.6 /  23.2  max  2.8
+gromacs     |    5.3 /  17.9  max  6.2 |    2.8 /   9.4  max  3.0 |    4.1 /   9.5  max  4.6 |    3.2 /  12.5  max  3.6
+lulesh      |    9.2 /  15.1  max  9.7 |    4.7 /   8.3  max  4.7 |    6.5 /  10.3  max  7.7 |   10.8 /  16.0  max 12.4
+minibude    |    1.9 /   7.0  max  2.8 |    1.8 /   6.4  max  2.6 |    2.3 /   5.1  max  2.9 |    5.2 /   8.0  max  5.8
+minife      |    1.4 /  16.0  max  5.4 |    0.5 /  16.9  max  3.8 |    1.3 /  15.7  max  5.0 |    1.8 /  21.3  max  5.7
+qe          |    2.9 /  19.2  max  5.0 |    2.4 /  19.1  max  3.8 |    3.8 /   6.6  max  5.7 |    5.0 /  28.1  max  5.7
+tealeaf     |    0.0 /  17.3  max  0.1 |    0.0 /  12.2  max  0.0 |   -0.0 /  14.3  max -0.0 |    0.0 /  30.1  max  0.1
+vgg16       |    1.0 /  14.8  max  8.3 |   -0.1 /   4.0  max  4.6 |    1.2 /   2.9  max  7.6 |    1.6 /  10.0  max  7.3
+
+drlcap         geomean energy saved  15.5%  perf loss  3.6%  EDP improved  12.5%  programs over budget (mean) 4/10  runs over budget 12/30
+drlcap_shield  geomean energy saved  11.6%  perf loss  2.0%  EDP improved   9.8%  programs over budget (mean) 0/10  runs over budget 1/30  est-true MAE 1.64 bias +0.80
+drlcap_kshield geomean energy saved  10.2%  perf loss  2.7%  EDP improved   7.7%  programs over budget (mean) 1/10  runs over budget 5/30  est-true MAE 1.94 bias -0.01
+               same runs, E2 estimate alone: MAE 1.94 bias +0.16; kernel estimate used in 28 % of steps
+lowest_safe_k  geomean energy saved  18.0%  perf loss  3.8%  EDP improved  14.9%  programs over budget (mean) 3/10  runs over budget 10/30  est-true MAE 2.28 bias +0.37
+               same runs, E2 estimate alone: MAE 2.26 bias +0.67; kernel estimate used in 19 % of steps
